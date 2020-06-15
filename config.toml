@@ -69,7 +69,7 @@ disableHugoGeneratorInject = false
     readOtherPosts = "Read other posts"
 
     [languages.en.params.logo]
-      logoText = "man Jacob_Shin"
+      logoText = "man Jacob"
       logoHomeLink = "/"
     # or
     #
@@ -77,12 +77,16 @@ disableHugoGeneratorInject = false
     # alt = "Your example logo alt text"
 
   # And you can even create generic menu
-  [[menu.main]]
-      identifier = "posts"
-      name       = "Posts"
-      url        = "/posts"
+[[menu.main]]
+    identifier = "posts"
+    name       = "Posts"
+    url        = "/posts"
+    weight     = -101
 
-  [[menu.main]]
-      identifier = "about"
-      name       = "About"
-      url        = "/about"
+
+[[menu.main]]
+    identifier = "about"
+    name       = "About"
+    url        = "/about"
+    weight     = -100
+
