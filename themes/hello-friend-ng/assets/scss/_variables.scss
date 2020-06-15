@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/* light theme color */
+$light-background: #fbf1c7;
+$light-background-secondary: #ebdbb2;
+$light-color: #282828;
+$light-color-secondary: #689d6a;
+$light-border-color: #d5c4a1;
+
+/* dark theme colors */
+$dark-background: #1d2021;
+$dark-background-secondary: #3c3836;
+$dark-color: #a89984;
+$dark-color-secondary: #7c6f64;
+$dark-border-color: #32302f;
+
+$media-size-phone: "(max-width: 684px)";
+$media-size-tablet: "(max-width: 900px)";
+
+/* variables for js, must be the same as these in @custom-media queries */
+:root {
+  --phoneWidth: (max-width: 684px);
+  --tabletWidth: (max-width: 900px);
+}

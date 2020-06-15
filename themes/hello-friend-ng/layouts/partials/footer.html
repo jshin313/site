@@ -1,0 +1,20 @@
+<footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span style="color:#98971a">&copy; {{ now.Format "2006" }}</span>
+            {{ if .Site.Author.name }}
+                <span><a href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a></span>
+            {{ end }}
+            {{ if .Site.Copyright }}
+                <span style="color:#98971a">{{ .Site.Copyright| safeHTML }}</span>
+            {{ end }}
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <h5><a href="http://gohugo.io">Hugo</a></h5>
+            <h5><a href="https://github.com/morhetz/gruvbox">Gruvbox (Sort of)</a></h5>
+            <h5><a href="https://github.com/rhazdon">Theme</a></h5>
+        </div>
+    </div>
+</footer>
