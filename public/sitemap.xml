@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://jacobshin.com/posts/</loc>
+    <lastmod>2020-06-14T22:52:22-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacobshin.com/tags/</loc>
+    <lastmod>2020-06-14T22:52:22-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacobshin.com/posts/testing/</loc>
+    <lastmod>2020-06-14T22:52:22-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacobshin.com/tags/untagged/</loc>
+    <lastmod>2020-06-14T22:52:22-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacobshin.com/about/</loc>
+    <lastmod>2020-06-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacobshin.com/</loc>
+    <lastmod>2020-06-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jacobshin.com/blog/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jacobshin.com/series/</loc>
+  </url>
+  
+</urlset>
