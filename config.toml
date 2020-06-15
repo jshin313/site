@@ -1,5 +1,5 @@
-baseurl      = "https://jacobshin.com"
-title        = "Just my site"
+baseurl      = "."
+title        = "Just a random site"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
 paginate     = 10
