@@ -4,6 +4,29 @@ languageCode = "en-us"
 theme        = "hello-friend-ng"
 paginate     = 10
 
+# googleAnalytics = ""
+# disqusShortname = ""
+
+archetypeDir = "archetypes"
+contentDir   = "content"
+dataDir      = "data"
+layoutDir    = "layouts"
+publishDir   = "public"
+
+buildDrafts  = false
+buildFuture  = false
+buildExpired = false
+canonifyURLs = true
+
+enableRobotsTXT = true
+enableGitInfo   = false
+enableEmoji     = true
+enableMissingTranslationPlaceholders = false
+disableRSS     = false
+disableSitemap = false
+disable404     = false
+disableHugoGeneratorInject = false
+
 [params]
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
@@ -28,6 +51,14 @@ paginate     = 10
     category = "blog"
     tag      = "tags"
     series   = "series"
+
+[[params.social]]
+  name = "email"
+  url  = "mailto:nobody@example.com"
+
+[[params.social]]
+  name = "github"
+  url  = "https://github.com/"
 
 [languages]
   [languages.en]
