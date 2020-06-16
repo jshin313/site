@@ -91,7 +91,14 @@ disableHugoGeneratorInject = false
     url        = "/about"
     weight     = -100
 
-pygmentsCodefences = true
-pygmentsCodefencesGuessSyntax = true
-pygmentsStyle = "monokai"
 
+[markup]
+    [markup.highlight]
+          codeFences = true
+          hl_Lines = ""
+          lineNoStart = 1
+          lineNos = false
+          lineNumbersInTable = true
+          noClasses = true
+          style = "monokai"
+          tabWidth = 4
