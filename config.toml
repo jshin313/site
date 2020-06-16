@@ -91,7 +91,40 @@ disableHugoGeneratorInject = false
     url        = "/about"
     weight     = -100
 
- [markup]
+[markup]
+    defaultMarkdownHandler = "goldmark"
+    [markup.blackFriday]
+        angledQuotes = false
+        footnoteAnchorPrefix = ""
+        footnoteReturnLinkContents = ""
+        fractions = true
+        hrefTargetBlank = false
+        latexDashes = true
+        nofollowLinks = false
+        noreferrerLinks = false
+        plainIDAnchors = true
+        skipHTML = false
+        smartDashes = true
+        smartypants = true
+        smartypantsQuotesNBSP = false
+        taskLists = true
+    [markup.goldmark]
+        [markup.goldmark.extensions]
+            definitionList = true
+            footnote = true
+            linkify = true
+            strikethrough = true
+            table = true
+            taskList = true
+            typographer = true
+        [markup.goldmark.parser]
+            attribute = true
+            autoHeadingID = true
+            autoHeadingIDType = "github"
+        [markup.goldmark.renderer]
+            hardWraps = false
+            unsafe = false
+            xhtml = false
     [markup.highlight]
         codeFences = true
         guessSyntax = false
@@ -102,4 +135,7 @@ disableHugoGeneratorInject = false
         noClasses = true
         style = "monokai"
         tabWidth = 4
-
+    [markup.tableOfContents]
+        endLevel = 3
+        ordered = false
+        startLevel = 2
