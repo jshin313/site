@@ -6,6 +6,8 @@ toc: false
 images:
 tags:
   - ctf
+  - writeup
+  - security
 ---
 
 It looks like we have another EmojiASM problem! 
