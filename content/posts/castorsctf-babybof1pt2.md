@@ -1,5 +1,5 @@
 ---
-title: "babybof1 pt2"
+title: "Babybof1 Pt2"
 date: 2020-06-15T20:58:24-04:00
 draft: false 
 toc: false

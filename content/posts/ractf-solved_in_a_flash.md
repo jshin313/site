@@ -1,6 +1,6 @@
 ---
 title: "Solved in a Flash"
-date: 2020-06-14T22:52:22-04:00
+date: 2020-06-15T21:06:36-04:00
 draft: false 
 toc: false
 images:
