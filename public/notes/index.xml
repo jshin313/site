@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Notes on Jacob Shin</title>
+    <link>/notes/</link>
+    <description>Recent content in Notes on Jacob Shin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Jacob Shin</copyright>
+    <lastBuildDate>Fri, 27 Nov 2020 16:40:12 -0500</lastBuildDate>
+    
+	<atom:link href="/notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Discrete Mathematics I</title>
+      <link>/notes/discrete-maths-1/</link>
+      <pubDate>Fri, 27 Nov 2020 16:40:12 -0500</pubDate>
+      
+      <guid>/notes/discrete-maths-1/</guid>
+      <description>$$ % Extra backslashes used to make newline with MathJax \underbrace{\frac{\partial}{\partial t}\int_{V}\rho dV}_{\text{Rate of change of mass}} =\underbrace{-\oint_{S}\rho\underline{v}\cdot\underline{n}dS}_{\text{Net inflow of mass}} $$</description>
+    </item>
+    
+  </channel>
+</rss>
