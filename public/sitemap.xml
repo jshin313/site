@@ -3,41 +3,71 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://jacobshin.com/posts/</loc>
+    <loc>/tags/ctf/</loc>
+    <lastmod>2020-06-15T21:06:36-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2020-06-15T21:06:36-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/security/</loc>
+    <lastmod>2020-06-15T21:06:36-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/ractf-solved_in_a_flash/</loc>
+    <lastmod>2020-06-15T21:06:36-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-06-15T21:06:36-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/writeup/</loc>
+    <lastmod>2020-06-15T21:06:36-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/ractf-return_of_the_emojiasm/</loc>
+    <lastmod>2020-06-15T21:01:15-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/castorsctf-babybof1pt2/</loc>
+    <lastmod>2020-06-15T20:58:24-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/untagged/</loc>
     <lastmod>2020-06-14T22:52:22-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jacobshin.com/tags/</loc>
+    <loc>/posts/welcome/</loc>
     <lastmod>2020-06-14T22:52:22-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jacobshin.com/posts/testing/</loc>
-    <lastmod>2020-06-14T22:52:22-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacobshin.com/tags/untagged/</loc>
-    <lastmod>2020-06-14T22:52:22-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jacobshin.com/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2020-06-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jacobshin.com/</loc>
+    <loc>/</loc>
     <lastmod>2020-06-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jacobshin.com/blog/</loc>
+    <loc>/blog/</loc>
   </url>
   
   <url>
-    <loc>https://jacobshin.com/series/</loc>
+    <loc>/series/</loc>
   </url>
   
 </urlset>

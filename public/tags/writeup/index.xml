@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jacob Shin</title>
-    <link>/</link>
-    <description>Recent content on Jacob Shin</description>
+    <title>writeup on Jacob Shin</title>
+    <link>/tags/writeup/</link>
+    <description>Recent content in writeup on Jacob Shin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jacob Shin</copyright>
-    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2020 21:06:36 -0400</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/writeup/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -43,24 +43,6 @@ Info from the EmojiASM Webpage Architecture  General-purpose registers X and Y (
 The call to gets() doesn&amp;rsquo;t check to make sure our input will fit into the buffer we give it,
 so we can write past the length of the buffer, leading to a classic buffer overflow vulnerability.
 The gets() means we the input can contain any character, even \x00, except for newlines.</description>
-    </item>
-    
-    <item>
-      <title>Welcome to my site.</title>
-      <link>/posts/welcome/</link>
-      <pubDate>Sun, 14 Jun 2020 22:52:22 -0400</pubDate>
-      
-      <guid>/posts/welcome/</guid>
-      <description>This is just a test post. </description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>Student. Programmer. Musician. I&amp;rsquo;m on GitHub.</description>
     </item>
     
   </channel>
