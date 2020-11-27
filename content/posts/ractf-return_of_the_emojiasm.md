@@ -1,5 +1,5 @@
 ---
-title: "Return of the EmojASM"
+title: "CTF Writeup: Return of the EmojASM"
 date: 2020-06-15T21:01:15-04:00
 draft: false 
 toc: false

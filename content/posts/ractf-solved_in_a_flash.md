@@ -1,5 +1,5 @@
 ---
-title: "Solved in a Flash"
+title: "CTF Writeup: Solved in a Flash"
 date: 2020-06-15T21:06:36-04:00
 draft: false 
 toc: false

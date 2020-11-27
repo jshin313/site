@@ -61,6 +61,10 @@ disableHugoGeneratorInject = false
   name = "github"
   url  = "https://github.com/jshin313"
 
+[[params.social]]
+  name = "linkedin"
+  url  = "https://www.linkedin.com/in/jacob-shin"
+
 [languages]
   [languages.en]
     title = "Jacob Shin"
@@ -79,17 +83,30 @@ disableHugoGeneratorInject = false
 
   # And you can even create generic menu
 [[menu.main]]
+    identifier = "projects"
+    name       = "Projects"
+    url        = "/projects"
+    weight     = -102
+
+[[menu.main]]
     identifier = "posts"
     name       = "Posts"
     url        = "/posts"
     weight     = -101
+
+[[menu.main]]
+    identifier = "notes"
+    name       = "Notes"
+    url        = "/notes"
+    weight     = -100
 
 
 [[menu.main]]
     identifier = "about"
     name       = "About"
     url        = "/about"
-    weight     = -100
+    weight     = -99
+
 
 
 [markup]
