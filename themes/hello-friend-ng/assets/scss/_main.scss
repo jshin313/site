@@ -182,7 +182,8 @@ code {
 }
 
 pre {
-  background: #212020;
+  // background: #212020;
+  background: $light-background-secondary !important;
   padding: 10px 10px 10px 20px;
   border-radius: 8px;
   font-size: .95rem;
@@ -193,15 +194,19 @@ pre {
     word-wrap: break-word;
   }
 
+  .dark-theme & {
+    background: $dark-background-secondary !important; 
+  }
+
   code {
     background: none !important;
-    color: #ccc;
+    color: $light-color !important;
     margin: 0;
     padding: 0;
     font-size: inherit;
 
     .dark-theme & {
-      color: inherit;
+      color: $dark-color !important; 
     }
   }
 }
@@ -329,4 +334,9 @@ hr {
 	padding: 15px 23px 14px;
 	text-decoration: none;
 	z-index: 100000;
+}
+
+pre {
+  background-color: #2d2d2d;
+  color: #fbf1c7;
 }
