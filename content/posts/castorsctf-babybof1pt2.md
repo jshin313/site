@@ -11,10 +11,10 @@ tags:
 ---
 
 ## The Problem Description:  
-![Problem Description](problem.png)
+![Problem Description](/problem.png)
 
 ## Ghidra Decompilation:
-![Ghidra](ghidra.png)
+![Ghidra](/ghidra.png)
 
 As we can see from the above decompilation, the vulnerability in the program is `gets()`.  
 The call to gets() doesn't check to make sure our input will fit into the buffer we give it,  
