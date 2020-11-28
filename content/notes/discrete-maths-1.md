@@ -9,8 +9,9 @@ $ a = b \frac{a}{b} $
 $$\int_{a}^{b} x^2 dx$$
 
 $$
-\underbrace{\frac{\partial}{\partial t}\int_{V}\rho dV}_{\text{Rate of change of mass}}
-=\underbrace{-\oint_{S}\rho\underline{v}\cdot\underline{n}dS}_{\text{Net inflow of mass}}
+\underbrace{\frac{\partial}{\partial t}\int\_{V}\rho dV}\_{\text{Rate of change of mass}}
+
+=\underbrace{-\oint\_{S}\rho\underline{v}\cdot\underline{n}dS}\_{\text{Net inflow of mass}}
 $$
 
 $$
