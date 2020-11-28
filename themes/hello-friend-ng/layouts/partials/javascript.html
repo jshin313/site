@@ -15,6 +15,19 @@
 {{ end }}
 {{ end }}
 
+<style>
+pre.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: $light-color !important;                                                                                               
+        .dark-theme & {                                                                                                                         
+                color: $dark-color !important;
+        }
+}
+</style>
+
 
 <!-- Code below from https://bwaycer.github.io/hugo_tutorial.hugo/tutorials/mathjax/ -->
 <script type="text/javascript" async
@@ -40,15 +53,3 @@
                 }
         });
 </script>
-<style>
-code.has-jax {
-        .dark-theme & {                                                                                                                         
-                color: $dark-color;                                                                                               
-        }
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: $light-color;                                                                                               
-}
-</style>

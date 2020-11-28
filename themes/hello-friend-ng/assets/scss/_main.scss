@@ -188,6 +188,7 @@ pre {
   border-radius: 8px;
   font-size: .95rem;
   overflow: auto;
+  color: $light-color !important;
 
   @media #{$media-size-phone} {
     white-space: pre-wrap;
@@ -196,6 +197,7 @@ pre {
 
   .dark-theme & {
     background: $dark-background-secondary !important; 
+    color: $dark-color !important;
   }
 
   code {
