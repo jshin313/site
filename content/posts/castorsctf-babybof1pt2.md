@@ -190,7 +190,7 @@ http://ftp.osuosl.org/pub/ubuntu/pool/main/g/glibc/libc6_2.31-0ubuntu9_amd64.deb
 ```
 This shows us that the server was using the libc6\_2.31-0ubuntu9\_amd64 version. We can use `download libc6_2.31-0ubuntu9_amd64` to download that libc version.  
 
-Note: There is also an online libc database at [https://libc.blukat.me/], but it only works sometimes since its database probably isn't as comphrehensive.
+Note: There is also an online libc database at https://libc.blukat.me/, but it only works sometimes since its database probably isn't as comphrehensive.
 
 ### Exploit
 We can use the pwntools python library to find libc offsets.  
