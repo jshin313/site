@@ -75,7 +75,7 @@ Notes based on https://youtu.be/-dfsxsiGoC8 since the video goes more in-depth t
 
     `$yz = (10^n)ac + (10^{\frac{n}{2}})\underbrace{(\overbrace{ad}^\text{n} + \overbrace{bc}^\text{n})}_{\alpha \text{n additions}} + bd $` 
 
-    The above figure shows that `ad` and `bc` are both a max of n digits long since `a`, `b`, `c`, and `d` are all `n/2` digits in length. Thus an `n` digit number added to another `n` digit number takes `n` additions. But these additions are *atomic*, meaning that they're the smallest additions in the algorithm, so the additions can be denoted as $\alpha n$ additions where $\alpha$ is just an arbitrary symbol representing *atomic addition*.
+    The above figure shows that `ad` and `bc` are both a max of n digits long since `a`, `b`, `c`, and `d` are all `n/2` digits in length. Thus an `n` digit number added to another `n` digit number takes `n` additions. But these additions are *atomic*, meaning that they're the smallest additions in the algorithm, so the additions can be denoted as $\alpha n$ additions where $\alpha$ is just an symbol representing *atomic addition*.
 
     Multiplying by any power by 10 is just a shift to the left. Example, if `n = 4` 
 and `X` represents any non-zero digit: 
@@ -91,11 +91,38 @@ and `X` represents any non-zero digit:
     ----------
     </pre>
 
-    Notice that only `n` digits overlap
     <pre>
       XX<strong>XXXX</strong>XX
     + 00<strong>XXXX</strong>00
     ----------
     </pre>
+    Notice that only `n` digits overlap
 
-    Thus we only have to do `n` additions and since they're atomic we get $\alpha n$ additions.
+    Thus we only have to do `n` additions and since they're atomic we get $\alpha n$ additions.  
+
+    Since `ad + bc` took $\alpha n$ additions and adding all the terms also took $\alpha n$ additions, the total additions for getting `yz` is $2 \alpha n$. This is how many additions is required whenever we use this formula, which is at recursive call).
+
+    We use the formula $yz = (10^n)ac + (10^{\frac{n}{2}})(ad + bc) + bd$ to do multiplication, but if `ac`, `ad`, `bc`, or `bd` is not a multiplication between single digits (i.e. not *atomic*), then we have to do a recursive call and use the formula again by further splitting up the numbers in half until we get *atomic* multiplication (i.e. when we get multiplication between two one digit numbers). The base case is when we get "atomic multiplication." The $\mu$ symbol represents this atomic multiplication.  
+
+    We have 4 multiplications done for each recursive call:
+
+    `$yz = (10^n)\underbrace{ac}_{\text{1}} + (10^{\frac{n}{2}})(\underbrace{ad}_{\text{2}} + \underbrace{bc}_{\text{3}}) + \underbrace{bd}_{\text{4}}$`
+
+    Let `M(n)` represent the recursive relation describing the result for multiplying numbers of length `n`.  
+
+    `$M(n) = 4\cdot M(\frac{n}{2}) + 2\alpha n$`
+    
+    At each recursive call, we need to get the results of the 4 multiplications (`$4M(\frac{n}{2})$`) and then add the results of the multipliations up (`$2\alpha n$`) per the formula.
+
+    Representing the recursive calls using a tree:
+
+```
+                                 n                                        1(2𝛼n)
+
+      n/2              n/2              n/2              n/2              4(2𝛼(n/2))
+
+n/4 n/4 n/4 n/4  n/4 n/4 n/4 n/4  n/4 n/4 n/4 n/4  n/4 n/4 n/4 n/4        16(2𝛼(n/4))
+```
+The tree continues on until the base case is reached.
+
+We see that the number of subproblems at each level is `$4^i$` where `i` is depth of the tree. We also see that the number of digits gets halved each time we do a recursive call, so at each level, the number of additions is `$2\alpha \frac{n}{2^i}$` where i is the level/depth.
