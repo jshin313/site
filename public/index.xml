@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jacob Shin</copyright>
-    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2020 17:22:21 -0500</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Projects</title>
+      <link>/projects/</link>
+      <pubDate>Fri, 27 Nov 2020 17:22:21 -0500</pubDate>
+      
+      <guid>/projects/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Discrete Mathematics I</title>
@@ -18,7 +27,7 @@
       <pubDate>Fri, 27 Nov 2020 16:40:12 -0500</pubDate>
       
       <guid>/notes/discrete-maths-1/</guid>
-      <description>$$ % Extra backslashes used to make newline with MathJax \underbrace{\frac{\partial}{\partial t}\int_{V}\rho dV}_{\text{Rate of change of mass}} =\underbrace{-\oint_{S}\rho\underline{v}\cdot\underline{n}dS}_{\text{Net inflow of mass}} $$</description>
+      <description>$ a = b \frac{a}{b} $</description>
     </item>
     
     <item>
