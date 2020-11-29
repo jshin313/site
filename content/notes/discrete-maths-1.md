@@ -13,13 +13,74 @@ These are my notes and are primarily meant to be used as a reference for me only
 
 Helpful websites and resources I used for the class:
 * [Kimberly Brehm's Youtube Channel](https://www.youtube.com/playlist?list=PLl-gb0E4MII28GykmtuBXNUNoej-vY5Rz). Pretty good explanations.
-* https://math.berkeley.edu/~arash/55/: Condensed version of book chapters. A bit hard to read sometimes.
+* https://math.berkeley.edu/~arash/55/ : Condensed version of book chapters. A bit hard to read sometimes.
 * https://www.slader.com/: For solutions to book problems
 
 ## Counting and Combinatorics (Chapter 6)
 
+### Counting (6.1)
+Stuff based on https://youtu.be/zG9Y8hnXZOc
+
+#### Sum Rule
+**Definition**: If task A can be performed in *m* ways and task B in *n* ways, and the tasks are disjoint (the tasks don't affect one another), then A **OR** B can be performed in `m + n` ways.
+
+**Example**: `If we roll two dice, one green and one purple, how  many ways are there to get a sum of 7 or 11?`
+
+Ways to get 7: 
+```
+(1, 6), (2, 5), (3, 4)
+(6, 1), (5, 2), (4, 3)
+```
+
+Ways to get 11: 
+```
+(5, 6)
+(6, 5)
+```
+**OR** means `+` and using the Sum Rule.  
+So add the number of ways to get 7 and the number of ways to get 11: 6 + 2 = 8
+
+8 is number of ways to get either a 7 or 11.
+
+**Example**: `8 Republicans and 5 Democrats are nominated. How many possible winners are there.` \
+Answer: 8 + 5 = 13 possibilities.
+
+#### Product Rule
+**Definition**: Task A (m ways) and task B (n ways). Tasks A **AND** B can be performed in m $\cdot$ n ways.
+
+**Example**: `8 Republicans and 5 Democrats nominated for president. How many possibilities for a pair of candidates (running against each other with one from each party)?` \
+Answer: 8 * 5 = 40 possible pairs
+Explanation: For every republican there's 5 democrats to pair with. Draw a tree diagram if you want.
+
+**Example**: `Student ID made up of 3 letters followed by 2 digits. How many possible IDs?` \
+Answer: 26 * 26 * 26 * 10 * 10
+
+**Example**: `Student ID made up of 3 letters followed by 2 digits. How many possible IDs with no duplicate numbers/letters?` \
+Answer: 26 * 25 * 24 * 10 * 9
+Explanation: First letter has all possibilities open, the second letter has all possibilities minus the first letter, the third has all possibilities minus first and second, and so on.
+
+**Example**: `Student ID made up of 3 letters followed by 2 digits. How many possible IDs with even number of A's (including zero A's)?` \
+Answer: $( 25 \cdot 25 \cdot 25 \cdot 10 \cdot 10) + (1 \cdot 1 \cdot 25 \cdot 10 \cdot 10) + (1 \cdot 25 \cdot 1 \cdot 10 \cdot 10) + (25 \cdot 1 \cdot 1 \cdot 10 \cdot 10 \cdot 10 )$
+Explanation: Add the following up
+`$$( \underbrace{25 \cdot 25 \cdot 25}_{\text{All possibilities except A}} \overbrace{\cdot 10 \cdot 10}^{\text{No restrictions on digits}}) \\ (\underbrace{1 \cdot 1}_{\text{These two have to be A}} \cdot \overbrace{25}^{\text{Can be any letter except A}} \cdot 10 \cdot 10) \\ \underbrace{(1 \cdot 25 \cdot 1 \cdot 10 \cdot 10)}_{\text{Just another instance of above}} \\ \underbrace{(25 \cdot 1 \cdot 1 \cdot 10 \cdot 10 \cdot 10 )}_{\text{See above}}$$`
+
+#### Opposite/Complement
+Sometimes it's easier to find the opposite case and subtract that from all possibilities since there might be overlapping cases or too many of the possibilities you're looking for.
+
+Example: `A student ID is made up of 3 letters followed by 2 digits. How many have some repetition?` \
+Answer: 
+Explanation: Find the number of cases that don't have any repetition. 
+
+#### Other Problems
+
+### Pigeonhole Principle (6.2)
+
+### Permutations and Combinations (6.3)
+
+
 
 ## Miscallaneous
+
 ### Fast Multiplication: Karatsuba's Algorithm 
 Notes based on https://youtu.be/-dfsxsiGoC8 since the video goes more in-depth than my class did.
  * The way we learned to multiply in elementary school was *not* the fastest way
