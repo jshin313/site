@@ -68,8 +68,8 @@ Explanation: Add the following up
 Sometimes it's easier to find the opposite case and subtract that from all possibilities since there might be overlapping cases or too many of the possibilities you're looking for.
 
 Example: `A student ID is made up of 3 letters followed by 2 digits. How many have some repetition?` \
-Answer: 
-Explanation: Find the number of cases that don't have any repetition. 
+Answer: 26^3 * 10 * 10 - 26 * 25 * 10 * 9
+Explanation: Find the number of cases that don't have any repetition. Just subtract the number of distinct IDs from total possible IDs. We already solved those two above.
 
 #### Other Problems
 
