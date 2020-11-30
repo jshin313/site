@@ -172,7 +172,34 @@ $$ C(n, k) = \frac{P(n, k)}{k!} = \frac{n!}{k!(n - k)!} $$
 
 Note that $ C(n, n) = C(n, 0) = 1 $ and $C(n, 1) = C(n, n - 1) = n$
 
+**Example**: 5 white balls are chosen from 69 white balls, and 1 red ball from 26 red balls. 
+
+* Find the number of combinations of white balls.  
+  Answer: *AND* means use product rule. $$C(69, 5)$$
+* Find the number of combinations of white balls.  
+  Answer: $$C(26, 1)$$
+* Find the number of combinations.  
+  Answer: Use product rule $$C(26, 1) \cdot C(26, 1)$$
+
+#### Combinations with Permutations
+How many arrangements of the letters "MISSISSIPPI" have no consecutive S's?  
+Answer: 
+$$ _1M_2I_3I_4I_5P_6P_7I_8 $$
+Remove the 4 `S`'s and notice how there are now 8 spots to put the `S`'s in between the letters. So we have a combination where we can use the following
+$$ C(8, 4) = \frac{8!}{4!4!}$$
+
+We can also permute the other letters that are not S's (7 letters with 4 duplicate I's and 2 duplicate P's):
+$$ \frac{7!}{4!2!} $$
+
+The final solution:
+$$ (\frac{8!}{4!4!})(\frac{7!}{4!2!}) $$
+
 ### Binomial Theorem (9.4)
+Entries for Pascal's triangle
+$$ C(n, k) = C(n - 1, k-1) + C(n - 1, k) $$
+
+The binomial theorem:
+`$$ (x + y)^n = \sum_{j=0}^{n} C(n, j) \; x^{n-j} y^{j} = C(n, 0)\;x^n + C(n, 1) \;x^{n-1}y ... + C(n, n-1)\; xy^{n-1} + C(n, n) \; y^n$$`
 
 ## Miscallaneous
 
