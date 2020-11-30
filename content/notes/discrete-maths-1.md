@@ -42,14 +42,14 @@ So add the number of ways to get 7 and the number of ways to get 11: 6 + 2 = 8
 
 8 is number of ways to get either a 7 or 11.
 
-**Example**: `8 Republicans and 5 Democrats are nominated. How many possible winners are there.` \
+**Example**: `8 Republicans and 5 Democrats are nominated. How many possible winners are there.`  
 Answer: 8 + 5 = 13 possibilities.
 
 #### Product Rule
 **Definition**: Task A (m ways) and task B (n ways). Tasks A **AND** B can be performed in m $\cdot$ n ways.
 
 **Example**: `8 Republicans and 5 Democrats nominated for president. How many possibilities for a pair of candidates (running against each other with one from each party)?` \
-Answer: 8 * 5 = 40 possible pairs
+Answer: 8 * 5 = 40 possible pairs  
 Explanation: For every republican there's 5 democrats to pair with. Draw a tree diagram if you want.
 
 **Example**: `Student ID made up of 3 letters followed by 2 digits. How many possible IDs?` \
@@ -68,16 +68,111 @@ Explanation: Add the following up
 Sometimes it's easier to find the opposite case and subtract that from all possibilities since there might be overlapping cases or too many of the possibilities you're looking for.
 
 Example: `A student ID is made up of 3 letters followed by 2 digits. How many have some repetition?` \
-Answer: 26^3 * 10 * 10 - 26 * 25 * 10 * 9
+Answer: 26^3 * 10 * 10 - 26 * 25 * 10 * 9 \
 Explanation: Find the number of cases that don't have any repetition. Just subtract the number of distinct IDs from total possible IDs. We already solved those two above.
 
 #### Other Problems
+`Determine the number of 6-digit integers (no leading zeros) in which:` 
+
+**Example**: `No repetitions` \
+Answer: `9 * 9 * 8 * 7 * 6 * 5` \
+Explanation: `(10 - 1) * (10 - 1) * (10 - 1 - 1) * (10 - 1 - 1 -1) ... etc.` \
+The first digit has all possible digits except zero, the second digit has all possibilities except the first digit, the third has all possibilities except first and second, etc.
+
+**Example**: `Repetitions allowed` \
+Answer: `9 * 10 * 10 * 10 * 10 * 10` \
+Explanation: All six digits have all possible digits open except first digit. First digit has all digits as possibilities except zero.
+
+**Example**: `No repetitions, even number` \
+Explanation:   
+There are two cases: If the last digit is zero or one of (2, 4, 6, 8). Last digit has to be even. 
+For the case that last digit is non-zero even integer:  
+`8 * 8 * 7 * 6 * 5 * 4`  
+Last digit has to be even but not zero (leaving 4 choices (2, 4, 6, 8). First digit has all possible digits minus the last digit and zero. Second digit has all possible digits minus last digit and first digit. Third digit has all possible digits minus first digit, second digit, and last digit. Etc. 
+For the case that last digit is zero:
+Last digit has to be zero. First digit can be any digit except zero. Second can be any digit except first and zero. Etc.  
+Add the two cases together to get the final answer.  
+Answer: `8 * 8 * 7 * 6 * 5 * 4 + 9 * 8 * 7 * 6 * 5 * 1` 
+
+**Example**: `Repetitions allowed, even number` \
+Answer: `9 * 10 * 10 * 10 * 10 * 5` \
+Explanation: Last digit has to one of the even digits. First digit can be any digit except zero. All other digits can be any digit.
+
+**Example**: `No repetitions, divisible by 5` \
+Explanation: The number has to end with 0 or 5 if it is divisible by 5. So we split this problem into two cases: first case is if last digit is 0 and second case is if the last digit is 5. \
+This is how many possible combinations end in zero: `(10 - 1) * (10 - 2) * (10 - 3) * (10 - 4) * (10 - 5) * (1)`. The last digit has to be zero. The first digit can be any digit except zero. The second digit can be any digit except the first digit and zero. Etc.  \
+This is how many possible combinations end in five: `(10 - 1 - 1) * (10 - 2) * (10 - 3) * (10 - 4) * (10 - 5) * (1)`. The last digit has to be five. The first digit can be any digit except zero and five. The second digit can be any digit except the first digit and five. Etc. \
+Add these two subproblems to get the answer.  \
+Answer: `9*8*7*6*5*1 +  8*8*7*6*5*1` 
+
+**Example**: `No repetitions, divisible by 4`
+Explanation: Numbers that are divisible by 4 either end in 4 or 8 or end in one of the following 2-digit combos: `04, 08, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96`. Any n-digit number (where n > 2) will end with one of these combo if they're divisible by 4. Since the first digit can't be zero, divide the 2-digit combos into two groups: one group with zeros and one without.  
+Group without zeros (12, 16, 24, 28, 32, 36, 48, 52, 56, 64, 68, 72, 76, 84, 92, 96): 16 options.  
+So we get `7 * 7 * 6 * 5 * 16` since the first digit can be any digit except zero and the two last digits, the second digit can be any digit except the first and last two, etc. and last two digits can be any from the "Group without zeros."
+Group with zeros (04, 08, 20, 40, 60, 80): 6 options.  
+So we get `8 * 7 * 6 * 5 * 6` since the first digit can be any digit except the two last digits, the second digit can be any digit except the first and last two, etc. and last two digits can be any from the "Group with zeros."
+To get the final answer add the two: `7 * 7 * 6 * 5 * 16 + 8 * 7 * 6 * 5 * 6`
 
 ### Pigeonhole Principle (6.2)
 
 ### Permutations and Combinations (6.3)
+Based on https://youtu.be/EHMDRUSOubM and https://youtu.be/bT8JoK1D9sM
 
+#### Permutations
+Definition: Arrangement of objects where order matters
+For *n* letters there are the following **distinct** permutations:
+$$n(n - 1)(n - 2) (n - 3) ... 3 \cdot 2 \cdot 1 = n!$$
+Note: 0! = 1  
+From a group of `n + 1` object labeled 1 through n, we can `k` of them. The number of groups with `k` objects is as follows:
+$$n(n-1)(n - 2)...(n - k + 1) = P(n, k) = \frac{n!}{(n - k)!}$$
+Note: $P(n, n) = n!$  
 
+**Example**: How many ways to arrange letters `A, B, C, D, and E` in groups of 3?  
+Answer: 
+$$ P(5, 3) = \frac{5!}{(5 - 3)!} = \frac{5!}{2!} = \frac{120}{2} = 60 $$  
+We divide by 2 since `ABCDE` and `ABCED` are the same arrangement when choosing 3.
+
+**Example**: From a pool of 10 candidates, how many arrangements of president, vice president, and secretary:
+Answer:
+$$ 10 \cdot 9 \cdot 8 = 720 = P(10, 3)$$
+
+#### Permutation With Repetition
+If you have $n$ objects and you have `$n_1$` that is not unique (repeats), `$n_2$` that's indistinguishable (not unique), etc. then the number of arrangements can be calculated as follows:
+$$ \frac{n!}{n_1! n_2! ... n_k!}$$
+
+**Example**: How many ways to arrange letters in "Oboe" (if O and o are considered the same letter)?
+```
+Oboe Obeo Oeob Oebo Oobe Ooeb boeO boOe boOe beoO eObo eOob ebOo
+obOe obeO oeOb oebO oObe oOeb bOeo bOoe bOoe beOo eobO eoOb eboO
+```
+While there are 24 possible arrangements, there are only 12 UNIQUE ones since o is repeated.  
+
+To solve we do $\frac{P(4, 4)}{2!} $ since the letter *O* repeats 2 times.
+
+#### Permutations Problems
+1. How many ways can you arrange letters in the word "banana"?  
+   Answer: There are 6 letters total and $n$ repeats twice and $a$ repeats thrice. $$ \frac{P(6, 6)}{3! 2!} $$
+
+2. a) How many arrangements for letters in "sociological"?  
+      Answer: 12 letters total, 3 `o`'s, 2 `l`'s, 2 `c`'s, and 2 `i`'s $$ \frac{P(12, 12)}{3!2!2!2!} $$
+
+2. b) In how many arrangements are A and G adjacent (think of "ag" as a letter and "ga" as a letter) in sociological?  
+      Answer: If we treat "ag" and "ga" as one letter, then we have 11 
+      letters."
+      $$ \frac{P(11, 11)}{3!2!2!2!} \cdot 2$$
+      It's the same as above except we multiply by 2 since there can be ag or ga.
+2. c) In how many arrangements are all the vowels adjacent in sociological?  
+      Answer: We have 6 vowels (3 `o`'s, 2 `i`'s, and 1`a`). We have 6 consonants. 
+      $$ \frac{P(6, 6)}{3! 2!} \cdot \frac{P(7, 7)}{2!2!} $$
+      First term is vowels and second term is treats the block of vowels as one "letter" with the rest of the consonants. Use product rule and the technique for dealing with duplicates.
+
+#### Combinations
+Definition: If we have *n* distinct objects and want to choose *k* of these objects without caring about the order, you can use the following formula:
+$$ C(n, k) = \frac{P(n, k)}{k!} = \frac{n!}{k!(n - k)!} $$
+
+Note that $ C(n, n) = C(n, 0) = 1 $ and $C(n, 1) = C(n, n - 1) = n$
+
+### Binomial Theorem (9.4)
 
 ## Miscallaneous
 
