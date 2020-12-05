@@ -2,6 +2,7 @@
 title: "Discrete Mathematics I Notes"
 date: 2020-11-27T16:40:12-05:00
 draft: false
+toc: true
 ---
 
 This class is called **Mathematical Concepts in Computing I** at my college and covers propositions/predicates, sequences, number theory, set theory, functions, matrices, basic proof techniques, combinatorics, counting, relations, and trees/graphs.
