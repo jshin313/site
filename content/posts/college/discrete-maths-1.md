@@ -5,6 +5,8 @@ draft: false
 toc: true
 ---
 
+## Class Description
+
 This class is called **Mathematical Concepts in Computing I** at my college and covers propositions/predicates, sequences, number theory, set theory, functions, matrices, basic proof techniques, combinatorics, counting, relations, and trees/graphs.
 
 Book Used: **Discrete Mathematics and Its Applications by Kenneth Rosen**  
