@@ -68,7 +68,7 @@ disableHugoGeneratorInject = false
 [languages]
   [languages.en]
     title = "Jacob Shin"
-    subtitle = "A Random Site"
+    subtitle = "Random Stuff"
     keywords = ""
     copyright = 'Jacob Shin'
     readOtherPosts = "Read other posts"
