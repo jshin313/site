@@ -8,6 +8,8 @@ tags:
   - ctf
   - writeup
   - security
+  - buffer overflow
+  - binary exploitation
 ---
 
 ## The Problem Description:  
