@@ -189,6 +189,7 @@ pre {
   padding: 10px 10px 10px 20px;
   border-radius: 8px;
   font-size: .95rem;
+  // overflow: auto;
   overflow: auto;
   color: $light-color !important;
 
@@ -211,6 +212,9 @@ pre {
 
     .dark-theme & {
       color: $dark-color !important; 
+    }
+    .has-jax & {
+      font-size: 1.25rem;
     }
   }
 }
