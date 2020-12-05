@@ -1,5 +1,5 @@
 ---
-title: "Notes from College"
+title: "Notes: College Computer Science"
 date: 2020-11-27
 ---
 
