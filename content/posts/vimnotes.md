@@ -53,7 +53,7 @@ This applies changes made to .vimrc.
 Make sure to create the undodir at `~/.vim/undodir`  
 
 Run the following command to install the plug vim plugin manager
-```console
+```bash
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
@@ -63,7 +63,7 @@ Then source the .vim with `:source %s`.
 Then install plugins with `:PlugInstall`.
 
 Make YCM work:
-```console
+```bash
 $ cd ~/.vim/plugged/YouCompleteMe
 $ python3 install.py
 ```
@@ -91,12 +91,12 @@ https://www.youtube.com/watch?v=QN4fuSsWTbA
 
 * When using f and t, you can use `,` to go backwards and `;` to go forwards to search for the same letter without repeating the same command
 * Use `c` instead of `d` to enter insert mode
-* You can use `i` and `a` in conjunction with c or d to remove whatever's inside {}, [], "", '', etc.
+* You can use `i` and `a` in conjunction with c or d to remove whatever's inside {}, "", '', etc.
   E.g. ci" will delete everything within the following string: "Hello, world".
   ca" will delete everything inside the string as well as the "". 
 * Marks allow jumping to points in a file: `mJ` will create a mark called J. `'J` will jump to the mark. Note: Capital letter are marks that are unique across multiple files while lowercase letters are for local file marks.
 * Bonus remap allows you to move highlighted regions up or down:
-``` {.vimscript}
+```VimL
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 ```
@@ -161,7 +161,7 @@ colorscheme gruvbox
 ```
 
 Nice remaps for coc and jumping to definition/references:
-```
+```VimL
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
 ```
