@@ -198,13 +198,119 @@ $$ \frac{7!}{4!2!} $$
 The final solution:
 $$ (\frac{8!}{4!4!})(\frac{7!}{4!2!}) $$
 
-### Binomial Theorem (9.4)
+### Binomial Theorem (6.4)
 Entries for Pascal's triangle
 <div>$$ C(n, k) = C(n - 1, k-1) + C(n - 1, k) $$</div>
 
 The binomial theorem:
 <div>$$ (x + y)^n = \sum_{j=0}^{n} C(n, j) \; x^{n-j} y^{j} = \\
 C(n, 0)\;x^n + C(n, 1) \;x^{n-1}y ... + C(n, n-1)\; xy^{n-1} + C(n, n) \; y^n$$</div>
+
+## Relations (Chapter 9)
+
+### Relations and Properties (9.1)
+Definition: $R \subseteq A \times B$  
+Relation from A to B
+Notation: If $(a, b) \in R$ we can write `a R B` or `a ~ b`  
+
+**Example**: `|A| = 10, |B| = 10`  
+The number of possible relations from A to B is $2^{|A \times B|} = 2^{100} $
+
+**Example**: Write a list of elements of R  
+`A = {0, 1, 2}` and `B = {a, b}`  
+$A \times B = 6 \implies 2^{|A \times B|} = 2^{6} = 64$  
+There are a total of 64 possible relations from A to B
+
+Some possible elements of R:
+`R = {(0, a), (0, b), (1, a), (2, b)...}`
+
+#### Reflexive
+A relationship is reflexive if $\forall a ((a, a) \in R)$  
+A relationship is irreflexive if $\forall a ((a, a) \notin R) $  
+
+**Example**: $ A = \mathbb{N} $, R = { (a, b) | a $\leq$ b }  
+$ (1, 1) \in R \iff 1 \leq 1 $  
+Since $ (a, a) \in R \iff a \leq a $, it is reflexive.
+
+**Example**: `A = Set of all people`, `S = {(a, b) | a is the parent of b`  
+Irreflexive since `a is the parent of a` is always false.  
+
+In a digraph, if a graph is reflexive, all nodes have a **loop** that points back to itself.  
+
+In a matrix, the diagonal should all be 1's if reflexive. If it is irreflexive, then the diagonal should be all 0's.
+
+#### Symmetric
+R is symmetric if $ (a, b) \in R \iff (b, a) \in R$  
+Look for "two way street" in digraph  
+If $ M_R^T = M_R $ then it is symmetric  
+$ M_R^T \land M_R \subseteq I $ 
+
+#### Antisymmetric
+R is antisymmetric if $ (a, b) \in R \iff (b, a) \notin R , a \neq b$  
+
+#### Asymmetric
+Both irreflexive and asymmetric
+
+#### Transitive
+$ (a, b) \in R \land (b, c) \in R \implies (a, c) \in R) $
+
+### Representing Relations (9.3)
+You can use a digraph or matrix
+
+### Closures of Relations (9.4)
+Closure: The smallest relation with a property P that also contains the original relation R. The new relation should have the property and also have the original relation. P can be symmetry, transitivity, reflexivity, etc.
+
+#### Reflexive Closure
+$\Delta = \\{ (a, a), (b, b), (c, c), ... \\}$   
+Closure: $ R \rightarrow R \cup \Delta $  
+Matrix: $M_R \rightarrow M_R \lor I $
+
+#### Symmetric Closure
+Closure: $ R \rightarrow R \cup \overline{R} = R \cup R^{-1} $  
+Matrix: $M_R \rightarrow M_R \lor M_R^T $
+
+#### Transitive Closure
+Closure: $ R \rightarrow R^{\*} $  
+$ R^{\*} = \bigcup\limits_{n=1}^{\infty} R^{n} $  
+Matrix: $ M_R \rightarrow \bigvee \limits_{n=1}^{\infty} M_R^{[n]} $  
+While it says we have to multiply matrixes together forever, we can stop multiplying when no new edges are introduced.
+
+#### Warshall's Algorithm
+A more efficient way of getting the above (transitive closure).
+<div>$$ W_{[i,j]}^{(k)} = W^{(k - 1)}_{(i, j)} \lor (W_{[i, k]}^{(k - 1)} \land W_{[k, j]}^{(k - 1)} $$</div>
+
+**Example**: 
+$$ W_0 = 
+\begin{bmatrix} 
+0 & 0 & 0 & 1 \\\\
+1 & 1 & 0 & 0 \\\\
+1 & 0 & 0 & 1 \\\\
+0 & 0 & 1 & 0 
+\end{bmatrix} 
+$$
+
+## Graphs (Chapter 10)
+### Graphs and Graph Models (10.1)
+A graph G = (V, E) consists of V, a nonempty set of vertices/nodes and E, a set of edges.  
+
+Can be represented using adjacency matrix or adjacency list.  
+
+|E| = Number of edges  
+|V| = Number of vertices    
+
+Different types: Directed and undirected  
+
+**Simple Graph**: No loops and no multiple edges.
+
+## Trees (Chapter 11)
+**Tree**: Acyclic undirected graph (No cycles).  
+T = (V, E)  
+|E| = |V| - 1  
+
+**deg(v)** = Number of edges incident  
+
+Total degrees = 2 $\cdot$ |E|
+
 
 ## Miscallaneous
 

@@ -1,0 +1,326 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Notes: College Computer Science on Jacob Shin</title>
+        <link>/posts/college/</link>
+        <description>Recent content in Notes: College Computer Science on Jacob Shin</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Jacob Shin</copyright>
+        <lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate>
+        <atom:link href="/posts/college/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Discrete Mathematics I Notes</title>
+            <link>/posts/college/discrete-maths-1/</link>
+            <pubDate>Fri, 27 Nov 2020 16:40:12 -0500</pubDate>
+            
+            <guid>/posts/college/discrete-maths-1/</guid>
+            <description>Class Description This class is called Mathematical Concepts in Computing I at my college and covers propositions/predicates, sequences, number theory, set theory, functions, matrices, basic proof techniques, combinatorics, counting, relations, and trees/graphs.
+Book Used: Discrete Mathematics and Its Applications by Kenneth Rosen
+The book had some nice examples and problems, but sometimes explanations were bad.
+These are my notes and are primarily meant to be used as a reference for me only, so there&amp;rsquo;s probably stuff that I got wrong.</description>
+            <content type="html"><![CDATA[<h2 id="class-description">Class Description</h2>
+<p>This class is called <strong>Mathematical Concepts in Computing I</strong> at my college and covers propositions/predicates, sequences, number theory, set theory, functions, matrices, basic proof techniques, combinatorics, counting, relations, and trees/graphs.</p>
+<p>Book Used: <strong>Discrete Mathematics and Its Applications by Kenneth Rosen</strong><br>
+The book had some nice examples and problems, but sometimes explanations were bad.</p>
+<p>These are my notes and are primarily meant to be used as a reference for me only, so there&rsquo;s probably stuff that I got wrong. Comment if you find mistakes.</p>
+<p>Helpful websites and resources I used for the class:</p>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PLl-gb0E4MII28GykmtuBXNUNoej-vY5Rz">Kimberly Brehm&rsquo;s Youtube Channel</a>. Pretty good explanations.</li>
+<li><a href="https://math.berkeley.edu/~arash/55/">https://math.berkeley.edu/~arash/55/</a> : Condensed version of book chapters. A bit hard to read sometimes.</li>
+<li><a href="https://www.slader.com/:">https://www.slader.com/:</a> For solutions to book problems</li>
+</ul>
+<h2 id="counting-and-combinatorics-chapter-6">Counting and Combinatorics (Chapter 6)</h2>
+<h3 id="counting-61">Counting (6.1)</h3>
+<p>Stuff based on <a href="https://youtu.be/zG9Y8hnXZOc">https://youtu.be/zG9Y8hnXZOc</a></p>
+<h4 id="sum-rule">Sum Rule</h4>
+<p><strong>Definition</strong>: If task A can be performed in <em>m</em> ways and task B in <em>n</em> ways, and the tasks are disjoint (the tasks don&rsquo;t affect one another), then A <strong>OR</strong> B can be performed in <code>m + n</code> ways.</p>
+<p><strong>Example</strong>: <code>If we roll two dice, one green and one purple, how  many ways are there to get a sum of 7 or 11?</code></p>
+<p>Ways to get 7:</p>
+<pre><code>(1, 6), (2, 5), (3, 4)
+(6, 1), (5, 2), (4, 3)
+</code></pre><p>Ways to get 11:</p>
+<pre><code>(5, 6)
+(6, 5)
+</code></pre><p><strong>OR</strong> means <code>+</code> and using the Sum Rule.<br>
+So add the number of ways to get 7 and the number of ways to get 11: 6 + 2 = 8</p>
+<p>8 is number of ways to get either a 7 or 11.</p>
+<p><strong>Example</strong>: <code>8 Republicans and 5 Democrats are nominated. How many possible winners are there.</code><br>
+Answer: 8 + 5 = 13 possibilities.</p>
+<h4 id="product-rule">Product Rule</h4>
+<p><strong>Definition</strong>: Task A (m ways) and task B (n ways). Tasks A <strong>AND</strong> B can be performed in m $\cdot$ n ways.</p>
+<p><strong>Example</strong>: <code>8 Republicans and 5 Democrats nominated for president. How many possibilities for a pair of candidates (running against each other with one from each party)?</code><br>
+Answer: 8 * 5 = 40 possible pairs<br>
+Explanation: For every republican there&rsquo;s 5 democrats to pair with. Draw a tree diagram if you want.</p>
+<p><strong>Example</strong>: <code>Student ID made up of 3 letters followed by 2 digits. How many possible IDs?</code><br>
+Answer: 26 * 26 * 26 * 10 * 10</p>
+<p><strong>Example</strong>: <code>Student ID made up of 3 letters followed by 2 digits. How many possible IDs with no duplicate numbers/letters?</code><br>
+Answer: 26 * 25 * 24 * 10 * 9<br>
+Explanation: First letter has all possibilities open, the second letter has all possibilities minus the first letter, the third has all possibilities minus first and second, and so on.</p>
+<p><strong>Example</strong>: <code>Student ID made up of 3 letters followed by 2 digits. How many possible IDs with even number of A's (including zero A's)?</code><br>
+Answer: ( 25 * 25 * 25 * 10 * 10) + (1 * 1 * 25 * 10 * 10) + (1 * 25 * 1 * 10 * 10) + (25 * 1 * 1 * 10 * 10 * 10 )</p>
+<p>Explanation: Add the following up</p>
+<div>$$( \underbrace{25 \cdot 25 \cdot 25}_{\text{All possibilities except A}} \overbrace{\cdot 10 \cdot 10}^{\text{No restrictions on digits}}) \\ (\underbrace{1 \cdot 1}_{\text{These two have to be A}} \cdot \overbrace{25}^{\text{Can be any letter except A}} \cdot 10 \cdot 10) \\ \underbrace{(1 \cdot 25 \cdot 1 \cdot 10 \cdot 10)}_{\text{Just another instance of above}} \\ \underbrace{(25 \cdot 1 \cdot 1 \cdot 10 \cdot 10 \cdot 10 )}_{\text{See above}}$$</div>
+<h4 id="oppositecomplement">Opposite/Complement</h4>
+<p>Sometimes it&rsquo;s easier to find the opposite case and subtract that from all possibilities since there might be overlapping cases or too many of the possibilities you&rsquo;re looking for.</p>
+<p>Example: <code>A student ID is made up of 3 letters followed by 2 digits. How many have some repetition?</code><br>
+Answer: 26^3 * 10 * 10 - 26 * 25 * 10 * 9<br>
+Explanation: Find the number of cases that don&rsquo;t have any repetition. Just subtract the number of distinct IDs from total possible IDs. We already solved those two above.</p>
+<h4 id="other-problems">Other Problems</h4>
+<p><code>Determine the number of 6-digit integers (no leading zeros) in which:</code></p>
+<p><strong>Example</strong>: <code>No repetitions</code><br>
+Answer: <code>9 * 9 * 8 * 7 * 6 * 5</code><br>
+Explanation: <code>(10 - 1) * (10 - 1) * (10 - 1 - 1) * (10 - 1 - 1 -1) ... etc.</code><br>
+The first digit has all possible digits except zero, the second digit has all possibilities except the first digit, the third has all possibilities except first and second, etc.</p>
+<p><strong>Example</strong>: <code>Repetitions allowed</code><br>
+Answer: <code>9 * 10 * 10 * 10 * 10 * 10</code><br>
+Explanation: All six digits have all possible digits open except first digit. First digit has all digits as possibilities except zero.</p>
+<p><strong>Example</strong>: <code>No repetitions, even number</code><br>
+Explanation:<br>
+There are two cases: If the last digit is zero or one of (2, 4, 6, 8). Last digit has to be even.
+For the case that last digit is non-zero even integer:<br>
+<code>8 * 8 * 7 * 6 * 5 * 4</code><br>
+Last digit has to be even but not zero (leaving 4 choices (2, 4, 6, 8). First digit has all possible digits minus the last digit and zero. Second digit has all possible digits minus last digit and first digit. Third digit has all possible digits minus first digit, second digit, and last digit. Etc.
+For the case that last digit is zero:
+Last digit has to be zero. First digit can be any digit except zero. Second can be any digit except first and zero. Etc.<br>
+Add the two cases together to get the final answer.<br>
+Answer: <code>8 * 8 * 7 * 6 * 5 * 4 + 9 * 8 * 7 * 6 * 5 * 1</code></p>
+<p><strong>Example</strong>: <code>Repetitions allowed, even number</code><br>
+Answer: <code>9 * 10 * 10 * 10 * 10 * 5</code><br>
+Explanation: Last digit has to one of the even digits. First digit can be any digit except zero. All other digits can be any digit.</p>
+<p><strong>Example</strong>: <code>No repetitions, divisible by 5</code><br>
+Explanation: The number has to end with 0 or 5 if it is divisible by 5. So we split this problem into two cases: first case is if last digit is 0 and second case is if the last digit is 5.<br>
+This is how many possible combinations end in zero: <code>(10 - 1) * (10 - 2) * (10 - 3) * (10 - 4) * (10 - 5) * (1)</code>. The last digit has to be zero. The first digit can be any digit except zero. The second digit can be any digit except the first digit and zero. Etc. <br>
+This is how many possible combinations end in five: <code>(10 - 1 - 1) * (10 - 2) * (10 - 3) * (10 - 4) * (10 - 5) * (1)</code>. The last digit has to be five. The first digit can be any digit except zero and five. The second digit can be any digit except the first digit and five. Etc.<br>
+Add these two subproblems to get the answer. <br>
+Answer: <code>9*8*7*6*5*1 +  8*8*7*6*5*1</code></p>
+<p><strong>Example</strong>: <code>No repetitions, divisible by 4</code>
+Explanation: Numbers that are divisible by 4 either end in 4 or 8 or end in one of the following 2-digit combos: <code>04, 08, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96</code>. Any n-digit number (where n &gt; 2) will end with one of these combo if they&rsquo;re divisible by 4. Since the first digit can&rsquo;t be zero, divide the 2-digit combos into two groups: one group with zeros and one without.<br>
+Group without zeros (12, 16, 24, 28, 32, 36, 48, 52, 56, 64, 68, 72, 76, 84, 92, 96): 16 options.<br>
+So we get <code>7 * 7 * 6 * 5 * 16</code> since the first digit can be any digit except zero and the two last digits, the second digit can be any digit except the first and last two, etc. and last two digits can be any from the &ldquo;Group without zeros.&rdquo;
+Group with zeros (04, 08, 20, 40, 60, 80): 6 options.<br>
+So we get <code>8 * 7 * 6 * 5 * 6</code> since the first digit can be any digit except the two last digits, the second digit can be any digit except the first and last two, etc. and last two digits can be any from the &ldquo;Group with zeros.&rdquo;
+To get the final answer add the two: <code>7 * 7 * 6 * 5 * 16 + 8 * 7 * 6 * 5 * 6</code></p>
+<h3 id="pigeonhole-principle-62">Pigeonhole Principle (6.2)</h3>
+<h3 id="permutations-and-combinations-63">Permutations and Combinations (6.3)</h3>
+<p>Based on <a href="https://youtu.be/EHMDRUSOubM">https://youtu.be/EHMDRUSOubM</a> and <a href="https://youtu.be/bT8JoK1D9sM">https://youtu.be/bT8JoK1D9sM</a></p>
+<h4 id="permutations">Permutations</h4>
+<p>Definition: Arrangement of objects where order matters
+For <em>n</em> letters there are the following <strong>distinct</strong> permutations:</p>
+<div>$$n(n - 1)(n - 2) (n - 3) ... 3 \cdot 2 \cdot 1 = n!$$</div>
+Note: 0! = 1  
+From a group of `n + 1` object labeled 1 through n, we can `k` of them. The number of groups with `k` objects is as follows:
+<div>$$n(n-1)(n - 2)...(n - k + 1) = P(n, k) = \frac{n!}{(n - k)!}$$</div>
+Note: $P(n, n) = n!$  
+<p><strong>Example</strong>: How many ways to arrange letters <code>A, B, C, D, and E</code> in groups of 3?<br>
+Answer:</p>
+<div>$$ P(5, 3) = \frac{5!}{(5 - 3)!} = \frac{5!}{2!} = \frac{120}{2} = 60 $$</div>
+We divide by 2 since `ABCDE` and `ABCED` are the same arrangement when choosing 3.
+<p><strong>Example</strong>: From a pool of 10 candidates, how many arrangements of president, vice president, and secretary:
+Answer:
+$$ 10 \cdot 9 \cdot 8 = 720 = P(10, 3)$$</p>
+<h4 id="permutation-with-repetition">Permutation With Repetition</h4>
+<p>If you have $n$ objects and you have <code>$n_1$</code> that is not unique (repeats), <code>$n_2$</code> that&rsquo;s indistinguishable (not unique), etc. then the number of arrangements can be calculated as follows:
+$$ \frac{n!}{n_1! n_2! &hellip; n_k!}$$</p>
+<p><strong>Example</strong>: How many ways to arrange letters in &ldquo;Oboe&rdquo; (if O and o are considered the same letter)?</p>
+<pre><code>Oboe Obeo Oeob Oebo Oobe Ooeb boeO boOe boOe beoO eObo eOob ebOo
+obOe obeO oeOb oebO oObe oOeb bOeo bOoe bOoe beOo eobO eoOb eboO
+</code></pre><p>While there are 24 possible arrangements, there are only 12 UNIQUE ones since o is repeated.</p>
+<p>To solve we do $\frac{P(4, 4)}{2!} $ since the letter <em>O</em> repeats 2 times.</p>
+<h4 id="permutations-problems">Permutations Problems</h4>
+<ol>
+<li>
+<p>How many ways can you arrange letters in the word &ldquo;banana&rdquo;?<br>
+Answer: There are 6 letters total and $n$ repeats twice and $a$ repeats thrice. $$ \frac{P(6, 6)}{3! 2!} $$</p>
+</li>
+<li>
+<p>a) How many arrangements for letters in &ldquo;sociological&rdquo;?<br>
+Answer: 12 letters total, 3 <code>o</code>'s, 2 <code>l</code>'s, 2 <code>c</code>'s, and 2 <code>i</code>'s $$ \frac{P(12, 12)}{3!2!2!2!} $$</p>
+</li>
+<li>
+<p>b) In how many arrangements are A and G adjacent (think of &ldquo;ag&rdquo; as a letter and &ldquo;ga&rdquo; as a letter) in sociological?<br>
+Answer: If we treat &ldquo;ag&rdquo; and &ldquo;ga&rdquo; as one letter, then we have 11
+letters.&rdquo;
+$$ \frac{P(11, 11)}{3!2!2!2!} \cdot 2$$
+It&rsquo;s the same as above except we multiply by 2 since there can be ag or ga.</p>
+</li>
+<li>
+<p>c) In how many arrangements are all the vowels adjacent in sociological?<br>
+Answer: We have 6 vowels (3 <code>o</code>'s, 2 <code>i</code>'s, and 1<code>a</code>). We have 6 consonants.
+$$ \frac{P(6, 6)}{3! 2!} \cdot \frac{P(7, 7)}{2!2!} $$
+First term is vowels and second term is treats the block of vowels as one &ldquo;letter&rdquo; with the rest of the consonants. Use product rule and the technique for dealing with duplicates.</p>
+</li>
+</ol>
+<h4 id="combinations">Combinations</h4>
+<p>Definition: If we have <em>n</em> distinct objects and want to choose <em>k</em> of these objects without caring about the order, you can use the following formula:
+$$ C(n, k) = \frac{P(n, k)}{k!} = \frac{n!}{k!(n - k)!} $$</p>
+<p>Note that $ C(n, n) = C(n, 0) = 1 $ and $C(n, 1) = C(n, n - 1) = n$</p>
+<p><strong>Example</strong>: 5 white balls are chosen from 69 white balls, and 1 red ball from 26 red balls.</p>
+<ul>
+<li>Find the number of combinations of white balls.<br>
+Answer: <em>AND</em> means use product rule. $$C(69, 5)$$</li>
+<li>Find the number of combinations of white balls.<br>
+Answer: $$C(26, 1)$$</li>
+<li>Find the number of combinations.<br>
+Answer: Use product rule $$C(26, 1) \cdot C(26, 1)$$</li>
+</ul>
+<h4 id="combinations-with-permutations">Combinations with Permutations</h4>
+<p>How many arrangements of the letters &ldquo;MISSISSIPPI&rdquo; have no consecutive S&rsquo;s?<br>
+Answer:
+$$ _1M_2I_3I_4I_5P_6P_7I_8 $$
+Remove the 4 <code>S</code>'s and notice how there are now 8 spots to put the <code>S</code>'s in between the letters. So we have a combination where we can use the following
+$$ C(8, 4) = \frac{8!}{4!4!}$$</p>
+<p>We can also permute the other letters that are not S&rsquo;s (7 letters with 4 duplicate I&rsquo;s and 2 duplicate P&rsquo;s):
+$$ \frac{7!}{4!2!} $$</p>
+<p>The final solution:
+$$ (\frac{8!}{4!4!})(\frac{7!}{4!2!}) $$</p>
+<h3 id="binomial-theorem-94">Binomial Theorem (9.4)</h3>
+<p>Entries for Pascal&rsquo;s triangle</p>
+<div>$$ C(n, k) = C(n - 1, k-1) + C(n - 1, k) $$</div>
+<p>The binomial theorem:</p>
+<div>$$ (x + y)^n = \sum_{j=0}^{n} C(n, j) \; x^{n-j} y^{j} = \\
+C(n, 0)\;x^n + C(n, 1) \;x^{n-1}y ... + C(n, n-1)\; xy^{n-1} + C(n, n) \; y^n$$</div>
+<h2 id="miscallaneous">Miscallaneous</h2>
+<h3 id="fast-multiplication-karatsubas-algorithm">Fast Multiplication: Karatsuba&rsquo;s Algorithm</h3>
+<p>Notes based on <a href="https://youtu.be/-dfsxsiGoC8">https://youtu.be/-dfsxsiGoC8</a> since the video goes more in-depth than my class did.</p>
+<ul>
+<li>The way we learned to multiply in elementary school was <em>not</em> the fastest way</li>
+<li>The traditional multiplication algorithm we use takes $O(n^2)$ multiplications.
+Let <code>y = 9876</code> and <code>z = 1234</code> and make <code>n = 4</code> (number of digits).</li>
+</ul>
+<h4 id="regular-multiplication-algoritm">Regular Multiplication Algoritm</h4>
+<p>Multiplying y * z with the regular algorithm:</p>
+<p>Step 1. There are 4 multiplications done in this step. <code>4 * 6</code>, <code>7 * 4</code>, <code>8 * 4</code>, and <code>9 * 4</code>.</p>
+<pre>
+    <strong>9876</strong>
+x   123<strong>4</strong>
+--------
+</pre>
+<p>Step 2. Again, there are 4 multiplications done in this step. <code>3 * 6</code>, <code>7 * 3</code>, <code>8 * 3</code>, and <code>9 * 3</code>.</p>
+<pre>
+    <strong>9876</strong>
+x   12<strong>3</strong>4
+--------
+</pre>
+<p>Step 3. Again, there are 4 multiplications done in this step. <code>2 * 6</code>, <code>7 * 2</code>, <code>8 * 2</code>, and <code>9 * 2</code>.</p>
+<pre>
+    <strong>9876</strong>
+x   1<strong>2</strong>34
+--------
+</pre>
+<p>Step 4. Again, there are 4 multiplications done in this step. <code>1 * 6</code>, <code>7 * 1</code>, <code>8 * 1</code>, and <code>9 * 1</code>.</p>
+<pre>
+    <strong>9876</strong>
+x   <strong>1</strong>234
+--------
+</pre>
+<p>Since there are four steps each with 4 multiplications done, the regular algorithm has a total of 16 multiplications done, indicating an $n^2$ number of multiplications.</p>
+<h4 id="divide-and-conquer-approach">Divide and Conquer Approach</h4>
+<p><code>y = 9876</code>  Let <code>c = 98</code> and <code>d = 76</code><br>
+<code>z = 1234</code>  Let <code>a = 12</code> and <code>b = 34</code></p>
+<p>Then <code>y = 98 * 100 + 76</code> and <code>z = 12 * 100 + 34</code>.</p>
+<p>This means that $y = 10^{\frac{n}{2}} \cdot c + d$ and $z = 10^{\frac{n}{2}} \cdot a + b$</p>
+<p>We can generalize the multiplication of y and z as follows:</p>
+<div>$$
+y \cdot z = (10^{\frac{n}{2}} \cdot c + d)(10^{\frac{n}{2}} \cdot a + b) \\
+= (10^n)ac + (10^{\frac{n}{2}})ad + (10^{\frac{n}{2}})bc + bd \\
+= (10^n)ac + (10^{\frac{n}{2}})(ad + bc) + bd
+$$</div>
+<p>We now have 4 multiplications: <code>ac</code>, <code>ad</code>, <code>bc</code>, and <code>bd</code>.</p>
+<div>$$yz = (10^n)ac + (10^{\frac{n}{2}})\underbrace{(\overbrace{ad}^\text{n} + \overbrace{bc}^\text{n})}_{\alpha \text{n additions}} + bd $$ </div>
+<p>The above figure shows that <code>ad</code> and <code>bc</code> are both a max of n digits long since <code>a</code>, <code>b</code>, <code>c</code>, and <code>d</code> are all <code>n/2</code> digits in length. Thus an <code>n</code> digit number added to another <code>n</code> digit number takes <code>n</code> additions. We use $\alpha$ to symbolize the smallest possible addition. The smallest possible addition is called <em>atomic</em>. We could just use 1 instead of $\alpha$, but different hardware takes a different amount of operations/time to do addition, so we use the constant.</p>
+<p>Multiplying by any power by 10 is just a shift to the left. Example, if <code>n = 4</code>
+and <code>X</code> represents any non-zero digit:</p>
+<div>$$yz = \underbrace{(10^n)ac}_{\text{XXXX0000}} + \underbrace{(10^{\frac{n}{2}}) \; (ad + bc)}_{\text{00XXXX00}} + \underbrace{bd}_{\text{0000XXXX}} $$</div>
+<p>When we add all the terms we get the following:</p>
+<pre>
+  XX<strong>XX</strong>0000
+  0000<strong>XX</strong>XX
++ 00<strong>XXXX</strong>00
+----------
+</pre>
+<pre>
+  XX<strong>XXXX</strong>XX
++ 00<strong>XXXX</strong>00
+----------
+</pre>
+<p>Notice that only <code>n</code> digits overlap</p>
+<p>Thus we only have to do <code>n</code> additions and we can represent them in terms of atomic additions to get $\alpha n$ additions.</p>
+<p>Since <code>ad + bc</code> took $\alpha n$ additions and adding all the terms also took $\alpha n$ additions, the total additions for getting <code>yz</code> is $2 \alpha n$. This is how many additions is required whenever we use this formula, which is at recursive call).</p>
+<h4 id="recurrence-relation">Recurrence Relation</h4>
+<p>We use the formula $yz = (10^n)ac + (10^{\frac{n}{2}})(ad + bc) + bd$ to do multiplication, but if <code>ac</code>, <code>ad</code>, <code>bc</code>, or <code>bd</code> is not a multiplication between single digits (i.e. not <em>atomic</em>), then we have to do a recursive call and use the formula again by further splitting up the numbers in half until we get <em>atomic</em> multiplication (i.e. when we get multiplication between two one digit numbers). The base case is when we get &ldquo;atomic multiplication.&rdquo; The $\mu$ symbol represents this atomic multiplication.</p>
+<p>We have 4 multiplications done for each recursive call:</p>
+<div>$$yz = (10^n)\underbrace{ac}_{\text{1}} + (10^{\frac{n}{2}})(\underbrace{ad}_{\text{2}} + \underbrace{bc}_{\text{3}}) + \underbrace{bd}_{\text{4}}$$</div>
+<p>Let <code>M(n)</code> represent the recursive relation describing the result for multiplying numbers of length <code>n</code>.</p>
+<p>$$M(n) = 4\cdot M(\frac{n}{2}) + 2\alpha n$$</p>
+<p>At each recursive call, we need to get the results of the 4 multiplications (<code>$4M(\frac{n}{2})$</code>) and then add the results of the multipliations up (<code>$2\alpha n$</code>) per the formula. Note that n here is used somewhat different than the previous definition of n. n is just a parameter to the recurrence relation here.</p>
+<h4 id="find-additions-at-each-level">Find Additions at Each Level</h4>
+<p>Representing the recursive calls using a tree (number of additions at each level shown on right hand side):</p>
+<pre><code>                                 n                                    1(2𝛼n)
+
+      n/2              n/2              n/2              n/2          4(2𝛼(n/2))
+
+n/4 n/4 n/4 n/4  n/4 n/4 n/4 n/4  n/4 n/4 n/4 n/4  n/4 n/4 n/4 n/4    16(2𝛼(n/4))
+</code></pre><p>The tree continues on until the base case is reached.</p>
+<p>We see that the number of subproblems/additions at each level is <code>$4^i$</code> where <code>i</code> is depth of the tree. We also see that the number of digits gets halved each time we do a recursive call, so at each level, the number of additions is <code>$2\alpha \frac{n}{2^i}$</code> where i is the level/depth. Thus the total number of additions at a level/depth, <em>i</em>, is represented by the following:</p>
+<p>$$4^i(2\alpha (\frac{n}{2^i}))$$</p>
+<h4 id="find-total-number-of-multiplications">Find Total Number of Multiplications</h4>
+<p>Since the base case is when the input to M(n) is 1 and the input to M(n) gets halved, we can find the total number of levels by taking the log base 2 of n, where n is the number of total number of digits. Since there&rsquo;s $4^{i}$ multiplications at a level and the number of levels is $log_2(n)$, there&rsquo;s $4^{log_2(n)}$ multiplications. They&rsquo;re atomic multiplications so we get $\mu 4^{log_2(n)}$, where $\mu$ is the constant signifying the time it takes for an atomic multiplication (since it depends on the hardware how long it actually takes to multiply).</p>
+<h4 id="sum-up-everything">Sum up Everything</h4>
+<p>The following represents the solution for our whole problem:</p>
+<div>$$ yz = \sum_{i=0}^{log_2(n) - 1} 4^i(2\alpha (\frac{n}{2^i})) + \mu 4^{log_2(n)} $$</div>
+<p>Note: The summation is only applied to the first term to get the total number of additions.</p>
+<p>The bounds for the summation end at $log_2(n) - 1$ since the starting bound is 0, so to get to $log_2(n)$ levels we need the <code>-1</code>. Furthermore, the additions only occur when n for M(n) is not 1 (e.g. when not the base case), since at the base case, we just return a constant without doing any further non-atomic operations. We only sum the first term since we have to do additions at every recursive call  and we also already summed the multiplications up for each level in the previous subsection.</p>
+<p>This just evaluates to the following:
+$$ \mu n^2 + 2\alpha n(n - 1) $$
+which means this is still $O(n^2)$, and not really better than the traditional multiplication algorithm.</p>
+<h4 id="karatsubas-thing">Karatsuba&rsquo;s Thing</h4>
+<p>Take the formula from before:</p>
+<div>$$yz = (10^n)ac + (10^{\frac{n}{2}})(ad + bc) + bd$$</div>
+<p>And rewrite part of the second term:</p>
+<div>$$ ad + bc = \overbrace{\underbrace{(a + b)}_{\frac{n}{2}} \, \underbrace{(c + d)}_{ \frac{n}{2}}}^{n} - \underbrace{ac}_{n} - \underbrace{bd}_{n} $$</div>
+<p>Annotated above is how many digits each term will have. Adding two numbers $\frac{n}{2}$ digits long will yield a number with at max $\frac{n}{2}$ digits. Multiplying two numbers $\frac{n}{2}$ digits long will yield at max a number with $n$ digits. Thus adding/subtracting three numbers $n$ digits long takes $3\alpha n$ additions (subtraction is basically addition except using negation).</p>
+<p></pre></p>
+<p>Now we have the following result:</p>
+<div>$$yz = (10^n)ac + (10^{\frac{n}{2}})((a + b)(c + d) - ad - bc) + bd$$</div>
+<p>Notice how we only have 3 multiplications now: <code>ac</code>, <code>(a + b)(c + d)</code>, and <code>bd</code>. We increased the number of additions to 4 as a tradeoff as shown below.</p>
+<p>The stuff below shows how whole expression takes $4\alpha n$ additions. We use a similar approach as what we did before. <code>X</code> denotes a non-zero digit:</p>
+<div>$$ yz = \underbrace{(10^n)ac}_{\text{XXXX0000}} + \underbrace{(10^{\frac{n}{2}})((a + b)(c + d) - ad - bc)}_{\text{00XXXX00}} + \underbrace{bd}_{\text{0000XXXX}} $$</div>
+<p>When we add all the terms we get the following:</p>
+<pre>
+  XX<strong>XX</strong>0000
+  0000<strong>XX</strong>XX
++ 00<strong>XXXX</strong>00
+----------
+</pre>
+<pre>
+  XX<strong>XXXX</strong>XX
++ 00<strong>XXXX</strong>00
+----------
+</pre>
+<p>Notice that only <code>n</code> digits overlap</p>
+<p>Thus we only have to do <code>n</code> additions and we can represent them in terms of atomic additions to get $\alpha n$ additions.</p>
+<p>Since the second term (<code>(a + b)(c + d) - ad - cb</code>) took $3 \alpha n$ additions and adding all the terms also took $\alpha n$ additions, the total additions for getting <code>yz</code> is $4 \alpha n$. This is how many additions is required for this revised formula.</p>
+<h4 id="revised-recurrence-relation">Revised Recurrence Relation:</h4>
+<p>Do the same analysis and stuff as before:</p>
+<p>$$ M(n) = 3M(\frac{n}{2}) + 4\alpha n$$</p>
+<p>Tree Diagram:</p>
+<pre><code>                        n                             1(4𝛼n)
+
+      n/2              n/2              n/2           3(4𝛼(n/2))
+
+n/4 n/4 n/4 n/4  n/4 n/4 n/4 n/4  n/4 n/4 n/4 n/4     9(4𝛼(n/4))
+</code></pre><p>$$ 3^i (4\alpha \frac{n}{2^i}) \text{ additions per level}$$</p>
+<p>$$ \mu 3^{log_2{n}} \text{ total multiplications}$$</p>
+<p>Summation:</p>
+<div>$$ yz = \sum_{i=0}^{log_2(n) - 1} 3^i(4\alpha (\frac{n}{2^i})) + \mu 3^{log_2(n)} $$</div>
+<p>With some magic and simplication:</p>
+<div>$$ \mu n^{log_2(3)} + 8 \alpha n (\frac{n^{log_2(3)}}{n} - 1)$$</div>
+<p>The runtime is $O(n^{log_2(3)})$</p>
+<p>$ log_2(3) $ is around 1.58 so the runtime is about $O(n^{1.58})$.</p>
+<p>This is Karatsuba Multiplication.</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

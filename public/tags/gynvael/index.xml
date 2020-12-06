@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gynvael on Jacob Shin</title>
+    <link>/tags/gynvael/</link>
+    <description>Recent content in gynvael on Jacob Shin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Jacob Shin</copyright>
+    <lastBuildDate>Wed, 13 May 2020 20:58:24 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/gynvael/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Notes: Gynvael&#39;s Hacking Livestreams for PicoCTF Challenges</title>
+      <link>/posts/picoctf-stream-notes/</link>
+      <pubDate>Wed, 13 May 2020 20:58:24 -0400</pubDate>
+      
+      <guid>/posts/picoctf-stream-notes/</guid>
+      <description>Table of Contents    Title Category Points Link to Gynvael&amp;rsquo;s Stream     The Factory’s Secret  General 1    Glory of the Garden  Forensics 50 Part 1 (33:36)   Insp3ct0r  Web 50 Part 1 (39:47)   Let&amp;rsquo;s Warm Up  General 50 Part 1 (48:19)   The Numbers  Crypto 50 Part 1 (50:26)   Warmed Up  General 50 Part 1 (1:00:06)   2Warm  General 50 Part 1 (1:02:06)   handy-shellcode  Binary 50 Part 1 (1:05:30)   practice-run-1  Binary 50 Part 1 (1:26:18)   unzip  Forensics 50 Part 1 (1:27:46)   vault-door-training  Reversing 50 Part 1 (1:30:02)   13  Crypto 100 Part 1 (1:35:57)   Bases  General 100 Part 1 (1:38:50)   Easy1  Crypto 100 Part 1 (1:47:50)   First Grep  General 100 Part 1 (1:56:28)   OverFlow 0  Binary 100 Part 1 (1:57:06)   Resources  General 100 Part 1 (2:00:53)   caesar  Crypto 100 Part 1 (2:01:28)   dont-use-client-side  Web 100 Part 1 (2:02:40)   logon  Web 100 Part 1 (2:05:42)   strings it  General 100 Part 1 (2:11:07)   vault-door-1  Reversing 100 Part 1 (2:13:31)   what&amp;rsquo;s a net cat  General 100 Part 1 (2:29:37)   where are the robots  Web 100 Part 1 (2:31:33)   OverFlow 1  Binary 150 Part 1 (2:33:56)   So Meta  Forensics 150 Part 1 (2:44:34)   What Lies Within  Forensics 150 Part 1 (2:46:30)   Extensions  Forensics 150 Part 1 (3:08:03)   shark on the wire 1  Forensics 150 Part 1 (3:10:03)   Based  General 200 Part 1 (3:20:40)   Client-side-again  Web 200 Part 1 (3:25:29)   First Grep: Part II  General 200 Part 1 (3:36:48)   Flags  Crypto 200 Part 1 (3:38:22)   Mr-Worldwide  Crypto 200 Part 1 (3:44:54)   Open-to-admins  Web 200 Part 1 (4:05:34)   Tapping  Crypto 200 Part 1 (4:21:28)   la cifra de  Crypto 200 Part 1 (4:23:14)   picobrowser  Web 200 Part 2 (22:42)   plumbing  General 200 Part 2 (29:03)   rsa-pop-quiz  Crypto 200 Part 2 (30:11)   slippery-shellcode  Binary 200 Part 2 (51:31)   vault-door-3  Reversing 200 Part 2 (1:16:40)   whats-the-difference  General 200 Part 2 (1:34:10)   where-is-the-file  General 200 Part 2 (1:39:58)   WhitePages  Forensics 250 Part 2 (1:41:20)   c0rrupt  Forensics 250 Part 2 (1:51:03)   m00nwalk  Forensics 250 Part 2 (2:03:55)   OverFlow 2  Binary 250 Part 3 (17:33)   NewOverFlow-1  Binary 200 Part 3 (32:17)   like1000  Forensics 250 Part 3 (1:14:51)   vault-door-4  Reversing 250 Part 3 (1:32:45)   Irish-Name-Repo 1  Web 300 Part 3 (1:38:26)   flag_shop  General 300 Part 3 (1:48:23)   asm1  Reversing 200 Part 3 (2:02:44)   New Overflow-2  Binary 250 Part 4 (25:45)   asm2  Reversing 250 Part 4 (52:41)   CanaRy  Binary 300 Part 4 (1:07:25)   Investigative Reversing 0  Forensics 300 Part 4 (1:57:03)   asm3  Reversing 300 Part 5 (35:12)   miniRSA  Crypto 300 Part 5 (1:01:08)   mus1c  General 300 Part 5 (1:17:45)   shark on the wire 2  Forensics 300 Part 5 (1:29:57)   leap-frog  Binary 300 Part 6 (31:24)   reverse_cipher  Reversing 300 Part 6 (1:00:27)   stringzz  Binary 300 Part 6 (1:13:13)   Investigative Reversing 1  Forensics 350 Part 6 (1:30:43)   pastaAAA  Forensics 350 Part 6 (1:43:42)    Note: If you&amp;rsquo;re following along with your own picoctf account and solving challenges, not all values in the writeups will be the same as yours.</description>
+    </item>
+    
+  </channel>
+</rss>

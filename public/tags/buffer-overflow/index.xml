@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>buffer overflow on Jacob Shin</title>
+    <link>/tags/buffer-overflow/</link>
+    <description>Recent content in buffer overflow on Jacob Shin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Jacob Shin</copyright>
+    <lastBuildDate>Mon, 15 Jun 2020 20:58:24 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/buffer-overflow/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CTF Writeup: Babybof1 Pt2</title>
+      <link>/posts/castorsctf-babybof1pt2/</link>
+      <pubDate>Mon, 15 Jun 2020 20:58:24 -0400</pubDate>
+      
+      <guid>/posts/castorsctf-babybof1pt2/</guid>
+      <description>The Problem Description: Ghidra Decompilation: As we can see from the above decompilation, the vulnerability in the program is gets().
+The call to gets() doesn&amp;rsquo;t check to make sure our input will fit into the buffer we give it,
+so we can write past the length of the buffer, leading to a classic buffer overflow vulnerability.
+The gets() means we the input can contain any character, even \x00, except for newlines.</description>
+    </item>
+    
+  </channel>
+</rss>
