@@ -946,7 +946,7 @@ System is not in the binary unfortunately, but fopen is, so we can use it to ope
 
 Shellcode:
 
-```assembly
+```nasm
 [bits 32]
 times 256 nop ; makes a nop sled with 256 nop instructions
 
