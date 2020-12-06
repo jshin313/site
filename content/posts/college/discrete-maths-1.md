@@ -277,7 +277,7 @@ While it says we have to multiply matrixes together forever, we can stop multipl
 
 #### Warshall's Algorithm
 A more efficient way of getting the above (transitive closure).
-<div>$$ W_{[i,j]}^{(k)} = W^{(k - 1)}_{(i, j)} \lor (W_{[i, k]}^{(k - 1)} \land W_{[k, j]}^{(k - 1)} $$</div>
+<div>$$ W_{[i,j]}^{(k)} = W^{(k - 1)}_{(i, j)} \lor (W_{[i, k]}^{(k - 1)} \land W_{[k, j]}^{(k - 1)}) $$</div>
 
 **Example**: 
 $$ W_0 = 
