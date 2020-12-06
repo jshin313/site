@@ -254,6 +254,21 @@ Both irreflexive and asymmetric
 #### Transitive
 $ (a, b) \in R \land (b, c) \in R \implies (a, c) \in R) $
 
+#### Operations
+
+##### Composition
+
+$ (a, c) \in S \circ R \iff \exists b ((a, b) \in R \text{ and } (b, c) \in S) $
+
+$ S \circ R $ is composition of R and S, where both are relations  
+Matrix: $ M_{S \circ R} = M_R M_S $  
+
+##### Subtraction
+$ R_1 - R_2 = R_1 \cap \overline{R_2} $
+
+##### Symmetric Difference
+$ R_1 \oplus R_2 = R_1 \cup R_2 - R_1 \cap R_2 =  (R_1 \cap \overline{R_2}) \cup (R_2 \cap \overline{R_1}) $
+
 ### Representing Relations (9.3)
 You can use a digraph or matrix
 
@@ -266,13 +281,14 @@ Closure: $ R \rightarrow R \cup \Delta $
 Matrix: $M_R \rightarrow M_R \lor I $
 
 #### Symmetric Closure
-Closure: $ R \rightarrow R \cup \overline{R} = R \cup R^{-1} $  
+Closure: $ R \rightarrow \cup R^{-1} $  
 Matrix: $M_R \rightarrow M_R \lor M_R^T $
 
 #### Transitive Closure
 Closure: $ R \rightarrow R^{\*} $  
 $ R^{\*} = \bigcup\limits_{n=1}^{\infty} R^{n} $  
 Matrix: $ M_R \rightarrow \bigvee \limits_{n=1}^{\infty} M_R^{[n]} $  
+Where $M_R^{[n]} = \overbrace{M_R \underbrace{\odot}_{\text{boolean product}} M_R \odot M_R ... M_R}^{\text{n times}} $  
 While it says we have to multiply matrixes together forever, we can stop multiplying when no new edges are introduced.
 
 #### Warshall's Algorithm
