@@ -225,8 +225,8 @@ Some possible elements of R:
 `R = {(0, a), (0, b), (1, a), (2, b)...}`
 
 #### Reflexive
-A relationship is reflexive if $\forall a ((a, a) \in R)$  
-A relationship is irreflexive if $\forall a ((a, a) \notin R) $  
+A relation is reflexive if $\forall a ((a, a) \in R)$  
+A relation is irreflexive if $\forall a ((a, a) \notin R) $  
 
 **Example**: $ A = \mathbb{N} $, R = { (a, b) | a $\leq$ b }  
 $ (1, 1) \in R \iff 1 \leq 1 $  
@@ -254,23 +254,37 @@ Both irreflexive and asymmetric
 #### Transitive
 $ (a, b) \in R \land (b, c) \in R \implies (a, c) \in R) $
 
-#### Operations
+#### Relations Properties Problems
+**Example**: Find the properties the relation R where $(x, y) \in R$ and $xy = 0$  
+It's only symmetric since $yx = xy = 0$. It can't be antisymmetric since it's symmetric and can't be reflexive since `xx = 0` isn't always true. It isn't transitive since if $xy = 0 \text{ and } yz = 0$ that doesn't necessarily imply that $xz = 0 $ (e.g. if `y` was 0 and both `x` and `z` were non-zero that wouldn't be the case).
 
-##### Composition
+#### Composition
+$ S \circ R $ is composition of R and S, where both are relations  
 
 $ (a, c) \in S \circ R \iff \exists b ((a, b) \in R \text{ and } (b, c) \in S) $
 
-$ S \circ R $ is composition of R and S, where both are relations  
 Matrix: $ M_{S \circ R} = M_R M_S $  
 
-##### Subtraction
+**Example**: $R_1 = \\{(a, b) \in R^2 | a > b \\}$ and $R_5 = \\{(a, b) \in R^2 | a = b \\} $  
+Answer: $ R_1 \circ R_5 = R_1$   
+Explanation: Since $ (a, c) \in S \circ R \iff \exists b ((a, b) \in R \text{ and } (b, c) \in S) $ then `a = b` and `b > c`. This implies `a > c`, which is $ R_1 $.
+
+#### Subtraction
 $ R_1 - R_2 = R_1 \cap \overline{R_2} $
 
-##### Symmetric Difference
+**Example**: $R_1 = \\{(a, b) \in R^2 | a > b \\}$ and $R_2 = \\{(a, b) \in R^2 | a \geq b \\} $  
+Answer: $ R_1 - R_2 = \varnothing $  
+Explanation: Since $ R_1 - R_2 = R_1 \cap \overline{R_2} $ and $\overline{R_2} = \\{(a, b) \in R^2 | a < b \\} $, that means $ R_1 - R_2 = \\{(a, b) \in R^2 | a > b \text{ and } a < b \\} $. Since no number can fulfill that criteria the answer is the empty set.
+
+#### Symmetric Difference
 $ R_1 \oplus R_2 = R_1 \cup R_2 - R_1 \cap R_2 =  (R_1 \cap \overline{R_2}) \cup (R_2 \cap \overline{R_1}) $
 
+#### Complement
+Let R be a relation. Then $\overline{R} = \\{ (a, b) | (a, b) \notin R \\}$. If you represent it as a matrix, just negate every element in the matrix.
+
 ### Representing Relations (9.3)
-You can use a digraph or matrix
+You can use a digraph or matrix to represent a relation.  
+
 
 ### Closures of Relations (9.4)
 Closure: The smallest relation with a property P that also contains the original relation R. The new relation should have the property and also have the original relation. P can be symmetry, transitivity, reflexivity, etc.
