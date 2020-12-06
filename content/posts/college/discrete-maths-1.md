@@ -295,7 +295,7 @@ Closure: $ R \rightarrow R \cup \Delta $
 Matrix: $M_R \rightarrow M_R \lor I $
 
 #### Symmetric Closure
-Closure: $ R \rightarrow \cup R^{-1} $  
+Closure: $ R \rightarrow R \cup R^{-1} $  
 Matrix: $M_R \rightarrow M_R \lor M_R^T $
 
 #### Transitive Closure
