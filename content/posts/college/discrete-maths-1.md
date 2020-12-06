@@ -300,7 +300,7 @@ Can be represented using adjacency matrix or adjacency list.
 
 Different types: Directed and undirected  
 
-**Simple Graph**: No loops and no multiple edges.
+**Simple Graph**: Undirected graph with no loops and no multiple edges.
 
 ## Trees (Chapter 11)
 **Tree**: Acyclic undirected graph (No cycles).  
