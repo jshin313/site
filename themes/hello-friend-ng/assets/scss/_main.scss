@@ -11,6 +11,13 @@ html {
   box-sizing: inherit;
 }
 
+::-webkit-scrollbar {
+  background: $light-background;
+  .dark-theme & {
+    background: $dark-background !important;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;

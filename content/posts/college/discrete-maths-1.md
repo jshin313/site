@@ -277,7 +277,7 @@ Answer: $ R_1 - R_2 = \varnothing $
 Explanation: Since $ R_1 - R_2 = R_1 \cap \overline{R_2} $ and $\overline{R_2} = \\{(a, b) \in R^2 | a < b \\} $, that means $ R_1 - R_2 = \\{(a, b) \in R^2 | a > b \text{ and } a < b \\} $. Since no number can fulfill that criteria the answer is the empty set.
 
 #### Symmetric Difference
-$ R_1 \oplus R_2 = R_1 \cup R_2 - R_1 \cap R_2 =  (R_1 \cap \overline{R_2}) \cup (R_2 \cap \overline{R_1}) $
+<div>$ R_1 \oplus R_2 = R_1 \cup R_2 - R_1 \cap R_2 =  (R_1 \cap \overline{R_2}) \cup (R_2 \cap \overline{R_1}) $</div>
 
 #### Complement
 Let R be a relation. Then $\overline{R} = \\{ (a, b) | (a, b) \notin R \\}$. If you represent it as a matrix, just negate every element in the matrix.
@@ -302,7 +302,7 @@ Matrix: $M_R \rightarrow M_R \lor M_R^T $
 Closure: $ R \rightarrow R^{\*} $  
 $ R^{\*} = \bigcup\limits_{n=1}^{\infty} R^{n} $  
 Matrix: $ M_R \rightarrow \bigvee \limits_{n=1}^{\infty} M_R^{[n]} $  
-Where $M_R^{[n]} = \overbrace{M_R \underbrace{\odot}_{\text{boolean product}} M_R \odot M_R ... M_R}^{\text{n times}} $  
+Where <div>$M_R^{[n]} = \overbrace{M_R \underbrace{\odot}_{\text{boolean product}} M_R \odot M_R ... M_R}^{\text{n times}} $  </div>
 While it says we have to multiply matrixes together forever, we can stop multiplying when no new edges are introduced.
 
 #### Warshall's Algorithm
@@ -481,8 +481,6 @@ And rewrite part of the second term:
 <div>$$ ad + bc = \overbrace{\underbrace{(a + b)}_{\frac{n}{2}} \, \underbrace{(c + d)}_{ \frac{n}{2}}}^{n} - \underbrace{ac}_{n} - \underbrace{bd}_{n} $$</div>
 
 Annotated above is how many digits each term will have. Adding two numbers $\frac{n}{2}$ digits long will yield a number with at max $\frac{n}{2}$ digits. Multiplying two numbers $\frac{n}{2}$ digits long will yield at max a number with $n$ digits. Thus adding/subtracting three numbers $n$ digits long takes $3\alpha n$ additions (subtraction is basically addition except using negation).  
-
-</pre>
 
 
 Now we have the following result:

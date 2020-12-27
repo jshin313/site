@@ -7,12 +7,13 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+$light-background: #fbf1c7;
+$dark-background: #1d2021;
 
 /* Webkit Scrollbar Customize */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
-  background: #212020;
 }
 
 ::-webkit-scrollbar-thumb {
