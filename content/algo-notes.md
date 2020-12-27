@@ -17,7 +17,7 @@ Vertical bars mean cardinality (size)
 
 #### Advantages
 * Less space wasted O(|E| + |V|) space complexity
-* Finding all adjacents/neighbors takes O(|E|)?
+* Finding all adjacents/neighbors takes O(|E|)
 
 #### Disadvantages
 * Checking a connection (if edge exists) takes O(|E|) 
