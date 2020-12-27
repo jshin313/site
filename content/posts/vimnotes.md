@@ -1,6 +1,7 @@
 ---
 title: "Notes: Vim Notes from the Primeagen"
-lastmod: 2020-07-06
+lastmod: 2020-12-05
+publishdate: 2020-07-06
 draft: false 
 toc: true
 images:

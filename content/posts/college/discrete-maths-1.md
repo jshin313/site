@@ -1,8 +1,12 @@
 ---
 title: "Discrete Mathematics I Notes"
-date: 2020-11-27T16:40:12-05:00
+publishdate: 2020-11-27T16:40:12-05:00
+lastmod: 2020-12-27
 draft: false
 toc: true
+tags:
+  - notes
+  - college
 ---
 
 ## Class Description
