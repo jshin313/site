@@ -15,6 +15,10 @@
 {{ end }}
 {{ end }}
 
+{{if eq .Section "posts"}}
+<script>window.isPost=true;</script>
+{{end}}
+
 <style>
 code.has-jax {
         font: inherit;
@@ -22,39 +26,70 @@ code.has-jax {
         background: inherit;
         border: inherit;
         color: $light-color !important;                                                                                               
-        .dark-theme & {                                                                                                                         
-                color: $dark-color !important;
-        }
+                .dark-theme & {                                                                                                                         
+                        color: $dark-color !important;
+                }
 }
-div.has-jax {
-        overflow-x: scroll;
-        .scrollable-element {
-                scrollbar-color: red yellow;
+        div.has-jax {
+                overflow-x: scroll;
+                        .scrollable-element {
+                                scrollbar-color: red yellow;
+                        }
         }
-}
 
 </style>
 
-<!-- From https://geoffruddock.com/math-typesetting-in-hugo/ -->
 <script>
-  MathJax = {
-          tex: {
-                  inlineMath: [['$', '$'], ['\\(', '\\)']],
-                  displayMath: [['$$','$$'], ['\\[', '\\]']],
-                  processEscapes: true,
-                  processEnvironments: true
-          },
-          options: {
-                  skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-          }
-  };
+        function keep_time(id) {
+                // From https://stackoverflow.com/a/29972322/9512643
+                let start = Date.now();
+                let timer = setInterval(function() {
+                        let delta = Date.now() - start; // milliseconds elapsed since start
 
-  window.addEventListener('load', (event) => {
-          document.querySelectorAll("mjx-container").forEach(function(x){
-                  x.parentElement.classList += 'has-jax'})
-  });
+                        document.getElementById(id).innerHTML = Math.floor(delta);
+                        // console.log(Math.floor(delta)); 
+                        // alternatively just show wall clock time:
+                        // console.log(new Date().toUTCString());
+                }, 1); // update about every second
+
+                return timer;
+        }
+
+        if (window.isPost) {
+                var mj_timer = keep_time("mj-time");
+                var page_timer = keep_time("page-time");
+        }
+
+        // From https://geoffruddock.com/math-typesetting-in-hugo/
+                MathJax = {
+                        tex: {
+                                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                                displayMath: [['$$','$$'], ['\\[', '\\]']],
+                                        processEscapes: true,
+                                        processEnvironments: true
+                                },
+                        options: {
+                                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+                        },
+                        startup: {
+                                pageReady() {
+                                        return MathJax.startup.defaultPageReady().then(function () {
+                                                if (window.isPost) {
+                                                        clearInterval(mj_timer);
+                                                }
+                                        });
+                                }
+                        }
+                };
+
+        window.addEventListener('load', (event) => {
+                document.querySelectorAll("mjx-container").forEach(function(x){ x.parentElement.classList += 'has-jax'});
+
+                if (window.isPost) {
+                        clearInterval(page_timer);
+                }
+        });
 
 </script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-                         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
