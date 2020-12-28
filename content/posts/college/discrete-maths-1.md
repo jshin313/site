@@ -145,7 +145,7 @@ Answer:
 $$ 10 \cdot 9 \cdot 8 = 720 = P(10, 3)$$
 
 #### Permutation With Repetition
-If you have $n$ objects and you have `$n_1$` that is not unique (repeats), `$n_2$` that's indistinguishable (not unique), etc. then the number of arrangements can be calculated as follows:
+If you have $n$ objects and you have $n_1$ that is not unique (repeats), $n_2$ that's indistinguishable (not unique), etc. then the number of arrangements can be calculated as follows:
 $$ \frac{n!}{n_1! n_2! ... n_k!}$$
 
 **Example**: How many ways to arrange letters in "Oboe" (if O and o are considered the same letter)?
@@ -443,7 +443,7 @@ Let `M(n)` represent the recursive relation describing the result for multiplyin
 
 $$M(n) = 4\cdot M(\frac{n}{2}) + 2\alpha n$$
 
-At each recursive call, we need to get the results of the 4 multiplications (`$4M(\frac{n}{2})$`) and then add the results of the multipliations up (`$2\alpha n$`) per the formula. Note that n here is used somewhat different than the previous definition of n. n is just a parameter to the recurrence relation here.
+At each recursive call, we need to get the results of the 4 multiplications ($4M(\frac{n}{2})$) and then add the results of the multipliations up ($2\alpha n$) per the formula. Note that n here is used somewhat different than the previous definition of n. n is just a parameter to the recurrence relation here.
 
 #### Find Additions at Each Level
 Representing the recursive calls using a tree (number of additions at each level shown on right hand side):
@@ -457,7 +457,7 @@ n/4 n/4 n/4 n/4  n/4 n/4 n/4 n/4  n/4 n/4 n/4 n/4  n/4 n/4 n/4 n/4    16(2𝛼(n
 ```
 The tree continues on until the base case is reached.
 
-We see that the number of subproblems/additions at each level is `$4^i$` where `i` is depth of the tree. We also see that the number of digits gets halved each time we do a recursive call, so at each level, the number of additions is `$2\alpha \frac{n}{2^i}$` where i is the level/depth. Thus the total number of additions at a level/depth, *i*, is represented by the following:
+We see that the number of subproblems/additions at each level is $4^i$ where `i` is depth of the tree. We also see that the number of digits gets halved each time we do a recursive call, so at each level, the number of additions is $2\alpha \frac{n}{2^i}$ where i is the level/depth. Thus the total number of additions at a level/depth, *i*, is represented by the following:
 
 $$4^i(2\alpha (\frac{n}{2^i}))$$
 
