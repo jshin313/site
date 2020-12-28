@@ -67,3 +67,15 @@ Shortcuts for specific cases derived from the theorem above:
 $T(n) = 2\cdot T\left(\frac{n}{2}\right) + O(n)$ is $O(n\cdot log(n))$
 * $T(n) = q\cdot T\left(\frac{n}{2}\right) + O(n)$ means $O(n^{log_2(q)})$ when $q > 2$
 * $T(n) = T\left(\frac{n}{2}\right) + O(n) $ becomes $O(n)$ since $q = 1$
+
+## Approximate Time Complexities for Recursive Functions
+If only $O(1)$ work is being done at each stack frame/level of each recursive call (unlike in the above two sections where $O(n)$ is being done), there is an approximate time complexity of $O(a^n)$ for the whole recursive function, where *n* is the **depth** and *a* is **branching factor**, or how many times the recursive function is called at each level.
+
+### Example: Fibonacci Sequence
+The fibonacci numbers can represented by the following recurrence relation:
+$$ f(n) = f(n - 1) + f(n - 2)$$
+The time complexity can be represented as follows:
+$$ T(n) = T(n - 1) + T(n - 2) + O(1)$$
+If we assume $T(n - 1)$ and $T(n - 2)$ are roughly equal, then the branching factor is 2. The depth is roughly n, since n is decremented by a constant amount until it reaches 0 or 1. Thus the time complexity of the fibonacci is roughly $O(2^n)$. This is still a very loose bound since the time complexity is actually somewhere around $O(1.68^n)$.
+
+
