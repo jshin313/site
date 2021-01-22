@@ -142,3 +142,19 @@ Note: $m_i$ is the midpoint
 $$ m_1 = 1,\\; m_2 = 3,\\; m_3 = 5,\\; m_4 = 7,\\; m_5 = 9$$
 
 $$ M_5 = \sum_{i=1}^{5} f\left(\frac{x_{i-1} + x_i}{2}\right) \Delta x = \sum_{i=1}^{5} f(m_i) \Delta x = \sum_{i = 1}^{5} f(m_i) 2 $$
+
+## Remarks
+A = area under the graph of $f$ on [a, b]  
+1. If $f$ is increasing, then $R_n \ge A$
+2. If $f$ is increasing, then $L_n \le A$
+
+If $f$ is decreasing, you get the opposite of the above
+
+## More Examples
+### Example 1
+Find a region where area is given by 
+$$ \lim_{n\to\infty} \left(\sum_{i=1}^{n}\left[\left(\frac{5}{n}\right)\left(3 + i \left(\frac{5}{n}\right)\right)^3\right] \right) $$
+
+$$ \Delta x= \left(\frac{5}{n}\right) $$
+$$  a = 3 $$
+$$ f(x) = x^3$$
