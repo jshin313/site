@@ -119,8 +119,8 @@ Choose $c_i$ to be the midpoint
 Set $c_i = \frac{x_{i - 1} + x{i}}{2}$  
 $$ R_n = \sum_{i=1}^{n} f\left(\frac{x_{i - 1} + x_{i}}{2}\right) \Delta x$$
 
-## Examples
-### Example 1
+### Examples
+#### Example 1
 $f(x) = cos\left(\frac{x}{4}\right) + 2$  
 Interval $[0, 8\pi]$  
 Let n = 4
@@ -133,7 +133,7 @@ $$ R_4 = \sum_{i=1}^{4} f(x_i) \Delta x = \sum_{i=1}^{4} f(x_i) 2\pi =  2\pi \su
 
 $$ L_4 = \sum_{i=1}^{4} f(x_{i-1}) \Delta x = \sum_{i=1}^{4} f(x_{i-1}) 2\pi =  2\pi \sum_{i=1}^{4} f(x_{i-1}) = 2\pi [f(x_0) + f(x_1) + f(x_2) + f(x_3)]$$
 
-### Example 2 
+#### Example 2 
 $f(x) = 2x + 1$   
 $$ n = 5$$ 
 $$ \Delta x = \frac{b - a}{n} = \frac{10 - 0}{5} = 2 $$
@@ -143,15 +143,15 @@ $$ m_1 = 1,\\; m_2 = 3,\\; m_3 = 5,\\; m_4 = 7,\\; m_5 = 9$$
 
 $$ M_5 = \sum_{i=1}^{5} f\left(\frac{x_{i-1} + x_i}{2}\right) \Delta x = \sum_{i=1}^{5} f(m_i) \Delta x = \sum_{i = 1}^{5} f(m_i) 2 $$
 
-## Remarks
+### Remarks
 A = area under the graph of $f$ on [a, b]  
 1. If $f$ is increasing, then $R_n \ge A$
 2. If $f$ is increasing, then $L_n \le A$
 
 If $f$ is decreasing, you get the opposite of the above
 
-## More Examples
-### Example 1
+### More Examples
+#### Example 1
 Find a region where area is given by 
 $$ \lim_{n\to\infty} \left(\sum_{i=1}^{n}\left[\left(\frac{5}{n}\right)\left(3 + i \left(\frac{5}{n}\right)\right)^3\right] \right) $$
 
