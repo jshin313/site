@@ -158,3 +158,6 @@ $$ \lim_{n\to\infty} \left(\sum_{i=1}^{n}\left[\left(\frac{5}{n}\right)\left(3 +
 $$ \Delta x= \left(\frac{5}{n}\right) $$
 $$  a = 3 $$
 $$ f(x) = x^3$$
+$$ \frac{b - a}{n} = \frac{5}{n} \text{ and } a = 3 \text{ , so } \frac{b - 3}{n} = \frac{5}{n} \implies b = 8 $$
+$$ \[a, b\] = \[3, 8 \] $$
+
