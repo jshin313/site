@@ -120,15 +120,25 @@ Set $c_i = \frac{x_{i - 1} + x{i}}{2}$
 $$ R_n = \sum_{i=1}^{n} f\left(\frac{x_{i - 1} + x_{i}}{2}\right) \Delta x$$
 
 ## Examples
-### 1.
+### Example 1
 $f(x) = cos\left(\frac{x}{4}\right) + 2$  
 Interval $[0, 8\pi]$  
 Let n = 4
 
 $$ \Delta x = \frac{8\pi - 0}{4} = 2\pi$$
-$$x_0 = 0, x_1 = 2\pi, x_2 = 4\pi, x_3 = 6\pi, x_4 = 8\pi $$
+$$x_0 = 0, \\; x_1 = 2\pi, \\; x_2 = 4\pi, \\; x_3 = 6\pi,\\; x_4 = 8\pi $$
 
 $$ R_4 = \sum_{i=1}^{4} f(x_i) \Delta x = \sum_{i=1}^{4} f(x_i) 2\pi =  2\pi \sum_{i=1}^{4} f(x_i) = 2\pi [f(x_1) + f(x_2) + f(x_3) + f(x_4)]$$
   
 
 $$ L_4 = \sum_{i=1}^{4} f(x_{i-1}) \Delta x = \sum_{i=1}^{4} f(x_{i-1}) 2\pi =  2\pi \sum_{i=1}^{4} f(x_{i-1}) = 2\pi [f(x_0) + f(x_1) + f(x_2) + f(x_3)]$$
+
+### Example 2 
+$f(x) = 2x + 1$   
+$$ n = 5$$ 
+$$ \Delta x = \frac{b - a}{n} = \frac{10 - 0}{5} = 2 $$
+$$ x_0 = 0,\\; x_1 = 2,\\; x_2 = 4,\\; x_3 = 6,\\; x_4 = 8,\\; x_5 = 10$$
+Note: $m_i$ is the midpoint
+$$ m_1 = 1,\\; m_2 = 3,\\; m_3 = 5,\\; m_4 = 7,\\; m_5 = 9$$
+
+$$ M_5 = \sum_{i=1}^{5} f\left(\frac{x_{i-1} + x_i}{2}\right) \Delta x = \sum_{i=1}^{5} f(m_i) \Delta x = \sum_{i = 1}^{5} f(m_i) 2 $$
