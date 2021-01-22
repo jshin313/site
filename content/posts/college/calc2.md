@@ -94,16 +94,16 @@ $$ = \lim_{n\to\infty} \frac{2 (n^2 + 2n + 1)}{n^2} $$
 ## Sums
 
 ### Riemann Sums
+$$ x_i = a + i \Delta x$$
+$$ c_i \in [x_{i-1}, x_i]$$
+$$ C_n = \\{c_1, c_2, c_3, ... c_n\\}$$
+
 Divide [a, b] into n equal subintervals with endpoints a = $x_0 < x_1 < x_2 < ... < x_n = b$ Each subinterval has length $\frac{b-a}{n} = \Delta x $  
 
 Define $$ R_n (f, C_n) = \sum_{i = 1}^{n} f(c_i) \Delta x$$
 
 If $lim_{n\to\infty} (R_n(f, C_n))$ exists and is the same regardless of how $C_n$ is chosen, $f$ is integrable on [a, b] and we define the following:
 $$ \int_{a}^{b} f(x) \, dx = \lim_{n\to\infty} (R_n (f, C_n))$$
-
-$$ x_i = a + i \Delta x$$
-$$ c_i \in [x_{i-1}, x_i]$$
-$$ C_n = \\{c_1, c_2, c_3, ... c_n\\}$$
 
 ### Special Riemann Sums
 
