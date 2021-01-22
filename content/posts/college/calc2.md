@@ -85,8 +85,8 @@ $$ \sum_{i = 1}^{n} i^3 = \left[\frac{n(n + 1)}{2}\right]^2$$
 $$ \sum_{i = 1}^{5} (2^i - 2^{i - 1}) = 2^5 - 2^0$$
 
 3. More Complicated Example
-$$ lim_{n\to\infty} \sum_{i = 1}^{n} \frac{8}{n} \frac{i^3}{n^3} $$
-$$ = lim_{n\to\infty} \sum_{i = 1}^{n} \frac{8i^3}{n^4} $$
-$$ = lim_{n\to\infty} \frac{8}{n^4} \sum_{i = 1}^{n} i^3 $$
-$$ = lim_{n\to\infty} \frac{8}{n^4} \frac{n^2 (n+1)^2}{4} $$
-$$ = lim_{n\to\infty} \frac{2 (n^2 + 2n + 1)}{n^2} $$
+$$ \lim_{n\to\infty} \sum_{i = 1}^{n} \frac{8}{n} \frac{i^3}{n^3} $$
+$$ = \lim_{n\to\infty} \sum_{i = 1}^{n} \frac{8i^3}{n^4} $$
+$$ = \lim_{n\to\infty} \frac{8}{n^4} \sum_{i = 1}^{n} i^3 $$
+$$ = \lim_{n\to\infty} \frac{8}{n^4} \frac{n^2 (n+1)^2}{4} $$
+$$ = \lim_{n\to\infty} \frac{2 (n^2 + 2n + 1)}{n^2} $$
