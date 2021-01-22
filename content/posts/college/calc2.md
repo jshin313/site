@@ -90,3 +90,45 @@ $$ = \lim_{n\to\infty} \sum_{i = 1}^{n} \frac{8i^3}{n^4} $$
 $$ = \lim_{n\to\infty} \frac{8}{n^4} \sum_{i = 1}^{n} i^3 $$
 $$ = \lim_{n\to\infty} \frac{8}{n^4} \frac{n^2 (n+1)^2}{4} $$
 $$ = \lim_{n\to\infty} \frac{2 (n^2 + 2n + 1)}{n^2} $$
+
+## Sums
+
+### Riemann Sums
+Define $$ R_n (f, C_n) = \sum_{i = 1}^{n} f(c_i) \Delta x$$
+
+Divide [a, b] into n equal subintervals with endpoints a = $x_0 < x_1 < x_2 < ... < x_n = b$ Each subinterval has length $\frac{b-a}{n} = \Delta x $  
+
+$$ x_i = a + i \Delta x$$
+$$ c_i \in [x_{i-1}, x_i]$$
+$$ C_n = \\{c_1, c_2, c_3, ... c_n\\}$$
+
+### Special Riemann Sums
+
+#### The n-th Right-Endpoint Sum
+Choose $c_i$ to be the right-endpoint  
+Set $c_i = x_i$  
+$$ R_n = \sum_{i=1}^{n} f(x_i) \Delta x$$
+
+#### The n-th Left-Endpoint Sum
+Choose $c_i$ to be the left-endpoint  
+Set $c_i = x_{i - 1}$  
+$$ R_n = \sum_{i=1}^{n} f(x_{i-1}) \Delta x$$
+
+#### The n-th Left-Endpoint Sum
+Choose $c_i$ to be the midpoint  
+Set $c_i = \frac{x_{i - 1} + x{i}}{2}$  
+$$ R_n = \sum_{i=1}^{n} f\left(\frac{x_{i - 1} + x_{i}}{2}\right) \Delta x$$
+
+## Examples
+### 1.
+$f(x) = cos\left(\frac{x}{4}\right) + 2$  
+Interval $[0, 8\pi]$  
+Let n = 4
+
+$$ \Delta x = \frac{8\pi - 0}{4} = 2\pi$$
+$$x_0 = 0, x_1 = 2\pi, x_2 = 4\pi, x_3 = 6\pi, x_4 = 8\pi $$
+
+$$ R_4 = \sum_{i=1}^{4} f(x_i) \Delta x = \sum_{i=1}^{4} f(x_i) 2\pi =  2\pi \sum_{i=1}^{4} f(x_i) = 2\pi [f(x_1) + f(x_2) + f(x_3) + f(x_4)]$$
+  
+
+$$ L_4 = \sum_{i=1}^{4} f(x_{i-1}) \Delta x = \sum_{i=1}^{4} f(x_{i-1}) 2\pi =  2\pi \sum_{i=1}^{4} f(x_{i-1}) = 2\pi [f(x_0) + f(x_1) + f(x_2) + f(x_3)]$$
