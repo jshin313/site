@@ -91,7 +91,7 @@ $$ = \lim_{n\to\infty} \frac{8}{n^4} \sum_{i = 1}^{n} i^3 $$
 $$ = \lim_{n\to\infty} \frac{8}{n^4} \frac{n^2 (n+1)^2}{4} $$
 $$ = \lim_{n\to\infty} \frac{2 (n^2 + 2n + 1)}{n^2} $$
 
-## Sums
+## 5.1: Sums
 
 ### Riemann Sums
 $$ x_i = a + i \Delta x$$
@@ -164,3 +164,9 @@ $$ f(x) = x^3$$
 $$ \frac{b - a}{n} = \frac{5}{n} \text{ and } a = 3 \text{ , so } \frac{b - 3}{n} = \frac{5}{n} \implies b = 8 $$
 $$ \[a, b\] = \[3, 8 \] $$
 
+## 5.3: Fundamental Theorem of Calculus
+Let $f$ be continuous on $[a, b]$. Let $F$ be an antiderivative of $f$ on $[a, b]$ (i.e. $F(x) = f(x)\\; \forall x \in [a, b] $). Then the following is true:
+
+$$ \int_{a}^{b} f(x) \\; dx = F(b) - F(a) $$
+
+Proof: f(x) is continuous on $[a, b]$. Use riemann sums and get a telescoping sum. Use Mean Value Theorem
