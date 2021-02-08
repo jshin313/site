@@ -164,9 +164,17 @@ $$ f(x) = x^3$$
 $$ \frac{b - a}{n} = \frac{5}{n} \text{ and } a = 3 \text{ , so } \frac{b - 3}{n} = \frac{5}{n} \implies b = 8 $$
 $$ \[a, b\] = \[3, 8 \] $$
 
-## 5.3: Fundamental Theorem of Calculus
+## 5.3: Fundamental Theorem of Calculus Pt 2
 Let $f$ be continuous on $[a, b]$. Let $F$ be an antiderivative of $f$ on $[a, b]$ (i.e. $F(x) = f(x)\\; \forall x \in [a, b] $). Then the following is true:
 
 $$ \int_{a}^{b} f(x) \\; dx = F(b) - F(a) $$
 
 Proof: f(x) is continuous on $[a, b]$. Use riemann sums and get a telescoping sum. Use Mean Value Theorem
+
+### Fundamental Theorem of Calculus Pt 1
+Let f be continuous on $[a, b]$
+
+## 5.5 
+If f is even, then $$\int_{-b}^{b} f(x) \\;dx =  2 \int_{0}^{b} f(x) \\; dx$$
+
+If f is odd, then $$\int_{-b}^{b} f(x) \\;dx =  0$$
