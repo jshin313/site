@@ -178,3 +178,7 @@ Let f be continuous on $[a, b]$
 If f is even, then $$\int_{-b}^{b} f(x) \\;dx =  2 \int_{0}^{b} f(x) \\; dx$$
 
 If f is odd, then $$\int_{-b}^{b} f(x) \\;dx =  0$$
+
+## 6.1: Area between Two Curves
+$$ A = \int_{a}^{b} (g(x) - f(x))\\;dx $$
+where $\forall x \\; g(x) > f(x) $
