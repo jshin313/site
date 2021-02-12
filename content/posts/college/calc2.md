@@ -184,4 +184,4 @@ $$ A = \int_{a}^{b} (g(x) - f(x))\\;dx $$
 where $\forall x \\; g(x) > f(x) $
 
 ## 6.2: Volume of Revolved Solid
-$$ V = \int_{a}^{b} A(x) \\; dx $$ where $A(x)$ is the area.
+$$ V = \int_{a}^{b} A(x) \\; dx $$ where $A(x)$ is the area of cross section at x.
