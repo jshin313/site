@@ -29,7 +29,7 @@ Vertical bars | | mean cardinality (size)
 * Finding all adjacents/neighbors takes $O(|E|)$
 
 #### Disadvantages
-* Checking a connection (if edge exists) takes $O(|E|)$
+* Checking a connection (if edge exists) takes $O(|V|)$
 
 ## The Master Theorem
 We have the following recurrence relation:
