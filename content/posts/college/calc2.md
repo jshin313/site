@@ -184,4 +184,11 @@ $$ A = \int_{a}^{b} (g(x) - f(x))\\;dx $$
 where $\forall x \\; g(x) > f(x) $
 
 ## 6.2: Volume of Revolved Solid
-$$ V = \int_{a}^{b} A(x) \\; dx $$ where $A(x)$ is the area of cross section at x.
+$$ V = \int_{a}^{b} A(x) \\; dx $$ where $A(x)$ is the area of cross section at x.  
+  
+For the volume of a solid of revolution (disk method):
+$$ V = \int_a^b f(x)^2 \pi\\; dx$$
+
+A more general formula for a solid of revolution (washer method):
+$$ V = \int_a^b \pi (R(x)^2 - r(x)^2) \\; dx $$
+where $R(x)$ is the distance between the axis of revolution and the upper curve (farther from axis of revolution) and $r(x)$ is the distance between the axis of revolution and the curve that's closer to the axis of revolution.
