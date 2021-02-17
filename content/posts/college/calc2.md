@@ -192,3 +192,7 @@ $$ V = \int_a^b f(x)^2 \pi\\; dx$$
 A more general formula for a solid of revolution (washer method):
 $$ V = \int_a^b \pi (R(x)^2 - r(x)^2) \\; dx $$
 where $R(x)$ is the distance between the axis of revolution and the upper curve (farther from axis of revolution) and $r(x)$ is the distance between the axis of revolution and the curve that's closer to the axis of revolution.
+
+## 6.5
+Average value from a to b:
+$$ f_{avg} = \frac{1}{b - a} \int_{a}^{b} f(x) \\; dx $$
