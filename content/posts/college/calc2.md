@@ -208,3 +208,22 @@ $$ \int u dv = uv - \int v\\;du$$
 Use Product rule
 $$ \frac{d}{dx} \left(u(x) \cdot v(x)\right) = u(x) \cdot v'(x) + u'(x) \cdot v(x)$$
 $$ u(x) \cdot v(x) = \int u(x) \cdot v'(x) + \int u'(x) \cdot v(x)$$
+
+### Notes on using Integration by Parts
+
+Note: Integration by parts is useful when $\int v du$ is easier to compute than the $\int u dv$. So choosing u is very important. You want du to be "simpler" than u.
+
+How to choose u in Integration by Parts (Ranked from best to worst)
+1. Logarithmic Functions
+2. Inverse Trig Functions
+3. Polynomials
+4. Exponential Functions (Just leads to the same exponential and a constant)
+5. Trigonometric Functions (Often just leads to another trig function)
+
+### Examples
+
+#### Example 1
+$$ u = ln(x), \\; du = 1 \cdot dx$$
+$$ du = \frac{1}{x}  dx, \\; v = x$$
+$$ \int_{1}^{e^3} ln(x) \cdot 1 \\;dx = \left. uv \right\vert_{1}^{e^3} - \int_{1}^{e^3} v du$$
+$$ = \left. x ln(x) \right\vert_{1}^{e^3} - \int_{1}^{e^3} x \left(\frac{1}{x}\right) dx$$
