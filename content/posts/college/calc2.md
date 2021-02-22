@@ -196,3 +196,15 @@ where $R(x)$ is the distance between the axis of revolution and the upper curve 
 ## 6.5
 Average value from a to b:
 $$ f_{avg} = \frac{1}{b - a} \int_{a}^{b} f(x) \\; dx $$
+
+## 7.2: Integration by Parts
+### Formula
+Let u and v be differentiable functions
+$$ \int u(x) v'(x) \\; dx = u(x) \\; v(x) - \int v(x) u'(x) \\;dx$$
+or 
+$$ \int u dv = uv - \int v\\;du$$
+
+### Derivation
+Use Product rule
+$$ \frac{d}{dx} \left(u(x) \cdot v(x)\right) = u(x) \cdot v'(x) + u'(x) \cdot v(x)$$
+$$ u(x) \cdot v(x) = \int u(x) \cdot v'(x) + \int u'(x) \cdot v(x)$$
