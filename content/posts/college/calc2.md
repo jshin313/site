@@ -197,7 +197,7 @@ where $R(x)$ is the distance between the axis of revolution and the upper curve 
 Average value from a to b:
 $$ f_{avg} = \frac{1}{b - a} \int_{a}^{b} f(x) \\; dx $$
 
-## 7.2: Integration by Parts
+## 7.1: Integration by Parts
 ### Formula
 Let u and v be differentiable functions
 $$ \int u(x) v'(x) \\; dx = u(x) \\; v(x) - \int v(x) u'(x) \\;dx$$
@@ -227,3 +227,37 @@ $$ u = ln(x), \\; du = 1 \cdot dx$$
 $$ du = \frac{1}{x}  dx, \\; v = x$$
 $$ \int_{1}^{e^3} ln(x) \cdot 1 \\;dx = \left. uv \right\vert_{1}^{e^3} - \int_{1}^{e^3} v du$$
 $$ = \left. x ln(x) \right\vert_{1}^{e^3} - \int_{1}^{e^3} x \left(\frac{1}{x}\right) dx$$
+
+## 7.2: Trigonometric Functions Integration Techniques
+### Odd powered Sin/Cos Trig Integrals
+If $m$ is odd, then $m = 2k + 1, k \in \mathbb{Z}$
+$$ \int \sin^m (x) \cos^n(x) dx = \int \sin ^{2k+1}(x) \cos^n(x)dx $$
+$$ = \int \sin^{2k}(x)\cos^n(x)\sin(x)dx = \int (\sin^2(x))^k \cos^n(x) \sin(x)dx $$
+$$ = \int (1 - \cos^2(x))\cos^n(x)\sin(x)$$
+
+Use u substitution to solve
+
+### Even Powered Sin/Cos Trig Integrals
+
+#### Helpful Identities and Formulas
+$$ \int \sin(qx)\\\; dx = - \frac{\cos(qx)}{q} + C$$
+$$ \int \cos(qx)\\\; dx = \frac{\sin(qx)}{q} + C$$
+where q is a integer
+
+$$ \sin^2(x) = \frac{1 - \cos(2x)}{2}$$
+$$ \cos^2(x) = \frac{1 + \sin(2x)}{2}$$
+
+#### Solving Technique
+If $m \leq n$ and they're both even:
+$$ \int sin^m(x) cos^n(x) dx = \int \sin^{2k}(x)\cos^n(x)dx = \int (\sin^2(x))^k cos^n(x) dx$$
+$$ = \int (1 - cos^2 (x))^k cos^n(k)dx$$
+After this just use the half-angle formulas and integrate
+
+if $n \leq m$ then just make everything in terms of $sin$ and do the same thing.
+
+## Integral of Tan
+$$ \int \tan(x)dx = \ln(|\sec(x)|) + C$$
+Derivation: Use u substitution and use the fact that $tan(x) = \frac{\sin(x)}{\cos(x)}$
+
+## Integral of Sec
+$$ \int \sec(x) dx = \ln(|\sec(x) + \tan(x)|) + C$$
