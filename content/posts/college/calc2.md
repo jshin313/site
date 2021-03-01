@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-02-15
+lastmod: 2021-03-01
 draft: false
 toc: true
 tags:
@@ -229,7 +229,8 @@ $$ \int_{1}^{e^3} ln(x) \cdot 1 \\;dx = \left. uv \right\vert_{1}^{e^3} - \int_{
 $$ = \left. x ln(x) \right\vert_{1}^{e^3} - \int_{1}^{e^3} x \left(\frac{1}{x}\right) dx$$
 
 ## 7.2: Trigonometric Functions Integration Techniques
-### Odd powered Sin/Cos Trig Integrals
+
+### Integrating Odd powers of Sin/Cos
 If $m$ is odd, then $m = 2k + 1, k \in \mathbb{Z}$
 $$ \int \sin^m (x) \cos^n(x) dx = \int \sin ^{2k+1}(x) \cos^n(x)dx $$
 $$ = \int \sin^{2k}(x)\cos^n(x)\sin(x)dx = \int (\sin^2(x))^k \cos^n(x) \sin(x)dx $$
@@ -237,7 +238,7 @@ $$ = \int (1 - \cos^2(x))\cos^n(x)\sin(x)$$
 
 Use u substitution to solve
 
-### Even Powered Sin/Cos Trig Integrals
+### Integrating Even Powers of Sin/Cos
 
 #### Helpful Identities and Formulas
 $$ \int \sin(qx)\\\; dx = - \frac{\cos(qx)}{q} + C$$
@@ -250,14 +251,30 @@ $$ \cos^2(x) = \frac{1 + \sin(2x)}{2}$$
 #### Solving Technique
 If $m \leq n$ and they're both even:
 $$ \int sin^m(x) cos^n(x) dx = \int \sin^{2k}(x)\cos^n(x)dx = \int (\sin^2(x))^k cos^n(x) dx$$
-$$ = \int (1 - cos^2 (x))^k cos^n(k)dx$$
+$$ = \int (1 - cos^2 (x))^k cos^n(x)dx$$
 After this just use the half-angle formulas and integrate
 
 if $n \leq m$ then just make everything in terms of $sin$ and do the same thing.
 
-## Integral of Tan
+### Integral of Tan
 $$ \int \tan(x)dx = \ln(|\sec(x)|) + C$$
 Derivation: Use u substitution and use the fact that $tan(x) = \frac{\sin(x)}{\cos(x)}$
 
-## Integral of Sec
+### Integral of Sec
 $$ \int \sec(x) dx = \ln(|\sec(x) + \tan(x)|) + C$$
+
+### Integrating Odd Powers of Tan and Sec
+Example:
+$$ \int \tan^5 (x) \sec^3(x) \\; dx$$
+$$ \int \tan^4 (x) \sec^2(x) \sec(x) \tan(x) \\\; dx$$
+$$ \int (\sec^2 (x) - 1)^2 \sec^2(x) \sec(x) \tan(x) \\\; dx$$
+$$ u = \sec(x), \\; du = \sec(x) \tan(x) dx $$
+$$ = \int (u^2 - 1)^2 u^2 du $$
+Solve now
+
+### Integrating Even Powers of Tan and Sec
+$$ \int sec^m (x) tan^n(x) dx = \int sec^{2j} (x) tan^n(x) dx$$
+$$ = \int sec^{2j - 2}(x) tan^n(x)sec^2(x)dx = \int (sec^2(x)^{j-1} tan^n(x) sec^2(x) dx)$$
+$$ = \int (tan^2(x) + 1)^{j-1} tan^n(x) sec^2(x) dx$$
+$$ u = tan(x), \\; du = sec^2(x)dx$$
+$$ = \int (u^2 + 1)^{j-1} u^n du$$
