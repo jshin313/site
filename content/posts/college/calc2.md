@@ -246,7 +246,7 @@ $$ \int \cos(qx)\\\; dx = \frac{\sin(qx)}{q} + C$$
 where q is a integer
 
 $$ \sin^2(x) = \frac{1 - \cos(2x)}{2}$$
-$$ \cos^2(x) = \frac{1 + \sin(2x)}{2}$$
+$$ \cos^2(x) = \frac{1 + \cos(2x)}{2}$$
 
 #### Solving Technique
 If $m \leq n$ and they're both even:
