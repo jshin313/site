@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-03-01
+lastmod: 2021-03-02
 draft: false
 toc: true
 tags:
@@ -284,3 +284,35 @@ Same as tan and sec (above) except use the following
 $$ \csc^2(x) = cotan^2(x) + 1$$
 $$ \frac{d(cotan(x))}{dx} = - \csc^2(x)$$
 $$ \frac{d(\csc(x))}{dx} = - \csc(x) cotan(x)$$
+
+## 7.4 Integrating with Partial Fractions
+If we want to integrate the following, where $P(x)$ and $Q(x)$ are polynomials,
+$$ \int \frac{P(x)}{Q(x)} $$
+
+
+If $degree(P(x)) \geq deg(Q(x))$ then just do long division to simplify. 
+
+### Case 1
+Once we have $deg(Q(x)) > deg(P(x))$, then we can say the following:
+
+$$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{a_i x - b_i} $$ where $A_1, \\; A_2, \\; A_3,\\; ... A_n$ are constants.
+
+Then we can integrate more easily since the following is true
+$$\int \frac{A_i}{a_i x - b_i} = \frac{A_i}{a_i} ln(|a_i x - b_i|) + C $$
+
+### Case 2
+$$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{(a_i x - b_i)^n} $$ where $A_1, \\; A_2, \\; A_3,\\; ... A_n$ are constants.
+
+#### Example:
+$$ \int \frac{1}{x^3 (x - 1)} \\; dx$$
+$$ \frac{1}{x^3 (x - 1)} = \frac{A}{x} + \frac{B}{x^2} + \frac{C}{x^3} + \frac{D}{x-1}$$
+$$ x^3 (x-1) \cdot \frac{1}{x^3 (x - 1)} = (\frac{A}{x} + \frac{B}{x^2} + \frac{C}{x^3} + \frac{D}{x-1}) \cdot (x^3(x -1))$$
+$$ 1 = Ax^2(x - 1) + Bx(x -1) + C(x-1) + Dx^3$$
+$$ 1 = (A+D)x^3 + (B-A)x^2 + (C-B)x + (-C)$$
+$$ 0x^3 + 0x^2 + 0x + 1 = (A+D)x^3 + (B-A)x^2 + (C-B)x + (-C)$$
+\
+$$ 0 = A+D$$
+$$ 0 = B-A$$
+$$ 0 = C-B$$
+$$ 1 = -C $$
+Solve for the other stuff and integrate
