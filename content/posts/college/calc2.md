@@ -279,6 +279,13 @@ $$ = \int (tan^2(x) + 1)^{j-1} tan^n(x) sec^2(x) dx$$
 $$ u = tan(x), \\; du = sec^2(x)dx$$
 $$ = \int (u^2 + 1)^{j-1} u^n du$$
 
+### Integral of Tan
+$$ \int cotan(x)dx = \ln(|\sin(x)|) + C$$
+Derivation: Use u substitution and use the fact that $cotan(x) = \frac{\cos(x)}{\sin(x)}$
+
+### Integral of Sec
+$$ \int \csc(x) dx = \ln(|\csc(x) - cotan(x)|) + C$$
+
 ### Integrating Powers of Cotan and Cosec
 Same as tan and sec (above) except use the following
 $$ \csc^2(x) = cotan^2(x) + 1$$
@@ -292,7 +299,7 @@ $$ \int \frac{P(x)}{Q(x)} $$
 
 If $degree(P(x)) \geq deg(Q(x))$ then just do long division to simplify. 
 
-### Case 1
+### Case I
 Once we have $deg(Q(x)) > deg(P(x))$, then we can say the following:
 
 $$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{a_i x - b_i} $$ where $A_1, \\; A_2, \\; A_3,\\; ... A_n$ are constants.
@@ -300,7 +307,7 @@ $$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{a_i x - b_i} $$ where $A_1, \\;
 Then we can integrate more easily since the following is true
 $$\int \frac{A_i}{a_i x - b_i} = \frac{A_i}{a_i} ln(|a_i x - b_i|) + C $$
 
-### Case 2
+### Case II
 $$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{(a_i x - b_i)^n} $$ where $A_1, \\; A_2, \\; A_3,\\; ... A_n$ are constants.
 
 #### Example:
@@ -316,3 +323,6 @@ $$ 0 = B-A$$
 $$ 0 = C-B$$
 $$ 1 = -C $$
 Solve for the other stuff and integrate
+
+### Case III
+$$ \int \frac{P(x)}{Q(x)} \\; dx $$
