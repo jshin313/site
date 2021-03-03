@@ -8,7 +8,7 @@ tags:
   - notes
   - college
 ---
-
+ 
 ## Appendix E: Summation 
 Let m and n be positive integers with $n \geq m$
 
@@ -278,3 +278,9 @@ $$ = \int sec^{2j - 2}(x) tan^n(x)sec^2(x)dx = \int (sec^2(x)^{j-1} tan^n(x) sec
 $$ = \int (tan^2(x) + 1)^{j-1} tan^n(x) sec^2(x) dx$$
 $$ u = tan(x), \\; du = sec^2(x)dx$$
 $$ = \int (u^2 + 1)^{j-1} u^n du$$
+
+### Integrating Powers of Cotan and Cosec
+Same as tan and sec (above) except use the following
+$$ \csc^2(x) = cotan^2(x) + 1$$
+$$ \frac{d(cotan(x))}{dx} = - \csc^2(x)$$
+$$ \frac{d(\csc(x))}{dx} = - \csc(x) cotan(x)$$
