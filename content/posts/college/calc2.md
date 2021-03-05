@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-03-03
+lastmod: 2021-03-05
 draft: false
 toc: true
 tags:
