@@ -299,7 +299,7 @@ $$ \int \frac{P(x)}{Q(x)} $$
 
 If $degree(P(x)) \geq deg(Q(x))$ then just do long division to simplify. 
 
-### Case I
+### Case I: Q(x) is the Product of Distinct Linear Factors
 Once we have $deg(Q(x)) > deg(P(x))$, then we can say the following:
 
 $$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{a_i x - b_i} $$ where $A_1, \\; A_2, \\; A_3,\\; ... A_n$ are constants.
@@ -307,13 +307,13 @@ $$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{a_i x - b_i} $$ where $A_1, \\;
 Then we can integrate more easily since the following is true
 $$\int \frac{A_i}{a_i x - b_i} = \frac{A_i}{a_i} ln(|a_i x - b_i|) + C $$
 
-### Case II
+### Case II: Q(x) has Repeated Linear Factors
 $$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{(a_i x - b_i)^n} $$ where $A_1, \\; A_2, \\; A_3,\\; ... A_n$ are constants.
 
 #### Example:
 $$ \int \frac{1}{x^3 (x - 1)} \\; dx$$
 $$ \frac{1}{x^3 (x - 1)} = \frac{A}{x} + \frac{B}{x^2} + \frac{C}{x^3} + \frac{D}{x-1}$$
-$$ x^3 (x-1) \cdot \frac{1}{x^3 (x - 1)} = (\frac{A}{x} + \frac{B}{x^2} + \frac{C}{x^3} + \frac{D}{x-1}) \cdot (x^3(x -1))$$
+$$ x^3 (x-1) \cdot \frac{1}{x^3 (x - 1)} = \left(\frac{A}{x} + \frac{B}{x^2} + \frac{C}{x^3} + \frac{D}{x-1}\right) \cdot (x^3(x -1))$$
 $$ 1 = Ax^2(x - 1) + Bx(x -1) + C(x-1) + Dx^3$$
 $$ 1 = (A+D)x^3 + (B-A)x^2 + (C-B)x + (-C)$$
 $$ 0x^3 + 0x^2 + 0x + 1 = (A+D)x^3 + (B-A)x^2 + (C-B)x + (-C)$$
@@ -324,5 +324,26 @@ $$ 0 = C-B$$
 $$ 1 = -C $$
 Solve for the other stuff and integrate
 
-### Case III
+### Case III: Q(x) with a Prime Quadratic Factor
+$Q(x)$ has a prime quadratic factor in 
+$$\int \frac{P(x)}{Q(x)} \\; dx $$
+
+The prime quadratic factor $ax^2 + bx + c$ of $Q(x)$ will contribute a partial fraction decomposition of 
+$\frac{Dx+E}{ax^2 + bx + c}$
+
+#### Example
+$$ \frac{3x^2 + x}{x(x-1)(x^2 + 1)}$$
+Here $x^2 +1$ is the irreducible prime quadratic factor.
+$$ \frac{3x^2 + x}{x(x-1)(x^2 + 1)} = \frac{A}{x} + \frac{B}{x-1} + \frac{Cx + D}{x^2 + 1}$$
+
+Solve for A, B, and D.
+
+### Case IV: Q(x) has Repeated Prime Quadratic Factors
+$Q(x)$ has repeated prime quadratic factors in 
 $$ \int \frac{P(x)}{Q(x)} \\; dx $$
+
+The prime quadratic factor $\left(ax^2 + bx + c\right)^n$ of $Q(x)$ will contribute a partial fraction decomposition of 
+$$ \frac{D_1x+E_1}{ax^2 + bx + c} + \frac{D_2x+E_2}{ax^2 + bx + c} + \frac{D_3x+E_3}{ax^2 + bx + c} + \frac{D_nx+E_n}{ax^2 + bx + c}$$
+
+#### Example
+$$ \frac{3x-1}{x^3(x^2 + 9)^2} = \frac{A}{x} + \frac{B}{x^2} + \frac{C}{x^3} + \frac{Dx + E}{x^2 + 9} + \frac{Fx + G}{(x^2 + 9)^2}$$
