@@ -174,7 +174,7 @@ Proof: f(x) is continuous on $[a, b]$. Use riemann sums and get a telescoping su
 ### Fundamental Theorem of Calculus Pt 1
 Let f be continuous on $[a, b]$
 
-## 5.5 
+## 5.5: The Substitution Rule
 If f is even, then $$\int_{-b}^{b} f(x) \\;dx =  2 \int_{0}^{b} f(x) \\; dx$$
 
 If f is odd, then $$\int_{-b}^{b} f(x) \\;dx =  0$$
@@ -193,7 +193,7 @@ A more general formula for a solid of revolution (washer method):
 $$ V = \int_a^b \pi (R(x)^2 - r(x)^2) \\; dx $$
 where $R(x)$ is the distance between the axis of revolution and the upper curve (farther from axis of revolution) and $r(x)$ is the distance between the axis of revolution and the curve that's closer to the axis of revolution.
 
-## 6.5
+## 6.5: Average Value of Function
 Average value from a to b:
 $$ f_{avg} = \frac{1}{b - a} \int_{a}^{b} f(x) \\; dx $$
 
