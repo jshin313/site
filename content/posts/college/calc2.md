@@ -183,7 +183,7 @@ If f is odd, then $$\int_{-b}^{b} f(x) \\;dx =  0$$
 $$ A = \int_{a}^{b} (g(x) - f(x))\\;dx $$
 where $\forall x \\; g(x) > f(x) $
 
-## 6.2: Volume of Revolved Solid
+## 6.2: Volume of Solid
 $$ V = \int_{a}^{b} A(x) \\; dx $$ where $A(x)$ is the area of cross section at x.  
   
 For the volume of a solid of revolution (disk method):
