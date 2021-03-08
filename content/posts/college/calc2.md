@@ -14,10 +14,10 @@ Let m and n be positive integers with $n \geq m$
 
 $$ a_m, a_{m + 1}, a_{m + 2}, ... , a_n \in \mathbb{R} $$
 
-### Summation Notation:
+### Summation Notation
 $$ \sum_{i=m}^{n} a_i = a_m + a_{m + 1} + a_m + a_{m + 1} + a_{m + 2} + ... + a_n$$
 
-### Examples:
+### Examples
 
 $$ \sum_{t = 1}^{3} \frac{1}{t} = \frac{1}{1} + \frac{1}{2} + \frac{1}{3}  = \frac{11}{6} $$
 
@@ -36,7 +36,7 @@ Let $b_m, b_{m+1}, b_{m + 2}, ... b_n \in \mathbb{R}$
 4. $$\sum_{i=1}^{n} c = c \cdot n$$
   $$\sum_{i=m}^{n} c = c \cdot (n - m + 1)$$
 
-### Common Summation Formulas:
+### Common Summation Formulas
 #### 1.
 $$ \sum_{i = 1}^{n} i = \frac{n(n + 1)}{2}$$
 
