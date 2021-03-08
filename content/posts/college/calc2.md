@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-03-05
+lastmod: 2021-03-08
 draft: false
 toc: true
 tags:
@@ -347,3 +347,29 @@ $$ \frac{D_1x+E_1}{ax^2 + bx + c} + \frac{D_2x+E_2}{ax^2 + bx + c} + \frac{D_3x+
 
 #### Example
 $$ \frac{3x-1}{x^3(x^2 + 9)^2} = \frac{A}{x} + \frac{B}{x^2} + \frac{C}{x^3} + \frac{Dx + E}{x^2 + 9} + \frac{Fx + G}{(x^2 + 9)^2}$$
+
+## 7.8: Improper Integrals
+
+### Type I: Infinite Integrals
+If the following is true:
+$$ \forall t \ge a, \\, \int_{a}^{t} f(x)\\, dx$$
+then, 
+$$ \int_{a}^{\infty} f(x)\\, dx = \lim\limits_{t\to\infty} \int_{a}^{t} f(x)\\, dx$$
+If it converges, then the limit exists.
+If it diverges, then the limit does not exist and the limit is infinity or -infinity.
+
+If both of the improper integrals on the right side of the equation converge, the following is true:
+$$ \int_{-\infty}^{\infty} g(x)\\, dx = \int_{-\infty}^{a} g(x) \\, dx + \int_{a}^{\infty} g(x) \\, dx$$
+
+#### Example
+$$ \text{Evaluate } \int_{0}^{\infty} xe^{-x}\\,dx$$
+If the antiderivative is not obvious, perhaps compute it first.
+$$ \int xe^{-x}\\,dx = -x e^{-x} - \int (-e^{-x})\\,dx $$
+$$ = -xe^{-x} + \int e^{-x} \\, dx = -xe^{-x} -e^{-x} + C$$
+$$ u = x, \\, du = dx$$
+$$ v = - e^{-x}, \\, dv = e^{-x} dx$$
+
+$$ \int_{0}^{\infty} xe^{-x}\\,dx= \lim\limits_{r\to\infty} \int_{0}^{r} (xe^{-x})\\, dx = \lim\limits_{r\to\infty} \left. (-xe^{-x} - e^{-x} )\right\vert_{0}^{r} = \lim\limits_{r\to\infty}(-re^{-r} - e^{-r} + 1) $$
+$$= \lim_{r\to\infty} ((-e^{-r}) (-r - 1) + 1) = \lim\limits_{r\to\infty} \left(\frac{r + 1}{e^r}  \right) + 1 = \lim\limits_{r\to\infty} \left(\frac{1}{e^r}\right) + 1 = 1$$
+
+### Type II: Discontinuous Integrands
