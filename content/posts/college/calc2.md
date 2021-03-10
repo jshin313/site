@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-03-08
+lastmod: 2021-03-10
 draft: false
 toc: true
 tags:
@@ -373,3 +373,46 @@ $$ \int_{0}^{\infty} xe^{-x}\\,dx= \lim\limits_{r\to\infty} \int_{0}^{r} (xe^{-x
 $$= \lim_{r\to\infty} ((-e^{-r}) (-r - 1) + 1) = \lim\limits_{r\to\infty} \left(\frac{r + 1}{e^r}  \right) + 1 = \lim\limits_{r\to\infty} \left(\frac{1}{e^r}\right) + 1 = 1$$
 
 ### Type II: Discontinuous Integrands
+
+#### Example
+Evaluate the following $$ \int_0^3 \frac{1}{(x-1)^2}$$
+Since $f(x)$ has a VA at $x=1$, this integral is improper.
+
+$$ \int_0^3 \frac{1}{(x-1)^2} dx = \int_0^1 \frac{1}{(x-1)^2} + \int_1^3 \frac{1}{(x-1)^2}$$
+
+$$ \int_0^1 \frac{1}{(x-1)^2} = \lim\limits_{r\to1^{-}} \left(\int_0^r \frac{1}{(x-1)^2} dx\right) = \lim\limits_{r\to1^{-}} \left. \left(\frac{-1}{x-1} \right\vert_0^r\right) = \lim\limits_{r\to1^{-}} \left(\frac{-1}{r-1} + 1\right) = + \infty$$
+
+We found $\int_0^1 \frac{1}{(x-1)^2} dx$ diverges, so we can say the whole integral diverges.
+
+### The Comparison Test
+Suppose f and g are continuous functions on $[a,\infty]$ and that $g(x) \ge f(x) \ge 0$ for all $x\ge a$
+
+1. If $\int_a^{\infty} g(x) dx$ converges, then $\int_a^{\infty} f(x) dx$ also converges.
+
+2. If $\int_a^{\infty} f(x) dx$ diverges, then $\int_a^{\infty} g(x) dx$ also diverges.
+
+However, if we know $\int_a^\infty g(x)dx$ diverges, we cannot use C.T.
+
+If we know $\int_a^\infty g(x)dx$ converges, we can't use C.T. as well.
+
+#### Example
+Determine if the integral $\int_2^\infty \frac{1}{x-sin^2(x)} dx$ converges or diverges.
+
+Use the Comparison Test.
+
+Let the new function be the ratio of the leading terms (term with most rapid growth) of the numerator and denominator.
+
+$$ f(x) = \frac{1}{x-\sin^2(x)} $$
+$$ g(x) = \frac{1}{x}$$ since $\sin^2(x)$ is just bounded to $[0 , -1]$.
+
+Notice then that $\frac{1}{x-\sin^2(x)} \ge \frac{1}{x} \ge 0$
+
+$$\frac{1}{x-\sin^2(x)} \ge \frac{1}{x} \ge 0$$
+
+$$ \int_2^\infty \frac{1}{x} dx = \lim\limits_{r\to\infty} \left(\int_2^r \frac{1}{x}\right) = \lim\limits_{r\to\infty} \left. \left(ln(|x|)\right\vert_2^r\right)$$
+$$ = \lim\limits_{r\to\infty} (ln(r) - ln(2)) = \infty$$
+
+Since $\frac{1}{x-\sin^2(x)} dx \ge \frac{1}{x} \forall x \ge 2$ and $\int_2^\infty \frac{1}{x}dx$ also diverges, we can say that $\int_2^\infty \frac{1}{x-\sin^2(x)} dx$ also diverges by the Comparison Test.
+
+The Comparison Test also works on Type II Improper Integrals.
+
