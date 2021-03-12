@@ -7,6 +7,7 @@ toc: true
 tags:
   - notes
   - college
+  - math
 ---
  
 ## Appendix E: Summation 
@@ -416,3 +417,23 @@ Since $\frac{1}{x-\sin^2(x)} dx \ge \frac{1}{x} \forall x \ge 2$ and $\int_2^\in
 
 The Comparison Test also works on Type II Improper Integrals.
 
+## Chapter 11: Sequences and Series
+### Sequence
+**Definition**: A sequence of real numbers whose domain is (some infinite number of the non negative integers)
+
+Customary to write $a_n$ instead of $a(n)$
+
+Can also be represented by recursion.
+
+### Limits of a Sequence
+**Definition**: Let $\\{a_n\\}$ be a sequence. We say that $\lim\limits_{n\to\infty} a_n = L$ if we can make the value of $a_n$ arbitrarily close to $L$ by choosing $n$ sufficiently large.
+
+**Theorem**: Let $f$ be a function from $[1, \infty]$ to $\mathbb{R}$. Define a sequence ${a_n}$ by the formula $a_n = f(n)$. If $\lim\limits_{x\to\infty} f(x) = L$, then $\lim\limits_{n\to\infty} a_n = L$.
+
+#### Examples
+$$ \lim\limits_{n\to\infty} \left(\frac{\ln(n)}{n^2}\right)$$
+$$ \lim\limits_{n\to\infty} \left(\frac{\ln(n)}{n^2}\right)=\lim\limits_{x\to\infty} \left(\frac{\ln(x)}{x^2}\right) $$
+Now you can use L'Hopital's rule
+$$ \lim\limits_{x\to\infty} \frac{1/x}{2x} = 0$$
+
+Squeeze Theorem also applies as well as Limit Laws
