@@ -438,7 +438,7 @@ $$ \lim\limits_{x\to\infty} \frac{1/x}{2x} = 0$$
 
 Squeeze Theorem also applies as well as Limit Laws
 
-###
+### Limit of Sequence DNE
 If $a_n > 0$ for all n and $\lim\limits_{n\to\infty \neq 0}$, then $\lim\limits_{n\to\infty} (-1)^n a_n$ Does not exist.
 
 #### Example
@@ -458,7 +458,9 @@ If S is a subset of $\mathbb{R}$
 
 #### Example
 $$S = [2, 9)$$
-12 is an upper bound of $S$
+12 is an upper bound of $S$  
+
+
 9 is the least upper bound
 
 ### Axiom of Completeness
