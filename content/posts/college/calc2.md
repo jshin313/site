@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-03-10
+lastmod: 2021-03-15
 draft: false
 toc: true
 tags:
@@ -437,3 +437,37 @@ Now you can use L'Hopital's rule
 $$ \lim\limits_{x\to\infty} \frac{1/x}{2x} = 0$$
 
 Squeeze Theorem also applies as well as Limit Laws
+
+###
+If $a_n > 0$ for all n and $\lim\limits_{n\to\infty \neq 0}$, then $\lim\limits_{n\to\infty} (-1)^n a_n$ Does not exist.
+
+#### Example
+$$ \lim\limits_{n\to\infty} \left(\frac{(-1)^n n}{n+3}\right)$$
+Limits does not exist
+
+### Increasing, Decreasing, Monotone
+Let $\left. a_n \right\vert_{n=1}^{\infty}$ be a sequence
+1. We say that the sequence is **increasing** if $a_n \le a_{n+1} \forall n$ 
+2. We say that the sequence is **decreasing** if $a_n \ge a_{n+1} \forall n$ 
+3. We say that the sequence is monotone if $a_n$ is increasing or decreasing for all n
+
+### Upper and Lower Bounds
+If S is a subset of $\mathbb{R}$
+1. S is **bounded above** if there is a number, B, so that $\forall x \in S, x \le B$. B is called an upper bound of S.
+2. S is **bounded below** if there is a number, B, so that $\forall x \in S, x \ge B$. B is called a lower bound of S.
+
+#### Example
+$$S = [2, 9)$$
+12 is an upper bound of $S$
+9 is the least upper bound
+
+### Axiom of Completeness
+1. Any nonempty subset of $\mathbb{R}$ which is bounded above has a least upper bound.
+2. Any nonempty subset of $\mathbb{R}$ which is bounded below has a greatest upper bound.
+
+Real numbers include rational numbers + everything else to keep the number line continuous (irrational numbers)
+
+### Monotone Convergence Theorem
+Every bounded monotone sequence converges.
+
+Proof: way too long
