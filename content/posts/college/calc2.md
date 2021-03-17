@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-03-15
+lastmod: 2021-03-17
 draft: false
 toc: true
 tags:
@@ -449,7 +449,7 @@ Limits does not exist
 Let $\left. a_n \right\vert_{n=1}^{\infty}$ be a sequence
 1. We say that the sequence is **increasing** if $a_n \le a_{n+1} \forall n$ 
 2. We say that the sequence is **decreasing** if $a_n \ge a_{n+1} \forall n$ 
-3. We say that the sequence is monotone if $a_n$ is increasing or decreasing for all n
+3. We say that the sequence is **monotone** if $a_n$ is increasing or decreasing for all n
 
 ### Upper and Lower Bounds
 If S is a subset of $\mathbb{R}$
@@ -473,3 +473,14 @@ Real numbers include rational numbers + everything else to keep the number line 
 Every bounded monotone sequence converges.
 
 Proof: way too long
+
+### Limit of Factorial Sequences
+
+#### Limit of Factorial over Factorial
+Just express the larger factorial as the smaller one
+
+#### Limit of Exponential and Factorial
+$$ \lim\limits_{n\to\infty} \frac{r^n}{n!} = 0$$ for any real number r
+Proof: Use squeeze theorem for all the cases: $r < 1$, $r > 0$, $r < 0$, etc.
+
+$$ \lim\limits_{n\to\infty} \frac{n!}{r^n} = \infty$$
