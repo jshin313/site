@@ -20,7 +20,10 @@ tags:
 ## Base Conversions
 
 ### Decimal to Base B
-* Use Euclid's algorithm to convert from decimal to base b.
+* Divide N by Base B 
+* Remainder is one of the digits
+* Set N = floor(N/B)
+* Repeat until N = 0
 
 ### Base B to Decimal
 * Use the following to convert from base b to decimal
@@ -50,9 +53,9 @@ Every 3 bits is one octal digit
 **And** determines whether a carry results  
 **Xor** is like an addition
 
-### Negative Number Representation
+## Negative Number Representation
 
-#### Signed Magnitude Representation
+### Signed Magnitude Representation
 * Just use the first bit as a flag to indicate whether the number is positive or negative
 * E.g. 
   * -1 is just 1001 for a 4 bit integer
@@ -62,7 +65,7 @@ Every 3 bits is one octal digit
   * Wasted space by duplicate +0 and -0
   * Addition of a positive number and the corresponding negative don't yield an expected result
 
-#### One's Complement
+### One's Complement
 * Take the bitwise inverse of the positive representation
 * E.g.
   * 1 is 0001, so -1 is 1110
@@ -77,3 +80,29 @@ Every 3 bits is one octal digit
 * Pros
   * No duplicate 0 representation
   * Addition of negative and positive numbers works
+
+## IEEE 754 Floating Point Representation
+
+### float: 32 bit (single precision)
+
+#### Binary floating points to decimal conversion
+* Sign (1 bit)
+* Exponent (8 bits)
+* Mantissa (23 bits)
+  * The fractional part of the number
+
+Decimal value = $(-1)^{s} \cdot (1.0 + M) \cdot 2^{E-127}$
+
+### double: 64 bit (double precision)
+
+### Normalized values
+* For most numbers
+* Assumes Mantissa is 1. + M
+
+### Denormalized values
+
+### Special Values
+* Infinity
+* NaN
+  * divide by 0
+  * sqrt(-1)
