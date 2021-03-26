@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-03-17
+lastmod: 2021-03-26
 draft: false
 toc: true
 tags:
@@ -484,3 +484,22 @@ $$ \lim\limits_{n\to\infty} \frac{r^n}{n!} = 0$$ for any real number r
 Proof: Use squeeze theorem for all the cases: $r < 1$, $r > 0$, $r < 0$, etc.
 
 $$ \lim\limits_{n\to\infty} \frac{n!}{r^n} = \infty$$
+
+## 11.2: Infinite Series
+
+### Geometric Series
+If $r$ is a real number and $r \neq 1$, a geometric sum is as follows
+$$ \sum_{n=0}^{\infty} r^n$$
+
+Nth partial sum of the series
+$$ S_n = \sum_{n=0}^{N} r^n = 1 + r + r^2 + r^3 ... r^N$$
+
+#### Geometric Sum Formula
+$$ \sum_{n=0}^{\infty} r^n = \frac{1}{1-r} $$ if $|r| < 1$
+
+### Divergence Test
+If $\lim\limits_{a\to\infty} a_n \neq 0$, then $\sum_{n=1}^{\infty} a_n$ diverges.
+The converse is not true.
+
+## 11.3: The Integral Test
+$\sum_{n=1}^{\infty} a_n$ converges iff $\int_{1}^{\infty} f(x)dx$ also converges.
