@@ -1,7 +1,7 @@
 ---
 title: "Computer Systems and Low Level Programming"
 publishdate: 2021-03-10
-lastmod: 2021-03-10
+lastmod: 2021-03-29
 draft: false
 toc: true
 tags:
@@ -84,25 +84,55 @@ Every 3 bits is one octal digit
 ## IEEE 754 Floating Point Representation
 
 ### float: 32 bit (single precision)
-
-#### Binary floating points to decimal conversion
 * Sign (1 bit)
 * Exponent (8 bits)
 * Mantissa (23 bits)
-  * The fractional part of the number
+  * The fractional part of the number  
 
-Decimal value = $(-1)^{s} \cdot (1.0 + M) \cdot 2^{E-127}$
+#### Normalized Representation
+* Sign (S): Either 0 or 1, for positive and negative respectively
+* Exponent (E): Can't be all 0s or 1s
+* Mantissa (M): Fractional part
+
+Decimal value = $(-1)^{s} \cdot (1.0 + M) \cdot 2^{E-127}$  
+
+Range: $2^{-126}$ to $2^{127}$
+
+* Used for most numbers
+* Assumes Mantissa is 1. + M
+* Bias is 127
+
+#### Denormalized Representation
+Exponent is 0b00000000
+
+Formula:
+$$ (-1)^{S} \cdot (0.0 + M) \cdot 2^{1-127}$$
+
+* Used for values close to or equal to zero.
+
+#### Special Values
+
+##### Positive Infinity
+S = 0
+E = all 1's
+M = all 0's
+
+##### Negative Infinity
+Same as above except S = 1
+   
+##### NaN
+S = Either 0 or 1
+E = all 1's
+M = anything except all 0's  
+
+* divide by 0
+* sqrt(-1)
 
 ### double: 64 bit (double precision)
+* Sign (1 bit)
+* Exponent (11 bits)
+* Mantissa (52 bits)
 
-### Normalized values
-* For most numbers
-* Assumes Mantissa is 1. + M
+Bias: 1023
 
-### Denormalized values
-
-### Special Values
-* Infinity
-* NaN
-  * divide by 0
-  * sqrt(-1)
+* Provides Higher precision
