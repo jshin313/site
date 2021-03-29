@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-03-26
+lastmod: 2021-03-29
 draft: false
 toc: true
 tags:
@@ -417,7 +417,7 @@ Since $\frac{1}{x-\sin^2(x)} dx \ge \frac{1}{x} \forall x \ge 2$ and $\int_2^\in
 
 The Comparison Test also works on Type II Improper Integrals.
 
-## Chapter 11: Sequences and Series
+## 11.1: Series
 ### Sequence
 **Definition**: A sequence of real numbers whose domain is (some infinite number of the non negative integers)
 
@@ -503,3 +503,20 @@ The converse is not true.
 
 ## 11.3: The Integral Test
 $\sum_{n=1}^{\infty} a_n$ converges iff $\int_{1}^{\infty} f(x)dx$ also converges.
+
+## The P-Test
+p is a real number $$ \sum_{n=1}^{\infty} \frac{1}{n^p}$$
+converges  iff $p > 1$  
+
+Proof: Use Divergence Test for $p \ge 0$ and Integral Test
+
+## 11.4: Comparison Tests
+
+### Direct Comparison Test
+$$ 0 \leq a_n \leq b_n$$
+1. $$\text{If } \sum_{n=1}^{\infty} b_n \text{ converges, then } \sum_{n=1}^{\infty} a_n \text{ also converges}$$
+2. $$\text{If } \sum_{n=1}^{\infty} a_n \text{ diverges, then } \sum_{n=1}^{\infty} b_n \text{ also diverges}$$
+
+### Limit Comparison Test
+If $a_n$ and $b_n$ are positive for all n and $$ \lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = L > 0$$
+Then $\sum_{n=1}^{\infty} a_n$ converges iff $\sum_{n=1}^{\infty} b_n$ converges
