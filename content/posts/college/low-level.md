@@ -115,16 +115,16 @@ $$ (-1)^{S} \cdot (0.0 + M) \cdot 2^{1-127}$$
 #### Special Values
 
 ##### Positive Infinity
-S = 0
-E = all 1's
-M = all 0's
+S = 0  
+E = all 1's  
+M = all 0's  
 
 ##### Negative Infinity
 Same as above except S = 1
    
 ##### NaN
-S = Either 0 or 1
-E = all 1's
+S = Either 0 or 1  
+E = all 1's  
 M = anything except all 0's  
 
 * divide by 0
@@ -166,8 +166,9 @@ Then convert 0.3 to binary
 0.6 * 2 = 1.2 | 1
 ```
 
-To convert fraction to decimal, multiply by 2 instead of dividing and the part before the decimal is the binary digit. Notice that the `0.6 * 2 = 1.2` repeats.  
-So 0.3 to binary is 01001100110011001 and so on, but truncate so 23 bits for the mantissa (24 bits total for the 1. + M)
+To convert fraction to decimal, multiply by 2 instead of dividing and the part before the decimal is the binary digit. Notice that the `0.6 * 2 = 1.2` repeats.    
+
+So 0.3 to binary is 01001100110011001 and so on, but truncate it so there's 23 bits for the mantissa (24 bits total for the 1. + M)  
 
 Now you have 10000011.0100110011001100  
 
