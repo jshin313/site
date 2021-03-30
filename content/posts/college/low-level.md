@@ -23,7 +23,9 @@ tags:
 * Divide N by Base B 
 * Remainder is one of the digits
 * Set N = floor(N/B)
-* Repeat until N = 0
+* Repeat until N = 0  
+
+Digits are in reverse
 
 ### Base B to Decimal
 * Use the following to convert from base b to decimal
