@@ -138,3 +138,58 @@ M = anything except all 0's
 Bias: 1023
 
 * Provides Higher precision
+
+### Convert Decimal to Floating Point
+#### Example: Convert 131.3 to Floating Point Representation  
+
+First convert the part before decimal, so 131 to binary.
+
+```
+131 = 65 * 2 + 1
+ 65 = 32 * 2 + 1
+ 32 = 16 * 2 + 0
+ 16 =  8 * 2 + 0
+  8 =  4 * 2 + 0
+  4 =  2 * 2 + 0
+  2 =  1 * 2 + 0
+  1 =  0 * 2 + 1
+```
+So 131 to binary is 10000011  
+
+Then convert 0.3 to binary
+```
+0.3 * 2 = 0.6 | 0
+0.6 * 2 = 1.2 | 1
+0.2 * 2 = 0.4 | 0
+0.4 * 2 = 0.8 | 0
+0.8 * 2 = 1.6 | 1
+0.6 * 2 = 1.2 | 1
+```
+
+To convert fraction to decimal, multiply by 2 instead of dividing and the part before the decimal is the binary digit. Notice that the `0.6 * 2 = 1.2` repeats.  
+So 0.3 to binary is 01001100110011001 and so on, but truncate so 23 bits for the mantissa (24 bits total for the 1. + M)
+
+Now you have 10000011.0100110011001100  
+
+Round the last digit to 1  
+
+Now you have 10000011.0100110011001101  
+
+Move the decimal point so that  you have the form 1.M
+$$ 1.00000110100110011001101 \cdot 2^7$$
+
+Exponent is $E- 127 = 7$, so $E = 134$  
+
+Converting 134 to binary yields 10000110
+
+Put it all together using the formula $(-1)^{S} \cdot (1.0 + M) \cdot 2^{E-127}$
+
+$$E = 134$$
+$$M = 00000110100110011001101$$
+$$S = 0$$
+
+So the binary representation is as follows:
+```
+S    E             M
+0 10000110 00000110100110011001101
+```
