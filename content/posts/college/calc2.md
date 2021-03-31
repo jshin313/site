@@ -451,6 +451,10 @@ Let $\left. a_n \right\vert_{n=1}^{\infty}$ be a sequence
 2. We say that the sequence is **decreasing** if $a_n \ge a_{n+1} \forall n$ 
 3. We say that the sequence is **monotone** if $a_n$ is increasing or decreasing for all n
 
+#### Find if sequence is monotone
+* You can substitute $a_{n+1}$ and see if a sequence is increasing or decreasing compared to $a_n$
+* Find the derivative of $a_n$
+
 ### Upper and Lower Bounds
 If S is a subset of $\mathbb{R}$
 1. S is **bounded above** if there is a number, B, so that $\forall x \in S, x \le B$. B is called an upper bound of S.
@@ -519,4 +523,26 @@ $$ 0 \leq a_n \leq b_n$$
 
 ### Limit Comparison Test
 If $a_n$ and $b_n$ are positive for all n and $$ \lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = L > 0$$
-Then $\sum_{n=1}^{\infty} a_n$ converges iff $\sum_{n=1}^{\infty} b_n$ converges
+Then $\sum_{n=1}^{\infty} a_n$ converges iff $\sum_{n=1}^{\infty} b_n$ converges  
+
+If $\sum_{n=1}^{\infty} b_n$ diverges, $\sum{n=1}^{\infty} b_n$ diverges.
+
+#### Example
+Determine if $\sum_{n=1}^{\infty} \frac{1}{n^{1+(1/n)}}$ converges or diverges.
+
+$$ a_n = \frac{1}{n^{1+(1/n)}},\, b_n = \frac{1}{n}$$
+
+$$ \lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = \lim\limits_{n\to\infty} \left(\frac{1}{n^{1+(1/n)} \cdot \frac{n}{1}}\right) = \lim\limits_{n\to\infty} \left(\frac{1}{n^{1/n}}\right) = \lim\limits_{n\to\infty}e^{ln(n^{-1/n})}$$
+$$ = e^{(\lim\limits_{n\to\infty} -ln(n)/n)}= e^{(\lim\limits_{n\to\infty} -(1/n)/n)} = e^0 = 1 $$
+
+  
+
+$$b_n = \frac{1}{n}\text{ diverges with the P-test with } p = 1$$
+Since $b_n$ diverges and $\lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = L > 0$, $a_n$ also diverges.
+
+## 11.5: The Alternating Series Test
+If the sequence $a_n$ is a **decreasing** sequence with non-negative terms, and $\lim\limits_{n\to\infty} a_n = 0$, then $\sum_{n=1}^{\infty} (-1)^{n+1} a_n$ converges.
+
+Proof:  
+* Prove using the Monotone Convergence Theorem
+* Find that the sequence is bounded and monotone for odd indexes and even indexes separately
