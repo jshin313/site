@@ -417,7 +417,7 @@ Since $\frac{1}{x-\sin^2(x)} dx \ge \frac{1}{x} \forall x \ge 2$ and $\int_2^\in
 
 The Comparison Test also works on Type II Improper Integrals.
 
-## 11.1: Series
+## 11.1: Sequences
 ### Sequence
 **Definition**: A sequence of real numbers whose domain is (some infinite number of the non negative integers)
 
@@ -489,7 +489,7 @@ Proof: Use squeeze theorem for all the cases: $r < 1$, $r > 0$, $r < 0$, etc.
 
 $$ \lim\limits_{n\to\infty} \frac{n!}{r^n} = \infty$$
 
-## 11.2: Infinite Series
+## 11.2: Series
 
 ### Geometric Series
 If $r$ is a real number and $r \neq 1$, a geometric sum is as follows
