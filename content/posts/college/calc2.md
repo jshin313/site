@@ -506,6 +506,7 @@ If $\lim\limits_{a\to\infty} a_n \neq 0$, then $\sum_{n=1}^{\infty} a_n$ diverge
 The converse is not true.
 
 ## 11.3: The Integral Test
+Assuming $a_n$ can be a continuous function, is positive, and decreasing:
 $\sum_{n=1}^{\infty} a_n$ converges iff $\int_{1}^{\infty} f(x)dx$ also converges.
 
 ## The P-Test
