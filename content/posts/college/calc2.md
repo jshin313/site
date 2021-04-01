@@ -531,7 +531,7 @@ If $\sum_{n=1}^{\infty} b_n$ diverges, $\sum_{n=1}^{\infty} a_n$ diverges.
 #### Example
 Determine if $\sum_{n=1}^{\infty} \frac{1}{n^{1+(1/n)}}$ converges or diverges.
 
-$$ a_n = \frac{1}{n^{1+(1/n)}},\, b_n = \frac{1}{n}$$
+$$ a_n = \frac{1}{n^{1+(1/n)}},\\, b_n = \frac{1}{n}$$
 
 $$ \lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = \lim\limits_{n\to\infty} \left(\frac{1}{n^{1+(1/n)} \cdot \frac{n}{1}}\right) = \lim\limits_{n\to\infty} \left(\frac{1}{n^{1/n}}\right) = \lim\limits_{n\to\infty}e^{ln(n^{-1/n})}$$
 $$ = e^{(\lim\limits_{n\to\infty} -ln(n)/n)}= e^{(\lim\limits_{n\to\infty} -(1/n)/n)} = e^0 = 1 $$
