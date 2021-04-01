@@ -526,7 +526,7 @@ $$ 0 \leq a_n \leq b_n$$
 If $a_n$ and $b_n$ are positive for all n and $$ \lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = L > 0$$
 Then $\sum_{n=1}^{\infty} a_n$ converges iff $\sum_{n=1}^{\infty} b_n$ converges  
 
-If $\sum_{n=1}^{\infty} b_n$ diverges, $\sum{n=1}^{\infty} b_n$ diverges.
+If $\sum_{n=1}^{\infty} b_n$ diverges, $\sum_{n=1}^{\infty} a_n$ diverges.
 
 #### Example
 Determine if $\sum_{n=1}^{\infty} \frac{1}{n^{1+(1/n)}}$ converges or diverges.
