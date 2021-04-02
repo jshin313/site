@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-03-29
+lastmod: 2021-04-02
 draft: false
 toc: true
 tags:
@@ -547,3 +547,29 @@ If the sequence $a_n$ is a **decreasing** sequence with non-negative terms, and 
 Proof:  
 * Prove using the Monotone Convergence Theorem
 * Find that the sequence is bounded and monotone for odd indexes and even indexes separately
+
+## 11.5: Absolute Convergence, and the Ratio Test & Root Test
+
+### Absolute Convergence
+$ \sum\limits_{n=1}^{\infty} |a_n| $ converges.  
+Lets you rearrange the terms without messing up the sum.
+
+### Conditional Convergence
+$ \sum\limits_{n=1}^{\infty} a_n $ converges, but
+$ \sum\limits_{n=1}^{\infty} |a_n| $ diverges.
+
+### Proposition
+If $\sum\limits_{n=1}^{\infty} |a_n|$ converges, then $\sum\limits_{n=1}^{\infty} a_n$ also converges.
+
+### Suggested Steps to Find if Series is Absolutely Convergent, Conditionally Convergent, or Neither
+1. Check for Absolute Convergence (since this might also imply convergence of the regular series)
+2. If the series is not absolutely convergent, then test for conditional convergence with the alternating series test.
+3. Try the divergence Test
+
+## d'Alembert's Ratio Test
+If $\lim\limits_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| = L$
+1. If L < 1, then $\sum_{n=1}^{\infty} a_n$ converges absolutely.
+2. If L > 1, then $\sum_{n=1}^{\infty} a_n$ diverges.
+3. If L = 1 or nonexistent, the ratio test is inconclusive.
+
+Use for factorials.
