@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-04-02
+lastmod: 2021-04-04
 draft: false
 toc: true
 tags:
@@ -507,7 +507,9 @@ The converse is not true.
 
 ## 11.3: The Integral Test
 Assuming $a_n$ can be a continuous function, is positive, and decreasing:
-$\sum_{n=1}^{\infty} a_n$ converges iff $\int_{1}^{\infty} f(x)dx$ also converges.
+$\sum_{n=1}^{\infty} a_n$ converges iff $\int_{1}^{\infty} f(x)dx$ also converges.  
+
+You can use the integral test for divergence as well, if $a_n$ can be a continuous, positive, and decreasing function.
 
 ## The P-Test
 p is a real number $$ \sum_{n=1}^{\infty} \frac{1}{n^p}$$
@@ -548,7 +550,7 @@ Proof:
 * Prove using the Monotone Convergence Theorem
 * Find that the sequence is bounded and monotone for odd indexes and even indexes separately
 
-## 11.5: Absolute Convergence, and the Ratio Test & Root Test
+## 11.6: Absolute Convergence, and the Ratio Test & Root Test
 
 ### Absolute Convergence
 $ \sum\limits_{n=1}^{\infty} |a_n| $ converges.  
