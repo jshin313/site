@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-04-04
+lastmod: 2021-04-05
 draft: false
 toc: true
 tags:
@@ -574,4 +574,4 @@ If $\lim\limits_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| = L$
 2. If L > 1, then $\sum_{n=1}^{\infty} a_n$ diverges.
 3. If L = 1 or nonexistent, the ratio test is inconclusive.
 
-Use for factorials.
+Use for factorials or where e to the power of n is in the denominator
