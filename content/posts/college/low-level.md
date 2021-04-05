@@ -194,3 +194,77 @@ So the binary representation is as follows:
 S    E             M
 0 10000110 00000110100110011001101
 ```
+
+## Assembly
+Note that AT&T syntax is used
+
+### mov
+```
+mov src, dest
+```
+
+#### Types of moves
+* imm = immediate value (e.g. \$0x4)
+* reg = register
+* mem = memory  
+
+* Cannot do memory to memory transfer 
+* Cannot do imm to imm
+* e.g. mov (%rax), (%rdx) is invalid
+* All other moves are valid (e.g. imm to reg, imm to mem, reg to mem, mem to reg, reg to reg)
+
+#### Memory addressing mode
+```
+displacement(base_reg, idx_reg, scale) = base_reg + idx_reg * scale + displacement
+```
+* displacement: a constant that is usually 1, 2, or 4 bytes
+* base_reg: any of the registers
+* idx_reg: Any register except %rsp
+* scale: 1, 2, 4, or 8  
+
+##### Example
+* mov 8(%rdx, %rcx, 4), %rax
+* moves the memory at address rdx + rcx*4 + 8 into the rax register
+
+### lea
+```
+lea src, dest
+```
+
+Set dest to src, where src is an address
+
+#### Example
+```c
+long multiply_12(long x)
+{
+  return x * 12;
+}
+```
+```asm
+  lea (%rdi, %rdi, 2), %rax     # t = x+x*2 = 3*x
+  sal $2, %rax                  # return t << 2
+```
+* First computes x + x*2
+* Then does an arithmetic shift right by 2 (multiply by 4)
+
+### cmp
+```
+cmp b, a
+```
+* Equivalent to (a - b) except without setting the result to a
+* Used for comparison 
+* Sets ZF if a and b are the same
+* Uses CF for unsigned comparisons
+  * Set when (a - b) < 0
+  * So when b > a
+* Uses SF for signed comparisons
+  * Set when (a - b) < 0
+  * So when b > a
+
+### test
+```
+test b, a
+```
+* Equivalent to a & b without moving the result to a
+* Sets ZF if a & b == 0
+* Sets SF if a & b < 0
