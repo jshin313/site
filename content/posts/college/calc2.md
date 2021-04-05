@@ -569,9 +569,23 @@ If $\sum\limits_{n=1}^{\infty} |a_n|$ converges, then $\sum\limits_{n=1}^{\infty
 3. Try the divergence Test
 
 ## d'Alembert's Ratio Test
-If $\lim\limits_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| = L$
+If $\lim\limits_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| = L$, where $a_n$ has nonzero terms
 1. If L < 1, then $\sum_{n=1}^{\infty} a_n$ converges absolutely.
 2. If L > 1, then $\sum_{n=1}^{\infty} a_n$ diverges.
 3. If L = 1 or nonexistent, the ratio test is inconclusive.
 
-Use for factorials or where e to the power of n is in the denominator
+Use for factorials or where e to the power of n is in the denominator  
+
+Proof:
+Compare $a_n$ with geometric series
+
+## Cauchy's Root Test
+If $\lim\limits_{n\to\infty}\sqrt[\leftroot{-2}\uproot{2}n]{|a_n|} =L$ then
+1. If $L < 1$, then $\sum\limits_{n=1}^{\infty} a_n$ converges absolutely.
+2. If $L > 1$, then $\sum_{n=1}^{\infty} a_n$ diverges.
+3. If $L=1$ or L is nonexistent, the Root Test is inconclusive. This is what will happen if $\sum\limits_{n=1}^{\infty} a_n$ happens to be conditionally convergent.  
+
+Useful for terms with functions that vary with n in both numerator and denominator.
+
+Proof: Similar to above.
+
