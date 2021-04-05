@@ -524,6 +524,9 @@ $$ 0 \leq a_n \leq b_n$$
 1. $$\text{If } \sum_{n=1}^{\infty} b_n \text{ converges, then } \sum_{n=1}^{\infty} a_n \text{ also converges}$$
 2. $$\text{If } \sum_{n=1}^{\infty} a_n \text{ diverges, then } \sum_{n=1}^{\infty} b_n \text{ also diverges}$$
 
+Proof: For convergence use the Monotone Convergence Theorem by showing $a_n$ is bounded and monotone (increasing). For divergence, if we know that $a_n \le b_n$, we also know that $\sum\limits_{n=1}^{\infty} a_n \le \sum\limits_{n=1}^{\infty} b_n$.
+
+
 ### Limit Comparison Test
 If $a_n$ and $b_n$ are positive for all n and $$ \lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = L > 0$$
 Then $\sum_{n=1}^{\infty} a_n$ converges iff $\sum_{n=1}^{\infty} b_n$ converges  
