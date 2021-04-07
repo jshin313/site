@@ -37,6 +37,8 @@ Let $b_m, b_{m+1}, b_{m + 2}, ... b_n \in \mathbb{R}$
 4. $$\sum_{i=1}^{n} c = c \cdot n$$
   $$\sum_{i=m}^{n} c = c \cdot (n - m + 1)$$
 
+5. m, n, c, and k are all constants.$$ \sum_{i=m}^{n} c = \sum_{i=m}^{k-1} + \sum_{k}^{n}$$
+
 ### Common Summation Formulas
 #### 1.
 $$ \sum_{i = 1}^{n} i = \frac{n(n + 1)}{2}$$
