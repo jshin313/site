@@ -195,7 +195,7 @@ S    E             M
 0 10000110 00000110100110011001101
 ```
 
-## Assembly
+## Assembly Instructions
 Note that AT&T syntax is used
 
 ### mov
@@ -268,3 +268,17 @@ test b, a
 * Equivalent to a & b without moving the result to a
 * Sets ZF if a & b == 0
 * Sets SF if a & b < 0
+
+## Floating Point Assemby
+
+### Floating Point Registers
+* **XMM Registers**
+  * 16 total registers
+  * 16 bytes each
+### Floating Point Instructions
+```
+addsd %xmm1, %xmm0
+```
+* (Add scalar double)
+Adds what's in the xmm1 register to what's in xmm0, and store the result in xmm0
+* addss would just be for single precision floating points
