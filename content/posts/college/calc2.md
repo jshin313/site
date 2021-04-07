@@ -606,7 +606,7 @@ How to find if $\sum\limits_{n=1}^{\infty} a_n$ is convergent:
 7. If $a_n = (c_n)^n$ for some sequence $c_n$ (that is, our terms are exponential form with varying base), we should try the Root Test.
 8. Use the Integral Test if $a_n = \frac{1}{n(\ln(n))^p}$.
 
-Helpful Notes:
+### Helpful Notes
 * $\lim\limits_{n\to\infty} \left(1 + \frac{A}{n}\right)^n = e^A$
 * For Comparison Test
   * $1 \le n \le ln(e^n + n)$ since $1\le ln(e^n) \le ln(e^n + n)$ for large enough values of $n$
