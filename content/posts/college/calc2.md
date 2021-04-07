@@ -573,7 +573,7 @@ If $\sum\limits_{n=1}^{\infty} |a_n|$ converges, then $\sum\limits_{n=1}^{\infty
 2. If the series is not absolutely convergent, then test for conditional convergence with the alternating series test.
 3. Try the divergence Test
 
-## d'Alembert's Ratio Test
+### d'Alembert's Ratio Test
 If $\lim\limits_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| = L$, where $a_n$ has nonzero terms
 1. If L < 1, then $\sum_{n=1}^{\infty} a_n$ converges absolutely.
 2. If L > 1, then $\sum_{n=1}^{\infty} a_n$ diverges.
@@ -584,7 +584,7 @@ Use for factorials or where e to the power of n is in the denominator
 Proof:
 Compare $a_n$ with geometric series
 
-## Cauchy's Root Test
+### Cauchy's Root Test
 If $\lim\limits_{n\to\infty}\sqrt[\leftroot{-2}\uproot{2}n]{|a_n|} =L$ then
 1. If $L < 1$, then $\sum\limits_{n=1}^{\infty} a_n$ converges absolutely.
 2. If $L > 1$, then $\sum_{n=1}^{\infty} a_n$ diverges.
@@ -594,3 +594,21 @@ Useful for terms with functions that vary with n in both numerator and denominat
 
 Proof: Similar to above.
 
+## 11.7: Convergence Testing Strategy
+How to find if $\sum\limits_{n=1}^{\infty} a_n$ is convergent:
+
+1. If we can easily see that $\lim_{n\to\infty} a_n \neq 0$, use the Divergence Test. Otherwise continue down the list.
+2. If $\sum\limits_{n\to\infty} a_n$ is a P-series or a geometric series, or a constant multiple of either, use the P-Test or the Geometric Series Formula.
+3. If $a_n$ is an algebraic function of $n$ (function using entirely algebraic operations), try the Limit Comparison Test, so that $b_n$. is the ratio of leading terms from the denominator and numerator of $a_n$.
+4. If $\sum\limits_{n=1}^{\infty}$ is similar to, but not actually a geometric series (e.g. $a_n = \frac{2^n-n^3}{5^n + 1}$), we should consider the Comparison Tests.
+5. If $a_n = (-1)^n c_n$ or similar, where $c_n$ is non-negative, try the Alternating Series Test.
+6. If $a_n$ contains a factorial or other product, we should consider the Ratio Test.
+7. If $a_n = (c_n)^n$ for some sequence $c_n$ (that is, our terms are exponential form with varying base), we should try the Root Test.
+8. Use the Integral Test if $a_n = \frac{1}{n(\ln(n))^p}$.
+
+Helpful Notes:
+* $\lim\limits_{n\to\infty} \left(1 + \frac{A}{n}\right)^n = e^A$
+* For Comparison Test
+  * $1 \le n \le ln(e^n + n)$ since $1\le ln(e^n) \le ln(e^n + n)$ for large enough values of $n$
+  * The above also works of n on the right side is replaced with any positive power of n (e.g. $\sqrt(n)$).
+  * $−1 ≤ \cos(n) ≤ 1$ for all n
