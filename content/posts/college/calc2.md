@@ -1,7 +1,7 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-04-05
+lastmod: 2021-04-09
 draft: false
 toc: true
 tags:
@@ -577,7 +577,7 @@ If $\sum\limits_{n=1}^{\infty} |a_n|$ converges, then $\sum\limits_{n=1}^{\infty
 If $\lim\limits_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| = L$, where $a_n$ has nonzero terms
 1. If L < 1, then $\sum_{n=1}^{\infty} a_n$ converges absolutely.
 2. If L > 1, then $\sum_{n=1}^{\infty} a_n$ diverges.
-3. If L = 1 or nonexistent, the ratio test is inconclusive.
+3. If L = 1 or nonexistent (not infinity tho), the ratio test is inconclusive.
 
 Use for factorials or where e to the power of n is in the denominator  
 
@@ -588,7 +588,7 @@ Compare $a_n$ with geometric series
 If $\lim\limits_{n\to\infty}\sqrt[\leftroot{-2}\uproot{2}n]{|a_n|} =L$ then
 1. If $L < 1$, then $\sum\limits_{n=1}^{\infty} a_n$ converges absolutely.
 2. If $L > 1$, then $\sum_{n=1}^{\infty} a_n$ diverges.
-3. If $L=1$ or L is nonexistent, the Root Test is inconclusive. This is what will happen if $\sum\limits_{n=1}^{\infty} a_n$ happens to be conditionally convergent.  
+3. If $L=1$ or L is nonexistent (not infinity tho), the Root Test is inconclusive. This is what will happen if $\sum\limits_{n=1}^{\infty} a_n$ happens to be conditionally convergent.  
 
 Useful for terms with functions that vary with n in both numerator and denominator.
 
@@ -612,3 +612,24 @@ How to find if $\sum\limits_{n=1}^{\infty} a_n$ is convergent:
   * $1 \le n \le ln(e^n + n)$ since $1\le ln(e^n) \le ln(e^n + n)$ for large enough values of $n$
   * The above also works of n on the right side is replaced with any positive power of n (e.g. $\sqrt(n)$).
   * $−1 ≤ \cos(n) ≤ 1$ for all n
+
+## 11.8: Power Series
+
+### Theorem
+Let the following be a power series with a center, $c$.
+$$ F(x) = \sum\limits_{n=0}^{\infty} a_n (x - c)^n$$
+
+1. $F(x)$ converges only when $x=c$.
+2. $F(x)$ converges for all $x \in \mathbb{R}$
+3. There is a positive number $R$ such that $F(x)$ converges absolutely whenever $|x-c| < R$ but F(x) diverges whenever $|x-c| > R$
+  * The number $R$ is the radius of convergence of the power series.
+
+For case 3, we must manually check $F(x-R)$ and $F(c+R)$ for convergence when $|x-c| = R$ using 11.3-11.6 techniques.
+
+To get the radius of convergence:
+
+### Theorem A
+Let $F(x) = \sum\limits_{n=0}^{\infty} a_n (x-c)^n$ be a power series. Suppose that $\lim\limits_{n\to\infty}\sqrt[\leftroot{-2}\uproot{2}n]{|a_n|} = \rho$. Then the radius of convergence of $F(x)$ is $R = \frac{1}{\rho}$ 
+
+### Theorem B
+Let $F(x) = \sum\limits_{n=0}^{\infty} a_n (x-c)^n$ be a power series. Suppose that $\lim\limits_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| = \rho$. Then the radius of convergence of $F(x)$ is $R = \frac{1}{\rho}$ 
