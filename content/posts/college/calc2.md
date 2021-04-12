@@ -633,3 +633,13 @@ Let $F(x) = \sum\limits_{n=0}^{\infty} a_n (x-c)^n$ be a power series. Suppose t
 
 ### Theorem B
 Let $F(x) = \sum\limits_{n=0}^{\infty} a_n (x-c)^n$ be a power series. Suppose that $\lim\limits_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| = \rho$. Then the radius of convergence of $F(x)$ is $R = \frac{1}{\rho}$ 
+
+### Finding Interval of Convergence
+The domain of the function $F(x) = \sum\limits_{n=0}^{\infty} a_n (x - c)^n$ is the interval of convergence of a power series. To find the interval:
+
+1. Make note of $c$
+2. Find the radius of convergence of F, $R$ denotes the radius of convergence
+  * If $R=0$, then F only converges at c, so the interval is just the set containing c: {c}
+  * If R is infinite, then F converges everywhere and the interval is $(-\infty, \infty)$
+3. If R is positive and finite, the interior of the radius of convergence is $(c - R, c + R)$.
+  * Evaluate $F(c-R)$ and $F(c + R)$ and test for convergence. If one of them converges, change the bracket of the interval to a square bracket.
