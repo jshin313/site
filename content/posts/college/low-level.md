@@ -130,6 +130,16 @@ M = anything except all 0's
 * divide by 0
 * sqrt(-1)
 
+##### Positive Zero
+S = 0
+E = all 0's  
+M = all 0's  
+
+##### Negative Zero
+S = 1
+E = all 0's  
+M = all 0's  
+
 ### double: 64 bit (double precision)
 * Sign (1 bit)
 * Exponent (11 bits)
