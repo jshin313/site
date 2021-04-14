@@ -612,6 +612,12 @@ How to find if $\sum\limits_{n=1}^{\infty} a_n$ is convergent:
   * $1 \le n \le ln(e^n + n)$ since $1\le ln(e^n) \le ln(e^n + n)$ for large enough values of $n$
   * The above also works of n on the right side is replaced with any positive power of n (e.g. $\sqrt(n)$).
   * $−1 ≤ \cos(n) ≤ 1$ for all n
+### Helpful Limit Formulas
+* $\lim\limits_{n\to\infty} \frac{\ln(n)}{n^c} = 0$ if $c > 0$
+* $\lim\limits_{n\to\infty} \sqrt[\leftroot{-2}\uproot{2}n]{|P(n)|} = 1$ for any nonzero polynomial $P(n)$
+* $\lim\limits_{n\to\infty} \frac{n^c}{e^n} = 0$ for all $c \in \mathbb{R}$
+* $\lim\limits_{n\to\infty} \frac{b^n}{n!} = 0$ for all $b \in \mathbb{R}$
+* $\lim\limits_{n\to\infty} \left(\left(1+ \frac{b}{n}\right)^n\right) = e^b$ for all $b\in\mathbb{R}$
 
 ## 11.8: Power Series
 
