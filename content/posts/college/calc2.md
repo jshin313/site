@@ -503,7 +503,7 @@ $$ S_n = \sum_{n=0}^{N} r^n = 1 + r + r^2 + r^3 ... r^N$$
 $$ \sum_{n=0}^{\infty} r^n = \frac{1}{1-r} $$ if $|r| < 1$
 
 #### Geometric Sum Formula
-$$ \sum_{n=k}^{\infty} r^n = \frac{1^k}{1-r} $$ if $|r| < 1$
+$$ \sum_{n=k}^{\infty} r^n = \frac{r^k}{1-r} $$ if $|r| < 1$
 
 ### Divergence Test
 If $\lim\limits_{a\to\infty} a_n \neq 0$, then $\sum_{n=1}^{\infty} a_n$ diverges.
