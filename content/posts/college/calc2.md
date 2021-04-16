@@ -551,7 +551,9 @@ $$b_n = \frac{1}{n}\text{ diverges with the P-test with } p = 1$$
 Since $b_n$ diverges and $\lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = L > 0$, $a_n$ also diverges.
 
 ## 11.5: The Alternating Series Test
-If the sequence $a_n$ is a **decreasing** sequence with non-negative terms, and $\lim\limits_{n\to\infty} a_n = 0$, then $\sum_{n=1}^{\infty} (-1)^{n+1} a_n$ converges.
+If the sequence $a_n$ is a **decreasing** sequence with non-negative terms, and $\lim\limits_{n\to\infty} a_n = 0$, then $\sum_{n=1}^{\infty} (-1)^{n+1} a_n$ converges.  
+
+The test does not tell us whether a series diverges. It is inconclusive if the above is not true.
 
 Proof:  
 * Prove using the Monotone Convergence Theorem
