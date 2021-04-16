@@ -532,7 +532,7 @@ Proof: For convergence use the Monotone Convergence Theorem by showing $a_n$ is 
 
 
 ### Limit Comparison Test
-If $a_n$ and $b_n$ are positive for all n and $$ \lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = L > 0$$ and $L$ is finite
+If $a_n$ and $b_n$ are positive for all n and $$ \lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = L > 0$$ and $L$ is finite.  
 Then $\sum_{n=1}^{\infty} a_n$ converges iff $\sum_{n=1}^{\infty} b_n$ converges  
 
 If $\sum_{n=1}^{\infty} b_n$ diverges iff $\sum_{n=1}^{\infty} a_n$ diverges.
