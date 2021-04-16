@@ -590,7 +590,7 @@ Compare $a_n$ with geometric series
 If $\lim\limits_{n\to\infty}\sqrt[\leftroot{-2}\uproot{2}n]{|a_n|} =L$ then
 1. If $L < 1$, then $\sum\limits_{n=1}^{\infty} a_n$ converges absolutely.
 2. If $L > 1$, then $\sum_{n=1}^{\infty} a_n$ diverges.
-3. If $L=1$ or L is nonexistent (not infinity tho), the Root Test is inconclusive. This is what will happen if $\sum\limits_{n=1}^{\infty} a_n$ happens to be conditionally convergent.  
+3. If $L=1$ or L is nonexistent (not infinity tho), the Root Test is inconclusive (series can be absolutely convergent, convergent, or divergent. This is what will happen if $\sum\limits_{n=1}^{\infty} a_n$ happens to be conditionally convergent.  
 
 Useful for terms with functions that vary with n in both numerator and denominator.
 
