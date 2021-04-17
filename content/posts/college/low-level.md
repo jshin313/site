@@ -1,7 +1,7 @@
 ---
 title: "Computer Systems and Low Level Programming"
 publishdate: 2021-03-10
-lastmod: 2021-03-29
+lastmod: 2021-04-17
 draft: false
 toc: true
 tags:
@@ -96,7 +96,7 @@ Every 3 bits is one octal digit
 * Exponent (E): Can't be all 0s or 1s
 * Mantissa (M): Fractional part
 
-Decimal value = $(-1)^{s} \cdot (1.0 + M) \cdot 2^{E-127}$  
+Decimal value = $(0)^{s} \cdot (1.0 + M) \cdot 2^{E-127}$  
 
 Range: $2^{-126}$ to $2^{127}$
 
@@ -140,6 +140,25 @@ S = 1
 E = all 0's  
 M = all 0's  
 
+#### Ranges
+* Lowest positive normalized floating point: (1.0 + 0.0) * 2^(-126) = 2^(-126) = 1.1754943508 * 10^(-38)
+* Lowest positive denormalized floating point: (0.0 + 2^(-23)) * 2^(-126) = 2^(-149)
+* Highest positive normalized floating point: 
+  * M set to all 1's, and E set to 0b11111110 (E can't be all 1's cause that's reserved for infinities and NaN)
+  * M = (1 - 2^(-23)) = 0.99999988079
+  * (1.0 + M) = (1.0 + (1 - 2^(-23)))
+  * E = (255 - 1) - Bias = 254 - 127 = 127
+  * Highest positive normalized = 1.99999988079 * 2^(127) = 3.402823466 * 10^38
+* Highest positive denormalized floating point: 
+  * M set to all 1's
+  * M = (1 - 2^(-23)) = 0.99999988079
+  * (0.0 + M) * 2^(-126) = 0.99999988079 * 2^(-126)
+* Machine Epsilon: 
+  * Machine epsilon, $\epsilon$, is the smallest number such that $1.0 + \epsilon \neq 1.0$ on a machine
+  * $\epsilon = 2^{-\text{Num of bits for mantissa}} = 2^{-23} \approx 1.19 \cdot 10^{-7}$
+* The distance between adjacent floats is not the same for all numbers. 
+  * Example: The distance between 1.0 and the next cloest positive float is the machine epsilon (1.19 x 10^(-7)), but the distance between 6.022 * 10^23 and the adjacent float is around 3.6 * 10^16.
+
 ### double: 64 bit (double precision)
 * Sign (1 bit)
 * Exponent (11 bits)
@@ -148,6 +167,10 @@ M = all 0's
 Bias: 1023
 
 * Provides Higher precision
+
+### Summary of Floating Point Representations
+![Chart of Floating Point](/slide_54.jpg)
+Image from https://www.slideserve.com/yvon/arithmetic-for-computers
 
 ### Convert Decimal to Floating Point
 #### Example: Convert 131.3 to Floating Point Representation  
