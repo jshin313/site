@@ -131,12 +131,12 @@ M = anything except all 0's
 * sqrt(-1)
 
 ##### Positive Zero
-S = 0
+S = 0  
 E = all 0's  
 M = all 0's  
 
 ##### Negative Zero
-S = 1
+S = 1  
 E = all 0's  
 M = all 0's  
 
