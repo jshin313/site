@@ -37,6 +37,7 @@ code.has-jax {
                         }
         }
 
+
 </style>
 
 <script>
@@ -73,14 +74,15 @@ code.has-jax {
                         },
                         startup: {
                                 pageReady() {
-                                        return MathJax.startup.defaultPageReady().then(function () {
-                                                if (window.isPost) {
-                                                        clearInterval(mj_timer);
-                                                }
-                                        });
-                                }
-                        }
-                };
+
+                                                                return MathJax.startup.defaultPageReady().then(function () {
+                                                                        if (window.isPost) {
+                                                                                clearInterval(mj_timer);
+                                                                        }
+                                                                });
+                                                                }
+                                                        }
+                                                };
 
         window.addEventListener('load', (event) => {
                 document.querySelectorAll("mjx-container").forEach(function(x){ x.parentElement.classList += 'has-jax'});
@@ -89,6 +91,14 @@ code.has-jax {
                         clearInterval(page_timer);
                 }
         });
+                   
+
+                // Find and replace $$ with <div>$$ and $$</div>
+                // Based on https://stackoverflow.com/a/47205309/9512643
+                document.getElementsByClassName("post-content")[0].innerHTML = document.getElementsByClassName("post-content")[0].innerHTML.split("$$").reduce((a,b, i) => i %2 == 0 ? a + "$$</div>" + b : a + "<div>$$" + b );
+
+
+
 
 </script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
