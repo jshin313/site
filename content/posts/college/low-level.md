@@ -315,3 +315,78 @@ addsd %xmm1, %xmm0
 * (Add scalar double)
 Adds what's in the xmm1 register to what's in xmm0, and store the result in xmm0
 * addss would just be for single precision floating points
+
+## Virtual Memory
+### Problems
+* Problem 1: Not enough addressable memory 
+  * Not really a big problem with modern computers
+  * 2^32 = 4 GB, so only around 4 billion addressable addresses for each program
+  * In reality around 2GB since other addresses are used by OS
+  * For a 32-bit processor, if you don't have 4GB of RAM, the program could crash since it assumes it can access the whole 2^32 address space.
+* Problem 2: Memory Fragmentation
+  * Holes in address space if you run multiple programs together and then quit one
+* Problem 3: Programs overwriting/accessing each other's memory
+
+#### Solving Problem 1
+* The problem is that every program uses the same 32-bit memory space.  
+* Virtual memory gives each program it's own virtual memory space and uses mapping from a program's virtual memory to physical memory (RAM).  
+* Virtual memory also allows us to map virtual memory to disk if we run out of RAM. 
+
+#### Solving Problem 2
+* Mapping from virtual to physical allows program's virtual memory to consist of multiple chunks of memory that might have holes or discontinuities
+
+#### Solving Problem 3
+* Each program has it's own address space, so no overwriting of memory
+* A possible downside is that program isolation might mean redundant memory spaces
+* If programs have shared resources (e.g. fonts, graphics, icons, libraries), redundancy can be mitigated by just mapping the virtual memory spaces of both programs to the same physical memory space.
+
+### How Virtual Memory Works
+* **Virtual Memory**: What the program sees
+  * e.g. `mov $0x4, %(eax)` writes 4 to the virtual address stored in eax
+* **Physical Memory**: The physical RAM of the computer
+* **Virtual Address (VA)**: What the program uses
+* **Physical Address (VA)**: What the hardware uses. 
+
+### Translation
+1. Program executes a load or mov with a virtual address (VA)
+2. Computer translates the address to the physical address (PA) in memory
+3. (If the physical address (PA) is not in memory, the OS loads it from disk to memory and updates the map)
+4. The computer reads from RAM using the physical memory and returns the data to program
+
+### Page Table
+* **Page Table**: The map from VA (Virtual Addresses) to PA (Physical Addresses)
+* Problem: If we have a page table entry (PTE) for every virtual address, the number of entries will be the number of addressable virtual addresses. For MIPS assembly, only words are addressable, so the number of addressable addresses is the number of addresses divided by 4. So (2^32)/(4) = 2^30 = 1 billion addressable virtual addresses for MIPS, which means around 1 billion page table entires. This is a problem since we would need to store 1GB of mappings for every program if we wanted to use virtual memory.
+* Solution: Divide virtual memory into chunks (**pages**) instead of words
+* Page = Chunk of memory 
+* Page size: (Usually around 4kB or 1024 words per page) or even 2MB
+* Each page table entry now covers a range/chunk of data that is a page instead of just a word
+* Tradeoff: less flexible with how to use RAM since you have to move a page at a time
+
+#### Address Translation Example 1
+What happens if a 32-bit machine has 256 MB of RAM and 4kB pages?  
+* Page offset size for physical and virtual addresses stay the same 
+* Both **page offsets** are 12 bits: 4096 addresses that don't get translated = 4kB = 2^12  
+* Page offsets don't get translated by the page table, since they're the same for both physical and virtual, only page numbers get translated
+* 256 MB = 2^28 = 28 bits for total physical address
+* 28 bits - 12 bits (for page offset) = 16 bits for **physical page number**
+* 32 bits - 12 bits (for page offset) = 20 bits for **virtual page number**
+
+![Page Translation Example of Above](/pagetranslation.png)
+Slide from https://youtu.be/ZjKS1IbiGDA
+
+* Page offsets: tell us where in the page we're at
+* Page number: Which page
+
+* In this example there are more bits for the virtual page number than the physical page number since the virtual memory size (32 bits) is greater than the physical memory size (28 bits)
+* In this example, you would map the rest of the virtual pages to disk once physical memory is exhausted
+
+#### Address Translation Example 2
+What happens if a 32-bit machine has 8 GB of RAM and 4kB pages?  
+* Page offsets are the same as above since we still have 4kB pages
+* Virtual page numbers are the same as above since we still have a 32-bit machine
+* The only thing that would change from the above example is the virtual page size with a virtual page size of 21 bits instead
+* If you had one program running, you wouldn't need to map to disk, but with 2 or more, you still might need to.
+
+### Page Faults
+When a page is not mapped in the virtual address space. Takes a long time since there's a lot of writes/reads from the disk.
+

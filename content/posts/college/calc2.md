@@ -498,12 +498,14 @@ If $r$ is a real number and $r \neq 1$, a geometric sum is as follows
 $$ \sum_{n=0}^{\infty} r^n$$
 
 Nth partial sum of the series
-$$ S_n = \sum_{n=0}^{N} r^n = 1 + r + r^2 + r^3 ... r^N$$
+$$S_n = \sum_{n=0}^{N} r^n = 1 + r + r^2 + r^3 ... r^N$$
 
-$$ \sum_{n=0}^{\infty} r^n = \frac{1}{1-r} $$ if $|r| < 1$
+$$\sum_{n=0}^{\infty} r^n = \frac{1}{1-r} $$ 
+if $|r| < 1$
 
 #### Geometric Sum Formula
-$$ \sum_{n=k}^{\infty} r^n = \frac{r^k}{1-r} $$ if $|r| < 1$
+$$ \sum_{n=k}^{\infty} r^n = \frac{r^k}{1-r} $$
+if $|r| < 1$
 
 ### Divergence Test
 If $\lim\limits_{a\to\infty} a_n \neq 0$, then $\sum_{n=1}^{\infty} a_n$ diverges.
@@ -653,3 +655,60 @@ The domain of the function $F(x) = \sum\limits_{n=0}^{\infty} a_n (x - c)^n$ is 
   * If R is infinite, then F converges everywhere and the interval is $(-\infty, \infty)$
 3. If R is positive and finite, the interior of the radius of convergence is $(c - R, c + R)$.
   * Evaluate $F(c-R)$ and $F(c + R)$ and test for convergence. If one of them converges, change the bracket of the interval to a square bracket.
+
+## 11.9: Representation of Functions By Power Series
+Geometric Series Formula:  
+If $|x| < 1$ then $\frac{1}{1-x} = \sum_{n=0}^{\infty} x^n$
+
+We are given some function, $f$, which we can rewrite in the form
+$$f(x) = \frac{kx^m}{1-g(x)} $$
+where $k$ and $m$ are constants, and $g(x)$ is some function of $x$. $g(x)$ will generally be a constant power of x.  
+The power series expansion of $f$, will be correct when $|g(x)| < 1$
+
+### Example
+$$ f(x) = \frac{1}{3-x} = \frac{1}{3\left(1 - \frac{1}{3}x\right)} = \frac{1}{3} \cdot \frac{1}{1 - \left(\frac{1}{3} x\right)}$$
+
+$$ f(x) = \frac{1}{3} \sum_{n=0}^{\infty} \left(\frac{1}{3} x^n\right) $$
+
+The above expansion is correct when $|g(x)| < 1$ so
+$$\left|\frac{1}{3} x\right| < 1$$
+$$-1 <\frac{1}{3} x < 1$$
+$$-3 < x < 3$$
+
+### Example
+$$ f(x) = \frac{3}{5 - x^2} = 3 \frac{1}{5\left(1 - \frac{1}{5}x^2\right)} = \frac{3}{5} \cdot \frac{1}{1 - \left( \frac{1}{5} x^2\right)} $$
+$$ f(x) = \frac{3}{5} \sum_{n=0}^{\infty} \left(\frac{1}{5}x^2\right)^n = \frac{3}{5} \sum_{n=0}^{\infty} \left(\frac{1}{5}\right)^n x^{2n}$$
+
+$$ f(x) = \sum_{n=0}^{\infty}\frac{3}{5^{n+1}} x^{2n}$$
+
+Holds when the following is true:
+
+$$ \left|\frac{1}{5} x^2\right| < 1$$
+$$ |x^2| < 5$$
+$$ |x|^2 < 5 \implies |x| < \sqrt{5}$$
+$$ x \in (-\sqrt{5}, \sqrt{5}) $$
+
+### Theorem
+Let $F(x) = \sum_{n=0}^{\infty} a_n (x -c)^n$ be a power series with radius of convergence $R \neq 0$. Then $F$ is differentiable on the interval $(c- R, c+R)$, and
+$$ F'(x) = \sum_{n=1}^{\infty} na_n (x -c)^{n-1} $$
+$$ \int F(x) dx = K + \sum_{n=0}^{\infty} \frac{a_n}{n+1} (x -c)^{n+1} $$
+where K is a constant.  
+
+Notice in the $F'(x)$ example, the bound starts at 1, to ensure we don't get a negative power.  
+
+The theorem basically says we can move around the differention/integration symbols and swap around the place of them with the summation sign.
+### Example
+Find a power series formula for $f(x) = \ln(1 +x)$
+$$ f'(x) = \frac{1}{1+x} = \frac{1}{1 - (-x)} = \sum_{n=0}^{\infty} (-x)^n = (-1)^n x^n$$
+$$ f(x) \in \int \sum_{n=0}^{\infty} (-1)^n x^n dx = \sum_{n=0}^{\infty} \left(\int (-1)^n x^n dx\right) = K + \sum_{n=0}^{\infty} \left(\frac{(-1)^n}{n+1} x^{n+1}\right)$$
+
+For which K will we have
+$$  K + \sum_{n=0}^{\infty} \left(\frac{(-1)^n}{n+1} x^{n+1}\right) = \ln(1+x)$$
+Evaluate both sides at the center of the power series.
+
+$$ K + \sum_{n=0}^{\infty} \left(\frac{(-1)^n}{n+1} 0^{n+1}\right) = \ln(1 + 0)$$
+$$ K + 0 = \ln(1 + 0)$$
+$$ K = 0$$
+Thus
+
+$$ 0 + \sum_{n=0}^{\infty} \left(\frac{(-1)^n}{n+1} x^{n+1}\right) = \ln(1 + x)$$
