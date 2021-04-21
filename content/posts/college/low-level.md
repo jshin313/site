@@ -566,3 +566,65 @@ With multi-level page tables, what is the smallest amount of page table data we 
   * Physical cache: Requires translation via TLB first (slow)
   * Virtual cache: Uses virtual addresses as index to cache (no translation via TLB needed: fast, but no protection)
   * Virtually-Indexed, Physically-Tagged (VIPT) cache: Use VA for index, PA for tag
+
+## Linking
+
+### Steps of Compilation
+1. Preprocessing
+2. Compilation
+3. Assemble
+4. Linking  
+
+![Steps of compilation](/stepscompilation.png)
+
+### Static Linking
+* Cons: 
+  * Size of file
+  * Making changes to any of the libraries/linked object files, means you have to relink and recompile the executable every time
+
+#### Example of static linking
+main.c
+```c
+int add_num(int a, int b);
+
+int main(void) {
+  printf("%d\n", add_num(1, 2);
+}
+```
+
+AddNum.c
+```c
+#include <stdio.h>
+
+int add_num(int a, int b) {
+  return a + b;
+}
+```
+
+```bash
+$ gcc -c AddNum.c                         # Create object file for the file to be linked (AddNum)
+$ ar r libStatic.a AddNum.o               # Create archive of object files called libStatic.a
+$ gcc -o mainStatic main.c libStatic.a    # Link object files/archive with compiled main.c
+```
+
+### Dynamic File
+* Memory address of function is stored instead of the function itself
+* Main advantage is that if the linked file is changed, the address of the functions from the linked files in the executable won't change, so there's no need to recompile the executable
+* Uses shared object files instead of archives like the static linking above
+
+#### Example of dynamic linking
+
+```bash
+$ gcc -shared -o libDynamic.so AddNum.c          # Create shared object file called libDynamic.so
+$ gcc -o mainDynamic main.c -L . -lDynamic       # Compile main.c and link the shared object file
+```
+
+You only have to recompile the linked file to create a shared object (.so) to update it.
+
+### Static and Dynamic Library Names
+* Static Library
+  * Windows = .lib (library)
+  * Linux = .a (Archive)
+* Dynamic
+  * Windows .dll (Dynamically Linked Library)
+  * Linux = .so (Shared object)
