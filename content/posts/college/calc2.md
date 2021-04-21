@@ -591,7 +591,7 @@ Proof:
 Compare $a_n$ with geometric series
 
 ### Cauchy's Root Test
-If $\lim\limits_{n\to\infty}\sqrt[\leftroot{-2}\uproot{2}n]{|a_n|} =L$ then
+If $\lim\limits_{n\to\infty}\sqrt[^n]{|a_n|} =L$ then
 1. If $L < 1$, then $\sum\limits_{n=1}^{\infty} a_n$ converges absolutely.
 2. If $L > 1$, then $\sum_{n=1}^{\infty} a_n$ diverges.
 3. If $L=1$ or L is nonexistent (not infinity tho), the Root Test is inconclusive (series can be absolutely convergent, convergent, or divergent. This is what will happen if $\sum\limits_{n=1}^{\infty} a_n$ happens to be conditionally convergent.  
@@ -641,7 +641,7 @@ For case 3, we must manually check $F(x-R)$ and $F(c+R)$ for convergence when $|
 To get the radius of convergence:
 
 ### Theorem A
-Let $F(x) = \sum\limits_{n=0}^{\infty} a_n (x-c)^n$ be a power series. Suppose that $\lim\limits_{n\to\infty}\sqrt[\leftroot{-2}\uproot{2}n]{|a_n|} = \rho$. Then the radius of convergence of $F(x)$ is $R = \frac{1}{\rho}$ 
+Let $F(x) = \sum\limits_{n=0}^{\infty} a_n (x-c)^n$ be a power series. Suppose that $\lim\limits_{n\to\infty}\sqrt[^n]{|a_n|} = \rho$. Then the radius of convergence of $F(x)$ is $R = \frac{1}{\rho}$ 
 
 ### Theorem B
 Let $F(x) = \sum\limits_{n=0}^{\infty} a_n (x-c)^n$ be a power series. Suppose that $\lim\limits_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| = \rho$. Then the radius of convergence of $F(x)$ is $R = \frac{1}{\rho}$ 
@@ -697,6 +697,7 @@ where K is a constant.
 Notice in the $F'(x)$ example, the bound starts at 1, to ensure we don't get a negative power.  
 
 The theorem basically says we can move around the differention/integration symbols and swap around the place of them with the summation sign.
+
 ### Example
 Find a power series formula for $f(x) = \ln(1 +x)$
 $$ f'(x) = \frac{1}{1+x} = \frac{1}{1 - (-x)} = \sum_{n=0}^{\infty} (-x)^n = (-1)^n x^n$$
@@ -712,3 +713,4 @@ $$ K = 0$$
 Thus
 
 $$ 0 + \sum_{n=0}^{\infty} \left(\frac{(-1)^n}{n+1} x^{n+1}\right) = \ln(1 + x)$$
+
