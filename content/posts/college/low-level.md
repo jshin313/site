@@ -341,6 +341,8 @@ Adds what's in the xmm1 register to what's in xmm0, and store the result in xmm0
 * If programs have shared resources (e.g. fonts, graphics, icons, libraries), redundancy can be mitigated by just mapping the virtual memory spaces of both programs to the same physical memory space.
 
 ### How Virtual Memory Works
+Slides and notes based on the  https://youtu.be/ZjKS1IbiGDA
+
 * **Virtual Memory**: What the program sees
   * e.g. `mov $0x4, %(eax)` writes 4 to the virtual address stored in eax
 * **Physical Memory**: The physical RAM of the computer
@@ -358,7 +360,7 @@ Adds what's in the xmm1 register to what's in xmm0, and store the result in xmm0
 * Problem: If we have a page table entry (PTE) for every virtual address, the number of entries will be the number of addressable virtual addresses. For MIPS assembly, only words are addressable, so the number of addressable addresses is the number of addresses divided by 4. So (2^32)/(4) = 2^30 = 1 billion addressable virtual addresses for MIPS, which means around 1 billion page table entires. This is a problem since we would need to store 1GB of mappings for every program if we wanted to use virtual memory.
 * Solution: Divide virtual memory into chunks (**pages**) instead of words
 * Page = Chunk of memory 
-* Page size: (Usually around 4kB or 1024 words per page) or even 2MB
+* Page size: (Usually around 4kB or 1024 words per page) or 2MB
 * Each page table entry now covers a range/chunk of data that is a page instead of just a word
 * Tradeoff: less flexible with how to use RAM since you have to move a page at a time
 
@@ -372,7 +374,6 @@ What happens if a 32-bit machine has 256 MB of RAM and 4kB pages?
 * 32 bits - 12 bits (for page offset) = 20 bits for **virtual page number**
 
 ![Page Translation Example of Above](/pagetranslation.png)
-Slide from https://youtu.be/ZjKS1IbiGDA
 
 * Page offsets: tell us where in the page we're at
 * Page number: Which page
@@ -388,5 +389,178 @@ What happens if a 32-bit machine has 8 GB of RAM and 4kB pages?
 * If you had one program running, you wouldn't need to map to disk, but with 2 or more, you still might need to.
 
 ### Page Faults
-When a page is not mapped in the virtual address space. Takes a long time since there's a lot of writes/reads from the disk.
+* Page faults occur when a page is not in RAM
 
+#### What happens if a page is not in RAM?
+* We know if a page is not in RAM if the page table entry (PTE) points to disk
+* CPU generates a **page fault exception**
+* Hardware jumps to OS page fault handler to clean up
+  * OS picks a page to evict from RAM
+    * If the page to be evicted is **dirty**, it is written back to disk first
+    * Otherwise, the page is just evicted
+    * **Dirty** just means that the data has been changed (written). If the data hasn't changed since being loaded from disk, there's no need to write it back to disk.
+  * The OS reads the page we're trying to access from disk to RAM (where the previously evicted page was)
+  * The OS changes the Page Table Entry to map to the new page in RAM
+* The OS jumps back to the instruction that caused the page fault, but now the instruction won't cause a page fault since the page is now loaded in RAM
+
+A page fault takes incredibly long since disk is a lot slower than RAM
+
+![Pagefault speed](/pagefault.png)
+
+* Paging is good to have around, but shouldn't be used often
+* Having more RAM will make paging occur less often
+* iOS: OS kills program if too much memory rather than paging
+* OSX: OS compresses memory to prevent paging as long as possible
+
+### Memory Protection
+* Each program has it's own 32 bit virtual address space
+
+### Program Address Space in Linux 
+* Assume top has the highest addresses
+* First 1GB is reserved for kernel and can't be accessed by program
+* Next is the stack (grows down towards lower addresses)
+* Next are libraries
+* Next is the heap (grows up towards higher addresses)
+* Next is the data segment (constants and global vars)
+* Next is the text (program code)
+* Finally there is 128 MB for IO at around address 0x00000000
+
+![Memory layout diagram](/programlayout.png)
+* Random offsets for security 
+* Each process has its own Page table
+* OS makes sure separate programs' Page tables only share the same physical address when sharing memory/resources (e.g. libraries) is desired
+
+### Making Virtual Memory Fast
+* Accessing memory with virtual memory needs the following steps:
+1. Access the page table in RAM
+2. Translate the address
+3. Access the data in RAM
+
+This means there are at least 2 memory accesses when doing memory access with virtual memory
+* To improve speed of virtual memory access you can't add software, since even adding a few extra instructions per memory access would be slow
+* The solution is through hardware like a (**cache**)
+
+#### Translation Lookaside Buffer (TLB)
+* Page table is stored in memory
+* Put in a TLB (cache) in the middle of the processor and memory to speed up lookup
+* TLBs have to be small to be fast
+  * Separate TLBs for instruction (iTLB) and data (dTLB)
+  * 64 entries, 4-way (4kB pages)
+  * 32 entries, 4-way (2MB pages)
+
+#### What can happen when we access memory?
+Good: Page is in RAM
+* PTE in the TLB
+  * Best case scenario for speed
+  * <1 cycle to translate then go to RAM
+* PTE not in the TLB
+  * Poor speed (even a few cycles is detrimental)
+  * 20 - 1000 cycles to load PTE from RAM and then go to RAM
+
+BAD: Page is not in RAM (Disk)
+* PTE in the TLB (unlikely)
+  * Horrible speed
+  * 1 cycle to know if PTE is on disk
+  * ~80 M cycles to get from disk
+* PTE is not in TLB
+  * (slight more) horrible
+  * 20-1000 cycles to know if PTE is on disk
+  * ~80M cycles to get from disk
+
+#### Making TLBs better
+1. Make pages larger
+  * TLBs can reach more data since fewer pages are needed to cover data
+2. Add a second TLB that is larger, but a bit slower
+3. Have hardware to fill the TLB automatically
+  * Called a hardware page table walk
+  * Hardware does the work instead of the OS/software
+
+#### TLB Usage Scenarios
+* Empty TLB (Miss)
+  * Look in TLB and find it's empty
+  * Just look for physical address that corresponds to virtual address in memory (RAM) and add an entry in the TLB
+* TLB Hit
+  * Just look at the TLB and find a matching entry for virtual address and use that to translate
+  * Best Case
+* TLB Miss
+  * Look in TLB and find no entry
+  * Go to PTE in memory (RAM) and update the TLB
+* TLB Miss & Evict
+  * Look in TLB and find no entry and also find that TLB is full
+  * Kick out the TLB entry that's been used the least (most recently)
+  * Find PTE and add to TLB
+  * Use TLB entry to do translation
+
+### Multi-Level Page Tables
+
+#### Problem: Page Table Size
+* For 32-bit machine with 3kB pages:
+  * 1 M Page Table Entries (32 bits - 12 bits for page offsets = 20 bits, 2^20 = 1M)
+  * Each PTE is about 4 bytes (20 bits for physical page + permission bits)
+  * 4MB total
+* 4MB for each Page Table is problematic since we each program needs its own page table
+  * If we have 100 programs running, we need 400MB of memory just for the page tables
+* We can't swap the page tables out to disk since there would be no way to accessing the page tables on disk without page tables to translate
+
+#### Solution: Multi-Level Page Tables
+* Have a 1st level page table that has PTEs pointing to other page tables
+* 1st level page table must be in main physical memory
+* 2nd level page tables can be stored on disk as long as above is true
+
+#### Sample Question 2
+With multi-level page tables, what is the smallest amount of page table data we need to keep in memory for each 32-bit application?
+* We need the 1st level page table in main memory
+* We also need at least one 2nd level page table in memory to actually do something useful, since the 1st level page table only helps us find other page tables
+* The 2nd level page table is needed to actually translate memory addresses
+* 4kB + 4kB = 8kB is needed per application
+
+#### How multi-level page tables translate virtual to physical
+* Split virtual page number (usually in half)
+  * First 10 bits are to choose which 2nd level page table to go to from the PTE in the 1st level page table
+  * Next 10 bits are to choose the physical address to go to from the PTE in the 2nd level page table
+
+![Diagram of how Multilevel TLBs translate virtual to physical](/multileveltlb.png)
+
+#### Sample Question 2
+* If a computer is running 100 applications with a 2-level page table, how much memory is needed in RAM?
+* 800kB = 100 * (4kB + 4kB)
+* For each program a 1st level page table and a 2nd level page table is needed
+* 800kB is much better than the 4MB needed before
+
+### TLBs and Caches
+
+#### Naive Cache approaches
+
+![Diagram of Virtual and Physical Caches working with TLBs](/tlbandcache.png)
+
+#### Best of both worlds: VIPT
+**VIPT**: Virtually Indexed, Physically Tagged
+* Keeps protection of virtual memory, but allows cache and TLB to be accessed at the same time
+* Idea:
+  * Look up cache with **virtual address** (index for cache)
+  * Verify that the data is right with **physical tag** 
+* Only get a **hit** if the tag matches the physical address, but we can start looking for matches with the virtual address
+![Diagram of how VIPT works](/vipt.png)
+* Notice how the virtual/physical offset is used as an index for the cache, and the virtual page numbers if used to look up in the TLB, allowing for lookup in both the TLB and cache at the same time.
+  * TLB returns the Physical Page
+  * Cache returns the Physical Tag
+  * If Physical Page == Physical Tag, Cache Hit
+* Limitation:
+  * Only offset bits can be used to index cache (limiting the size of the cache)
+  * Offset bits = 12 bits = 4kB of data
+  * Thus with 4kB pages, only 4kB bytes can be stored in a directly mapped VIPT cache 
+* Still used for L1 caches today
+
+#### Virtual Memory Summary
+* Virtual Memory allows
+  * Mapping memory to disk ("unlimited" memory)
+  * Keep programs from accessing other program's memory (Security)
+  * Fill holes in RAM address space (Efficiency)
+* Page Tables
+  * Used for each program to translate VA to PA
+  * Use larger pages (4kB) to reduce number of PTE (Page Table entries)
+  * Fast translation via hardware translation lookaside buffer (TLB)
+* TLB + Cache
+  * Physical cache: Requires translation via TLB first (slow)
+  * Virtual cache: Uses virtual addresses as index to cache (no translation via TLB needed: fast, but no protection)
+  * Virtually-Indexed, Physically-Tagged (VIPT) cache: Use VA for index, PA for tag
