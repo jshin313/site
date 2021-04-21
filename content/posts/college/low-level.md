@@ -341,7 +341,9 @@ Adds what's in the xmm1 register to what's in xmm0, and store the result in xmm0
 * If programs have shared resources (e.g. fonts, graphics, icons, libraries), redundancy can be mitigated by just mapping the virtual memory spaces of both programs to the same physical memory space.
 
 ### How Virtual Memory Works
-Slides and notes based on the  https://youtu.be/ZjKS1IbiGDA
+Notes based on the lectures series by Professor Black-Schaffer: https://youtu.be/ZjKS1IbiGDA  
+I believe slides are based on Computer Systems by Bryant
+
 
 * **Virtual Memory**: What the program sees
   * e.g. `mov $0x4, %(eax)` writes 4 to the virtual address stored in eax
