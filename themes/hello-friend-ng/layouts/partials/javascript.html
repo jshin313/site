@@ -66,8 +66,10 @@ code.has-jax {
                                         processEscapes: false,
                                         processEnvironments: true
                                 },
+                                macros: {
+                                        },
                         options: {
-                                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+                                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
                         },
                         startup: {
                                 pageReady() {

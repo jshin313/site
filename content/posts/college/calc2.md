@@ -1,15 +1,18 @@
 ---
 title: "Calculus 2"
 publishdate: 2021-01-20
-lastmod: 2021-04-09
+lastmod: 2021-04-21
 draft: false
 toc: true
 tags:
   - notes
   - college
   - math
+  - calc2
 ---
- 
+
+Credits: The below is basically all based on the notes by my professor for Calc 2 with some theorems and stuff copied directly.
+
 ## Appendix E: Summation 
 Let m and n be positive integers with $n \geq m$
 
@@ -486,7 +489,7 @@ Proof: way too long
 Just express the larger factorial as the smaller one
 
 #### Limit of Exponential and Factorial
-$$ \lim\limits_{n\to\infty} \frac{r^n}{n!} = 0$$ for any real number r
+$$ \lim\limits_{n\to\infty} \frac{r^n}{n!} = 0$$ for any real number $r$  
 Proof: Use squeeze theorem for all the cases: $r < 1$, $r > 0$, $r < 0$, etc.
 
 $$ \lim\limits_{n\to\infty} \frac{n!}{r^n} = \infty$$
@@ -668,7 +671,7 @@ The power series expansion of $f$, will be correct when $|g(x)| < 1$
 ### Example
 $$ f(x) = \frac{1}{3-x} = \frac{1}{3\left(1 - \frac{1}{3}x\right)} = \frac{1}{3} \cdot \frac{1}{1 - \left(\frac{1}{3} x\right)}$$
 
-$$ f(x) = \frac{1}{3} \sum_{n=0}^{\infty} \left(\frac{1}{3} x^n\right) $$
+$$ f(x) = \frac{1}{3} \sum_{n=0}^{\infty} \left(\frac{1}{3} x\right)^n $$
 
 The above expansion is correct when $|g(x)| < 1$ so
 $$\left|\frac{1}{3} x\right| < 1$$
@@ -714,3 +717,29 @@ Thus
 
 $$ 0 + \sum_{n=0}^{\infty} \left(\frac{(-1)^n}{n+1} x^{n+1}\right) = \ln(1 + x)$$
 
+## 11.10: Taylor and Maclaurin Series
+If $f$ is representable by a power series on the interval $(c-R, c+R)$ with $R>0$. Let's say that $f(x) = \sum\limits_{n=0}^{\infty} a_n(x-c)^n$ throughout the interval. Since power series are infinitely differentiable in the interval of convergence, $f$ is infinitely differentiable at $c$.
+
+$$ f'(x) = \frac{d}{dx} \sum_{n=0}^{\infty} a_n(x-c)^n = \sum_{n=0}^{\infty} n \cdot a_n (x-c)^{n-1} \implies f^{(1)}(c) = 1\cdot a_1$$
+$$ f^{''}(x) = \frac{d}{dx} \sum_{n=0}^{\infty} na_n(x-c)^{n-1} = \sum_{n=0}^{\infty} n(n-1) \cdot a_n (x-c)^{n-2} \implies f^{(2)}(c) = 2\cdot1\cdot a_2$$
+$$ f^{(3)}(x) = \frac{d}{dx} \sum_{n=0}^{\infty} n(n-1)a_n(x-c)^{n-2} = \sum_{n=0}^{\infty} n(n-1)(n-2) \cdot a_n (x-c)^{n-3} \implies f^{(3)}(c) = 3\cdot 2\cdot1\cdot a_2$$
+
+Generally,$$ f^{(n)}(c) = n!\cdot a_n$$
+
+### Theorem: Is the Power Expansion of f Unique?
+If $f$ is representable by a power series on the interval $(c-R, c+R)$ for some positive number $R$ such that $f(x) = \sum\limits_{n=0}^{\infty} a_n(x-c)^n$ throughout the interval, then
+
+$$ a_n = \frac{f^{(n)} (c)}{n!}$$
+
+Hence, the power series expansion of $f$ with a given center is $unique$.
+
+### Definitions of Taylor & Maclaurin
+Let $f$ be a function which is infinitely differentiable at the number $c$.
+
+1. The **Taylor series** for $f$ centered at $c$ is $T(x) = \sum\limits_{n=0}^{\infty} \frac{f^{(n)}(c)}{n!}(x-c)^n$
+2. The **Maclaurin series** for $f$ is just its Taylor series centered at 0. $M(x) = \sum\limits_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}(x)^n$
+3. The **Nth Taylor coefficient** for $f$ at $c$ is $\frac{f^{(n)}(c)}{n!}$ 
+4. The **Nth Maclaurin coefficient** for $f$ at $c$ is $\frac{f^{(n)}(0)}{n!}$ 
+
+### Theorem: When does a Taylor Series of a Function equal that Function?
+If $c \in \mathbb{R}$ and $R > 0$ and $f$ is infinitely differentiable on $(c-R, c+R)$ and $\forall n > 0, \forall x \in (c-R, c+R) \\, \exists K : |f^{(n)} (x) \le K|$, then we can say that $f(x)$ is equal to its Taylor series centered at $c$ in that interval.
