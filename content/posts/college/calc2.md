@@ -671,7 +671,8 @@ The power series expansion of $f$, will be correct when $|g(x)| < 1$
 ### Example
 $$ f(x) = \frac{1}{3-x} = \frac{1}{3\left(1 - \frac{1}{3}x\right)} = \frac{1}{3} \cdot \frac{1}{1 - \left(\frac{1}{3} x\right)}$$
 
-$$ f(x) = \frac{1}{3} \sum_{n=0}^{\infty} \left(\frac{1}{3} x\right)^n $$
+$$ f(x) = \frac{1}{3} \sum_{n=0}^{\infty} \left(\frac{1}{3} x\right)^n = \sum\limits_{n=0}^{\infty} \left(\frac{1}{3}\right)^{n+1}(x^n) $$
+$$ f(x) = \sum_{n=0}^{\infty} \frac{x^n}{3^{n+1}}$$
 
 The above expansion is correct when $|g(x)| < 1$ so
 $$\left|\frac{1}{3} x\right| < 1$$
