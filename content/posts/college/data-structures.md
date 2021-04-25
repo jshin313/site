@@ -10,6 +10,122 @@ tags:
   - data structures
 ---
 
+## Sorting
+
+### Bubble Sort
+* **Best case Time Complexity**: $O(n)$ since n comparison and no swaps
+* **Worst case Time Complexity**: $O(n^2)$ since n^2 comparisons and n^2 swaps
+
+```java
+	public static <E extends Comparable<E>> void bubbleSort(ArrayList<E> arr) {
+		for (int i = arr.size() - 1; i >= 0; i--) {
+			int swaps = 0;
+			for (int j = 0; j < i; j++) {
+				if (arr.get(j).compareTo(arr.get(j + 1)) > 0) {
+					swap(arr, j, j+1);
+					swaps++;
+				}
+			}
+			if (swaps == 0) {
+				break;
+			}
+		}
+	}
+```
+
+### Selection Sort
+* **Best case Time Complexity**: $O(n^2)$ since n^2 comparison and n in place swaps (0 swaps)
+* **Worst case Time Complexity**: $O(n^2)$ since n^2 comparisons and n swaps
+```java
+	public static <E extends Comparable<E>> void selectionSort(ArrayList<E> arr) {
+		for (int i = 0; i < arr.size() - 1; i++) {
+			int min_idx = i;
+			for (int j = i; j < arr.size(); j++) {
+				if (arr.get(j).compareTo(arr.get(min_idx)) < 0) {
+					min_idx = j;
+				}
+			}
+			swap(arr, i, min_idx);
+			if (i != min_idx) {
+			}
+		}
+	}
+```
+
+### Insertion Sort
+* **Online**: works with bits of the data (a stream); the entire input isn't needed all at once, the algorithm can work by feeding input gradually
+* **Adaptive**: Adding new extra data doesn't mean you have to start the sorting algo over again. Works better with already sorted data.
+
+* **Best case Time Complexity**: $O(n)$ since O(n) comparison and 0 swaps
+* **Worst case Time Complexity**: $O(n^2)$ since around O(n^2) comparisons and O(n^2) swaps
+```java
+	// Based on Listing 8.2 InsertionSort example from "Data Structures Abstraction and Design Using Java" by Koffman and Wolfgang
+	public static <E extends Comparable<E>> void insertionSort(ArrayList<E> arr) {
+		// index i keeps track of the element we're inserting rn
+		// index i is also the length of the sorted portion of the array
+		for (int  i = 1; i < arr.size(); i++) {
+			E itemToInsert = arr.get(i);
+			// index j iterates over the sorted portion of the array
+			// to find where to insert the item at i
+			// the for loop also at the same time shifts all the elements of unsorted portion of the arr
+			// to the right to make room for the eventual insertion of itemToInsert
+			int j;
+			for (j = i - 1; j >= 0 && arr.get(j).compareTo(itemToInsert) > 0; j--) {
+				arr.set(j + 1, arr.get(j));
+			}
+			// We've found the position to insert element at i
+			// if arr.get(j + 1) > arr.get(i)
+			arr.set(j + 1, itemToInsert);
+		}
+	}
+```
+
+### Quicksort
+* **Best/Average case Time Complexity**: $O(n \log{(n)})$
+	* Array is halved each recursive call
+	* Hand wavy explanation: Recursive depth is just $O(log(n))$ and partition at each call is just $O(n)$ (more mathy explanation similar to [merge sort time complexity](/algo-notes/#example-1-merge-sort))
+* **Worst case Time Complexity**: $O(n^2)$
+	* Occurs when all the elements are on one side of the pivot on every recursive call. 
+	* Thus all $n$ recursive calls happen in the same branch and thus the depth of the recusion tree is $n$. Each call does a partition which takes an average of $n$ each call.
+ 
+
+* **Best/Average Case Space Complexity**: $O(log(n))$
+	* For an average/best case, the recursion tree is only $log(n)$ calls deep. Even though a total of $n$ recursive calls are made, only $log(n)$ stack frames exist at a given time. 
+* **Worst Case Space Complexity**: $O(n)$
+	* In the worst case, $n$ recursive calls are made, but this time instead of splitting the array in half in each recursive call, only one element (the pivot) is split off. Thus the recursion tree is $n$ stack frames deep.
+
+The algorithm works by choosing a pivot point and partitioning the array into elements smaller than the pivot and elements greater/equal to the pivot. Then the algorithm is recursively called on the two halves. The base case for the recursive quickSort would be when the *first* and *last* pointers cross (the pointers keep track of the bounds of the current input for a call).
+
+Pseudocode for (unstable) partition algorithm:
+```
+// Pseudocode from ch08.pptx slide 370 
+// https://youtu.be/1nCog_qwCdU?list=PLNDWoTOY5hTaVWg1Ar8ztvaH7qwq_bgcw&t=506
+// or pg 413 of "Data Structures Abstraction and Design Using Java" by Koffman and Wolfgang
+
+// Note in this implementation, the pivot is first at the beginning and then moved where it belongs in the array (best case in the middle of the array)
+
+1. Choose pivot
+	check if first is median
+	check if mid is median
+	else last is the median
+
+	Mov pivot to front
+2. Initialize *up* to *first* and *down* to *last*
+3. do
+	4. Increment up until up selects the first element greater than the pivot or has reached last
+	5. Decrement down until down selects the first element less than or equal to the pivot value or down has reached first.
+	6. if up < down then 
+		7. Exchange table[up] and table[down]
+8. while up is to the left of down (up < down)
+9. Exchange table[first] and table[down] (exchange pivot with elem at down)
+10. Return the value of down to pivIndex
+```
+**First** is the index of the first element of the current input  
+**Last** is the index of the last element of the current input  
+**Up** and **down** are pointers
+
+* The exchange at line 9 moves the
+
 ## Graphs
 
 ### Terminology

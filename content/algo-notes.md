@@ -26,20 +26,20 @@ Vertical bars | | mean cardinality (size)
 
 #### Advantages
 * Less space wasted $O(|E| + |V|)$ space complexity
-* Finding all adjacents/neighbors takes $O(|E|)$
+* Finding all adjacents/neighbors takes $O(|E_u|)$, where $u$ is the vertex you're looking at and $|E_u|$ is the number of edges from u.
 
 #### Disadvantages
-* Checking a connection (if edge exists) takes $O(|V|)$
+* Checking a connection (if edge exists) takes $O(|E_u|)$, if you're trying to find if the edge from $u$ to $v$ exists.
 
 ## The Master Theorem
 We have the following recurrence relation:
 $$ T(n) = aT\left(\frac{n}{b}\right) + cn^k $$
 
-a, b, c, and k are all constants.  
+$a$, $b$, $c$, and $k$ are all constants.  
 
-T(x) is represents the recursive calls of a function.  
-b is the branching factor  
-a is how many calls of T(x) are called at each step.  
+* $T(x)$ represents the recursive calls of a function.  
+* $b$ is the branching factor (how much the input is divided by on each call)
+* $a$ is how many calls of $T(x)$ are called at each step.  
 
 <div>
 $$  T(n) \in \Theta(n^k) \text{ if } a < b^k $$

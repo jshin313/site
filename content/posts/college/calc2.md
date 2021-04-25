@@ -744,3 +744,5 @@ Let $f$ be a function which is infinitely differentiable at the number $c$.
 
 ### Theorem: When does a Taylor Series of a Function equal that Function?
 If $c \in \mathbb{R}$ and $R > 0$ and $f$ is infinitely differentiable on $(c-R, c+R)$ and $\forall n > 0, \forall x \in (c-R, c+R) \\, \exists K : |f^{(n)} (x) \le K|$, then we can say that $f(x)$ is equal to its Taylor series centered at $c$ in that interval.
+
+The Maclaurin expansion of any polynomial is just the function.
