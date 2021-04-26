@@ -124,7 +124,83 @@ Pseudocode for (unstable) partition algorithm:
 **Last** is the index of the last element of the current input  
 **Up** and **down** are pointers
 
-* The exchange at line 9 moves the
+* The exchange at line 9 moves the pivot to the right position in the array.  
+In this scenario where we originally have the pivot at the beginning, the down pointer is guaranteed to point at an element less than the pivot (by the definition of the down pointer). Thus swapping the pivot with the down pointer's element will yield the proper ordering where the pivot is in between everything less than the pivot and everything greater/equal to.
+
+### Merge Sort
+* **Time Complexity**: $O(n \log{(n)})$
+	* Array is halved each recursive call
+	* Hand wavy explanation: Recursive depth is just $O(log(n))$ (always) and merging at each call is just $O(n)$ (more mathy explanation [merge sort time complexity](/algo-notes/#example-1-merge-sort))
+	* Since recursive depth is always log(n), the best, worst, and average are always $O(log(n))$
+
+* **Space Complexity**: $O(n)$
+	* Merging is not done in place for most of the time (while in place merging exists, in reality, it makes things slower).
+	* The normal version of merge sort uses auxiliary space that is bounded by 2n or just $O(n)$ at any given time in a merge sort call. The most space is used when you're down in the leaf of the recursion tree at maximal depth. Also note that only one branch is expanded out at a time in the recursion tree. 
+
+	$$\sum_{i=1}^{log_2(n) } \frac{2n}{2^i} = 2(n-2) = O(n)$$
+
+	* The sum represents that there is a depth at most of $log_2(n)$ levels, where each level has $n/(2^i)$ auxillary space taken up, where $n$ is the total, initial size of the array input on the first call of merge sort. The first call eventually merges two temporary arrays of size n/2, the second call merges two temp arrays of n/4, then two n/8 arrays, and so on, until the base case is reached (size of 1).
+	
+* Merge algorithm
+```c
+// Taken from Skiena's Algorithm Design Manual 3rd Edition pg 129-130
+
+void merge(item_type s[], int low, int middle, int high) {
+	int i; /* counter */
+	queue buffer1, buffer2; /* buffers to hold elements for merging */
+
+	init_queue(&buffer1);
+	init_queue(&buffer2);
+
+	for (i = low; i <= middle; i++) enqueue(&buffer1, s[i]);
+	for (i = middle + 1; i <= high; i++) enqueue(&buffer2, s[i]);
+
+	i = low;
+	while (!(empty_queue(&buffer1) || empty_queue(&buffer2))) {
+		if (headq(&buffer1) <= headq(&buffer2)) {
+			s[i++] = dequeue(&buffer1);
+		} else {
+			s[i++] = dequeue(&buffer2);
+		}
+	}
+
+	while (!empty_queue(&buffer1)) {
+		s[i++] = dequeue(&buffer1);
+	}
+	while (!empty_queue(&buffer2)) {
+		s[i++] = dequeue(&buffer2);
+	}
+}
+```
+
+## Heaps
+### Bubble Up
+* Used only when inserting a new item into an already heapified structure
+
+### Bubble Down
+* Used both when removing from a heap and when doing a fast array to heap conversion in $O(n)$ time
+* Bubble_down basically operates when you have a root which is out of place and children of root that have the heap property (subheaps)
+* bubble_down takes $O(log(n))$, where n is the number of nodes in the subtree with the root as the root
+
+
+### Array to Heapified Array
+1. The last n/2 elements are leaves, so start at the back of the array at index $\frac{n}{2}$
+2. Call bubble_down on the element and then decrement the index
+3. Repeat step 3 until you reach the first element
+
+#### Derivation of O(n) time for array to heapified array
+
+* Bubble_down is more efficient/faster than calling bubble_up on every element.
+* Even though bubble_down takes $log(n)$, the value of $n$ changes every time you call bubble_down, where $n$ is the total size of the array we're trying to heapify. There are $\frac{n}{2}$ leaves with subheap of height 0, $\frac{n}{4}$ nodes with subheap of height 1, $\frac{n}{8}$ nodes with subheap of height 2, and so on. In general, there are $n/2^{h+1}$ nodes of height $h$.
+
+$$ \sum_{h=0}^{\lg n} n/2^{h+1}\cdot h \le n \sum_{h=0}^{\lg n} h/2^h \le 2n$$
+* You can use the Taylor Series to derive the above.
+* Above formula taken from the Algorithm Design Manual
+
+From the [stackoverflow post](https://stackoverflow.com/a/18742428):
+> The number of operations required for siftDown and siftUp is proportional to the distance the node may have to move. For siftDown, it is the distance to the bottom of the tree, so siftDown is expensive for nodes at the top of the tree. With siftUp, the work is proportional to the distance to the top of the tree, so siftUp is expensive for nodes at the bottom of the tree. Although both operations are O(log n) in the worst case, in a heap, only one node is at the top whereas half the nodes lie in the bottom layer. **So it shouldn't be too surprising that if we have to apply an operation to every node, we would prefer siftDown over siftUp.**
+
+
 
 ## Graphs
 
