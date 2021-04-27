@@ -316,7 +316,296 @@ addsd %xmm1, %xmm0
 Adds what's in the xmm1 register to what's in xmm0, and store the result in xmm0
 * addss would just be for single precision floating points
 
+## Cache Memory
+Notes based on https://youtu.be/chnhnxWIjgw
+
+### Cache Intro
+* Without a cache, the cpu sends and receives data directly from memory by specifying an address
+  * This is relatively slow since memory is slow
+* With a cache, there is a cache in between the CPU and memory. Caches are much smaller than memory but also faster. So when the CPU asks for data from memory by specifying an address, the cache can immediately return the data if that address is already in the cache.
+* From the CPU's point of view, nothing really changes with the cache since the CPU still sends/receives data by specifying an address
+* From the memory's point of view, nothing really changes as well with a cache since memory still receives/sends data when given an address.
+* Although caching is used to describe a cache store between the CPU and memory, the concept of a cache is pretty general and can be used in the following context:
+  * CPU + Memory to Disk/Flash
+  * Browser to Internet
+  * Laptop to Distant Server
+* Main Idea: Some data is important and access more often and is stored in cache while the other data is left in memory.
+
+#### Intel i7 Memory Hierarchy
+* CPU Core
+* L1: Each core has one L1 instruction cache and one L1 data cache
+  * 32 KB
+  * 4 cycles
+* L2: Each core has one L2 cache
+  * 256 kB
+  * 11 cycles
+* L3: The L3 cache is shared between all cores
+  * 8 MB
+  * 30-40 cycles
+* Main Memory
+  * 16 GB
+  * 50-200 cycles
+
+### Basic Concepts
+When the CPU wants to READ some block
+* **Cache Hit**: The cache contains the block we're looking for
+  * Good and Fast
+* **Cache Miss**: The block we're looking for is not in the cache
+  * Bad and slow since we have to get the block from main memory
+* **Eviction / Replacement**: New block loaded into cache, but other block is removed to make space for the new block.
+  * Evict the least recently used (LRU) block (block that hasn't been used for a long time)
+
+#### Control Lines for CPU and Memory
+Source: https://youtu.be/rvTkRef4K48?list=PLbtzT1TYeoMgJ4NcWFuXpnF24fsiaOdGq
+![Control Lines for CPU and Memory](/controllines.png)
+
+### Locality
+
+#### Typical Programs
+* Use the same set of instructions over and over; most instructions not used
+* **Hot spots"/ Loop Bodies**: Small number of instructions that are executed a lot
+* Example of a hot spot:
+```c
+for (i = 0; i < N; i++) {
+  for (j = 0; j < M; j++) {
+    ... Loop Body ... <-- This is the hot spot since this gets executed a lot
+  }
+}
+```
+
+* **Working Set**: Small set of instructions that are executed a lot over a long period of time (shifts over time)
+* Hot spots also apply to data and not just instructions
+
+#### The Principle of Locality
+* **Temporal Locality**: If a byte of memory was used recently, it is likely to be used again
+* **Spacial Locality**: If a byte of memory was used recently, nearby bytes are likely to be needed soon.
+
+Locality applies to both data and instructions.
+
+#### The Working Set
+* Set of bytes that were used recently 
+* The set of bytes that will be needed soon
+  * This set can't be known exactly, but in most cases it's equal to the set of bytes used recently
+* If the working set can be kept in the cache, then the program can run faster.
+
+When we bring bytes into cache, we also bring in nearby bytes
+
+#### Data Locality
+* Nearby data is likely to be accessed soon
+```c
+for (int i =0; i < N; i++) {
+  // Stride of 1 since you're going through the memory one element at a time
+  A[i] = 1; 
+}
+```
+
+```c
+for (int i = 0; i < N; i += 4) {
+  // Stride 4
+  // Not as fast, since the cache won't have as many nearby bytes since
+  // you're jumping through the memory
+  A[i] = 1;
+}
+```
+This second program has less data locality, since the next item will be less likely to be in the cache and thus more misses.
+
+#### 2-D Arrays: Row Major Order
+* Most languages store 2-D arrays in row-major order, meaning the rows are stored contiguously and then each row is also stored contiguously next to each other.  
+
+Example:
+```c
+[1, 2, 3]
+[4, 5, 6]
+[7, 8, 9]
+```
+would be stored like this in memory, linearly:
+```c
+[1, 2, 3] [4, 5, 6] [7, 8, 9]
+```
+
+```c
+for (int i = 0; i < 3; i++) {
+  for (int j = 0; j < 3; i++) {
+    A[i][j] = 1;
+  }
+}
+```
+The above code has great locality since the stride is 1 due to how 2-D arrays are stored in memory.
+
+```c
+for (int i = 0; i < 3; i++) {
+  for (int j = 0; j < 3; i++) {
+    A[j][i] = 1;
+  }
+}
+```
+However, this code has a stride of 3 since it skips around and performs worse.
+
+### Writing
+* **Write-Hit**: When cache contains the data we want to write to
+  * Write - Through
+    * Cache immediately writes modified block to memory
+  * Write - Back
+    * Cache waits; writes block to memory when the block is evicted from the cache
+* **Write-Miss**: When the cache does not contain the block
+  * Write - Allocate
+    * Read block into cache
+    * Update the copy in the cache
+  * Write - No Allocate
+    * Send the write on through to memory
+    * Do not load block into cache
+
+#### Typical Approach for Writing
+* On Write-Hit use Write-Back
+  * Update copy in cache, but don't update memory immediately
+  * **Dirty Bit**: Bit for each block saying that a block has been modified (dirty) or not modified (not dirty)
+    * Saves time. If bit not set, then there's no need to write to memory
+* On Write-Miss use Write-Allocate
+  * Load block into cache and update the copy in cache
+  * Do not immediately update memory
+  * Set dirty bit to 1 since the block has been modified
+  * Works well since if a block is used recently, it's likely to be used again
+
+  
+#### 2nd approach
+  * Use Write-Through and Write-No allocate
+  * Memory is not out of date while in 1st approach memory is out of date
+  * 2nd approach might be used if memory is shared between multiple CPUs
+
+### Cache Line
+* **Cache line**: "The unit of data transfer between the cache and main memory.
+* Example: If the cache line is 8 bytes in size on a 32 bit machine
+  * 8 bytes reserved for actual data.
+  * 29 bits for address of block stored (32 bits - 3 bits = 29 bits)
+    * The last 3 bits of the address are zero if the cache line is 8 bytes, so they don't need to be stored
+  * Dirty Bit: 1 = Need to write back to main memory, 0 = never modified
+  * Valid Bit: Is the line full of data?
+    * Keeps track of whether the values in the cache are valid (e.g. when starting up, the cache will be full of garbage data)
+    * Also used when switching between processes.
+
+### Associative Memory
+* Normal Memory:
+  * Address size: N bits -> $2^n$ values
+  * Guaranteed to give data for any address
+  * Requires too much storage to store all $2^n$ addresses since caches are small
+* Associative Memory/Cache
+  * Can be used for caches
+  * Key-value store (Key/Input: Address, Value/Output = Block Data)
+  * If the machine is 32 bits and the block size is 8 bytes, then the key is 29 bits
+
+* In this section associative memory and cache are used interchangeably
+
+#### Fully Associative Cache
+* "Any block can go into any cache line"
+* Example: 
+  * B = 64 byte block size
+  * L = Number of cache lines = 512 lines
+  * B* L = Size of cache = 32 KB (not including bits for non data)
+  * S = Set = 1
+* 26 bits for key (called **tag**) 
+* 6 bits for **block offset** (2^6 = 64)
+* Hardware Implementation
+  * Wires/lines for every bit of the tag cross with every cache line
+  * When a cache line's tag matches the tag of the input, the hardware triggers the value wires to output the value corresponding to the tag
+  ![Diagram of the hardware for associative cache lines](/assoccache.png)
+* Everything is implemented in hardware, which makes the cache faster
+* Cache Operation
+  * Input: 32 bit address
+  * Extract 26 bit tag and 6 bit offset
+  * Send tag to associative memory (aka cache)
+  * IF MATCH:
+    * Get 64 byte data block from associative memory (cache)
+    * Use offset to extract the desired byte and send it to the CPU
+  * IF NO MATCH:
+    * Select block to evict (using LRU algorithm, which uses some extra bits in the cache line)
+    * If dirty bit set in the block to evict, write it back to memory
+    * Send the tag of the block we're trying to get to main memory and get 64 bytes back
+    * Update cache line (key, data, dirty, valid)
+    * Extract the desired byte with the offset and send to CPU
+* *Problems*: Works well for small caches, but slow for larger caches since you have to broadcast the full 29 bits of the key to all cache lines in associative memory
+
+### Direct Mapped
+* "Each block can go into only one cache line" (e.g. Line 2 can only hold block 2 or block 512 or block 1026)
+* Each cache line has the option of holding a set number of lines (but the line holds only one block, not more than one at the same time)
+* Example:
+  * B = Block Size = 64 bytes
+  * L = Number of Lines = 512
+  * C = B*L = Cache Size = 32 KBytes
+* Faster than associative lookup since a given block can only be in one line
+* All we have to do to retrieve a block is retrieve a line and check if it contains our target block
+* 2^9 = 512, so we can address any line with a 9 bit number
+![Diagram of direct mapped cache](/directcache.png)
+
+#### Cache Operation
+  * From the 32 bit address extract the 17 bit tag, 9 bit index, and the 6 bit offset
+  * Use index to find the correct line and read the line
+  * Compare the tag from the address to the tag in the cache line
+    * Same = Cache-Hit
+    * Different = Cache-Miss
+  * Use offset to get the right byte
+* *Problems*: A cache line can only hold one block at a time, so if two blocks are in the working set and map to the same cache line, then **cache thrashing** occurs since the cache line is continually evicted and updated, decreasing performance.
+
+### The General Form Cache
+* Combines features of fully associative and direct-mapped caches
+* Has many small associative memories that can hold only a few lines
+
+* Example (8-Way Set Associative Cache):
+  * S = Sets = 64
+  * L = Number of Lines = 8 lines per set
+  * B = Block Size = 64 Bytes
+  * Total Cache size = 64 * 8 * 64 = 32 kB
+![General Cache Bits](/general.png)
+
+#### Cache Operation
+* Extract index: identifies which set to use
+* Look at the set that the index maps to
+* See if a line with a matching tag is in the set (set is associative, so it checks all 8 of its lines to see if the tag is in the set)
+* Cache Thrashing is less likely to occur since each set can hold multiple blocks, even if blocks map to the same set
+
+### Cache Misses
+
+#### Types of Compulsory Misses
+* Cold Cache occurs when there is nothing in the cache when the program begins
+
+#### Capacity Miss
+* Cache is too small when it can't contain the entire working set
+
+#### Conflict Miss
+* Plenty of room in cache, but 2 blocks in Working Set cannot be in the cache together (occurs in mappings like a direct-mapped cache)
+
+### Cache Unfriendly Code
+* No locality: "Spaghetti code"
+* Neural Network simulation
+* Computer generated code
+* Bizarre Algorithms
+* Graph-like data structures
+
+### Cache Terminology
+* Cache Hit
+* Cache Miss
+  * Compulsory Miss
+  * Conflict Miss
+  * Capacity Miss
+* Block
+* Line
+* Associative Memory
+* Direct-Mapped Cache
+* Write Through v. Write-Back
+* Write-Allocate v. Write-No-Allocate
+* Hit Rate v. Miss Rate
+* Principle of Locality
+* Spacial v. Temporal Locality
+* Working Set
+* Tag, Index, Offset
+* Valid Bit
+* Dirty Bit
+* Stride
+* Thrashing
+
 ## Virtual Memory
+Notes based on the lectures series by Professor Black-Schaffer: https://youtu.be/ZjKS1IbiGDA  
+I believe slides are based on Computer Systems by Bryant
+
 ### Problems
 * Problem 1: Not enough addressable memory 
   * Not really a big problem with modern computers
@@ -341,8 +630,6 @@ Adds what's in the xmm1 register to what's in xmm0, and store the result in xmm0
 * If programs have shared resources (e.g. fonts, graphics, icons, libraries), redundancy can be mitigated by just mapping the virtual memory spaces of both programs to the same physical memory space.
 
 ### How Virtual Memory Works
-Notes based on the lectures series by Professor Black-Schaffer: https://youtu.be/ZjKS1IbiGDA  
-I believe slides are based on Computer Systems by Bryant
 
 
 * **Virtual Memory**: What the program sees
@@ -489,7 +776,7 @@ BAD: Page is not in RAM (Disk)
   * Go to PTE in memory (RAM) and update the TLB
 * TLB Miss & Evict
   * Look in TLB and find no entry and also find that TLB is full
-  * Kick out the TLB entry that's been used the least (most recently)
+  * Kick out the TLB entry that's been used the least recently (LRU)
   * Find PTE and add to TLB
   * Use TLB entry to do translation
 
