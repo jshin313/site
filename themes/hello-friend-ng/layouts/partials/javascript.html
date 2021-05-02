@@ -15,7 +15,7 @@
 {{ end }}
 {{ end }}
 
-{{if eq .Section "posts"}}
+{{if (and (ne .Title "About") (ne .Title "Projects"))}}
 <script>window.isPost=true;</script>
 {{end}}
 

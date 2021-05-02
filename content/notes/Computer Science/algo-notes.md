@@ -1,13 +1,13 @@
 ---
 title: "Algorithm Notes"
-date: 2020-12-27
-draft: false 
+date: 2021-05-02
+draft: true 
 toc: true
 tags:
   - notes
 ---
 
-Notes on various sources: https://backtobackswe.com/, CTCI, etc.
+Notes on various sources: https://backtobackswe.com/ and CTCI, but mainly from the Algorithm Design Manual by Skiena
 
 ## Graph Representation
 Vertical bars | | mean cardinality (size)

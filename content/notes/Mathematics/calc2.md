@@ -1,5 +1,5 @@
 ---
-title: "Calculus 2"
+title: "1942: Calculus 2"
 publishdate: 2021-01-20
 lastmod: 2021-04-21
 draft: false
@@ -11,7 +11,7 @@ tags:
   - calc2
 ---
 
-Credits: The below is basically all based on the notes by my professor for Calc 2 with some theorems and stuff copied directly.
+Credits: The below is basically all based on the notes by my [professor](https://math.temple.edu/cgi-bin/get_person?uid=cosborne) for Calc 2 with some theorems and stuff copied directly.
 
 ## Appendix E: Summation 
 Let m and n be positive integers with $n \geq m$
