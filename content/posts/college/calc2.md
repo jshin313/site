@@ -40,9 +40,11 @@ Let $b_m, b_{m+1}, b_{m + 2}, ... b_n \in \mathbb{R}$
 4. $$\sum_{i=1}^{n} c = c \cdot n$$
   $$\sum_{i=m}^{n} c = c \cdot (n - m + 1)$$
 
-5. m, n, c, and k are all constants.$$ \sum_{i=m}^{n} c = \sum_{i=m}^{k-1} + \sum_{k}^{n}$$
+5. m, n, c, and k are all constants.
+$$ \sum_{i=m}^{n} c = \sum_{i=m}^{k-1} + \sum_{k}^{n}$$
 
 ### Common Summation Formulas
+
 #### 1.
 $$ \sum_{i = 1}^{n} i = \frac{n(n + 1)}{2}$$
 
@@ -102,11 +104,11 @@ $$ = \lim_{n\to\infty} \frac{2 (n^2 + 2n + 1)}{n^2} $$
 ### Riemann Sums
 $$ x_i = a + i \Delta x$$
 $$ c_i \in [x_{i-1}, x_i]$$
-$$ C_n = \\{c_1, c_2, c_3, ... c_n\\}$$
+$$ C_n = {c_1, c_2, c_3, ... c_n }$$
 
-Divide [a, b] into n equal subintervals with endpoints a = $x_0 < x_1 < x_2 < ... < x_n = b$ Each subinterval has length $\frac{b-a}{n} = \Delta x $  
+Divide [a, b] into n equal subintervals with endpoints a = $x_0 < x_1 < x_2 < ... < x_n = b$. Each subinterval has length $\frac{b-a}{n} = \Delta x$  
 
-Define $$ R_n (f, C_n) = \sum_{i = 1}^{n} f(c_i) \Delta x$$
+$$ R_n (f, C_n) = \sum_{i = 1}^{n} f(c_i) \Delta x$$
 
 If $lim_{n\to\infty} (R_n(f, C_n))$ exists and is the same regardless of how $C_n$ is chosen, $f$ is integrable on [a, b] and we define the following:
 $$ \int_{a}^{b} f(x) \, dx = \lim_{n\to\infty} (R_n (f, C_n))$$
@@ -135,7 +137,7 @@ Interval $[0, 8\pi]$
 Let n = 4
 
 $$ \Delta x = \frac{8\pi - 0}{4} = 2\pi$$
-$$x_0 = 0, \\; x_1 = 2\pi, \\; x_2 = 4\pi, \\; x_3 = 6\pi,\\; x_4 = 8\pi $$
+$$x_0 = 0, \  x_1 = 2\pi, \  x_2 = 4\pi, \  x_3 = 6\pi,\  x_4 = 8\pi $$
 
 $$ R_4 = \sum_{i=1}^{4} f(x_i) \Delta x = \sum_{i=1}^{4} f(x_i) 2\pi =  2\pi \sum_{i=1}^{4} f(x_i) = 2\pi [f(x_1) + f(x_2) + f(x_3) + f(x_4)]$$
   
@@ -146,9 +148,9 @@ $$ L_4 = \sum_{i=1}^{4} f(x_{i-1}) \Delta x = \sum_{i=1}^{4} f(x_{i-1}) 2\pi =  
 $f(x) = 2x + 1$   
 $$ n = 5$$ 
 $$ \Delta x = \frac{b - a}{n} = \frac{10 - 0}{5} = 2 $$
-$$ x_0 = 0,\\; x_1 = 2,\\; x_2 = 4,\\; x_3 = 6,\\; x_4 = 8,\\; x_5 = 10$$
+$$ x_0 = 0,\  x_1 = 2,\  x_2 = 4,\  x_3 = 6,\  x_4 = 8,\  x_5 = 10$$
 Note: $m_i$ is the midpoint
-$$ m_1 = 1,\\; m_2 = 3,\\; m_3 = 5,\\; m_4 = 7,\\; m_5 = 9$$
+$$ m_1 = 1,\  m_2 = 3,\  m_3 = 5,\  m_4 = 7,\  m_5 = 9$$
 
 $$ M_5 = \sum_{i=1}^{5} f\left(\frac{x_{i-1} + x_i}{2}\right) \Delta x = \sum_{i=1}^{5} f(m_i) \Delta x = \sum_{i = 1}^{5} f(m_i) 2 $$
 
@@ -168,12 +170,12 @@ $$ \Delta x= \left(\frac{5}{n}\right) $$
 $$  a = 3 $$
 $$ f(x) = x^3$$
 $$ \frac{b - a}{n} = \frac{5}{n} \text{ and } a = 3 \text{ , so } \frac{b - 3}{n} = \frac{5}{n} \implies b = 8 $$
-$$ \[a, b\] = \[3, 8 \] $$
+$$ [a, b] = [3, 8 ] $$
 
 ## 5.3: Fundamental Theorem of Calculus Pt 2
-Let $f$ be continuous on $[a, b]$. Let $F$ be an antiderivative of $f$ on $[a, b]$ (i.e. $F(x) = f(x)\\; \forall x \in [a, b] $). Then the following is true:
+Let $f$ be continuous on $[a, b]$. Let $F$ be an antiderivative of $f$ on $[a, b]$ (i.e. $F(x) = f(x)\  \forall x \in [a, b] $). Then the following is true:
 
-$$ \int_{a}^{b} f(x) \\; dx = F(b) - F(a) $$
+$$ \int_{a}^{b} f(x) \  dx = F(b) - F(a) $$
 
 Proof: f(x) is continuous on $[a, b]$. Use riemann sums and get a telescoping sum. Use Mean Value Theorem
 
@@ -181,34 +183,37 @@ Proof: f(x) is continuous on $[a, b]$. Use riemann sums and get a telescoping su
 Let f be continuous on $[a, b]$
 
 ## 5.5: The Substitution Rule
-If f is even, then $$\int_{-b}^{b} f(x) \\;dx =  2 \int_{0}^{b} f(x) \\; dx$$
+If f is even, then 
+$$\int_{-b}^{b} f(x) \ dx =  2 \int_{0}^{b} f(x) \  dx$$
 
-If f is odd, then $$\int_{-b}^{b} f(x) \\;dx =  0$$
+If f is odd, then 
+$$\int_{-b}^{b} f(x) \ dx =  0$$
 
 ## 6.1: Area between Two Curves
-$$ A = \int_{a}^{b} (g(x) - f(x))\\;dx $$
-where $\forall x \\; g(x) > f(x) $
+$$ A = \int_{a}^{b} (g(x) - f(x))\ dx $$
+where $\forall x \ g(x) > f(x)$
 
 ## 6.2: Volume of Solid
-$$ V = \int_{a}^{b} A(x) \\; dx $$ where $A(x)$ is the area of cross section at x.  
+$$ V = \int_{a}^{b} A(x) \ dx $$ 
+where $A(x)$ is the area of cross section at x.  
   
 For the volume of a solid of revolution (disk method):
-$$ V = \int_a^b f(x)^2 \pi\\; dx$$
+$$ V = \int_{a}^{b} f(x)^{2} \pi \ dx$$
 
 A more general formula for a solid of revolution (washer method):
-$$ V = \int_a^b \pi (R(x)^2 - r(x)^2) \\; dx $$
+$$ V = \int_a^b \pi (R(x)^2 - r(x)^2) \  dx $$
 where $R(x)$ is the distance between the axis of revolution and the upper curve (farther from axis of revolution) and $r(x)$ is the distance between the axis of revolution and the curve that's closer to the axis of revolution.
 
 ## 6.5: Average Value of Function
 Average value from a to b:
-$$ f_{avg} = \frac{1}{b - a} \int_{a}^{b} f(x) \\; dx $$
+$$ f_{avg} = \frac{1}{b - a} \int_{a}^{b} f(x) \  dx $$
 
 ## 7.1: Integration by Parts
 ### Formula
 Let u and v be differentiable functions
-$$ \int u(x) v'(x) \\; dx = u(x) \\; v(x) - \int v(x) u'(x) \\;dx$$
+$$ \int u(x) v'(x) \  dx = u(x) \  v(x) - \int v(x) u'(x) \ dx$$
 or 
-$$ \int u dv = uv - \int v\\;du$$
+$$ \int u dv = uv - \int v\ du$$
 
 ### Derivation
 Use Product rule
@@ -229,9 +234,9 @@ How to choose u in Integration by Parts (Ranked from best to worst)
 ### Examples
 
 #### Example 1
-$$ u = ln(x), \\; du = 1 \cdot dx$$
-$$ du = \frac{1}{x}  dx, \\; v = x$$
-$$ \int_{1}^{e^3} ln(x) \cdot 1 \\;dx = \left. uv \right\vert_{1}^{e^3} - \int_{1}^{e^3} v du$$
+$$ u = ln(x), \  du = 1 \cdot dx$$
+$$ du = \frac{1}{x}  dx, \  v = x$$
+$$ \int_{1}^{e^3} ln(x) \cdot 1 \ dx = \left. uv \right\vert_{1}^{e^3} - \int_{1}^{e^3} v du$$
 $$ = \left. x ln(x) \right\vert_{1}^{e^3} - \int_{1}^{e^3} x \left(\frac{1}{x}\right) dx$$
 
 ## 7.2: Trigonometric Functions Integration Techniques
@@ -247,8 +252,8 @@ Use u substitution to solve
 ### Integrating Even Powers of Sin/Cos
 
 #### Helpful Identities and Formulas
-$$ \int \sin(qx)\\\; dx = - \frac{\cos(qx)}{q} + C$$
-$$ \int \cos(qx)\\\; dx = \frac{\sin(qx)}{q} + C$$
+$$ \int \sin(qx)\\  dx = - \frac{\cos(qx)}{q} + C$$
+$$ \int \cos(qx)\\  dx = \frac{\sin(qx)}{q} + C$$
 where q is a integer
 
 $$ \sin^2(x) = \frac{1 - \cos(2x)}{2}$$
@@ -271,10 +276,10 @@ $$ \int \sec(x) dx = \ln(|\sec(x) + \tan(x)|) + C$$
 
 ### Integrating Odd Powers of Tan and Sec
 Example:
-$$ \int \tan^5 (x) \sec^3(x) \\; dx$$
-$$ \int \tan^4 (x) \sec^2(x) \sec(x) \tan(x) \\\; dx$$
-$$ \int (\sec^2 (x) - 1)^2 \sec^2(x) \sec(x) \tan(x) \\\; dx$$
-$$ u = \sec(x), \\; du = \sec(x) \tan(x) dx $$
+$$ \int \tan^5 (x) \sec^3(x) \  dx$$
+$$ \int \tan^4 (x) \sec^2(x) \sec(x) \tan(x) \\  dx$$
+$$ \int (\sec^2 (x) - 1)^2 \sec^2(x) \sec(x) \tan(x) \\  dx$$
+$$ u = \sec(x), \  du = \sec(x) \tan(x) dx $$
 $$ = \int (u^2 - 1)^2 u^2 du $$
 Solve now
 
@@ -282,7 +287,7 @@ Solve now
 $$ \int sec^m (x) tan^n(x) dx = \int sec^{2j} (x) tan^n(x) dx$$
 $$ = \int sec^{2j - 2}(x) tan^n(x)sec^2(x)dx = \int (sec^2(x)^{j-1} tan^n(x) sec^2(x) dx)$$
 $$ = \int (tan^2(x) + 1)^{j-1} tan^n(x) sec^2(x) dx$$
-$$ u = tan(x), \\; du = sec^2(x)dx$$
+$$ u = tan(x), \  du = sec^2(x)dx$$
 $$ = \int (u^2 + 1)^{j-1} u^n du$$
 
 ### Integral of Tan
@@ -308,22 +313,25 @@ If $degree(P(x)) \geq deg(Q(x))$ then just do long division to simplify.
 ### Case I: Q(x) is the Product of Distinct Linear Factors
 Once we have $deg(Q(x)) > deg(P(x))$, then we can say the following:
 
-$$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{a_i x - b_i} $$ where $A_1, \\; A_2, \\; A_3,\\; ... A_n$ are constants.
+$$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{a_i x - b_i} $$ 
+where 
+$A_1, \  A_2, \  A_3,\  ... A_n$ are constants.
 
 Then we can integrate more easily since the following is true
 $$\int \frac{A_i}{a_i x - b_i} = \frac{A_i}{a_i} ln(|a_i x - b_i|) + C $$
 
 ### Case II: Q(x) has Repeated Linear Factors
-$$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{(a_i x - b_i)^n} $$ where $A_1, \\; A_2, \\; A_3,\\; ... A_n$ are constants.
+$$ \frac{P(x)}{Q(x)} = \sum_{i=1}^{n} \frac{A_i}{(a_i x - b_i)^n} $$ 
+where $A_1, \  A_2, \  A_3,\  ... A_n$ are constants.
 
 #### Example:
-$$ \int \frac{1}{x^3 (x - 1)} \\; dx$$
+$$ \int \frac{1}{x^3 (x - 1)} \  dx$$
 $$ \frac{1}{x^3 (x - 1)} = \frac{A}{x} + \frac{B}{x^2} + \frac{C}{x^3} + \frac{D}{x-1}$$
 $$ x^3 (x-1) \cdot \frac{1}{x^3 (x - 1)} = \left(\frac{A}{x} + \frac{B}{x^2} + \frac{C}{x^3} + \frac{D}{x-1}\right) \cdot (x^3(x -1))$$
 $$ 1 = Ax^2(x - 1) + Bx(x -1) + C(x-1) + Dx^3$$
 $$ 1 = (A+D)x^3 + (B-A)x^2 + (C-B)x + (-C)$$
 $$ 0x^3 + 0x^2 + 0x + 1 = (A+D)x^3 + (B-A)x^2 + (C-B)x + (-C)$$
-\
+
 $$ 0 = A+D$$
 $$ 0 = B-A$$
 $$ 0 = C-B$$
@@ -332,7 +340,7 @@ Solve for the other stuff and integrate
 
 ### Case III: Q(x) with a Prime Quadratic Factor
 $Q(x)$ has a prime quadratic factor in 
-$$\int \frac{P(x)}{Q(x)} \\; dx $$
+$$\int \frac{P(x)}{Q(x)} \  dx $$
 
 The prime quadratic factor $ax^2 + bx + c$ of $Q(x)$ will contribute a partial fraction decomposition of 
 $\frac{Dx+E}{ax^2 + bx + c}$
@@ -346,7 +354,7 @@ Solve for A, B, and D.
 
 ### Case IV: Q(x) has Repeated Prime Quadratic Factors
 $Q(x)$ has repeated prime quadratic factors in 
-$$ \int \frac{P(x)}{Q(x)} \\; dx $$
+$$ \int \frac{P(x)}{Q(x)} \  dx $$
 
 The prime quadratic factor $\left(ax^2 + bx + c\right)^n$ of $Q(x)$ will contribute a partial fraction decomposition of 
 $$ \frac{D_1x+E_1}{ax^2 + bx + c} + \frac{D_2x+E_2}{ax^2 + bx + c} + \frac{D_3x+E_3}{ax^2 + bx + c} + \frac{D_nx+E_n}{ax^2 + bx + c}$$
@@ -358,30 +366,31 @@ $$ \frac{3x-1}{x^3(x^2 + 9)^2} = \frac{A}{x} + \frac{B}{x^2} + \frac{C}{x^3} + \
 
 ### Type I: Infinite Integrals
 If the following is true:
-$$ \forall t \ge a, \\, \int_{a}^{t} f(x)\\, dx$$
+$$ \forall t \ge a, \  \int_{a}^{t} f(x)\  dx$$
 then, 
-$$ \int_{a}^{\infty} f(x)\\, dx = \lim\limits_{t\to\infty} \int_{a}^{t} f(x)\\, dx$$
+$$ \int_{a}^{\infty} f(x)\  dx = \lim\limits_{t\to\infty} \int_{a}^{t} f(x)\  dx$$
 If it converges, then the limit exists.
 If it diverges, then the limit does not exist and the limit is infinity or -infinity.
 
 If both of the improper integrals on the right side of the equation converge, the following is true:
-$$ \int_{-\infty}^{\infty} g(x)\\, dx = \int_{-\infty}^{a} g(x) \\, dx + \int_{a}^{\infty} g(x) \\, dx$$
+$$ \int_{-\infty}^{\infty} g(x)\  dx = \int_{-\infty}^{a} g(x) \  dx + \int_{a}^{\infty} g(x) \  dx$$
 
 #### Example
-$$ \text{Evaluate } \int_{0}^{\infty} xe^{-x}\\,dx$$
+$$ \text{Evaluate } \int_{0}^{\infty} xe^{-x}\ dx$$
 If the antiderivative is not obvious, perhaps compute it first.
-$$ \int xe^{-x}\\,dx = -x e^{-x} - \int (-e^{-x})\\,dx $$
-$$ = -xe^{-x} + \int e^{-x} \\, dx = -xe^{-x} -e^{-x} + C$$
-$$ u = x, \\, du = dx$$
-$$ v = - e^{-x}, \\, dv = e^{-x} dx$$
+$$ \int xe^{-x}\ dx = -x e^{-x} - \int (-e^{-x})\ dx $$
+$$ = -xe^{-x} + \int e^{-x} \  dx = -xe^{-x} -e^{-x} + C$$
+$$ u = x, \  du = dx$$
+$$ v = - e^{-x}, \  dv = e^{-x} dx$$
 
-$$ \int_{0}^{\infty} xe^{-x}\\,dx= \lim\limits_{r\to\infty} \int_{0}^{r} (xe^{-x})\\, dx = \lim\limits_{r\to\infty} \left. (-xe^{-x} - e^{-x} )\right\vert_{0}^{r} = \lim\limits_{r\to\infty}(-re^{-r} - e^{-r} + 1) $$
+$$ \int_{0}^{\infty} xe^{-x}\ dx= \lim\limits_{r\to\infty} \int_{0}^{r} (xe^{-x})\  dx = \lim\limits_{r\to\infty} \left. (-xe^{-x} - e^{-x} )\right\vert_{0}^{r} = \lim\limits_{r\to\infty}(-re^{-r} - e^{-r} + 1) $$
 $$= \lim_{r\to\infty} ((-e^{-r}) (-r - 1) + 1) = \lim\limits_{r\to\infty} \left(\frac{r + 1}{e^r}  \right) + 1 = \lim\limits_{r\to\infty} \left(\frac{1}{e^r}\right) + 1 = 1$$
 
 ### Type II: Discontinuous Integrands
 
 #### Example
-Evaluate the following $$ \int_0^3 \frac{1}{(x-1)^2}$$
+Evaluate the following 
+$$ \int_0^3 \frac{1}{(x-1)^2}$$
 Since $f(x)$ has a VA at $x=1$, this integral is improper.
 
 $$ \int_0^3 \frac{1}{(x-1)^2} dx = \int_0^1 \frac{1}{(x-1)^2} + \int_1^3 \frac{1}{(x-1)^2}$$
@@ -409,7 +418,8 @@ Use the Comparison Test.
 Let the new function be the ratio of the leading terms (term with most rapid growth) of the numerator and denominator.
 
 $$ f(x) = \frac{1}{x-\sin^2(x)} $$
-$$ g(x) = \frac{1}{x}$$ since $\sin^2(x)$ is just bounded to $[0 , -1]$.
+$$ g(x) = \frac{1}{x}$$
+since $\sin^2(x)$ is just bounded to $[0 , -1]$.
 
 Notice then that $\frac{1}{x-\sin^2(x)} \ge \frac{1}{x} \ge 0$
 
@@ -489,7 +499,8 @@ Proof: way too long
 Just express the larger factorial as the smaller one
 
 #### Limit of Exponential and Factorial
-$$ \lim\limits_{n\to\infty} \frac{r^n}{n!} = 0$$ for any real number $r$  
+$$ \lim\limits_{n\to\infty} \frac{r^n}{n!} = 0$$
+for any real number $r$  
 Proof: Use squeeze theorem for all the cases: $r < 1$, $r > 0$, $r < 0$, etc.
 
 $$ \lim\limits_{n\to\infty} \frac{n!}{r^n} = \infty$$
@@ -521,7 +532,8 @@ $\sum_{n=1}^{\infty} a_n$ converges iff $\int_{1}^{\infty} f(x)dx$ also converge
 You can use the integral test for divergence as well, if $a_n$ can be a continuous, positive, and decreasing function.
 
 ## The P-Test
-p is a real number $$ \sum_{n=1}^{\infty} \frac{1}{n^p}$$
+p is a real number 
+$$ \sum_{n=1}^{\infty} \frac{1}{n^p}$$
 converges  iff $p > 1$  
 
 Proof: Use Divergence Test for $p \ge 0$ and Integral Test
@@ -537,7 +549,9 @@ Proof: For convergence use the Monotone Convergence Theorem by showing $a_n$ is 
 
 
 ### Limit Comparison Test
-If $a_n$ and $b_n$ are positive for all n and $$ \lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = L > 0$$ and $L$ is finite.  
+If $a_n$ and $b_n$ are positive for all n and 
+$$ \lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = L > 0$$
+and $L$ is finite.  
 Then $\sum_{n=1}^{\infty} a_n$ converges iff $\sum_{n=1}^{\infty} b_n$ converges  
 
 If $\sum_{n=1}^{\infty} b_n$ diverges iff $\sum_{n=1}^{\infty} a_n$ diverges.
@@ -545,7 +559,7 @@ If $\sum_{n=1}^{\infty} b_n$ diverges iff $\sum_{n=1}^{\infty} a_n$ diverges.
 #### Example
 Determine if $\sum_{n=1}^{\infty} \frac{1}{n^{1+(1/n)}}$ converges or diverges.
 
-$$ a_n = \frac{1}{n^{1+(1/n)}},\\, b_n = \frac{1}{n}$$
+$$ a_n = \frac{1}{n^{1+(1/n)}},\  b_n = \frac{1}{n}$$
 
 $$ \lim\limits_{n\to\infty} \left(\frac{a_n}{b_n}\right) = \lim\limits_{n\to\infty} \left(\frac{1}{n^{1+(1/n)} \cdot \frac{n}{1}}\right) = \lim\limits_{n\to\infty} \left(\frac{1}{n^{1/n}}\right) = \lim\limits_{n\to\infty}e^{ln(n^{-1/n})}$$
 $$ = e^{(\lim\limits_{n\to\infty} -ln(n)/n)}= e^{(\lim\limits_{n\to\infty} -(1/n)/n)} = e^0 = 1 $$
@@ -567,12 +581,12 @@ Proof:
 ## 11.6: Absolute Convergence, and the Ratio Test & Root Test
 
 ### Absolute Convergence
-$ \sum\limits_{n=1}^{\infty} |a_n| $ converges.  
+$\sum\limits_{n=1}^{\infty} |a_n|$ converges.  
 Lets you rearrange the terms without messing up the sum.
 
 ### Conditional Convergence
-$ \sum\limits_{n=1}^{\infty} a_n $ converges, but
-$ \sum\limits_{n=1}^{\infty} |a_n| $ diverges.
+$\sum\limits_{n=1}^{\infty} a_n$ converges, but
+$\sum\limits_{n=1}^{\infty} |a_n|$ diverges.
 
 ### Proposition
 If $\sum\limits_{n=1}^{\infty} |a_n|$ converges, then $\sum\limits_{n=1}^{\infty} a_n$ also converges.
@@ -619,11 +633,11 @@ How to find if $\sum\limits_{n=1}^{\infty} a_n$ is convergent:
 * $\lim\limits_{n\to\infty} \left(1 + \frac{A}{n}\right)^n = e^A$
 * For Comparison Test
   * $1 \le n \le ln(e^n + n)$ since $1\le ln(e^n) \le ln(e^n + n)$ for large enough values of $n$
-  * The above also works of n on the right side is replaced with any positive power of n (e.g. $\sqrt(n)$).
+  * The above also works of n on the right side is replaced with any positive power of n (e.g. $\sqrt{n}$).
   * $−1 ≤ \cos(n) ≤ 1$ for all n
 ### Helpful Limit Formulas
 * $\lim\limits_{n\to\infty} \frac{\ln(n)}{n^c} = 0$ if $c > 0$
-* $\lim\limits_{n\to\infty} \sqrt[\leftroot{-2}\uproot{2}n]{|P(n)|} = 1$ for any nonzero polynomial $P(n)$
+* $\lim\limits_{n\to\infty} \sqrt[^n]{|P(n)|} = 1$ for any nonzero polynomial $P(n)$
 * $\lim\limits_{n\to\infty} \frac{n^c}{e^n} = 0$ for all $c \in \mathbb{R}$
 * $\lim\limits_{n\to\infty} \frac{b^n}{n!} = 0$ for all $b \in \mathbb{R}$
 * $\lim\limits_{n\to\infty} \left(\left(1+ \frac{b}{n}\right)^n\right) = e^b$ for all $b\in\mathbb{R}$
@@ -725,7 +739,8 @@ $$ f'(x) = \frac{d}{dx} \sum_{n=0}^{\infty} a_n(x-c)^n = \sum_{n=0}^{\infty} n \
 $$ f^{''}(x) = \frac{d}{dx} \sum_{n=0}^{\infty} na_n(x-c)^{n-1} = \sum_{n=0}^{\infty} n(n-1) \cdot a_n (x-c)^{n-2} \implies f^{(2)}(c) = 2\cdot1\cdot a_2$$
 $$ f^{(3)}(x) = \frac{d}{dx} \sum_{n=0}^{\infty} n(n-1)a_n(x-c)^{n-2} = \sum_{n=0}^{\infty} n(n-1)(n-2) \cdot a_n (x-c)^{n-3} \implies f^{(3)}(c) = 3\cdot 2\cdot1\cdot a_2$$
 
-Generally,$$ f^{(n)}(c) = n!\cdot a_n$$
+Generally,
+$$ f^{(n)}(c) = n!\cdot a_n$$
 
 ### Theorem: Is the Power Expansion of f Unique?
 If $f$ is representable by a power series on the interval $(c-R, c+R)$ for some positive number $R$ such that $f(x) = \sum\limits_{n=0}^{\infty} a_n(x-c)^n$ throughout the interval, then
@@ -743,6 +758,8 @@ Let $f$ be a function which is infinitely differentiable at the number $c$.
 4. The **Nth Maclaurin coefficient** for $f$ at $c$ is $\frac{f^{(n)}(0)}{n!}$ 
 
 ### Theorem: When does a Taylor Series of a Function equal that Function?
-If $c \in \mathbb{R}$ and $R > 0$ and $f$ is infinitely differentiable on $(c-R, c+R)$ and $\forall n > 0, \forall x \in (c-R, c+R) \\, \exists K : |f^{(n)} (x) \le K|$, then we can say that $f(x)$ is equal to its Taylor series centered at $c$ in that interval.
+If $c \in \mathbb{R}$ and $R > 0$ and $f$ is infinitely differentiable on $(c-R, c+R)$ and the following condition is met
+$$\forall n > 0, \forall x \in (c-R, c+R) \  \exists K : |f^{(n)} (x) \le K|$$
+then we can say that $f(x)$ is equal to its Taylor series centered at $c$ in that interval.
 
 The Maclaurin expansion of any polynomial is just the function.
