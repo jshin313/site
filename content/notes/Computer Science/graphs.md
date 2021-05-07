@@ -10,6 +10,7 @@ tags:
 ---
 
 * Notes based on [Graphs Series by William Fiset](https://www.youtube.com/playlist?list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P)
+* Pseudocode and lots of the images from above as well
 
 ## Graph Introduction
 
@@ -607,6 +608,209 @@ function dfs(at):
 
 #### Steps
 * Pick a node $0 \le S < N$ to be the starting node, S, for the tour
+* Compute the optimal solution when we have a path where n = 2, in other words a partial path with one edge. For this we need two things
+  * The set of visited nodes in the subpath
+  * The index of the last visited node in the path
+* The above form the dynamic programming state. Since there are N possible nodes that could have visited last and 2^N possible subsets of visited nodes, the space needed to store the answer is $O(N2^N)$ since we need to store every possible combination for DP
+  * Note that we store the set of visited nodes in a single 32-bit integer to save space instead of an array
+* To solve paths of length $3 \le n \le N$, we're going to take the solved subpaths from n-1 which are cached, and add another edge extending to a node which hasn't been visited from the last visited node
+
+```
+# m - 2D adjacency matrix of the graph
+# S - The start node (0 <= S < N)
+
+function tsp(m, S):
+  N = matrix.size()
+
+  # Initialize memo table
+  # Fil table with null values or +infinity
+  memo = 2D table of size N by 2^N
+
+  setup(m, memo, S, N)
+  solve(m, memo, S, N)
+
+  minCost = findMinCost(m, memo, S, N)
+  tour = findOptimalTour(m, memo, S, N)
+
+  return (minCost, tour)
+
+# Only generates tours with path length n=2 (two nodes)
+function setup(m, memo, S, N):
+  for (i = 0; i < N; i++):
+    if i == S: continue
+
+    # Store the optimal value from node S
+    # to each node i (this is given as input
+    # in the adjacency matrix m).
+    memo[i][1 << S | 1 << i] = m[S][i] 
+
+    # Bits at "index" of S and "index" of i to 1 and the rest are zero
+    # If S was 5 and i was 4, then the 5th and 4th bit are set so 10000 | 1000 = 11000
+    # The memo[i] subarray keeps track of the visited nodes in a tour
+    # and the i keeps track of the node visited last that we're keep incrementing
+
+function solve(m, memo, S, N):
+  # r keeps track of the number of nodes in a partial tour (gets incremented until N)
+  for (r = 3; r <= N; r++):
+    # The combinations function generates all bit sets
+    # of size N with r bits set to 1. For example,
+    # combinations(3, 4) = {011, 1011, 1101, 1110}
+    for subset in combinations(r, N):
+      # If S is not in the subset, then disgard that subset since it is invalid
+      # since the subset doesn't contain our starting node
+      if notIn(S, subset): continue 
+      
+      # next is the next node we're going to
+      for (next = 0; next < N; next++):
+        # Check if the subset we generated has the next node in it
+        # Basically run this loop body for every ndoe in the subset
+        if next == S || notIn(next, subset): continue
+        
+        # The sbuset state without the next node
+        state = subset ^ (1 << next)
+        
+        minDist = +infinity
+
+        # 'e' is short for end node
+        # Generate all possible end nodes and see which one is best
+        for (e = 0; e < N; e++):
+          # Invalid end node
+          if (e == S || e == next || notIn(e, subset)):
+            continue
+
+          newDistance = memo[e][state] + m[e][next]
+          if (newDistance < minDist):
+            minDist = newDistance
+
+        memo[next][subset] = minDist
+
+
+function notIn(i, subset):
+  # Check if the ith bit is 0
+  return ((1 << i) & subset) == 0
+
+function findMinCost(m, memo, S, N):
+  # END_STATE is a bitmask with all N bits set to 1
+  END_STATE = (1 << N) - 1
+
+  minTourCost = +infinity
+
+  for (e = 0; e < N; e++):
+    if (e == S): continue
+
+    tourCost = memo[e][END_STATE] + m[e][S]
+    
+    if tourCost < minTourCost: minTourCost = tourCost
+
+  return minTourCost
+
+function findOptimalTour(m, memo, S, N):
+  lastIndex = S
+  state = (1 << N) - 1 # end state
+  tour = array of size N+1
+
+  # Work backwards
+  # Start with end state and remove the nodes one by one to get path
+  for (i = N-1; i >=1; i--):
+    index = -1
+    # Find next node in path (in reverse order)
+    for (j = 0; j < N; j++):
+      if j == S || notIn(j, state): continue
+      if (index == -1) index == j
+      prevDist = memo[index][state] + m[index][lastIndex]
+      newDist = memo[j][state] + m[j][lastIndex]
+      if (newDist < prevDist) index = j
+
+    tour[i] = index
+    state = state ^ (1 << index) # remove the index node from the state since we're going backwards
+    lastIndex = index
+
+  tour[0] = tour[N] = S # Tour ends and starts at S
+  return tour
+```
+
+## Eulerian Paths
+* **Eulerian Path**: Path of edges that visits all the edges in a graph exactly once.
+* **Eulerian Circuit**: Eulerian path where the start and end are the same node
+  * If you know that an eulerian circuit exists, you can start on any node
+
+| | Eulerian Circuit  |  Eulerian Path |
+|---|---|---|
+|Undirected Graph | Every vertex has an even degree. | Either every vertex has even degree or exactly two vertices have odd degree (start and end nodes) |
+| Directed Graph | Every vertex has equal indegree and outdegree. | At most one vertex has outdegree-indegree = 1 and at most one vertex has indegree - outdegree = 1 and all other vertices have equal in and out degrees.|
+
+* Requirement for paths/circuits is that all vertices with nonzero degree need to belong to a single connected component
+
+### Finding Eulerian Paths (Hierholzer's Algorithm)
+* Determine if an eulerian path exists using the table
+* For directed graphs, we have to start at the node with exactly one extra outgoing edge and the end has to be the node with exactly one extra incoming edge
+* If we just do a regular DFS, even when starting at the right node and we know an Eulerian path exists, it doesn't give us an Eulerian path
+  * Modify the DFS so that when you get "stuck" (no more out degrees to go to that aren't yet visited), backtrack and add the nodes to a stack.
+
+* $O(E)$ since computing in/out degrees + DFS are both linear in number of edges
+
+```
+# Global/class scope variables
+n = number of vertices in graph
+m = number of edges in graph
+g = adjacency list of the directed graph
+
+in = [0, 0, ..., 0]  # length n
+out = [0, 0, ..., 0] # length n
+
+path = empty integer linkd list data structure
+
+function fundEulerianPath():
+  
+  countInOutDegrees()
+  if not graphHasEulerianPath(): return null
+
+  dfs(findStartNode())
+
+  if path.size() == m+1: return path
+  return null
+
+function countInOutDegrees():
+  for edges in g:
+    for edge in edges:
+      out[edge.from]++
+      in[edge.to]++
+
+function graphHasEulerianPath():
+  start_nodes, end_nodes = 0, 0
+
+  for (i = 0; i < n; i++):
+    if (out[i] - in[i]) > 1 or (in[i] - out[i])> 1):
+      return false
+    else if out[i] - in[i] == 1:
+      start_nodes++
+    else if in[i] - out[i] == 1:
+      end_nodes++
+    return (end_nodes == 0 and start_node==0) or (end_nodes == 1 and start_node == 1)
+
+function findStartNode():
+  start = 0
+  for (i = 0; i < n; i++):
+    # Unique starting node
+    if out[i] - in[i] == 1: return i
+
+    # Start at any node with an outgoing edge (so we don't start on a singleton node)
+    if out[i] > 0: start = i
+
+
+# The out array serves two purposes
+# 1. track whether there are outgoing edges
+# 2. Index into the adjacency list to select next outgoing edge
+function dfs(at):
+  # While the current node stil has outgoing edges
+  while (out[at] != 0):
+
+    # Select the next unvisited outgoing edge
+    next_edge = g[at].get(--out[at])
+    dfs(next_edge.to)
+
+  path.insertFirst(at)
+```
 
 ## Image Credits
 * David Eppstein: https://commons.wikimedia.org/wiki/File:Pseudoforest.svg 
