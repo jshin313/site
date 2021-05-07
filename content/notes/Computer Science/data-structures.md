@@ -243,7 +243,7 @@ Other graphs algorithms are of the form:
   * Step 3 searches a list and is $O(|E_v|)$
   * Step 2 and 3 take $O(|E|)$
   * The overall algo is $O(|V||E|)$
-$$\sum_{u=1}^{|V|} \left(\sum_{v=1}^{|V|} \left(\sum_{v=1}^{|E_v|} O(1)\right)\right) = \sum_{u=1}^{|V|}|E| = |V|\cdot|E|$$
+$$\sum_{u=1}^{|V|} \left(\sum_{v=1}^{|V|} \left(\sum_{n=1}^{|E_v|} O(1)\right)\right) = \sum_{u=1}^{|V|}|E| = |V|\cdot|E|$$
 * Adjacency Matrix:
   * Step 3 is just $O(1)$
   * Overall is just $O(|V|^2)$

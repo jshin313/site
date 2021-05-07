@@ -10,6 +10,26 @@ if (theme !== null) {
   isDark
     ? metaThemeColor.setAttribute("content", "#252627")
     : metaThemeColor.setAttribute("content", "#fafafa");
+
+  let elements = document.getElementsByClassName("ui image");
+
+  for (let element of elements) {
+    let src = element.src;
+    let splitted = src.split("/");
+    let filename = splitted[splitted.length - 1];
+    
+    // Replace image with dark theme equivalent
+    if (document.body.classList.contains("dark-theme")) {
+      filename = filename.replace('.svg', '_dark.svg');
+      splitted[splitted.length -1] = filename;
+    } 
+    // Replace image with light theme equivalent
+    else {
+      filename = filename.replace('_dark', '');
+      splitted[splitted.length -1] = filename;
+    }
+    element.src = splitted.join('/');
+  };
 }
 
 themeToggle.addEventListener("click", () => {
