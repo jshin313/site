@@ -812,6 +812,93 @@ function dfs(at):
   path.insertFirst(at)
 ```
 
+## Minimum Spanning Tree (MST)
+* **Minimum Spanning Tree**: The subset of the edges in the graph which connects all vertices (without cycles) while minimizing total edge cost for an undirected graph with weighted edges
+* MSTs aren't necessarily unique for a graph, meaning there can be multiple valid solutions with the same edge cost
+* A MST can only exist if all the nodes are part of a single connected component
+* For an undirected graph we can store it as a directed graph with one incoming edge and outbound edge per edge in the undirected graph
+
+### Prim's MST Algorithm
+* Greedy, works well for dense graphs
+* Doesn't parallelize well
+
+* Lazy Version: $O(E \cdot \log(E))$
+* Eager version: $O(E\cdot \log(V))$
+
+### Lazy Prim's MST Algo
+
+#### Steps
+* Maintain a min Priority Queue (PQ) that sorts edges by min edge cost. Used to determine next node to visit and the edge to get to that node.
+* Start the algo at **s**. Mark **s** as visited and iterate over all edges of s and add them to PQ.
+* While the PQ is not empty and a MST has not been formed, dequeue the next edge from the PQ.
+  * If dequeued edge is outdated (i.e. node it points to has already been visited), then skip and poll again
+  * Otherwise mark the current node as visited and add the edge to the MST
+  * Iterate over the current node's edges and add all its edges to PQ. Do not add edges to PQ that have already been visited.
+* We know that the algorithm is done when the number of edges in the MST is one less than the number of nodes (definition of a tree)
+
+### Eager Prim's MST Algo
+* Instead of "blindly inserting edges into a PQ which could later become stale", the eager version tracks (node, edge) key-value pairs that can easily be updated and polled
+* Each node in the graph is paired with only one of its incoming edges for a MST (except start node)
+* Instead of adding edges to the PQ as we iterate over the edges, in the eager version, we relax (update) the destination node's most promising incoming edge using an Indexed Priority Queue (IPQ)
+  * IPQ = PQ + Hashmap and supports polling and updating in logarithmic time
+  * Since there are V (node, edge) pairs for this algo in the IPQ, the poll/update operations will be $O(\log(V))$
+  * Thus the total time complexity would be $O(E\cdot \log(V))$ since we need to poll/update for every edge
+
+#### Steps
+* Create a min IPQ of size V that sorts vertex-edge pairs (v, e) based on the min edge cost of e. By default all vertices v have a best value of (v, null) in the IPQ
+* Start algorithm on the start node 's' (any node). Mark s as visited and relax all edges of s. Relax means update the entry for node v in the IPQ from $(v, e_{old})$ to $(v, e_{new})$ if the new edge $e_{new}$ from u to v has a lower cost than $e_old$.
+* While the IPQ is not empty and MST has not been formed, dequeue the next best (v, e) pair.
+  * Mark node v as visited and add edge e to the MST
+  * Relax all edges of v while making sure not to relax any edge pointing a node which has already been visited
+
+```
+n = # Number of nodes in the graph
+ipq = # IPQ data structure, stores (node index, edge object) pairrs
+      # Edge objects consist of {start node, end node, edge cost} tuples
+      # IPQ sorts (node index, edge object) pairs based on min edge cost
+g = # graph adjacency list
+
+visited = [false, ..., false] # visited[i] tracks whether node i has been visited or not, size n
+
+function eagerPrims(s = 0):
+  m = n - 1 # number of total edges that should be in MST
+
+  # edgeCount is current number of edge in the partial MST
+  edgeCount, mstCost = 0, 0
+  mstEdges = [null, ..., null] # size m
+
+  relaxEdgesAtNode(s)
+
+  while (!ipq.isEmpty() and edgeCount != m):
+    destNodeIndex, edge = ipq.dequeue
+
+    mstEdges[edgeCount++] = edge
+    mstCost += edge.cost
+
+    relaxEdgesAtNode(destNodeIndex)
+
+  if edgeCount != m:
+    return (null, null)
+  return (mstCost, mstEdges)
+
+function relaxEdgesAtNode(currentNodeIndex):
+  visited[currentNodeIndex] = true
+
+  edges = g[currentNodeIndex]
+
+  for (edge: edges):
+    destNodeIndex = edge.to
+
+    if visited[destNodeIndex]: continue
+
+    if !ipq.contains(destNodeIndex):
+      ipq.insert(destNodeIndex, edge)
+    else:
+      # Try improving cheapest edge entry in IPQ if already in there
+      ipq.decreaseKey(destNodeIndex, edge)
+  
+```
+
 ## Image Credits
 * David Eppstein: https://commons.wikimedia.org/wiki/File:Pseudoforest.svg 
 * Maksim: https://commons.wikimedia.org/wiki/File:Scc.png
