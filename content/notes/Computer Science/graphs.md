@@ -1,7 +1,7 @@
 ---
 title: "Graphs"
 date: 2021-05-04
-draft: true 
+draft: false
 toc: true
 tags:
   - notes
