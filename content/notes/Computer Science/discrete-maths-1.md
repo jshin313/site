@@ -1,5 +1,5 @@
 ---
-title: "1961: Discrete Mathematics I"
+title: "1966: Discrete Mathematics I"
 publishdate: 2020-11-27T16:40:12-05:00
 lastmod: 2020-12-27
 draft: false
