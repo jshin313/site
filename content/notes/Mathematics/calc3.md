@@ -116,7 +116,7 @@ $$ |\textbf{a}| = \sqrt{a_1^2 + a_2^2 + a_3^2}$$
 $$ \textbf{i} = \ev{1, 0, 0}$$
 $$ \textbf{j} = \ev{0, 1, 0}$$
 $$ \textbf{k} = \ev{0, 0, 1}$$
-$\textbf{i}$, $\textbf{j}$, and \textbf{k}$ are **Standard Basis Vectors** which point in the direction of the x, y, or z axis and have a length of 1
+$\textbf{i}$, $\textbf{j}$, and $\textbf{k}$ are **Standard Basis Vectors** which point in the direction of the x, y, or z axis and have a length of 1
 * If **a** = $\ev{a_1, a_2, a_3}$, then **a** = $a_1 \textbf{i} + a_2 \textbf{j} + a_3 \textbf{k}$
 
 **Unit Vector**: Vector with length 1 (So **i**, **j**, and **k** are examples of unit vectors)
@@ -234,7 +234,7 @@ Find **a + b**, 4**a** + 2**b**, |**a**|, and |**a** - **b**|.
 $$\ev{-3 + 9, 4 + (-1)} = \ev{6, 3}$$
 
 4**a** + 2**b** = 
-$$4 \cdot \ev{-3, 4} + 2 \cdot \ev{9, -1}$$
+$$(4)  \ev{-3, 4} + (2) \ev{9, -1}$$
 $$ = \ev{-12, 16} + \ev{18, -2}= \ev{-12 + 18, 16 + (-2)}$$
 $$  = \ev{6, 14}$$
 
@@ -284,20 +284,149 @@ Find a unit vector that has the same direction as the given vector.
 $$
 \ev{6, -2}
 $$ 
-$$ \textbf{u} = \frac{\textbf{a}}{|\textbf{a}|} = \ev{6, -2} \cdot \frac{1}{\sqrt{6^2 + (-2)^2}} = \ev{6, -2} \cdot \frac{1}{\sqrt{40} } = \ev{6, -2} \cdot \frac{1}{2\sqrt{10}} $$
+$$ \textbf{u} = \frac{\textbf{a}}{|\textbf{a}|} = \ev{6, -2} \frac{1}{\sqrt{6^2 + (-2)^2}} = \ev{6, -2} \frac{1}{\sqrt{40} } = \ev{6, -2} \frac{1}{2\sqrt{10}} $$
 $$
 = \ev{\frac{6}{2\sqrt{10}}, \frac{-2}{2\sqrt{10} }} = \ev{\frac{3}{\sqrt{10}}, -\frac{1}{\sqrt{10}}} 
 $$ 
 
-#### Problem 23
+#### Problem 25
 Find a unit vector that has the same direction as the given vector.
 $$
 8\textbf{i} - \textbf{j} + 4\textbf{k}
 $$
-$$ \textbf{u} = \frac{\textbf{a}}{|\textbf{a}|} = (8\textbf{i} - \textbf{j} + 4\textbf{k} )\cdot \frac{1}{\sqrt{8^2 + (-1)^2 + 4^2}} = (8\textbf{i} - \textbf{j} + 4\textbf{k} )\cdot \frac{1}{\sqrt{64 + 1 + 16} } =(8\textbf{i} - \textbf{j} + 4\textbf{k} )\cdot \frac{1}{\sqrt{81} } $$
+$$ \textbf{u} = \frac{\textbf{a}}{|\textbf{a}|} = (8\textbf{i} - \textbf{j} + 4\textbf{k} ) \frac{1}{\sqrt{8^2 + (-1)^2 + 4^2}} = (8\textbf{i} - \textbf{j} + 4\textbf{k} ) \frac{1}{\sqrt{64 + 1 + 16} } =(8\textbf{i} - \textbf{j} + 4\textbf{k} ) \frac{1}{\sqrt{81} } $$
 $$
-= (8\textbf{i} - \textbf{j} + 4\textbf{k} ) \cdot \frac{1}{9} = \frac{8}{9}\textbf{i} - \frac{1}{9}\textbf{j} + \frac{4}{9}\textbf{k} 
+= (8\textbf{i} - \textbf{j} + 4\textbf{k} ) \frac{1}{9} = \frac{8}{9}\textbf{i} - \frac{1}{9}\textbf{j} + \frac{4}{9}\textbf{k} 
+$$ 
 
 #### Problem 26
+Find the vector that has the same direction as $\ev{6, 2, -3}$ but has length 4.
 
+$$
+\textbf{u} = \frac{\textbf{a}}{|\textbf{a}|} = \ev{6, 2, -3} \frac{1}{\sqrt{6^2 + 2^2 + (-3)^2}} = \ev{6, 2, -3} \frac{1}{36 + 4 + 9} = \ev{6, 2, -3} \frac{1}{\sqrt{49}} = \ev{\frac{6}{7}, \frac{2}{7}, -\frac{3}{7}}
+$$
+$$
+4\textbf{u} = 4 \ev{\frac{6}{7}, \frac{2}{7}, -\frac{3}{7}} = \ev{\frac{24}{7}, \frac{8}{7}, -\frac{12}{7}}
 $$ 
+
+#### Problem 29
+If **v** lies in the first quadrant and makes an angle $\frac{\pi}{3}$ with the positive $x$-axis and |**v**| = 4, find **v** in component form.
+
+<div style='width: 100%' class='ui rounded images'>
+<img class='ui image' src='/calc3/12.2.29.svg'>
+</div>
+
+$$
+\ev{4\cos{\frac{\pi}{3}}, 4\sin{\frac{\pi}{3}}} = \ev{\frac{4(1)}{2}, \frac{4 \sqrt{3} }{2}}
+$$ 
+$$
+\ev{2, 2\sqrt{3}} 
+$$ 
+
+#### Problem 43
+If $A$, $B$, and $C$ are the vertices of a rectangle, find $\overrightarrow{AB} + \overrightarrow{BC} + \overrightarrow{CA}$ 
+
+$$
+\overrightarrow{AB} + \overrightarrow{BC} + \overrightarrow{CA} = \overrightarrow{AC} + \overrightarrow{CA} = \overrightarrow{AA} = 0
+$$ 
+
+#### Problem 44
+Let $C$ be the point on the line segment $AB$ that is twice as far from $B$ as it is from $A$. If $\textbf{a} = \overrightarrow{OA}$, $\textbf{b} = \overrightarrow{OB}$, and $\textbf{c} = \overrightarrow{OC}$, show that $\textbf{c} = \frac{2}{3} \textbf{a} + \frac{1}{3}\textbf{b}$.
+
+<div style='width: 100%' class='ui rounded images'>
+<img class='ui image' src='/calc3/12.2.44.svg'>
+</div>
+
+$$
+-\textbf{a} = \overrightarrow{AO}
+$$ 
+$$
+-a + b = \overrightarrow{AO} + \overrightarrow{OB} = \overrightarrow{AB}
+$$ 
+$$
+\overrightarrow{AB} = \overrightarrow{AC} + \overrightarrow{CB} = \frac{1}{2}\overrightarrow{CB} + \overrightarrow{CB}
+$$ 
+
+$$
+\overrightarrow{CO} + \overrightarrow{OB} = \overrightarrow{CB} = -\textbf{c} + \textbf{b}
+$$ 
+
+$$
+\overrightarrow{AB} = \frac{1}{2}\overrightarrow{CB} + \overrightarrow{CB} = \frac{1}{2}(-c + b) + (-c + b)
+$$ 
+
+$$
+(-a + b) = \frac{3}{2}(b - c)
+$$ 
+$$
+\frac{2}{3}b - \frac{2}{3}a = b - c
+$$ 
+
+$$
+\frac{2}{3}b - b - \frac{2}{3}a = -c
+$$ 
+$$
+b - \frac{2}{3}b + \frac{2}{3}a = c
+$$ 
+$$
+c = \frac{1}{3}b + \frac{2}{3}a
+$$ 
+
+#### Problem 45
+a. Draw the vectors **a** = $\ev{3, 2}$, **b** = $\ev{2, -1}$, and **c** = $\ev{7, 1}$.  
+
+b. Show, by means of a sketch, that there are scalars $s$ and $t$ such that $\textbf{c} = s\textbf{a} + t\textbf{b}$.
+
+<div style='width: 100%' class='ui rounded images'>
+<img class='ui image' src='/calc3/12.2.45.a.svg'>
+</div>
+
+#### Problem 47
+If $\textbf{r} = \ev{x, y, z}$ and $\vb{r_0} = \ev{x_0, y_0, z_0}$, describe the set of all points $(x, y, z)$ such that $|\vb{r} - \vb{r_0}| = 1$.
+
+$$
+\vb{r} - \vb{r_0} = \ev{x - x_0, y-y_0, z-z_0}
+$$ 
+$$
+|\vb{r} - \vb{r_0}| = \sqrt{(x-x_0)^2 + (y-y_0)^2 + (z-z_0)^2} = 1
+$$ 
+$$
+(x-x_0)^2 + (y-y_0)^2 + (z-z_0)^2 = 1^2
+$$ 
+The set of all points will form a sphere with center $(x_0, y_0, z_0)$ with a radius of $1$.
+
+## 12.2: The Dot Product
+If $\vb{a} = \ev{a_1, a_2, a_3}$ and $\vb{b} = \ev{b_1, b_2, b_3}$, then the **dot product** of $\vb{a}$ and $\vb{b}$ is denoted by $\vb{a} \cdot \vb{b}$ and is calculated by the following
+$$ \vb{a} \cdot \vb{b} = a_1 b_1 + a_2 b_2 + a_3 b_3$$
+
+The result of the dot product is a scalar quantity, not a vector.
+
+### Properties of the Dot Product
+If $\vb{a}, \vb{b}, \vb{c}$ are vectors in $V_3$ and $c$ is a scalar, then
+
+1. $\vb{a} \cdot \vb{a} = |\vb{a}|^2$
+2. $\vb{a} \cdot \vb{b} = \vb{b} \cdot \vb{a}$
+3. $\vb{a} \cdot (\vb{b} + \vb{c}) = \vb{a} \cdot \vb{b} + \vb{a} \cdot \vb{c}$
+4. $(c\vb{a}) \cdot \vb{b} = c (\vb{a} \cdot \vb{b}) = \vb{a} \cdot (c\vb{b})$
+5. $0 \cdot \vb{a} = 0$
+
+If $\theta$ is the angle between the vectors $\vb{a}$ and $\vb{b}$, then 
+$$\vb{a} \cdot \vb{b} = |\vb{a}||\vb{b}|\cos\theta$$
+
+Two vectors $\vb{a}$ and $\vb{b}$ are perpendicular/orthogonal iff $\vb{a} \cdot \vb{b} = 0$
+
+### Direction Angles and Direction Cosines
+**Direction Angles** are the angles $\alpha, \beta, \gamma$ that $\vb{a}$ makes with the positive x-, y-, and z-axes, respectively.
+$$ \vb{a} = |\vb{a}|\ev{\cos\alpha, \cos \beta, \cos\gamma}$$
+
+Unit vector in direction of $\vb{a}$:
+$$ u = \frac{1}{|\vb{a}|} \vb{a} = \ev{\cos \alpha, \cos \beta, \cos \gamma}$$
+
+### Projections
+* **Vector Projection** of $\vb{b}$ onto $\vb{a}$ is like the shadow of $\vb{b}$ in the direction of $\vb{a}$
+* The **scalar projection** of $\vb{b}$ onto $\vb{a}$ (also called the **component of b along a**) is defined to be the signed magnitude of the vector projection
+$$ comp_a \vb{b} = \frac{\vb{a} \cdot \vb{b}}{|\vb{a}|} = |\vb{b}| \cos \theta$$
+$$ proj_a \vb{b} =  \left(\frac{\vb{a} \cdot \vb{b}}{|\vb{a}|}\right) \frac{\vb{a}}{|\vb{a}|} =  \frac{\vb{a} \cdot \vb{b}}{|\vb{a}|^2} \vb{a}$$
+
+$\theta$ is just the angle between the vectors.  
+The vector projection is the scalar projection times the unit vector in the direction of $\vb{a}$
