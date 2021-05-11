@@ -23,7 +23,7 @@ tags:
   ![Example of graph with 3 connected components](/graphs/Pseudoforest.svg)
 
 ### Tree
-Undirected graph with no cycles. Equivalent definition: Connected graph with N nodes N-1 edges.
+Connected undirected graph with no cycles. Equivalent definition: Connected graph with N nodes N-1 edges.
 
 Examples:
 <div style='width: 100%' class='ui rounded images'>
@@ -899,8 +899,61 @@ function relaxEdgesAtNode(currentNodeIndex):
   
 ```
 
+### Kruskal's Algorithm
+1. Select an edge of G of minimum weight
+2. Select a remaining edge of G of minimum weight
+3. Select any remaining edge of G of minimum weight that does not form a cycle with the previously selected edges
+4. Repeat 3. until n-1 edges have been selected (MST formed)
+
+https://youtu.be/XFhW6vhvC64
+
+## Max Flow Ford Fulkerson
+* Question: With an infinite input soure, how much "flow" can we push through the network without exceeding the capacity of any edge?
+* Two special nodes: source and sink
+* Solution to question finds the flow for each edge to maximize flow for the total graph/network. Initially, the flow is 0 for each edge.
+* **Remaining Capacity**: `e.capacity - e.flow`
+* **Augmenting Path**: Path of edges in the residual graph with remaining capacity greater than zero from the source s to the sink t.
+* **Bottleneck**: Smallest edge on the path (find this by subtracting current flow from capacity)
+* **Augmenting the Flow**: Updating the flow values of the edges along augmenting path 
+  * For forward edges, this means *increasing* the flow by the bottleneck value
+  * For back edges (called **residual edges** in this case), *decrease* the flow along each edge by the bottleneck value. A residual edge is in the opposite direction for every edge of the augmenting path
+    * Residual edges exist so that we can "undo" bad augmenting path decisions that don't lead to maximum flow
+    * Every edge in the graph also starts out with a residual edge with flow/capacity of 0/0
+* **Residual Graph**: The graph which also contains residual edges along with the regular edges 
+* The algorithm continues finding augmenting paths and augments the flow until no more augmenting paths from s to t exist.
+* The sum of the bottlenecks fond in each augmenting path is equal to the max flow.
+* Time complexity is dependent on how we find the augmenting paths
+  * If augmenting paths are found with DFS then the time complexity is $O(fE)$, where $f$ is maximum flow and $E$ is number of edges
+
+### Other Implementations of Ford-Fulkerson
+* **Edmonds-Karp**: Use BFS to find augmenting paths, $O(E^2 V)$
+* **Capacity Scaling**: Heuristic to pick larger paths first, $O(E^2 \log(U))$
+* **Dinic's Algorithm**: Uses combination of DFS + BFS to find augmenting paths, $O(V^2 E)$
+
+## Unweighted Bipartite Graph Matching - Network Flow
+* **Bipartite Graph**: Vertices can be split into two independent groups U, V such that every edge connects between U and V.
+  * Other definitions: The graph is two colorable or there is no cycle with an odd length
+* **Maximum Cardinality Bipartite Matching (MCBM)**: When we've maximized the pairs that can be matched with each other. What we're usually interested in
+
+![Matching problems and algos table](/graphs/matching.png)
+
+## Planar Graphs
+* **Planar Graph**: Graph that can be drawn on one plane without any edges crossing/intersecting.
+
+### Euler's Formula  for Connected Planar Graphs
+$$ v - e + r = 2$$
+where v is the number of vertices, e is the number of edges, and r is the number of regions.
+
+#### Proof
+  * Case 1: Graph is tree so use the fact that v=n and e=n-1
+  * Case 2: Removing edges until there is only one region turns the graph into a tree so that there are only $e-(r-1)$ edges
+
+### Other Properties
+* $3r \le 2e$
+* $e \le 3v - 6$
+
 ## Image Credits
-* David Eppstein: https://commons.wikimedia.org/wiki/File:Pseudoforest.svg 
-* Maksim: https://commons.wikimedia.org/wiki/File:Scc.png
-* Dcoetzee: https://en.wikipedia.org/wiki/File:Minimum_spanning_tree.svg
+* [David Eppstein](https://commons.wikimedia.org/wiki/File:Pseudoforest.svg)
+* [Maksim](https://commons.wikimedia.org/wiki/File:Scc.png)
+* [Dcoetzee](https://en.wikipedia.org/wiki/File:Minimum_spanning_tree.svg)
 * Rest of the graph diagrams based on Mr. Fiset's videos
