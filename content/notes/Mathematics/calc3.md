@@ -1,7 +1,7 @@
 ---
 title: "Calculus 3"
 publishdate: 2021-05-07
-lastmod: 2021-05-07
+lastmod: 2021-05-11
 draft: false
 toc: true
 tags:
@@ -395,7 +395,7 @@ $$
 $$ 
 The set of all points will form a sphere with center $(x_0, y_0, z_0)$ with a radius of $1$.
 
-## 12.2: The Dot Product
+## 12.3: The Dot Product
 If $\vb{a} = \ev{a_1, a_2, a_3}$ and $\vb{b} = \ev{b_1, b_2, b_3}$, then the **dot product** of $\vb{a}$ and $\vb{b}$ is denoted by $\vb{a} \cdot \vb{b}$ and is calculated by the following
 $$ \vb{a} \cdot \vb{b} = a_1 b_1 + a_2 b_2 + a_3 b_3$$
 
@@ -428,5 +428,72 @@ $$ u = \frac{1}{|\vb{a}|} \vb{a} = \ev{\cos \alpha, \cos \beta, \cos \gamma}$$
 $$ comp_a \vb{b} = \frac{\vb{a} \cdot \vb{b}}{|\vb{a}|} = |\vb{b}| \cos \theta$$
 $$ proj_a \vb{b} =  \left(\frac{\vb{a} \cdot \vb{b}}{|\vb{a}|}\right) \frac{\vb{a}}{|\vb{a}|} =  \frac{\vb{a} \cdot \vb{b}}{|\vb{a}|^2} \vb{a}$$
 
+
 $\theta$ is just the angle between the vectors.  
 The vector projection is the scalar projection times the unit vector in the direction of $\vb{a}$
+
+### Work
+$ W = \vb{F} \cdot \vb{d}$
+
+## 12.4: The Cross Product
+* The **Cross Product** of $\vb{a}$ and $\vb{b}$ gives a vector that is perpendicular to both vectors (use right hand rule to find out direction of resultant vector)
+* If $\vb{a} = \ev{a_1, a_2, a_3}$ and $\vb{b} = \ev{b_1, b_2, b_3}$, then the **cross product** of $\vb{a}$ and $\vb{b}$ is the vector
+$$ \vb{a} \times \vb{b} = \ev{a_2b_3 - a_3 b_2, a_3 b_1 - a_1b_3, a_1b_2, a_1b_2 - a_2 b_1} $$
+  Derivation: define a vector $\vb{c}$ that is perpendicular to both $\vb{a}$ and $\vb{b}$ such that the dot product is 0
+* Matrices can represent the above in a simpler fashion and less arbitrary looking way:
+
+$$ 
+\vb{a} \cross \vb{b} =
+\begin{bmatrix}
+  \vb{i} & \vb{j} & \vb{k} \\\\
+  a_1 & a_2 & a_3 \\\\
+  b_1 & b_2 & b_3
+\end{bmatrix} = \begin{bmatrix}
+  a_2 & a_3 \\\\
+  b_2 & b_3 
+\end{bmatrix} \vb{i} - \begin{bmatrix}
+  a_1 & a_3 \\\\
+  b_1 & b_3
+\end{bmatrix} \vb{j} +
+\begin{bmatrix}
+  a_1 & a_2 \\\\
+  b_1 & b_2 
+\end{bmatrix} \vb{k} 
+$$
+
+* Notice how the terms each have a unit vector and the determinant order 2 matrix is constructed from the original order 3 matrix with the row and column of the unit vector removed.
+
+* The determinant of order 2:
+$$
+\begin{bmatrix}
+  a & b \\\\
+  c & d 
+\end{bmatrix} = ad - bc
+$$
+* If $\theta$ is the angle between $\vb{a}$ and $\vb{b}$, then $|\vb{a} \cross \vb{b}| = |\vb{a} \mid \vb{b}| \sin\theta$
+* Two nonzero vectors $\vb{a}$ and $\vb{b}$ are parallel if and only if $\vb{a} \cross \vb{b} = 0$
+* The length of the cross product is equal to the area of the parallelogram formed by $\vb{a}$ and $\vb{b}$
+* The cross product is NOT commutative or associative
+
+### Properties of the Cross Product
+1. $\vb{a} \cross \vb{b} = -\vb{b} \cross \vb{a}$
+2. $(c\vb{a})\cross \vb{b} = c(\vb{a} \cross \vb{a}) = \vb{a} \cross (c\vb{b})$
+3. $\vb{a} \cross (\vb{b} + \vb{c}) = \vb{a} \cross \vb{b} + \vb{a} \cross \vb{c}$
+4. $(\vb{a} + \vb{b}) \cross \vb{c} = \vb{a} \cross \vb{c} + \vb{b} \cross \vb{c}$
+5. $\vb{a} \cdot (\vb{b} \cross \vb{c}) = (\vb{a} \cross \vb{b}) \cdot \vb{c}$
+6. $\vb{a} \cross (\vb{b} \cross \vb{c}) = (\vb{a} \cdot \vb{c}) \vb{b} - (\vb{a} \cdot \vb{b}) \vb{c}$
+
+### Triple Products
+* **Scalar triple product** (Property 5):
+$$
+\vb{a} \cdot (\vb{b} \cross \vb{c}) = \begin{bmatrix}
+  a_1 & a_2 & a_3 \\\\
+  b_1 & b_2 & b_3 \\\\
+  c_1 & c_2 & c_3 
+\end{bmatrix}
+$$
+* The scalar triple product describes the volume of the parallelepiped
+* **Vector triple product**: Property 6
+
+### Torque
+$|\vb{\tau}| = |\vb{r} \cross \vb{F}|$
