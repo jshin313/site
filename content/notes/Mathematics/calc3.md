@@ -497,3 +497,44 @@ $$
 
 ### Torque
 $|\vb{\tau}| = |\vb{r} \cross \vb{F}|$
+
+## 12.5: Equations of Lines and Planes
+
+### Lines
+$L$ is a line in 3d space. The **vector equation** of $L$ is the following
+$$ \vb{r} = \vb{r_0} + t\vb{v}$$
+where $t$ is a **parameter**, $\vb{r_0}$ is a position vector to a point on L, and $\vb{r}$ gives a point on L.  
+
+If $\vb{r} = \ev{x, y, z}$ and $\vb{r_0} = \ev{x_0, y_0, z_0}$,
+the **parametric equations** for a line through the point ($x_0, y_0, z_0$) and parallel to the direction vector $\ev{a, b, c}$ are
+$$ x = x_0 + at, \ \ \ y = y_0 + bt, \ \ \ z = z_0 + ct$$  
+
+**Symmetric Equations** of L:
+$$ \frac{x-x_0}{a} = \frac{y-y_0}{b} = \frac{z-z_0}{c} $$
+If $a$, $b$, or $c$ are 0: 
+  * Example: If $a = 0$, then $x_0 = x \ \ \ \  \frac{y-y_0}{b} = \frac{z-z_0}{c}$, and the line L lies in the vertical plane $x=x_0$
+
+**Line segment** from $r_0$ to $r_1$:
+$$ \vb{r}(t) = (1-t)\vb{r_0} + t\vb{r_1} \ \ \ \ 0 \le t \le 1 $$
+
+### Planes
+**Vector Equation of the Plane**:
+$$ \vb{n} \cdot (\vb{r} - \vb{r_0}) = 0$$
+$$ \vb{n} \cdot \vb{r} = \vb{n} \cdot \vb{r_0}$$
+$n$ is the **normal vector** (perpendicular to the plane)  
+$r_0$ and $r$ are position vectors  
+$r - r_0$ represent a line on the plane.
+
+**Scalar Equation of the Plane**:
+$$ a(x-x_0) + b(y-y_0) + c(z - z_0) = 0$$
+where $\vb{n} = \ev{a, b, c}$ and point $P_0(x_0, y_0, z_0)$ is on the plane
+
+**Linear Equation Form of the Scalar Equation of a Plane**
+$$ ax + by + cz + d = 0$$
+where $d = -(ax_0 + by_0 + cz_0)$
+
+Two planes are **parallel** if their normal vectors are parallel.
+
+### Distances
+$$ D = \frac{|ax_1 + by_1 + cz_1 + d|}{\sqrt{a^2 + b^2 + c^2}}$$
+Derivation: The distance from an arbitrary point to a plane is the scalar projection of the distance between any point on the plane and the arbitrary point onto the normal vector.
