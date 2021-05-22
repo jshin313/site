@@ -12,7 +12,7 @@ contentDir   = "content"
 dataDir      = "data"
 layoutDir    = "layouts"
 publishDir   = "public"
-staticDir = "static"
+staticDir = "./"
 
 buildDrafts  = false
 buildFuture  = false

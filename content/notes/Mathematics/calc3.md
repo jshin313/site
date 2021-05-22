@@ -107,7 +107,7 @@ $$ |\textbf{a}| = \sqrt{a_1^2 + a_2^2 + a_3^2}$$
 2. $\textbf{a + 0 = a}$
 3. $c(\textbf{a + b}) = c\textbf{a} + c\textbf{b}$
 4. $(cd)\textbf{a} = c(d\textbf{a})$
-5. $\textbf{a + (b + c) = (a + b)_ + c}$
+5. $\textbf{a + (b + c) = (a + b) + c}$
 6. $\textbf{a + (-a) = 0}$
 7. $(c + d)\textbf{a} = c\textbf{a} + d\textbf{a}$
 8. $1\textbf{a = a}$
@@ -136,13 +136,13 @@ What is the relationship between the point (4, 7) and the vector $\ev{4, 7}$? Il
 If the vector's tail or starting point is located at the origin, then the head will be at the point (4, 7).
 
 <div style='width: 100%' class='ui rounded images'>
-<img class='ui image' src='/calc3/12.2.2.svg'>
+<img class='ui image' src='../../../static/calc3/12.2.2.svg'>
 </div>
 
 #### Problem 3
 Name all the equal vectors in the parallelogram shown.
 <div style='width: 100%' class='ui rounded images'>
-<img class='ui image' src='/calc3/12.2.3.svg'>
+<img class='ui image' src='../../../static/calc3/12.2.3.svg'>
 </div>
 
 
@@ -151,7 +151,7 @@ $$\overrightarrow{EA} = \overrightarrow{CE}\ \ \ \ \ \ \ \ \overrightarrow{DE} =
 #### Problem 4
 Write each combination of vectors as a single vector.
 <div style='width: 100%' class='ui rounded images'>
-<img class='ui image' src='/calc3/12.2.4.svg'>
+<img class='ui image' src='../../../static/calc3/12.2.4.svg'>
 </div>
 
 a. $\overrightarrow{AC}$  
@@ -163,13 +163,13 @@ d. $\overrightarrow{DC} + \overrightarrow{CA} + \overrightarrow{AB} = \overright
 Copy the vectors in the figure and use them to draw the following vectors.
 
 <div style='width: 100%' class='ui rounded images'>
-<img class='ui image' src='/calc3/12.2.6.svg'>
+<img class='ui image' src='../../../static/calc3/12.2.6.svg'>
 </div>
 
 #### Problem 7
 In the figure, the tip of **c** and the tail of **d** are both the midpoint of $QR$. Express **c** and **d** in terms of **a** and **b**.
 <div style='width: 100%' class='ui rounded images'>
-<img class='ui image' src='/calc3/12.2.7.svg'>
+<img class='ui image' src='../../../static/calc3/12.2.7.svg'>
 </div>
 
 $$
@@ -196,7 +196,7 @@ $$
 #### Problem 8
 If the vectors in the figure satisfy |**u**| = |**v**| = 1 and **u + v + w = 0**, what is |**w**|?
 <div style='width: 100%' class='ui rounded images'>
-<img class='ui image' src='/calc3/12.2.8.svg'>
+<img class='ui image' src='../../../static/calc3/12.2.8.svg'>
 </div>
 
 |**w**| = $\sqrt{2}$
@@ -207,7 +207,7 @@ $$ A(-2, 1), \ \ B(1, 2)$$
 $$ \textbf{a} = \ev{1 - (-2), 2 - 1} = \ev{3, 1}$$
 
 <div style='width: 100%' class='ui rounded images'>
-<img class='ui image' src='/calc3/12.2.9.svg'>
+<img class='ui image' src='../../../static/calc3/12.2.9.svg'>
 </div>
 
 #### Problem 13
@@ -313,7 +313,7 @@ $$
 If **v** lies in the first quadrant and makes an angle $\frac{\pi}{3}$ with the positive $x$-axis and |**v**| = 4, find **v** in component form.
 
 <div style='width: 100%' class='ui rounded images'>
-<img class='ui image' src='/calc3/12.2.29.svg'>
+<img class='ui image' src='../../../static/calc3/12.2.29.svg'>
 </div>
 
 $$
@@ -334,7 +334,7 @@ $$
 Let $C$ be the point on the line segment $AB$ that is twice as far from $B$ as it is from $A$. If $\textbf{a} = \overrightarrow{OA}$, $\textbf{b} = \overrightarrow{OB}$, and $\textbf{c} = \overrightarrow{OC}$, show that $\textbf{c} = \frac{2}{3} \textbf{a} + \frac{1}{3}\textbf{b}$.
 
 <div style='width: 100%' class='ui rounded images'>
-<img class='ui image' src='/calc3/12.2.44.svg'>
+<img class='ui image' src='../../../static/calc3/12.2.44.svg'>
 </div>
 
 $$
@@ -378,7 +378,7 @@ a. Draw the vectors **a** = $\ev{3, 2}$, **b** = $\ev{2, -1}$, and **c** = $\ev{
 b. Show, by means of a sketch, that there are scalars $s$ and $t$ such that $\textbf{c} = s\textbf{a} + t\textbf{b}$.
 
 <div style='width: 100%' class='ui rounded images'>
-<img class='ui image' src='/calc3/12.2.45.a.svg'>
+<img class='ui image' src='../../../static/calc3/12.2.45.a.svg'>
 </div>
 
 #### Problem 47
@@ -433,7 +433,7 @@ $\theta$ is just the angle between the vectors.
 The vector projection is the scalar projection times the unit vector in the direction of $\vb{a}$
 
 ### Work
-$ W = \vb{F} \cdot \vb{d}$
+$W = \vb{F} \cdot \vb{d}$
 
 ## 12.4: The Cross Product
 * The **Cross Product** of $\vb{a}$ and $\vb{b}$ gives a vector that is perpendicular to both vectors (use right hand rule to find out direction of resultant vector)
@@ -538,3 +538,122 @@ Two planes are **parallel** if their normal vectors are parallel.
 ### Distances
 $$ D = \frac{|ax_1 + by_1 + cz_1 + d|}{\sqrt{a^2 + b^2 + c^2}}$$
 Derivation: The distance from an arbitrary point to a plane is the scalar projection of the distance between any point on the plane and the arbitrary point onto the normal vector.
+
+## 12.6: Cylinders and Quadratic Surfaces
+* **Traces**/Cross Sections: Curves of intersections of surfaces with planes parallel to the coordinate planes
+
+* Steps for sketching surface:
+  * Find intercepts by settings two variables to zero and solving for third
+  * Make the "different" variable the axis that the surface is formed around (vertical axis) (e.g. all other variables on one side of equation or only one variable has negative)
+  * Determine the "traces" by holding one variable constant and seeing what the equation with two variables represents (hyperbola, parabola, or ellipse)
+
+### Cylinders
+
+* **Cylinder**: Surface with all lines (**rulings**) parallel to a given line and pass through a given plane curve. 
+* Equation only has two variables (e.g. $x^2 + y^2 = 1$, $y^2 + z^2 = 1$
+* Example: $z = x^2$
+
+* Let $z$ be the vertical axis
+* If $y$ is set to be a constant, it doesn't affect the equation and the traces formed by intersection with the xz plane will form parabolic cross sections since $z= x^2$ is a parabola when graphed on the x-z plane
+![Plot of function](../../../static/calc3/cylxz.png)
+
+* If $z$ is held constant, you have $c = x^2$, where c is a constant. This equation is just two lines on the xy plane. So the traces formed from the intersection with the xz plane will form cross sections that consist of two lines.
+* If $x$ is held constant, you have $z = c$, where c is a constant. This is just the equation of one line on the yz plane.
+![Plot of function](../../../static/calc3/cyl.png)
+
+![Plot of function](../../../static/calc3/cyl3d.png)
+
+### Quadratic Surfaces
+* Equations have the form $Ax^2 + By^2 + Cz^2 + Dxy + Eyz + Fxz + Gx + Hy + Iz + J = 0$
+
+#### Ellipsoid
+* All traces are ellipses
+* If $a = b= c$, the ellipsoid is a sphere
+* $\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$
+
+![Plot of function](../../../static/calc3/ellipsoid.png)
+
+#### Elliptic Paraboloid
+* Horizontal traces (cross sections formed by intersection with xy plane) are ellipses
+* Vertical traces are parabolas
+* Axis of the parabola is the one that's different (the one with degree one in the equation)
+* $\frac{z}{c} = \frac{x^2}{a^2} + \frac{y^2}{b^2}$
+
+![Plot of function](../../../static/calc3/ellipticparaboloid.png)
+
+#### Hyperbolic Paraboloid
+* Horizontal traces (cross sections formed by intersection with planes parallel to the xy plane) are hyperbolas
+* Vertical traces (cross sections formed by intersection with planes parallel to the yz and xz planes) are parabolas
+* $\frac{z}{c} = \frac{x^2}{a^2} -\frac{y^2}{b^2}$
+
+![Plot of function](../../../static/calc3/hyperbolicparaboloid.png)
+
+#### Cone
+* Horizontal traces are ellipses
+* Vertical traces are planes (except when x = 0 and y = 0 when the traces are a pair of lines)
+* $\frac{z^2}{c^2} = \frac{x^2}{a^2} + \frac{y^2}{b^2}$
+
+![Plot of a function](../../../static/calc3/cone.png)
+
+#### Hyperboloid of One Sheets
+* Horizontal traces are ellipses
+* Vertical traces are hyperbolas
+* $\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 1$
+
+![Plot of function](../../../static/calc3/hyperone.png)
+
+#### Hyperboloid of Two Sheets
+* Horizontal traces are ellipses if they exist
+* Vertical traces are hyperbolas
+* $-\frac{x^2}{a^2} - \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$
+
+![Plot of function](../../../static/calc3/hypertwo.png)
+
+## 13.1: Vector Functions and Space Curves
+**Vector Function**: Domain: A set of real numbers, Range: A set of vectors
+* Let $\vb{r}$ be a vector function for 3-d vectors
+* The components of $\vb{r}$ are $f$, $g$, and $h$.
+$$ \vb{r}(t) = \ev{f(t), g(t), h(t)} = f(t)\vb{i} + g(t) \vb{j} + h(t) \vb{k}$$
+
+### Limits and Continuity
+$$\vb{r}(t) = \ev{f(t), g(t), h(t)}$$
+$$ \lim_{t \to a} \vb{r}(t) = \ev{\lim_{t \to a} f(t), \lim_{t \to a} g(t), \lim_{t \to a} h(t)} $$
+As long as the limits of the component functions exist.  
+
+$\vb{r}$ is continuous at $a$ if $\lim_{t\to a} \vb{r}(t) = \vb{r}(a)$
+
+### Space Curves
+* $C$ is the set of all points $(x, y, z)$ where $x = f(t), y = g(t), z = h(t)$ (Parametric equations of C with $t$ as the parameter)
+* **Space Curve**: The set of points in $C$
+* $C$ is traced out by the tip of the vector $\vb{r}(t)$
+
+### Drawing Curves
+* To sketch parametric equations, remove $t$ from the equation and get the equations in terms of the $x$, $y$, and $z$ instead
+* Then you can draw those equations on the x-y, y-z, and x-z planes. These "shadows" will represent the projections of the actual curve onto those planes.
+
+## 13.2: Derivatives and Integrals of Vector Functions
+$$
+\frac{d \vb{r}}{dt} = \vb{r}'(t) = \lim_{h \to 0} \frac{\vb{r}(t+h) - \vb{r}(t)}{h}
+$$
+Unit Tangent Vector
+$$
+\vb{T}(t) = \frac{\vb{r}'(t)}{|\vb{r}'(t)|}
+$$ 
+
+If $f$, $g$, and $h$ are differentiable and $\vb{r}$ is a vector function
+$$
+\vb{r}'(t) = \ev{f'(t), g'(t), h'(t)}
+$$
+
+### Differentiation Rules
+1. $\frac{d}{dt}[\vb{u}(t) + \vb{v}(t)]=\vb{u}'(t) + \vb{v}'(t)$
+2. $\frac{d}{dt}[ c\vb{u}(t)] = c\vb{u}'(t)$
+3. $\frac{d}{dt}[f(t)\vb{u}(t)] = f'(t) \vb{u}(t) + f(t) \vb{u}'(t)$
+4. $\frac{d}{dt}[ \vb{u}(t) \cdot \vb{v}(t)] =\vb{u}'(t) \cdot \vb{t} + \vb{u}(t) \cdot \vb{v} '(t)$
+5. $\frac{d}{dt} [\vb{u}(t) \cross \vb{v}(t)] = \vb{u}'(t) \cross \vb{v}(t) + \vb{u}(t) \cross \vb{v}'(t)$
+6. $\frac{d}{dt}[ \vb{u}f(t)] = f'(t)\vb{u}'(f(t))$
+
+### Integrals
+$$
+\int_{a}^{b} \vb{r}(t) dt = \left(\int_{a}^{b} f(t)dt\right) \vb{i} + \left(\int_a^b g(t)dt \right) \vb{j} + \left(\int_a^b h(t)dt\right)\vb{k}
+$$
