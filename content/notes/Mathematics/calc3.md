@@ -657,3 +657,66 @@ $$
 $$
 \int_{a}^{b} \vb{r}(t) dt = \left(\int_{a}^{b} f(t)dt\right) \vb{i} + \left(\int_a^b g(t)dt \right) \vb{j} + \left(\int_a^b h(t)dt\right)\vb{k}
 $$
+
+## 13.3: Arc Length and Curvature
+
+### Length of a Curve
+$$ L = \int_a^b \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dx}{dt}\right)^2} dt= \int_{a}^{b} |\vb{r}'(t)| dt $$
+
+Note that a space curve can be represented by different bu equivalent vector functions (e.g. $r(t) = \ev{t, t^2, t^3}$ is equivalent to $r(u) = \ev{e^u, e^{2u}, e^{3u}}$).  
+These different representations are called *parameterizations* of the curve and the arc length calculation does not change with the choice of parameterization.
+
+#### The Arc Length Function
+The arc length, $s$, can be defined calculated using the following:
+$$ s(t) = \int_a^t \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dx}{dt}\right)^2} dt$$
+
+Sometimes a curve is parametrized with respect to arc length which means redefining $r(t)$ in terms of $s$ instead of $t$.
+
+#### Curvature
+A curve is *smooth* on an interval if $r'$ is continuous and $r'(t) \neq 0$ on an interval.  
+Tangent unit vector, $T$:
+$$ \vb{T}(t) = \frac{\vb{r}'(t)}{|\vb{r}'(t)|}$$
+
+**Curvature** of a curve:
+$$
+\kappa = \left| \frac{d\vb{T}}{ds} \right|
+$$ 
+$$
+\kappa (t) = \frac{|\vb{T}'(t)|}{|\vb{r}'(t)|} = \frac{|\vb{r}'(t) \cross \vb{r}''(t)|}{|\vb{r}'(t)|^3}
+$$ 
+
+### Normal and Binormal Vectors
+* **Unit Normal Vector**: $\vb{N}(t)$ is a special vector that is orthogonal to $\vb{T}$ (indicates where curve is turning)
+$$ 
+\vb{N}(t) = \frac{\vb{T}'(t)}{|\vb{T}'(t)|}
+$$
+Note that $\vb{T}(t) \cdot \vb{T}'(t) = 0$, so the derivative of $\vb{T}$ is orthogonal to $\vb{T}$.  
+
+* **Binormal Vector**: Also a unit vector but orthogonal to both $\vb{T}$ and $\vb{N}$
+$$
+\vb{B}(t) = \vb{T}(t) \cross \vb{N}(t)
+$$
+
+* **Normal Plane**: Plane that contains $\vb{N}$ and $\vb{B}$. The plane contains all lines orthogonal to $\vb{T}$  
+* **Osculating Plane**: Plane that contains $\vb{N}$ and $\vb{T}$. The plane is the plane that comes closest to containing the part of the curve near the point of the tangent.
+
+## 13.4: Motion in Space: Velocity and Acceleration
+**Velocity Vector v**(t):
+$$ \vb{v}(t) = \lim_{h\to 0} \frac{\vb{r}(t+h) -\vb{r}(t)}{h} = \vb{r}'(t)$$
+
+**Speed**: 
+$$ |\vb{v}(t)| = |\vb{r}'(t)| = \frac{ds}{dt} $$
+
+**Acceleration**:
+$$ \vb{a}(t) = \vb{v}'(t) = \vb{r}''(t)$$
+
+### Projectile Motion
+Assuming Gravitational acceleration of, $g$ and no air resistance
+
+$$ x = (v_0 \cos \alpha )t, \ \ \ \ y = (v_0 \sin \alpha ) t - \frac{1}{2} gt^2$$
+
+### Tangential and Normal Components of Acceleration
+$$\vb{a} = v'\vb{T} +  \kappa v^2 \vb{N}$$
+$$a_T = v' = \frac{\vb{v} \cdot \vb{a}}{v} = \frac{\vb{r}'(t) \cdot \vb{r}''(t)}{|\vb{r}'(t)|}$$
+$$a_N = \kappa v^2 = \frac{|\vb{r}'(t) \cross \vb{r}''(t)}{|\vb{r}'(t)|}$$
+
