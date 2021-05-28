@@ -720,3 +720,26 @@ $$\vb{a} = v'\vb{T} +  \kappa v^2 \vb{N}$$
 $$a_T = v' = \frac{\vb{v} \cdot \vb{a}}{v} = \frac{\vb{r}'(t) \cdot \vb{r}''(t)}{|\vb{r}'(t)|}$$
 $$a_N = \kappa v^2 = \frac{|\vb{r}'(t) \cross \vb{r}''(t)}{|\vb{r}'(t)|}$$
 
+## 14.1: Functions of Several Variables
+
+* **Function of two variables**: Assigns ordered pair $(x, y)$, in a set $D$ a unique real number. $D$ is the domain and the range is the set. The function is denoted by $z = f(x, y)$, where $x$ and $y$ are independent variables and $z$ is the dependent variable. For a function of two variables, the domain is a subset of $\mathbb{R}^2$ and the range is a subset of $\mathbb{R}$ (the range is always like this).
+
+### Domain and Range
+* A function can be visualized as a mapping between the domain and range, where each value in the domain only maps to one value in the range
+* When graphing the domain, the number of dimensions is equal to the number of independent variables
+* The range's dimensions is always one
+
+### Graphs
+* Another way to visualize functions is by graphing
+* The number of dimensions required to graph a function is the number of independent variables + the number of dependent variables
+  * This means the dimensions of the graph of the functions is always independent variables + 1
+
+* For $z = f(x, y)$, the graph can thought of as a surface above or below the xy plane, where the domain is the xy plane
+
+### Level Curves (Contour Plots)
+* The third way to visualize functions is with contour plots also known as **level curves**
+* For functions of two variables, the **level curves** are the curves with equations 
+$$f(x, y) = k$$
+  where $k$ is a constant in the range of $f$.
+* Examples of contour plots are in topological maps that indicate how steep and high mountains or hills are
+* When level curves are closer together, the surface is "steeper"
