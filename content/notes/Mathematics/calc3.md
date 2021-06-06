@@ -743,3 +743,41 @@ $$f(x, y) = k$$
   where $k$ is a constant in the range of $f$.
 * Examples of contour plots are in topological maps that indicate how steep and high mountains or hills are
 * When level curves are closer together, the surface is "steeper"
+* For functions of two variables, the equation $f(x, y) = z = ax + by + c$ is called the **linear function** and represents a plane
+
+## 14.3: Partial Derivatives
+The $\textbf{partial derivative of } \mathbf{f} \textbf{ with respect to } \mathbf{x} \textbf{ at }\mathbf{(a, b)}$
+
+$$ f_x(a, b) = g'(a) \ \  \text{where   } g(x) = f(x, b)$$
+
+$$ f_x(x, y) = \pdv{}{x} f(x, y) = \lim_{h\to 0} \frac{f(x+h, y) - f(x, y)}{h} $$
+$$ f_y(x, y) = \pdv{}{y} f(x, y) = \lim_{h\to 0} \frac{f(x, y + h) - f(x, y)}{h} $$
+
+* To find the partial derivative with respect to $x$, hold $y$ constant
+* To find the partial derivative with respect to $y$, hold $x$ constant
+
+### Interpretations of Partial Derivatives
+$$ z= f(x, y)$$
+* For the above function/surface, if we have a point $P(a, b, c)$, then when we hold $x$ constant with $x = a$, we get a curve, since the plane $x = a$ intersected with the surface, $f$
+* $g'(a) = f_x(a, b)$ represents the line tangent to the curve at that point.
+
+### Higher Derivatives
+$$(f_{x})_{y} = f_{xy} = \pdv{}{y}\left(\pdv{f}{x}\right) = \pdv[2]{f}{y}{x}$$ 
+
+**Clairaut's Theorem**:  
+If $F$ is defined on a disk, $D$, that contains point $(a, b)$, and both $f_{xy}$ and $f_{yx}$ are continuous on the disk, then $f_{xy}(a, b) = f_{yx}(a, b)$
+
+### Partial Differential Equations
+* **Partial Differential Equations**: Used to express physical laws and describe phenomina
+
+* **Laplace's equation**: The following partial differential equation (2 dimensional version):
+$$ \pdv[2]{u}{x} + \pdv[2]{u}{y} = 0$$
+* **Harmonic Functions:** The solutions to Laplace's equation
+  * Used in heat conduction, fluid flow, electric potential, etc
+* **Wave Equation**: Describes waves
+$$ \pdv[2]{u}{t} = a^2 \pdv[2]{u}{x}$$
+
+## 16.2: Line Integrals
+
+$$ \int_{C} f(x, y) \ \ ds= \int_{a}^{b} f(x(t), y(t)) \ \  \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \ \ dt$$
+
