@@ -777,6 +777,18 @@ $$ \pdv[2]{u}{x} + \pdv[2]{u}{y} = 0$$
 * **Wave Equation**: Describes waves
 $$ \pdv[2]{u}{t} = a^2 \pdv[2]{u}{x}$$
 
+## 14.4: Tangent Planes and Linear Approximation
+
+### Tangent Planes
+If $f$ has continuous partial derivatives, the equation of the tangent plane at a point is the following:
+$$ z - z_0 = f_x(x_0, y_0) (x - x_0) + f_y(x_0, y_0)(y-y_0)$$
+
+This is similar to how in single-variable calculus, the equation of the tangent line was the following:
+$$ y-y_0 = f'(x_0)(x - x_0)$$
+
+### Linear Approximations
+You can use the tangent plane at a point to approximate a function at a nearby point like in single-variable calculus.
+
 ## 16.2: Line Integrals
 
 $$ \int_{C} f(x, y) \ \ ds= \int_{a}^{b} f(x(t), y(t)) \ \  \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \ \ dt$$
