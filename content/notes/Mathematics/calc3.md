@@ -789,6 +789,13 @@ $$ y-y_0 = f'(x_0)(x - x_0)$$
 ### Linear Approximations
 You can use the tangent plane at a point to approximate a function at a nearby point like in single-variable calculus.
 
+## 14.5: Chain Rule
+From single variable calculus
+$$\frac{df}{dx}= \frac{d}{dx}\left(f(g(x))\right) = f'(g(x)) g'(x) = \frac{df}{dg}\frac{dg}{dx}$$
+
+For multivariable:
+$$ \frac{dw}{dt} = \frac{d}{dt} \left(x(t), y(t)\right) = \pdv{w}{x} \dv{x}{t} + \pdv{w}{y} \dv{y}{t}$$
+
 ## 16.2: Line Integrals
 
 $$ \int_{C} f(x, y) \ \ ds= \int_{a}^{b} f(x(t), y(t)) \ \  \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \ \ dt$$
