@@ -796,6 +796,24 @@ $$\frac{df}{dx}= \frac{d}{dx}\left(f(g(x))\right) = f'(g(x)) g'(x) = \frac{df}{d
 For multivariable:
 $$ \frac{dw}{dt} = \frac{d}{dt} \left(x(t), y(t)\right) = \pdv{w}{x} \dv{x}{t} + \pdv{w}{y} \dv{y}{t}$$
 
+## 14.6: Directional Derivative and Gradient
+
+### Directional Derivative
+If $f$ is differentiable, $f$ has a directional derivative in the direction of the unit vector $\vb{u} = \ev{a, b}$
+$$ D_u f(x, y) = f_x(x, y)a + f_y(x, y)b = \ev{f_x(x, y), f_y(x, y)} \cdot \vb{u}$$
+
+### Gradient vector 
+$$\Delta f = \text{del } f = \ev{f_x(x, y), f_y(x, y)}$$
+
+### Maximizing the Directional Derivative
+* Q. If we have a function $f$, and consider all directional derivatives at a point, then which directional derivative is greatest ("steepest" or has the fastest rate of change)
+* A. When $\vb{u}$ is in the same direction as the gradient vector since that will maximize the directional derivative
+
+### Equation of Tangent Plane to Level Surface
+$$ \pdv{F}{x} \dv{x}{t} + \pdv{F}{y} \dv{y}{t} + \pdv{F}{z} \dv{z}{t} = 0$$
+$$ \Delta F \cdot \vb{r}'(t) = 0$$
+$$ F_x(x_0, y_0, z_0) (x-x_0) + F_y(x_0, y_0, z_0) (y - y_0) + F_z(x_0, y_0, z_0)(z-z_0)=0$$
+
 ## 16.2: Line Integrals
 
 $$ \int_{C} f(x, y) \ \ ds= \int_{a}^{b} f(x(t), y(t)) \ \  \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \ \ dt$$
