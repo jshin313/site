@@ -811,7 +811,7 @@ $$\nabla f = \text{del } f = \ev{f_x(x, y), f_y(x, y)}$$
 
 ### Equation of Tangent Plane to Level Surface
 $$ \pdv{F}{x} \dv{x}{t} + \pdv{F}{y} \dv{y}{t} + \pdv{F}{z} \dv{z}{t} = 0$$
-$$ \Delta F \cdot \vb{r}'(t) = 0$$
+$$ \nabla F \cdot \vb{r}'(t) = 0$$
 $$ F_x(x_0, y_0, z_0) (x-x_0) + F_y(x_0, y_0, z_0) (y - y_0) + F_z(x_0, y_0, z_0)(z-z_0)=0$$
 
 ## 15.1: Double Integrals over Rectangles
