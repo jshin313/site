@@ -803,7 +803,7 @@ If $f$ is differentiable, $f$ has a directional derivative in the direction of t
 $$ D_u f(x, y) = f_x(x, y)a + f_y(x, y)b = \ev{f_x(x, y), f_y(x, y)} \cdot \vb{u}$$
 
 ### Gradient vector 
-$$\Delta f = \text{del } f = \ev{f_x(x, y), f_y(x, y)}$$
+$$\nabla f = \text{del } f = \ev{f_x(x, y), f_y(x, y)}$$
 
 ### Maximizing the Directional Derivative
 * Q. If we have a function $f$, and consider all directional derivatives at a point, then which directional derivative is greatest ("steepest" or has the fastest rate of change)
