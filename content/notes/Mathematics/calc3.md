@@ -814,6 +814,15 @@ $$ \pdv{F}{x} \dv{x}{t} + \pdv{F}{y} \dv{y}{t} + \pdv{F}{z} \dv{z}{t} = 0$$
 $$ \Delta F \cdot \vb{r}'(t) = 0$$
 $$ F_x(x_0, y_0, z_0) (x-x_0) + F_y(x_0, y_0, z_0) (y - y_0) + F_z(x_0, y_0, z_0)(z-z_0)=0$$
 
+## 15.1: Double Integrals over Rectangles
+Volume $V$ of a solid above the rectangle $R$ and below the surface $z = f(x, y)$:
+$$ V = \iint\limits_R f(x, y) dA $$
+where $dA$ represents the area of the sub-rectangles that compose the large rectangle $R$.
+
+### Fubini's Theorem
+If $f$ is continuous on the rectangle $R = \\{(x, y) | a \le x \le b, c\le y \le d \\}$, then
+$$ \iint\limits_R f(x, y) dA = \int_a^b \int_c^d f(x, y) \\, dy \\, dx = \int_d^c \int_a^b f(x, y) \\, dx \\, dy$$
+
 ## 16.2: Line Integrals
 
 $$ \int_{C} f(x, y) \ \ ds= \int_{a}^{b} f(x(t), y(t)) \ \  \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \ \ dt$$
