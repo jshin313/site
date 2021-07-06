@@ -826,6 +826,40 @@ $$ \iint\limits_R f(x, y) dA = \int_a^b \int_c^d f(x, y) \\, dy \\, dx = \int_d^
 If $R = [a, b] \cross [c, d]$
 $$ \iint\limits_R g(x) \\, h(y) \\, dA = \int_a^b g(x) \\, dx \int_c^d h(y) \\, dy$$
 
+## 15.2: Double Integrals over General Regions
+* We can take the double integral over a general region $D$ instead of just a rectangle
+* Let $F(x, y)$ be defined as the following:
+$$ 
+F(x, y) = \begin{cases} 
+      f(x, y) & \text{if }(x, y) \text{ is in } D \\\\
+      0 & \text{if }(x, y) \text{ is in } R \text{ but not in } D
+   \end{cases}
+$$
+
+$$ \iint\limits_{D} f(x, y) dA = \iint\limits_R F(x, y) dA$$
+
+* If $D$ is lies between two continuous functions, $g_1(x)$, and $g_2(x)$ and if $f$ is continuous on a region $D$ such that 
+$$ D = \\{ a \le x \le b, g_1(x) \le y \le g_2(x)\\}$$
+then
+$$ \iint\limits_{D} f(x, y)\\, dA = \int_a^b \int_{g_1(x)}^{g_2(x)} f(x, y) \\, dy \\, dx$$
+
+* If $f$ is continuous on a region $D$ such that 
+$$ D = \\{ c \le y \le d, h_1(y) \le y \le h_2(y)\\}$$
+then
+$$ \iint\limits_{D} f(x, y)\\, dA = \int_b^c \int_{h_1(y)}^{h_2(y)} f(x, y) \\, dx \\, dy$$
+
+### Properties of Double Integrals
+1. $$ \iint\limits_D \left(f(x, y) + g(x, y)\right) \\, dA = \iint\limits_D f(x, y) \\, dA + \iint_D g(x, y) \\, dA $$
+2. If $c$ is a constant, $$ \iint\limits_D cf(x, y) \\, dA = c \iint\limits_D f(x, y) \\, dA $$
+3. If $f(x, y) \ge g(x, y)$ for all $x, y$ in $D$ 
+$$ \iint\limits_D f(x, y) \\, dA \ge \iint\limits_D g(x, y) \\, dA $$
+4. If $D = D_1 \cup D_2$, and $D_1$ and $D_2$ don't overlap
+$$ \iint\limits_D f(x, y)\\, dA = \iint\limits_{D_1} f(x, y) \\, dA + \iint\limits_{D_2} f(x, y) \\, dA $$
+5. $$ \iint\limits_D 1 \\, dA = A(D) = \text{Area of }D$$
+6. If $m \le f(x, y) \le M \\; \forall (x, y) \in D$
+$$ m \\, A(D) \le \iint\limits_D f(x, y) \\, dA \le M\\,A(D)$$
+$$ $$
+
 ## 16.2: Line Integrals
 
 $$ \int_{C} f(x, y) \ \ ds= \int_{a}^{b} f(x(t), y(t)) \ \  \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \ \ dt$$
