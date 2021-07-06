@@ -823,6 +823,9 @@ where $dA$ represents the area of the sub-rectangles that compose the large rect
 If $f$ is continuous on the rectangle $R = \\{(x, y) | a \le x \le b, c\le y \le d \\}$, then
 $$ \iint\limits_R f(x, y) dA = \int_a^b \int_c^d f(x, y) \\, dy \\, dx = \int_d^c \int_a^b f(x, y) \\, dx \\, dy$$
 
+If $R = [a, b] \cross [c, d]$
+$$ \iint\limits_R g(x) \\, h(y) \\, dA = \int_a^b g(x) \\, dx \int_c^d h(y) \\, dy$$
+
 ## 16.2: Line Integrals
 
 $$ \int_{C} f(x, y) \ \ ds= \int_{a}^{b} f(x(t), y(t)) \ \  \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \ \ dt$$
