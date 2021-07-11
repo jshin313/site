@@ -858,7 +858,15 @@ $$ \iint\limits_D f(x, y)\\, dA = \iint\limits_{D_1} f(x, y) \\, dA + \iint\limi
 5. $$ \iint\limits_D 1 \\, dA = A(D) = \text{Area of }D$$
 6. If $m \le f(x, y) \le M \\; \forall (x, y) \in D$
 $$ m \\, A(D) \le \iint\limits_D f(x, y) \\, dA \le M\\,A(D)$$
-$$ $$
+
+## 15.3: Double Integrals in Polar Coordinates
+$$ x = r \cos \theta \\;\\;\\;\\;\\; y = r \sin \theta \\;\\;\\;\\;\\; x^2 + y^2 = r^2$$
+
+### Double Integrals over Polar Rectangles 
+$$ \iint\limits_R f(x, y) \\, dA = \int_{\alpha}^{\beta} \int_b^a f(r \cos \theta, \\, r \sin \theta) r \\, dr \\,d\theta$$
+
+### Double Integrals over General Polar Regions
+$$ \iint\limits_D f(x, y) \\, dA = \int_{\alpha}^{\beta} \int_{h_1(\theta)}^{h_2(\theta)} f(r \cos \theta, \\, r \sin \theta) r \\, dr \\,d\theta$$
 
 ## 16.2: Line Integrals
 
