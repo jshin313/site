@@ -868,6 +868,10 @@ $$ \iint\limits_R f(x, y) \\, dA = \int_{\alpha}^{\beta} \int_b^a f(r \cos \thet
 ### Double Integrals over General Polar Regions
 $$ \iint\limits_D f(x, y) \\, dA = \int_{\alpha}^{\beta} \int_{h_1(\theta)}^{h_2(\theta)} f(r \cos \theta, \\, r \sin \theta) r \\, dr \\,d\theta$$
 
+## 15.5: Surface Area
+For a function $f(x, y)$, the surface area can be computed with the following:
+$$ A(S) = \iint_D \sqrt{f_x(x, y)^2 + f_y(x, y)^2 + 1} \\; dA$$ 
+
 ## 16.2: Line Integrals
 
 $$ \int_{C} f(x, y) \ \ ds= \int_{a}^{b} f(x(t), y(t)) \ \  \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \ \ dt$$
