@@ -870,7 +870,7 @@ $$ \iint\limits_D f(x, y) \\, dA = \int_{\alpha}^{\beta} \int_{h_1(\theta)}^{h_2
 
 ## 15.5: Surface Area
 For a function $f(x, y)$, the surface area can be computed with the following:
-$$ A(S) = \iint_D \sqrt{f_x(x, y)^2 + f_y(x, y)^2 + 1} \\; dA$$ 
+$$ A(S) = \iint\limits_D \sqrt{f_x(x, y)^2 + f_y(x, y)^2 + 1} \\; dA$$ 
 
 ## 16.2: Line Integrals
 
