@@ -94,11 +94,11 @@ disableHugoGeneratorInject = false
     url        = "/posts"
     weight     = -101
 
-[[menu.main]]
-    identifier = "notes"
-    name       = "Notes"
-    url        = "/notes"
-    weight     = -100
+# [[menu.main]]
+#     identifier = "notes"
+#     name       = "Notes"
+#     url        = "/notes"
+#     weight     = -100
 
 
 [[menu.main]]
