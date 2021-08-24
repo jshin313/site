@@ -18,10 +18,10 @@ tags:
 * $\mathbb{R}$ = Set of all Real Numbers
 
 ### Properties of the Real Numbers
-1. $\forall x, y, z \in \mathbb{R} \\ \\ \\ (x +y) + z = x + (y + z)$
+1. $\forall x, y, z \in \mathbb{R} \ \ \ \ \ (x +y) + z = x + (y + z)$
 2. $\forall x \in \mathbb{R} x + y = y+ x$
 3. $\exists 0 \in \mathbb{R}\text{ such that }\forall x \in \mathbb{R}, x + 0 =x$
-4. $\forall x \in \mathbb{R} \exists (-x) \in \mathbb{R} \\ \\ \\ x + (-x) = 0$
+4. $\forall x \in \mathbb{R} \exists (-x) \in \mathbb{R} \ \  \ \ \ \ \ \ \ x + (-x) = 0$
 5. $\forall x, y, z \in \mathbb{R} (x y ) z = x(yz)$ Associative
 6. $\forall x, y \in \mathbb{R}, xy = yx$ Commutative
 7. $\exists 1 \in \mathbb{R} $ such that $\forall x \in \mathbb{R}, x \cdot 1 = x $

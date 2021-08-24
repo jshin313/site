@@ -6,6 +6,8 @@ tags:
   - college
   - math
   - mathematics
+  - physics
+  - computer science
 ---
 
 Note: You may need to wait a few seconds for all the $\LaTeX$ to load if you're using a phone or a slower device.  

@@ -1,5 +1,5 @@
 ---
-title: "1942: Calculus 2"
+title: "Calculus 2"
 publishdate: 2021-01-20
 lastmod: 2021-04-21
 draft: false
