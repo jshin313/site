@@ -2,7 +2,7 @@
 title: "Physics 2"
 publishdate: 2021-08-23
 lastmod: 2021-08-23
-draft: true
+draft: false
 toc: false
 tags:
   - notes
