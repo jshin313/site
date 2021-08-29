@@ -180,7 +180,7 @@ $$ Q = Mc\Delta T$$
 ### Calorimetry
 If there is sufficient insulation
  
-$$ Q_net = 0$$
+$$ Q_{net} = 0$$
 
 ### The Specific Heats of Gases
 * Temperature change at Constant Volume
