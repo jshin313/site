@@ -11,6 +11,9 @@ tags:
   - math
 ---
 
+## Class Description
+Textbook: The Tools of Mathematical Reasoning
+
 ## Real Numbers, Rational Numbers, and Integers
 
 * $\forall$ = "for all", "for each"
@@ -169,3 +172,35 @@ Since $q' - q \in \mathbb{Z}$, $q'-q = 0$. So $q' = q$.
 $$ bq + r = bq' + r'$$
 $$ r = r'$$
 
+### Using the Division Algorithm
+The Division Algorithm can reduce proofs about integers to finitely many cases.  
+
+We say that $a | b$, a divides b, if *b* is a multiple of *a*. $$ \exists q: b = aq + 0, \ \ q \in \mathbb{Z}$$
+
+#### Example
+Prove that the square of any integer can be expressed in one of the following forms: $4k +1$  or $4k + 0$
+
+$$n \in \mathbb{Z}, n = (4q + r), r\in \\{0, 1, 2, 3\\}$$
+
+##### Case r = 0
+$$ n^2 = (4q+0)^2 = 16q^2$$
+$$ n^2 = 4(4q^2)$$
+$$n^2 = 4k + 0 ,\ \ \ \ \ \ k = 4q^2 \in \mathbb{Z} \text{ by closure}$$
+
+##### Case r = 1
+$$ n^2 = (4q+1)^2 = 16q^2 + 8q + 1$$
+$$ n^2 = 4(4q^2 + 2q) + 1$$
+$$n^2 = 4k + 1 ,\ \ \ \ \ \ k = 4q^2 + 2q \in \mathbb{Z} \text{ by closure}$$
+
+##### Case r = 2
+$$ n^2 = (4q+2)^2 = 16q^2 + 16q + 4$$
+$$ n^2 = 4(4q^2 + 4q + 1) + 0$$
+$$n^2 = 4k + 0 ,\ \ \ \ \ \ k = 4q^2 + 4q + 1\in \mathbb{Z} \text{ by closure}$$
+
+##### Case r = 3
+$$ n^2 = (4q+3)^2 = 16q^2 + 24q + 9$$
+$$ n^2 = 16q^2 + 24q + 2(4) + 1$$
+$$ n^2 = 4(4q^2 + 6q + 2) + 1 $$
+$$n^2 = 4k + 1 ,\ \ \ \ \ \ k = 4q^2 + 6q + 2 \in \mathbb{Z} \text{ by closure}$$
+
+Thus since $n^2 = 4k + 1$ or $n^2 = 4k +0$ for all values of r, we have proven that the square of any integer can be expressed in just those forms.
