@@ -170,6 +170,7 @@ $$ = (B^T A^T)_{ij}$$
 
 ### The Algebra and Calculus of Matrix Functions
 * Matrices can have functions as their elements instead of just scalars
+* If $A$ and $B$ are matrices:
 1. $\frac{dA}{dt} = \left[\frac{da_{ij}(t)}{dt}\right]$
 2. $\frac{d}{dt}(AB) = A\frac{dB}{dt} + \frac{dA}{dt}B$ 
 3. $\int_a^b A(t) dt = \left[\int_a^b a_{ij}(t) dt\right]$
