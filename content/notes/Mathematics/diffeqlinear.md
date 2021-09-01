@@ -188,7 +188,7 @@ $$ a_{m1}x_1 + a_{m2} x_2 + ... + a_{mn}x_n = b_m$$
   * Scalars
   * Correspond to $x_1, x_2, ..., x_n$ (unknowns)
 * **Homogeneous**: If $b_i = 0 \forall i$
-* **Solution**: $n$-tuple with values for the unknowns ($x_1, x_2, x_3, ..., x_n$)
+* **Solution**: Ordered $n$-tuple with values for the unknowns ($x_1, x_2, x_3, ..., x_n$)
 * **Solution Set**: Set of all solutions to the system
 * If there are two equations with two unknowns, we have two lines, so there can only be the following solutions:
   1. No solution
