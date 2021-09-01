@@ -128,14 +128,17 @@ $$ W_{ext} = - \int_{V_i}^{V_f} p dV$$
 
 #### Isochoric Process
 $$ W = 0$$
+$$Q = \Delta E_{int}$$
 
 #### Isobaric Process
 $$ W = -p \Delta V$$
+$$ Q = \Delta E_{int} - W$$
 
 #### Isothermal Process
 $$ W = - \int_{V_i}^{V_f} p dV = - \int_{V_i}^{V_f} \frac{nRT}{V} dV = - nRT \int_{V_i}^{V_f} \frac{dV}{V} $$
 $$ nRT = p_iV_i = p_f V_f$$
 $$ W=  - nRT \ln(\frac{V_i}{V_f}) = - p_i V_i \ln(\frac{V_i}{V_f}) = - p_f V_f \ln(\frac{V_i}{V_f})$$
+$$ Q = -W$$
 
 
 #### Work Depends on the Path
