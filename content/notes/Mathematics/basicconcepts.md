@@ -204,3 +204,95 @@ $$ n^2 = 4(4q^2 + 6q + 2) + 1 $$
 $$n^2 = 4k + 1 ,\ \ \ \ \ \ k = 4q^2 + 6q + 2 \in \mathbb{Z} \text{ by closure}$$
 
 Thus since $n^2 = 4k + 1$ or $n^2 = 4k +0$ for all values of r, we have proven that the square of any integer can be expressed in just those forms.
+
+## 1.1: Language of Proofs
+
+### Proposition
+* **Proposition**: Sentence which has exactly one truth value
+  * Not a proposition: 
+    * $4 \cdot 5$ (no verb in sentence)
+    * $18 | n$ (The truth of falsity depends on the value of $n$)
+* **Predicate**: A sentence whose truth value depends on values assigned to free variables
+* Propositions can be combined with **logical operators** like **AND**, **OR**, **NOT**, **IF**, **THEN**, **IFF**
+
+
+### Implication
+$$P \implies Q$$
+* P implies Q
+* If P then Q
+* P is sufficient for Q
+* P only if Q
+* Q when P
+* Q if P
+
+* P is called the hypothesis of the implication
+* Q is called the conclusion
+
+<!-- Taken from https://people.engr.tamu.edu/hlee42/csce222/truth-table.pdf -->
+$$
+\begin{array}{|c c|c|}
+% |c c|c| means that there are three columns in the table and
+% a vertical bar ’|’ will be printed on the left and right borders,
+% and between the second and the third columns.
+% The letter ’c’ means the value will be centered within the column,
+% letter ’l’, left-aligned, and ’r’, right-aligned.
+p & q & p \implies q \\\\ % Use & to separate the columns
+\hline % Put a horizontal line between the table header and the rest.
+T & T & T \\\\
+T & F & F \\\\
+F & T & T \\\\
+F & F & T \\\\
+\end{array}
+$$
+
+* **Converse**: $Q \implies P$
+* **Contrapositive**: $\neg Q \implies \neg P$
+  * Has the same truth table as the regular $P \implies Q$
+
+* **Example**
+  * **Theorem**:
+$$ \text{If } \sum_{n=1}^\infty a_n \text{ converges, then } \lim_{n\to\infty} a_n = 0 $$
+
+  * **Contrapositive of Theorem**:
+  $$ \text{If } \lim_{n\to\infty} a_n \neq 0 \text{, then } \sum_{n=1}^\infty a_n \text{ diverges (Divergence Test)}$$
+
+  * **Converse**:
+  $$ \text{If } \lim_{n\to\infty} a_n = 0 \text{, then } \sum_{n=1}^\infty a_n \text{ converges (Not True)}$$
+
+
+### DeMorgan's Laws & Formulas
+Let $P$ and $Q$ be propositions
+1. $\neg (P \lor Q)$ is logically equivalent to $(\neg P) \land (\neg Q)$
+2. $\neg (P \land Q)$ is logically equivalent to $(\neg P) \lor (\neg Q)$
+
+Proof of 1.
+$$
+\begin{array}{|c c|c|c|}
+p & q & p \lor q & \neg(p \lor q) \\\\ % Use & to separate the columns
+\hline % Put a horizontal line between the table header and the rest.
+T & T & T & \mathbf{F} \\\\
+T & F & T & \mathbf{F} \\\\
+F & T & T & \mathbf{F} \\\\
+F & F & F & \mathbf{T} \\\\
+\end{array}
+$$
+
+$$
+\begin{array}{|c c|c|c|c|}
+p & q & \neg p & \neg q & (\neg p) \land (\neg q) \\\\ % Use & to separate the columns
+\hline % Put a horizontal line between the table header and the rest.
+T & T & F & F & \mathbf{F}  \\\\
+T & F & F & T & \mathbf{F}  \\\\
+F & T & T & F & \mathbf{F}  \\\\
+F & F & T & T & \mathbf{T}  \\\\
+\end{array}
+$$
+
+### Quantifiers
+* **Universal Quantifier**: $\forall$ = "for any", "for all", or "for each"
+* **Existential Quantifier**: $\exists$ = "there exists", "for some"
+  * $\exists!$ = "there is a unique" or "there is exactly one"
+* Examples
+  1. Some positive integers are both perfect squares and perfect cubes
+    <!-- * $\exists k, n, m: k = m^2 \land k= n^3, n \in \mathbb{Z}, m \in \mathbb{Z}, k \in \mathbb{Z}^+$ -->
+    * $\exists x \in \mathbb{Z}^+ \vert (\exists y \in \mathbb{Z} \vert x = y^2) \land (\exists w \in \mathbb{Z} \vert x= w^3)$
