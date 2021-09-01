@@ -228,3 +228,34 @@ $$ A\vb{x} = \vb{b}$$
 * For scalar values that are reals:
 $$ (x_1, x_2, ..., x_n) \Longleftrightarrow \begin{bmatrix}x_1 & x_2 & ... & x_n\end{bmatrix} \Longleftrightarrow \begin{bmatrix}x_1 \\\\ x_2 \\\\ \vdots \\\\ x_n \end{bmatrix}$$
 * Tuples, row vectors, and column vectors are basically interchangeable in this context
+
+## 2.4: Row-Echelon Matrices and Elementary Row Operations
+* Method for solving a system by reducing a system of equations to a new system with the same solution set, but easier to solve
+
+### Row-Echelon Matrix
+Let A be a $m \cross n$ matrix with the following conditions
+1. All zero rows of A (if any) are grouped at the bottom
+2. The leftmost non-zero entry of every non-zero row is 1 (called the leading 1 or pivotal 1)
+3. The leading 1 of a non-zero row below the first row is to the right of the leading 1 in the row above it
+
+$$ 
+\begin{bmatrix}
+0 & 1 & ... \\\\
+0 & 0 & 0 & 1 & ... \\\\
+0 & 0 & 0 & 0 & 1 & ... \\\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & ... \\\\
+0 & 0 & 0 & 0 & 0 & ... & 0 & 0 & 0 \\\\
+0 & 0 & 0 & 0 & 0 & ... & 0 & 0 & 0
+\end{bmatrix}
+$$
+
+* Values after the leading 1 can be any value
+* Pivotal Columns are columns where there is a leading 1
+
+### Elementary Row Operations
+1. Permute row $i$ and $j$
+2. Multiply row $i$ by a non-zero scalar $k$
+3. Add the multiple $kR_j$ of row $j$ to $R_i, \ \ \ \ i \neq j, \ \ k \in \mathbb{R}$
+
+* $A \sim B$ denotes that $B$ was obtained using one of the above operations
+* The elementary row operations are reversible
