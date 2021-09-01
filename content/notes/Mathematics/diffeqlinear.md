@@ -174,3 +174,57 @@ $$ = (B^T A^T)_{ij}$$
 1. $\frac{dA}{dt} = \left[\frac{da_{ij}(t)}{dt}\right]$
 2. $\frac{d}{dt}(AB) = A\frac{dB}{dt} + \frac{dA}{dt}B$ 
 3. $\int_a^b A(t) dt = \left[\int_a^b a_{ij}(t) dt\right]$
+
+## 2.3: Systems of Linear Equations
+System of Linear Equations
+
+$$ a_{11}x_1 + a_{12} x_2 + ... + a_{1n}x_n = b_1$$
+$$ a_{21}x_1 + a_{22} x_2 + ... + a_{2n}x_n = b_2$$
+$$ \vdots$$
+$$ a_{m1}x_1 + a_{m2} x_2 + ... + a_{mn}x_n = b_m$$
+
+* **System Coefficients**: $a_{ij}$
+* **System Constants**: $b_j$
+  * Scalars
+  * Correspond to $x_1, x_2, ..., x_n$ (unknowns)
+* **Homogeneous**: If $b_i = 0 \forall i$
+* **Solution**: $n$-tuple with values for the unknowns ($x_1, x_2, x_3, ..., x_n$)
+* **Solution Set**: Set of all solutions to the system
+* If there are two equations with two unknowns, we have two lines, so there can only be the following solutions:
+  1. No solution
+  2. One solution (one intersection point)
+  3. Infinitely many solutions (the lines overlap or are the same)
+* Similarly, with three equations and three unknowns, we have three planes, so there can only be the following solutions
+  1. No solution
+  2. One solution (Three planes intersect at one point)
+  3. Infinitely Many Solutions (the three planes intersect at one line)
+  4. Infinitely Many Solutions (the three planes are the same)
+* **All** systems can only have one of the three above solution possibilities (no solution, one solution, or infinitely many solutions)
+* **Consistent**: At least one solution to system
+* **Inconsistent**: No solution to a system
+
+* **Matrix of Coefficients**
+$$ A = \begin{bmatrix} a_{11} & a_{12} & ... & a_{1n} \\\\ a_{21} & a_{22} & ... & a_{2n} \\\\ \vdots \\\\ a_{m1} & a_{m2} & ... & a_{mn}\end{bmatrix}$$
+* **Augmented Matrix**: 
+$$ A = \begin{bmatrix} a_{11} & a_{12} & ... & a_{1n} & b_1 \\\\ a_{21} & a_{22} & ... & a_{2n} & b_2 \\\\ \vdots \\\\ a_{m1} & a_{m2} & ... & a_{mn} & b_m\end{bmatrix}$$
+
+### Vector Formulation
+If we have the following:
+$$ a_{11}x_1 + a_{12} x_2 + ... + a_{1n}x_n = b_1$$
+$$ a_{21}x_1 + a_{22} x_2 + ... + a_{2n}x_n = b_2$$
+$$ \vdots$$
+$$ a_{m1}x_1 + a_{m2} x_2 + ... + a_{mn}x_n = b_m$$
+
+The vector formulation:
+$$ \begin{bmatrix} a_{11} & a_{12} & ... & a_{1n} \\\\ a_{21} & a_{22} & ... & a_{2n} \\\\ \vdots \\\\ a_{m1} & a_{m2} & ... & a_{mn}\end{bmatrix} \begin{bmatrix} x_1 \\\\ x_2 \\\\ \vdots \\\\ x_n \end{bmatrix} = \begin{bmatrix}b_1 \\\\ b_2 \\\\ \vdots \\\\ b_m \end{bmatrix}$$
+$$ \vb{x} =  \begin{bmatrix} x_1 \\\\ x_2 \\\\ \vdots \\\\ x_n \end{bmatrix}, \ \ \ \ \vb{b} = \begin{bmatrix}b_1 \\\\ b_2 \\\\ \vdots \\\\ b_m \end{bmatrix}$$
+$$ A\vb{x} = \vb{b}$$
+
+* **Right-Hand Side Vector**: $\vb{b}$
+* **Vector of Unknowns**: $\vb{x}$
+
+### Notation
+* The set of all ordered $n$-tuples of real numbers $(c_1, c_2, c_3, c_4, ..., c_n)$ is denoted with $\mathbb{R}^n$
+* For scalar values that are reals:
+$$ (x_1, x_2, ..., x_n) \Longleftrightarrow \begin{bmatrix}x_1 & x_2 & ... & x_n\end{bmatrix} \Longleftrightarrow \begin{bmatrix}x_1 \\\\ x_2 \\\\ \vdots \\\\ x_n \end{bmatrix}$$
+* Tuples, row vectors, and column vectors are basically interchangeable in this context
