@@ -229,6 +229,9 @@ $$ A\vb{x} = \vb{b}$$
 $$ (x_1, x_2, ..., x_n) \Longleftrightarrow \begin{bmatrix}x_1 & x_2 & ... & x_n\end{bmatrix} \Longleftrightarrow \begin{bmatrix}x_1 \\\\ x_2 \\\\ \vdots \\\\ x_n \end{bmatrix}$$
 * Tuples, row vectors, and column vectors are basically interchangeable in this context
 
+### Differential Equations
+$$ \frac{d\vb{x}}{dt} = A(t) \vb{x}(t) + \vb{b}(t)$$
+
 ## 2.4: Row-Echelon Matrices and Elementary Row Operations
 * Method for solving a system by reducing a system of equations to a new system with the same solution set, but easier to solve
 
