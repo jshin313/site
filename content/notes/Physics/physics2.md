@@ -186,15 +186,28 @@ If there is sufficient insulation
 $$ Q_{net} = 0$$
 
 ### The Specific Heats of Gases
-* Temperature change at Constant Volume
+
+#### Isothermal
+$$ \Delta E_{th} = 0$$
+$$ W+ Q = 0$$
+
+#### Isochoric
+
 $$ Q = nC_V\Delta T$$
-* Temperature change at Constant Pressure
+$$ W = 0, Q = \Delta E_{th}$$
+
+#### Isobaric
 $$ Q = nC_p\Delta T$$
+
+#### Any Ideal Process
 * Any two processes that change the thermal energy by $\Delta E_{th}$ will cause the same temperature change $\Delta T$
-$$ C_p = C_v + R$$
 * For any ideal-gas process
 $$\Delta E_{th} = nC_v \Delta T$$
 * Heat depends on the path on the pV diagram
+
+* Monoatomic Gases: $$ C_V = \frac{3}{2} R \approx 12.5$$
+* Diatomic Gases: $$ C_V = \frac{5}{2} \approx 20.8 $$
+* For all ideal gases: $$ C_p - C_v = R$$
 
 #### Adiabatic Process
 $$ W = nC_v \Delta T$$
@@ -204,6 +217,8 @@ $$ T_fV_f^{\gamma - 1}=  T_iV_i^{\gamma - 1}$$
 
 * Image from wikipedia
 ![Image from wikipedia](https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Adiabatic.svg/341px-Adiabatic.svg.png)
+* Temperature decreases during the adiabatic expansion
+* Temperature increases during the adiabatic compression
 
 ### Heat-Transfer Mechanisms
 
