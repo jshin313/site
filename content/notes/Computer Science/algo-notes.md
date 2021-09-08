@@ -7,7 +7,7 @@ tags:
   - notes
 ---
 
-Notes on various sources: https://backtobackswe.com/ and CTCI, but mainly from the Algorithm Design Manual by Skiena
+Notes on various sources: https://backtobackswe.com/, CTCI, and the Algorithm Design Manual by Skiena
 
 ## Graph Representation
 Vertical bars | | mean cardinality (size)
@@ -206,4 +206,11 @@ Using memoization only takes $O(n)$ since only one path from root to leaf is eff
 
 ### Powers of Two
 If we have the recurrence relation $T(n) = T\left(\frac{n}{2}\right)$, then the runtime is just $O(log(n))$
+
+## Dynamic Programming (DP)
+Characteristics of DP
+1. Explicit overlapping subproblems 
+  * merge sort is not DP since although there are subproblems, there is no overlap between the subproblems
+2. Subproblems cover all cases
+3. Overlaps can be cached
 
