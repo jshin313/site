@@ -244,6 +244,7 @@ F & T & T \\\\
 F & F & T \\\\
 \end{array}
 $$
+$$ p\implies q \equiv \neg p \lor q $$
 
 * **Converse**: $Q \implies P$
 * **Contrapositive**: $\neg Q \implies \neg P$
@@ -296,3 +297,19 @@ $$
   1. Some positive integers are both perfect squares and perfect cubes
     <!-- * $\exists k, n, m: k = m^2 \land k= n^3, n \in \mathbb{Z}, m \in \mathbb{Z}, k \in \mathbb{Z}^+$ -->
     * $\exists x \in \mathbb{Z}^+ \vert (\exists y \in \mathbb{Z} \vert x = y^2) \land (\exists w \in \mathbb{Z} \vert x= w^3)$
+
+#### Negating Quantifiers
+$$ \neg(\forall x P(x)) \implies \exists x \neg P(x)$$
+$$ \neg(\exists x P(x)) \implies \forall x \neg P(x)$$
+
+#### Example
+$$ \forall x \in \mathbb{R} \  \exists k \in \mathbb{R}\  (x > 0 \land x=k^2)$$
+The negation of the above would be
+$$ \neg(\forall x \in \mathbb{R} \ \exists k \in \mathbb{R} \ (x > 0 \land x=k^2))$$
+$$ \exists x \in \mathbb{R} \ \neg(\exists k \in \mathbb{R} \ (x > 0 \land x=k^2))$$
+$$ \exists x \in \mathbb{R}\  \forall k \in \mathbb{R} \ \neg(x > 0 \land x=k^2))$$
+Use Demorgan's laws
+$$ \exists x \in \mathbb{R}\  \forall k \in \mathbb{R}\  \neg(x > 0) \lor \neg(x=k^2)$$
+
+Since $P \implies Q \equiv \neg P \lor Q$
+$$ \exists x \in \mathbb{R}\  \forall k \in \mathbb{R}\  (x > 0 \implies x\neq k^2)$$
