@@ -225,6 +225,12 @@ $$ T_fV_f^{\gamma - 1}=  T_iV_i^{\gamma - 1}$$
 #### Conduction
 $$ \frac{dQ}{dt} = k \frac{A}{L} \Delta T$$
 * **Thermal Conductivity**: Represented by $k$
+* $L$ denotes the thickness of the slab in between the two hot and cold regions and $A$ is the cross-sectional area
+* Heat transferred through direct physical contact
+* Heat flows due to a difference in temperature
+* Conduction results do to the collision of particles at the interface between the two materials
+  * Molecules from hotter region collide and transfer energy to those in an adjacent cooler region
+* $k$ value is large for metals due to electrons
 
 #### Convection
 * Transfer of thermal energy by moving fluids
@@ -239,3 +245,90 @@ $$ \frac{dQ}{dt} = e \sigma AT^4$$
 * Since objects emit and absorb radiation, the net amount of radiated power:
 $$ \frac{dQ_{net}}{dt} = e \sigma A(T^4 - T_0^4)$$
 * **Black body**: Perfect absorber and emitter
+
+## 20: The Micro/Macro Connection
+
+### Molecular Speeds and Collisions
+* There is a distribution of velocities for gas particles, not just one speed
+* Pressure and temperature are based on the **average** of these speeds
+
+### Mean Free Path
+* **Mean Free Path** ($\lambda$): The *average* distance between collisions
+  * If a molecule has $N_{colli}$ collisions as it travels a distance $L$
+$$ \lambda = \frac{L}{N_{colli}}$$
+* Two molecules collide if the distance between their centers is less than $2r$
+* The number of collisions is equal to the number of molecules in a cylindrical volume of length $L$ and radius of $2r$
+$$ N_{colli} = \frac{N}{V} V_{cyl} = \frac{N}{V} \pi (2r)^2 L = 4\pi \frac{N}{V}r^2 L$$
+$$ \lambda = \frac{L}{N_colli} = \frac{1}{4\pi (N/v)r^2}$$
+* The above derivation assumed one particle was colliding with a stationary target particle. If we don't assume this, we get the following:
+$$ \lambda = \frac{1}{4\sqrt{2} \pi (N/v)r^2}$$
+
+### Pressure in a Gas
+* Pressure comes from force over area. Force comes from change in momentum of a particle
+$$ \Delta p_x = -2mv_x$$
+$$ \Delta P_x = N_{colli} \Delta p_x  = -2N_{colli} mv_x$$
+
+$$(F_{\text{on gas}})_x = -\frac{2N_{colli} mv_x}{\Delta t}$$
+$$(F_{\text{on gas}})_x = - (F_{\text{on wall}})_x$$
+$$ N_{colli} = \frac{N}{V} A v_x \Delta t$$
+$$ F_{\text{on wall}} = \frac{N}{V} m(v_x^2)_{avg} A$$
+
+### The Root-Mean-Square Speed
+$$ (v_{x})_{avg}= 0 $$
+$$ v = (v_x^2 + v_y^2 + v_z^2)^{1/2}$$
+$$ (v^2)_{avg} =(v_x^2)_{avg} + (v_y^2)_{avg} + (v_z^2)_{avg} $$
+$$ v_{rms} = \sqrt{(v^2)_{avg}}$$
+$$ (v^2_x)_{avg} = (v^2_y)_{avg} = (v^2_z)_{avg}$$
+$$ (v_x^2)_{avg} = \frac{1}{3} v_{rms}^2$$
+$$ F_{\text{on wall}} = \frac{1}{3} \frac{N}{V} mv_{rms}^2 A$$
+$$ p = \frac{1}{3} \frac{N}{V} mv_{rms}^2 $$
+
+### Temperature
+$$ \epsilon_{avg} = \frac{1}{2} m(v^2)_{avg} = \frac{1}{2}mv^2_{rms} $$
+$$ p = \frac{2}{3} \frac{N}{V}\epsilon_{avg}$$
+$$ pV = Nk_B T $$
+$$ \epsilon_{avg} = \frac{3}{2} k_B T$$
+Temperature is a measure of the average translational kinetic energy.
+
+### Thermal Energy and Specific Heat
+
+$$ E_{th} = K_{micro} + U_{micro}$$
+
+#### Monatomic Gases
+Atoms have no molecular bonds in an ideal gas so $U_{micro} = 0$
+$$ E_{th} = \frac{3}{2} Nk_BT = \frac{3}{2} nRT$$
+$$ \Delta E_{th} = \frac{3}{2} nR\Delta T$$
+$$ \Delta E_{th} = nC_V \Delta T$$
+
+#### Equipartition Theorem
+* In addition to kinetic energy, non-monatomic gases can have the ofllowing forms of energy
+1. Kinetic and potential energy associated with the vibrations from the spring like bond between molecules 
+2. Rotational Kinetic energy 
+* **Degrees of Freedom**: The number of independent modes of energy storage
+  * Monatomic have 3 degrees of freedom since there are 3 different type s of translational kinetic energy
+* **Equipartition Theorem**: The thermal energy is distributed evenly among all the different possible types of degrees of freedom. Each degree has the following energy: $\frac{1}{2} Nk_B T$ 
+  * Monatomic had 3 degrees so thermal energy was $\frac{3}{2} Nk_B T$
+
+#### Solids 
+* 6 degrees of freedom
+  * 3 kinetic and 3 potential
+$$ E_{th} = 3Nk_BT = 3nRT$$
+
+#### Diatomic Molecules
+* 8 total degrees of freedom but only 5 are available at room temperature due to quantum effects
+$$ E_{th} = \frac{5}{2} Nk_B T = \frac{5}{2} nRT$$
+$$ C_v = \frac{5}{2} R$$
+
+### Thermal Interactions and Heat
+* Heat is the energy transferred via collisions
+* When thermal equilibrium is reached the following is true
+$$ (\epsilon_1)_{avg} = (\epsilon_2)_{avg}$$
+$$ T_{1f} = T_{2f}$$
+
+### Second Law of Thermodynamics
+* Equilibrium is the most probable state
+* **Entropy**: Measures the probability that a macroscopic state will occur spontaneously or the measure of disorder
+
+* **Second Law of Thermodynamics**: The entropy of a system never decreases
+  * Heat always travels from hot to cold
+  
