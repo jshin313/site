@@ -328,6 +328,7 @@ $$ T_{1f} = T_{2f}$$
 ### Second Law of Thermodynamics
 * Equilibrium is the most probable state
 * **Entropy**: Measures the probability that a macroscopic state will occur spontaneously or the measure of disorder
+* Reversible microscopic events lead to irreversible macroscopic behavior since some macroscopic states are more probable
 
 * **Second Law of Thermodynamics**: The entropy of a system never decreases
   * Heat always travels from hot to cold
