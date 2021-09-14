@@ -205,7 +205,7 @@ $$ Q = nC_p\Delta T$$
 $$\Delta E_{th} = nC_v \Delta T$$
 * Heat depends on the path on the pV diagram
 
-* Monoatomic Gases: $$ C_V = \frac{3}{2} R \approx 12.5$$
+* Monatomic Gases: $$ C_V = \frac{3}{2} R \approx 12.5$$
 * Diatomic Gases: $$ C_V = \frac{5}{2} \approx 20.8 $$
 * For all ideal gases: $$ C_p - C_v = R$$
 
@@ -248,6 +248,21 @@ $$ \frac{dQ_{net}}{dt} = e \sigma A(T^4 - T_0^4)$$
 
 ## 20: The Micro/Macro Connection
 
+### Questions
+We still have the following questions:
+
+* Why does the ideal gas law work on *every* gas?
+* Why is the molar specific heat ($C_v$) the same for all monatomic gases (12.5), diatomic gases (20.8), and elemental solids (25.0)?
+* What is Temperature?
+* Why does a gas have pressure?
+
+### Assumptions
+* $N$ identical particles of mass $m$
+* No intermolecular forces, so molecules only have kinetic energy, no potential energy
+* Molecular motion is random (average speed is dependent on temperature)
+* Collisions with the wall of the container are elastic
+
+
 ### Molecular Speeds and Collisions
 * There is a distribution of velocities for gas particles, not just one speed
 * Pressure and temperature are based on the **average** of these speeds
@@ -268,15 +283,17 @@ $$ \lambda = \frac{1}{4\sqrt{2} \pi (N/v)r^2}$$
 $$ \Delta p_x = -2mv_x$$
 $$ \Delta P_x = N_{colli} \Delta p_x  = -2N_{colli} mv_x$$
 
+On average, half of the particles collide with the wall during the $\Delta t$
+$$ N_{colli} = \frac{1}{2} n \Delta V = \frac{1}{2} \frac{N}{V} A\Delta L = \frac{1}{2}\frac{N}{V} A v_x \Delta t$$
 $$(F_{\text{on gas}})_x = -\frac{2N_{colli} mv_x}{\Delta t}$$
 $$(F_{\text{on gas}})_x = - (F_{\text{on wall}})_x$$
-$$ N_{colli} = \frac{N}{V} A v_x \Delta t$$
 $$ F_{\text{on wall}} = \frac{N}{V} m(v_x^2)_{avg} A$$
+$$ p = \frac{mN}{V} \overline{v^2_x}$$
 
 ### The Root-Mean-Square Speed
 $$ (v_{x})_{avg}= 0 $$
 $$ v = (v_x^2 + v_y^2 + v_z^2)^{1/2}$$
-$$ (v^2)_{avg} =(v_x^2)_{avg} + (v_y^2)_{avg} + (v_z^2)_{avg} $$
+$$ (v^2)_{avg} =(v_x^2)_{avg} + (v_y^2)_{avg} + (v_z^2)_{avg} = 3\overline{v_x^2}$$
 $$ v_{rms} = \sqrt{(v^2)_{avg}}$$
 $$ (v^2_x)_{avg} = (v^2_y)_{avg} = (v^2_z)_{avg}$$
 $$ (v_x^2)_{avg} = \frac{1}{3} v_{rms}^2$$
@@ -288,7 +305,13 @@ $$ \epsilon_{avg} = \frac{1}{2} m(v^2)_{avg} = \frac{1}{2}mv^2_{rms} $$
 $$ p = \frac{2}{3} \frac{N}{V}\epsilon_{avg}$$
 $$ pV = Nk_B T $$
 $$ \epsilon_{avg} = \frac{3}{2} k_B T$$
-Temperature is a measure of the average translational kinetic energy.
+Temperature is a measure of the average translational kinetic energy.  
+
+The following two equations relates macroscopic state variables ($T$ and $P$) to microscopic quantities:
+$$ p = \frac{2}{3} \frac{N}{V} \epsilon_{avg} $$
+$$ T = \frac{2}{3k_B} \epsilon_{avg} $$
+
+We can assume collisions are elastic because if the collisions were inelastic, then the temperature of the gas would continue to decrease due to the loss of kinetic energy. This doesn't happen in real life, so we can assume that collisions are elastic.
 
 ### Thermal Energy and Specific Heat
 
@@ -296,33 +319,38 @@ $$ E_{th} = K_{micro} + U_{micro}$$
 
 #### Monatomic Gases
 Atoms have no molecular bonds in an ideal gas so $U_{micro} = 0$
-$$ E_{th} = \frac{3}{2} Nk_BT = \frac{3}{2} nRT$$
+$$ E_{th} = K_{micro} = N\epsilon_{avg} = \frac{3}{2} Nk_BT = \frac{3}{2} nRT$$
 $$ \Delta E_{th} = \frac{3}{2} nR\Delta T$$
 $$ \Delta E_{th} = nC_V \Delta T$$
+$$ nC_V \Delta T = \frac{3}{2} n R \Delta T$$
+$$ C_v = \frac{3}{2} R = 12.5 \ J/(mol\cdot K)$$
 
 #### Equipartition Theorem
 * In addition to kinetic energy, non-monatomic gases can have the ofllowing forms of energy
 1. Kinetic and potential energy associated with the vibrations from the spring like bond between molecules 
 2. Rotational Kinetic energy 
 * **Degrees of Freedom**: The number of independent modes of energy storage
-  * Monatomic have 3 degrees of freedom since there are 3 different type s of translational kinetic energy
+  * Monatomic have 3 degrees of freedom since there are 3 different types of translational kinetic energy along x, y, and z
 * **Equipartition Theorem**: The thermal energy is distributed evenly among all the different possible types of degrees of freedom. Each degree has the following energy: $\frac{1}{2} Nk_B T$ 
   * Monatomic had 3 degrees so thermal energy was $\frac{3}{2} Nk_B T$
+* Vibration: For diatomic 2 degrees of freedom (one for each atom)
+* Rotational: For diatomic only 2 degrees (since rotation along one axis has no rotational kinetic energy)
 
 #### Solids 
 * 6 degrees of freedom
-  * 3 kinetic and 3 potential
+  * 3 translational kinetic and 3 vibrational (potential)
 $$ E_{th} = 3Nk_BT = 3nRT$$
 
 #### Diatomic Molecules
 * 8 total degrees of freedom but only 5 are available at room temperature due to quantum effects
 $$ E_{th} = \frac{5}{2} Nk_B T = \frac{5}{2} nRT$$
 $$ C_v = \frac{5}{2} R$$
+$C_v$ is $\frac{3}{2}R$ at very low temperatures and $\frac{7}{2}R$ at high temperatures
 
 ### Thermal Interactions and Heat
 * Heat is the energy transferred via collisions
 * When thermal equilibrium is reached the following is true
-$$ (\epsilon_1)_{avg} = (\epsilon_2)_{avg}$$
+$$ (\epsilon_{1})_{avg} = (\epsilon_{2})_{avg}$$
 $$ T_{1f} = T_{2f}$$
 
 ### Second Law of Thermodynamics
@@ -333,3 +361,54 @@ $$ T_{1f} = T_{2f}$$
 * **Second Law of Thermodynamics**: The entropy of a system never decreases
   * Heat always travels from hot to cold
   
+## 21: Heat Engines and Refrigerators
+* Practical devices transform heat into work
+* All devices must obey two two laws of thermodynamics
+  1. Energy is conserved $$ \Delta E_{th} = W_{\text{done on system}} + Q$$
+  2. Most macroscopic processes are irreversible. Heat energy is transferred spontaneously from a hooter system to a cold system but never the other way around  
+
+### Questions
+1. What are the limitations imposed by the above laws on these practical devices
+2. How do these devices transform heat into work?
+
+### Heat into Work
+* So far we've defined $W$ as the work done on the system (by an external force). Now we define $W_{s}$ as the work done by the system, since we only care about that when talking about practical devices.
+$$ \Delta E_{th} = W + Q$$
+$$ W = - W_{s}$$
+$$ \Delta E_{th} = -W_s + Q$$
+$$  Q = \Delta E_{th}  + W_s$$
+* Energy is transferred into the system as heat to do work or stored within the system as increased thermal energy
+
+* **Heat Reservoir**: An object that is so large that its temperature does not change when heat is transferred between the system and reservoir
+* $Q_H$: Amount of heat transferred into a hot reservoir called 
+* $Q_C$: Amount of heat transferred into a cold reservoir
+
+* Converting heat to work can be done with thermal expansion, but the system is at a different state. A heat engine must be a closed cycle.
+
+### Heat Engine
+1. Extract heat, $H_S$ from hot reservoir
+2. Do useful work
+3. Exhausts heat energy ($Q_c$) to colder reservattor
+
+#### Sterling Engine
+* Two isotherms and two isochoric processes in one cycle
+* Heat transfers occur in all four processes
+
+#### Thermal Efficiency
+* The purpose of heat engines is to transform as much of the heat absorbed $Q_H$ into work done $W_{out}$
+* **Thermal Efficiency** is denoted by $\eta$
+$$ \eta = \frac{W_{out}}{Q_H}$$
+
+$$W_{out} = Q_{net} = Q_{H} - Q_{C}$$
+$$ \eta = 1 - \frac{Q_C}{Q_H}$$
+* Actual engines have $\eta$ of 0.1 to 0.5
+
+### Ideal-Gas Heat Engines
+* An ideal gas heat engine can be represented by a **clock-wise** loop
+* The **net work** is the area **inside** the loop, not the area under the loop
+
+### Refrigerator
+Opposite of heat engine
+* $ W_{in}$ and $Q_c$ as inputs
+* $Q_H$ as output
+
