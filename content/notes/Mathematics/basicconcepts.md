@@ -313,3 +313,32 @@ $$ \exists x \in \mathbb{R}\  \forall k \in \mathbb{R}\  \neg(x > 0) \lor \neg(x
 
 Since $P \implies Q \equiv \neg P \lor Q$
 $$ \exists x \in \mathbb{R}\  \forall k \in \mathbb{R}\  (x > 0 \implies x\neq k^2)$$
+
+## 1.2: Direct Proofs
+We can assume $P$ to be true and show that $Q$ is true.
+
+## 2.1: More on Direct Proofs
+
+### Additional Axioms for Real Numbers
+
+1. $\forall a, b \in \mathbb{R}$ exactly one of $a <b$, $a=b$, or $a > b$ is true
+2. $\forall a, b , c\in \mathbb{R} \ \ \ (A < b) \implies (a + c < b+c)$
+3. $\forall a, b, c \in \mathbb{R}  \ \ (a < b \land c > 0) \implies ac < bc$
+4. $\forall a, b, c \in \mathbb{R}  \ \ (a < b \land c < 0) \implies ac > bc$
+5. $\forall a, b, c \in \mathbb{R}  \ \ (a < b \land b < c) \implies a < c$ (Transitive)
+
+### Counterexamples
+The negation of $\forall x \in S, P(x)$ is $\exists x \in S, \neg P(x)$.  
+To disprove $\forall x \in S, P(x)$, we need only find one example of an x for which P(x) is false.
+
+#### Prime Numbers
+**Definition**: $n \in \mathbb{Z}^+$ is prime the following is true:
+$$n\neq 1 \land (x \in \mathbb{Z}^+ \land x | n) \implies (x = 1 \lor x = n)$$
+
+### Double Implications
+* To prove $P \iff Q$, you need to prove both $P \implies Q$ and $Q \implies P$
+
+### Uniqueness
+To prove a property is unique for a certain object, assume that there are two objects with this property $x$ and $y$ and show that they are the same.
+
+#### Example
