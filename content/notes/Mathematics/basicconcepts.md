@@ -319,6 +319,18 @@ We can assume $P$ to be true and show that $Q$ is true.
 
 ## 2.1: More on Direct Proofs
 
+### Basic Properties of Real Numbers
+For all real numbers $a$, $b$, and $c$
+1. Closure under addition and multiplication: $a + b \in \mathbb{R}, ab \in \mathbb{R}$
+2. Associative Properties: $(a+b) +c = a+(b+c)$ and $(ab)c = a(bc)$
+3. Commutative Properties: $a + b = b+a$ and $ab = ba$
+4. Distributive Properties: $a(b + c) = ab + ac$
+5. Identities: $0 \neq 1, a + 0 = a, a \cdot 1 = a, a \cdot 0 = 0$
+6. Additive Inverses: $\exists! -a = -1 \cdot a: a + (-a) = 0$
+7. Subtraction: $b-a$ is defined to equal $b + (-a)$
+8. Multiplicative Inverses: $a \neq 0 \implies \exists! a^{-1} = \frac{1}{a}: a\cdot a^{-1} = a \cdot \frac{1}{a} = 1$
+9. Division: $a \neq 0  \implies \frac{b}{a} = b \cdot \frac{1}{a}$
+
 ### Additional Axioms for Real Numbers
 
 1. $\forall a, b \in \mathbb{R}$ exactly one of $a <b$, $a=b$, or $a > b$ is true
