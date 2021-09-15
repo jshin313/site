@@ -342,3 +342,95 @@ $$n\neq 1 \land (x \in \mathbb{Z}^+ \land x | n) \implies (x = 1 \lor x = n)$$
 To prove a property is unique for a certain object, assume that there are two objects with this property $x$ and $y$ and show that they are the same.
 
 #### Example
+Prove the following statement:
+$$ \exists x \in \mathbb{R} \forall y \in \mathbb{R} x + y = y+x = y$$
+We will prove that this additive property is unique to just one number.
+
+1. Let $a\in\mathbb{R}$ be such that $a + w = w+a = w, \ \ \forall w \in \mathbb{R}$
+2. Let $b\in\mathbb{R}$ be such that $b + w = w+b = w, \ \ \forall w \in \mathbb{R}$
+
+* $a + b = b$ by line 1
+* $a + b = a$ by line 2
+* Thus we can conclude that $a = b$ and that only one unique number has the additive property we were interested in
+
+## 2.2: Indirect Proofs
+Note: $\therefore$ means therefore and $\because$ means because
+
+### Proof  by Contradiction
+To prove statement $P$ is to assume $\neg P$ and then derive a statement of the form $Q \land (\neg Q)$. If $\neg P$ implies a falsehood, then $\neg (\neg P)$, which means $P$ itself is true.
+
+### Proof  by Contrapositive
+$$ \neg Q \implies \neg P \iff P \implies Q $$
+
+## 2.3: Two Important Theorems
+
+### Theorem: $\ \sqrt{2}\text{ }$  is irrational
+Let $\sqrt{2}$ denote the positive real number $y$ satisfying $y^2 = 2$.
+
+Suppose BWOC (By way of contradiction), 
+$$ \sqrt{2} \in \mathbb{Q} \implies \exists a, b \in \mathbb{N}: \sqrt{2} = \frac{a}{b}$$
+
+If we cancel common factors so no integer divides both $a$ and $b$ except $\pm 1$, we can say $\sqrt{2} = \frac{p}{q}$, where $p, q \in \mathbb{Z}$ and they share no common factors.
+
+$$ 2 = \frac{p^2}{q^2} \implies 2 q^2 = p^2 $$
+$$ 2 | p^2 \implies 2 | p, \ p = 2t, \  t \in \mathbb{Z}$$
+$p$ is even since $p^2$ is even.
+
+$$ 2q^2 = (2t)^2$$
+$$ 2q^2 = 4t^2$$
+$$ q^2 = 2t^2 \implies 2 | q^2 \implies 2 | q$$
+
+$2 | p \land 2 | q$, contradicting our choice of $p$ and $q$ sharing no common factors.
+
+Thus $\sqrt{2} \notin \mathbb{Q}$
+
+### Greatest Common Divisor (GCD)
+Let $a, b \in \mathbb{Z}$ and $a \neq 0 \land b \neq 0$.  
+$$S = \\{ x \in \mathbb{Z} : x | a \land x | b \\}$$
+$S$ is the set of common integer divisors of $a$ and $b$
+
+$$ \forall a, b \in \mathbb{Z}: 1 \in S \implies S \neq \emptyset$$  
+If $|k| > max(a, b)$, then $k \nmid a \land k \nmid b$, so $k \notin S$
+So $S$ is finite and $S$ has a maximum element.
+
+Define GCD as the following:
+$$ gcd(a, b) = max(S)$$
+
+If $a = b = 0$, we define $gcd(0, 0) = 0$
+
+### Bézout's Lemma
+Lemma: Let $a, b \in \mathbb{Z}$. Then $\exists m, n \in \mathbb{Z}: gcd(a, b) = am + bn$
+
+#### Proof
+Case 1
+$$a = b = 0$$
+$$gcd(0, 0) = 0 = a \cdot 0 + b \cdot 0$$
+Case 2
+$$ a = 0 \land b \neq 0$$
+$$ gcd(0, b) = |b|$$
+Case 3
+$$ a \neq 0 \land b = 0$$
+* Same as Case 2
+
+Case 4
+$$ T = \\{x \in \mathbb{N}: \exists u, v \in \mathbb{Z} : x = au + bv\\}$$
+$$ a^2 + b^2 = a(a) + b(b) > 0$$
+$$ a^2 + b^2 \in \mathbb{T}$$
+$$ T \neq \emptyset \land T \in \mathbb{N} \implies d = min(T)$$
+* By the Well Ordering Principle (WOP), the set $T$ has a minimum element.
+
+* Now we show that $d | a$
+$$ a = dq + r \ \ \  q, r \in \mathbb{Z}, \ \ \ 0 \le r < d$$
+$$ d \in T \implies \exists s, t \in \mathbb{Z}: d = as + bt$$
+
+* If $r \neq 0$, then $r \in \mathbb{N}$ and $r = a - dq = a - (as + bt)q = a(1 - qs) + b(-tq)$, so that $r \in T$
+
+* But $r < d$, so this would contradict that $d = min(T)$, since $r < d$. Hence $r = 0$ must be true and $d | a$. Similarly $d | b$
+
+* We've shown that $d|a \land d | b$. Now we show that $d$ is the **greatest** of the common divisors of $a$ and $b$. Let $c$ be another common divisor of $b$ and $a$
+$$ c \in \mathbb{Z}: c | a \land c| b$$
+$$ \exists w, z \in \mathbb{Z}: q = cz, \ b = cw$$
+$$ d = as + bt = (cz) s + (cw) t$$
+* Since $d > 0$, this means $c \le d$ since $c$ is a divisor of $d$. So $d$ is the **greatest** common divisor of $a$ and $b$
+
+### Euclid's Lemma
