@@ -170,6 +170,7 @@ $$\Delta E_{th} = W + Q $$
 * No heat is transferred
 * $\Delta E_{th} = W$
 * Temperature can still change
+* Adiabatic curves are steeper than isotherms
 
 ### Thermal Properties of Matter
 * **Specific Heat**: Amount of energy needed to raise 1kg of a substance by a 1K
@@ -382,13 +383,15 @@ $$  Q = \Delta E_{th}  + W_s$$
 * **Heat Reservoir**: An object that is so large that its temperature does not change when heat is transferred between the system and reservoir
 * $Q_H$: Amount of heat transferred into a hot reservoir called 
 * $Q_C$: Amount of heat transferred into a cold reservoir
+* By definition $Q_C$ and $Q_H$ are always positive since they only show magnitude
 
 * Converting heat to work can be done with thermal expansion, but the system is at a different state. A heat engine must be a closed cycle.
 
 ### Heat Engine
+* Clockwise PV diagram
 1. Extract heat, $H_S$ from hot reservoir
 2. Do useful work
-3. Exhausts heat energy ($Q_c$) to colder reservattor
+3. Exhausts heat energy ($Q_c$) to colder reservoir
 
 #### Sterling Engine
 * Two isotherms and two isochoric processes in one cycle
@@ -408,7 +411,47 @@ $$ \eta = 1 - \frac{Q_C}{Q_H}$$
 * The **net work** is the area **inside** the loop, not the area under the loop
 
 ### Refrigerator
-Opposite of heat engine
-* $ W_{in}$ and $Q_c$ as inputs
+Opposite of heat engine (Counter clockwise PV diagram)
+* $W_{in}$ and $Q_c$ as inputs
+  * $W_{in}$ is the work done on the system
 * $Q_H$ as output
+* A Refrigerator transfers heat out of its cooler interior to its warmer surroundings
+* Refrigerators don't violate the 2nd Law since you have to "pay" to have heat flow from $T_c$ to $T_H$
+  * Requires $W_{in}$ (work input)
+* In any closed-cycle refrigerator, all state variables return to their initial values once every cycle
+* Over one cycle: $\Delta E_{th} = 0$
+* 1st Law
+$$ Q_{H} = Q_{C} + W_{in}$$
 
+#### Efficiency
+$$ K = \frac{Q_c}{W_{in}} = \frac{\text{what you get}}{\text{what you had to pay}} $$
+$K$ tends to infinity for a perfect refrigerator since $W_in$ decreases as efficiency increases.
+
+#### Brayton Cycle
+* Ideal-Gas refrigerator that uses adiabatic compression and adiabatic expansion to quickly heat and cool system, respectively
+1. Two adiabatic processes
+2. Two isobaric processes
+* Reverse Brayton cycle is for refrigerators and regular is for heat engines
+
+#### No Perfect Heat Engine
+* No perfect heat engine with $\eta = 1$
+* A Perfect Heat Engine means $Q_c = 0$. We could use its work output as the work input to an ordinary refrigerator. Leads to spontaenous transfer from $Q_C to Q_H$.
+* This combo violates the second law. Thus all heat engines MUST output some $Q_c$
+
+### Limits of Efficiency
+* Question: Is there a maximum efficiency or max COP (Coefficient of performance) for a device operating between $T_C$ and $T_{H}$ 
+
+* Answer: Yes
+
+### Carnot Engine
+* **Carnot Engine**: Perfectly reversible engine
+* **Carnot Cycle**
+  1. Two Adiabatic processes ($Q= 0$)
+  2. Two isothermal processes ($\Delta E_{th} = 0$)
+$$ \frac{Q_C}{Q_H} = \frac{T_C}{T_H}$$
+$$ \eta_{carnot} = 1 - \frac{T_C}{T_H}$$
+
+### Maximum Efficiency
+* Second Law (informal statement): No heat engine operating between energy reservoirs at $T_H$ and $T_C$ can exceed the Carnot efficiency
+$$ \eata = \frac{W_{out}}{Q_H} \le \eata_{carnot} =1 - \frac{T_C}{T_H}$$
+* Second Law (informal statement): No refrigerator operating between energy reservoirs at $T_H$ and $T_C$ can exceed the Carnot COP
