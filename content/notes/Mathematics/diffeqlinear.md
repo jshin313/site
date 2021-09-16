@@ -54,7 +54,7 @@ $$
 $$
 
 * The elements of a row or column vector are called the *components*
-* Denoted via an arrow or in **bold**
+* Denoted via an arrow or in **bold**: $\vb{v}$ or $\overrightarrow{v}$
 * A list of row vectors arranged in a row will always consist of column vectors, and a list of vectors arranged in a column will consist of row vectors
   * Example
 $$ \vb{a_1} = \begin{bmatrix} -1 \\\\ -7 \end{bmatrix}, \vb{a_2} = \begin{bmatrix} 0 \\\\ -5 \end{bmatrix}, \vb{a_3} = \begin{bmatrix} -2 \\\\ 4 \end{bmatrix}$$
@@ -235,7 +235,7 @@ $$ \frac{d\vb{x}}{dt} = A(t) \vb{x}(t) + \vb{b}(t)$$
 ## 2.4: Row-Echelon Matrices and Elementary Row Operations
 * Method for solving a system by reducing a system of equations to a new system with the same solution set, but easier to solve
 
-### Row-Echelon Matrix
+### Row-Echelon Matrix (REF)
 Let A be a $m \cross n$ matrix with the following conditions
 1. All zero rows of A (if any) are grouped at the bottom
 2. The leftmost non-zero entry of every non-zero row is 1 (called the leading 1 or pivotal 1)
@@ -262,3 +262,113 @@ $$
 
 * $A \sim B$ denotes that $B$ was obtained using one of the above operations
 * The elementary row operations are reversible
+
+### Reduced Row Echelon Form (RREF)
+* Same as REF but with only 0's above every leading 1
+
+### Rank
+* Rank(A) = number of pivotal columns = number of leading 1's = number of non zero rows in REF form
+* Every row equivalent REF has the same rank
+* Every RREF of a matrix is the same, but not all row equivalent REF of a matrix are the same
+
+## 2.5: Gaussian Elimination
+* **Gaussian Elimination**: To solve a system, use elementary row operations to convert a matrix to REF. Convert matrix back into corresponding equations and solve.
+* **Gauss-Jordan Elimination**: Convert to RREF and solve.
+
+* Always either no solution, infinite solutions, or one solution
+* If there is a leading 1 in the last row, there are no solutions since the system is **inconsistent**
+
+* **Homogeneous**: $\overrightarrow{b} = 0$ Always has one solution or more.
+
+* **Free variables**: Correspond to a non-pivotal column, means there are infinite solutions to system
+* **Non-Free variable**: Correspond to a pivotal column
+
+### Theorem 2.5.9
+$A$ is a coefficient $n \cross n$ matrix, there is a *unique* solution if and only if $rank(A) = n$ 
+
+## 2.6: The Inverse of a Square Matrix
+When $A$ and $B$ are both $n \cross n$ matrices:
+$$ AB = I_n \land BA = I_n$$
+this chapter is about finding what $B$ is and if $B$ even exists.
+
+Potential application of $B$: Solving a system $A\overrightarrow x= \overrightarrow b$
+$$ A\overrightarrow x= \overrightarrow b$$
+$$ (BA)\overrightarrow x= \overrightarrow Bb$$
+$$ \overrightarrow x = B\overrightarrow b$$
+
+We can solve for $\overrightarrow{x}$ simply by multiplying $B$ and $\overrightarrow{b}$. However, in practice this is slow, so it isn't really used much.
+
+### Theorem 2.6.1
+**Theorem**: There is only one matrix $B$ for a corresponding $A$.
+
+**Proof:**
+$$ AB = BA = I_n$$
+$$ AC = CA = I_n$$
+$$ C = CI_n = C(AB) $$
+$$ C = (CA)B = I_n B = B $$
+$$ C = B $$
+(Uniqueness proof). See [these notes](/notes/mathematics/basicconcepts/#uniqueness-1)
+
+$$ AA^{-1} = A^{-1}A = I_n $$
+If $A^{-1}$ exists, then it's called the **inverse** and $A$ is called **invertible**  
+
+* **Nonsingular Matrix**: Sometimes called **invertible**
+* **Singular Matrix**: Sometimes called **non-invertible** or **degenerate**
+
+Remark: $A^{-1}$ does not mean $\frac{1}{A}$
+
+### Theorem 2.6.5
+**Theorem**: If $A^{-1}$ exists, then the $n \cross n$ system of linear equations $A \overrightarrow{x} = \overrightarrow{b}$ has a **unique** solution $\vb{x} = A^{-1} \vb{b} \ \ \forall b \in \mathbb{R}^n$  
+
+**Proof**: Verify that $\vb{x} = A^{-1} \vb{b}$ is a solution with direct substitution. To show that $x$ is unique, assume we have solutions $x_1$, $x_2$, $x_3$ and so on. So we have $A\vb{x_1} = A\vb{x_2} = A\vb{x_3}= \vb{b}$. But multiplying by $A^{-1}$ reveals the following
+$$ \vb{x_1} = \vb{x_2} = \vb{x_3} = \vb{x_4} = A^{-1} \vb{b}$$
+Thus there is only one solution since we know $A^{-1}$ is also unique.
+
+### Theorem 2.6.6
+* This theorem shows when a matrix is invertible and how to efficiently compute the inverse  
+
+**Theorem**: An $n \cross n$ matrix $A$ is invertible if and only if $rank(A) = n$  
+
+**Proof**:   
+Let's prove $A^{-1} \text{ exists} \implies rank(A) = n$ first. If $A^{-1}$, then by Theorem 2.6.5, any $n\cross n$ linear system has a unique solution. Thus by Theorem 2.5.9, we know that $rank(A) = n$  
+
+Now we prove the converse:
+$$rank(A) = n \implies A \text{ is invertible}$$
+We must show that there exists an $n \cross n $ matrix $X$ such that the following is true:
+$$ AX = I_n = XA$$
+
+Given $rank(A)=n$, each column of A is pivotal and every row on REF of $A$ is non-zero. Thus the RREF of $A = I_n$ since $A$ has $rank(A)=n$. $A\vb{x} = \vb{b}$ has one solution as well since $rank(A) =n$. Since there is only one solution, $X$, for $A X = I_n$. We can then use the Gauss-Jordan method to solve for $X$.  
+
+Now we show that $XA = I_n$ as well:
+$$ I_n \cdot A = A$$
+$$ (AX) A = A$$
+$$ (AXA) - A = 0_n$$
+$$ A(XA - I_n) = 0_n$$
+$A(XA - I_n)$ doesn't necessarily imply $XA-I_n = 0$ for all matrices, since two non zero matrices can be multiplied to yield 0. But in this case $XA-I_n = 0$ due to the following reasons:
+
+Let $y_i$ be the columns of the $n \cross n$ matrix $XA - I_n$.
+$$ A\vb{y_i} = \vb{0}, \ \ \ i = 1, 2, 3, ..., n$$
+$rank(A) = n$, so each system in the above has a unique solution. So since the system is homogeneous, each unique solution, $y_i$, must be $0$ (the trivial solution). Thus $XA - I_n = 0$
+
+$$ XA = I_n$$
+
+### Corollary 2.6.7
+**Corollary**: If $A\vb{x} = \vb{b}$ has a unique solution, then $A^{-1}$ exists
+
+### Gauss-Jordan Technique
+* Augment the matrix $A$ with the ith column vector of the identity matrix to get the ith column of $A^{-1}$. To get the whole identity matrix, just augment $A$ with the entire identity matrix and reduce to RREF. The result will be the identity matrix augmented with $A^{-1}$.
+
+$$ (A | I_n) \sim ... \sim (I_n | Y)$$
+$$ AY = I_n$$
+$$ Y = A^{-1}$$
+
+### Properties of the Inverse
+If both $A$ and $B$ are invertible
+
+0. $I_n^{-1} = I_n$
+1. $A^{-1}$ is invertible and $(A^{-1})^{-1} = A$
+2. $AB$ is invertible and $(AB)^{-1} = B^{-1}A^{-1}$ 
+3. $A^T$ is invertible and $(A^T)^{-1} = (A^{-1})^T$
+
+#### Corollary
+$$ (A_1 A_2... A_k)^{-1} = A_{k}^{-1} A_{k-1}^{-1} ... A^{-1}_1$$
