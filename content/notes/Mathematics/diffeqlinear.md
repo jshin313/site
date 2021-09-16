@@ -372,3 +372,11 @@ If both $A$ and $B$ are invertible
 
 #### Corollary
 $$ (A_1 A_2... A_k)^{-1} = A_{k}^{-1} A_{k-1}^{-1} ... A^{-1}_1$$
+
+### Theorem 2.6.12
+**Theorem**: Let $A$ and $B$ be $n\cross n$ matrices. If $AB = I_n$, then both $A$ and $B$ are invertible and $B = A^{-1}$
+
+**Proof**
+$$ A(B\vb{b}) = I_n \vb{b} = \vb{b}$$
+For *every* $b$, $A \vb{x} = \vb{b}$ has the solution $\vb{x} = B\vb{b}$, which implies $rank(A) = n$.
+
