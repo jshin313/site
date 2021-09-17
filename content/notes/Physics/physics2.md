@@ -453,5 +453,5 @@ $$ \eta_{carnot} = 1 - \frac{T_C}{T_H}$$
 
 ### Maximum Efficiency
 * Second Law (informal statement): No heat engine operating between energy reservoirs at $T_H$ and $T_C$ can exceed the Carnot efficiency
-$$ \eata = \frac{W_{out}}{Q_H} \le \eata_{carnot} =1 - \frac{T_C}{T_H}$$
+$$ \eta = \frac{W_{out}}{Q_H} \le \eta_{carnot} =1 - \frac{T_C}{T_H}$$
 * Second Law (informal statement): No refrigerator operating between energy reservoirs at $T_H$ and $T_C$ can exceed the Carnot COP
