@@ -38,7 +38,7 @@ Textbook: The Tools of Mathematical Reasoning
 #### Proposition
 Let $x \in \mathbb{R}$, then $x \cdot 0 = 0$
 
-#### Proof: 
+#### Proof
 By property 3, $0 + 0 = 0$.  
 Multiply both sides by x to get $x \cdot (0 + 0) = x \cdot 0$  
 $$ x \cdot 0 + x \cdot 0 = x \cdot 0$$
@@ -446,3 +446,76 @@ $$ d = as + bt = (cz) s + (cw) t$$
 * Since $d > 0$, this means $c \le d$ since $c$ is a divisor of $d$. So $d$ is the **greatest** common divisor of $a$ and $b$
 
 ### Euclid's Lemma
+Let $a, b \in \mathbb{Z}$ and let $p $ be a prime number. If $p | ab$, then $p | a\lor p | b$
+
+#### Proof
+If $p | a$, then we are done, so suppose $p \nmid a$ and try to show $p | b$.  
+If $p \neq a$ and $p$ is prime, then $gcd(a, p) = 1$  
+By Bézout's Theorem, $\exists m, n \in \mathbb{Z}$ so that $am + pn = 1$
+$$ \exists x \in \mathbb{Z}: px = ab$$
+$$ b(am + pn) = 1b$$
+$$ (ba)m + pnb = b$$
+$$ (px)m + pnb = b $$
+$$ p(xm + nb) = b $$
+$xm + nb \in \mathbb{Z}$, so $p | b$, as desired.
+
+## 2.4: Statements Including Mixed Quantifiers
+### $\forall \exists$
+To prove a statement of the form $\forall x \in S \ \ \exists y \in T \ \ P(x, y)$, we let $x$ be an arbitrary element of S, and we try to find $y \in T$ for which $P(x, y)$ is true.
+
+#### Example
+Let $\mathbb{R}^{+}$ = set of positive real numbers.  
+Prove that $\forall \epsilon \in \mathbb{R}^{+} \ \ \exists \delta \in \mathbb{R}^+$ such that $|4x - 12| < \epsilon$, whenever $0 < |x -3 | < \delta$.  
+
+##### Proof
+Let $\epsilon \in \mathbb{R}^+$ be given.   
+Choose $\delta = \frac{\epsilon}{4}$. Now, if $0 < |x - 3| < \frac{\epsilon}{4}$, then $|4x - 12| = 4 | x - 3| < 4\cdot \frac{\epsilon}{4} = \epsilon$  
+So that $|4x - 12 < \epsilon$ as desired. 
+
+### $\exists \forall$
+
+To prove a statement of the form $\exists x \in S \ \ \forall y \in T \ \ P(x, y)$, we carefully choose $x \in S$ and try to show that $\forall y \in T$, $P(x, y)$ holds.
+
+#### Example
+Prove that $\exists x \in \mathbb{Z}$ such that $\forall y \in \mathbb{R}, \ xy \in \mathbb{Z}$. 
+
+##### Proof
+Put $x = 0\in \mathbb{Z}$, $\forall y \in \mathbb{R}, x\cdot y = 0 \cdot y = 0 \in \mathbb{Z}$, as desired.  
+
+Changing the order of mixed quantifiers changes the meaning of the statement.
+
+### Epsilon Delta Definition of Limit
+We say $\lim_\limits{x\to c} f(x) = L$ if $\forall \epsilon \in \mathbb{R}^+ \exists \delta \in \mathbb{R}^+$ such that $(0 < |x - c| < \delta) \implies (|f(x) - L|) < \epsilon$
+
+### Triangle Inequality
+$$ \forall x, y \in \mathbb{R}, | x + y | \le |x| + |y|$$
+
+### Proposition
+Suppose $\lim\limits_{x\to c} f(x) = L$ and $\lim\limits_{x \to c} g(x) = M = L$, then $\lim\limits_{x \to c} \left( f(x) + g(x) \right) = \lim\limits_{x\to c} f(x) + \lim\limits_{x \to c} g(x)$
+
+#### Proof
+We want $\forall \epsilon \in \mathbb{R}^+ \exists \delta \in \mathbb{R}^+$, so that $(f + g)(x) - (L + M) < \epsilon$ whenever $ 0 < | x -c < \delta$. We let $\epsilon \in \mathbb{R}^+$ be given.   
+
+Since $\lim\limits_{x \to c} f(x) = L$, $\exists \delta \in \mathbb{R}$, so that $f(x) -L < \frac{\epsilon}{2}$ whenever $0 < |x - c| < \delta_1$
+Since $\lim\limits_{x \to c} f(x) = M$, $\exists \delta \in \mathbb{R}$, so that $f(x) -M < \frac{\epsilon}{2}$ whenever $0 < |x - c| < \delta_2$  
+
+Let $\delta = min(\delta_1, \delta _2$
+$$  \mid (f(x) + g(x)) - (L +M) \mid = | f(x) + g(x) - L - M| $$
+$$| (f(x) - L) + (g(x) - M)| \le | f(x) - L| + | g(x) - M| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon $$
+
+## 3.1: Mathematical Induction
+### Weak Induction Law
+Suppose $S \subseteq \mathbb{N}$ has the following 2 properties
+1. $1 \in S$
+2. $n \in S \implies n + 1 \in S$
+
+Then $S = \mathbb{N}$
+
+#### Proof
+Let $T$ = set of positive integers NOT in $S$  
+Suppose BWOC, that $T \neq \emptyset$    
+$T \subseteq \mathbb{N}$, so by the Well-Ordering Principle, $T$ has a least element, $m$.  
+By 1. $m \neq 1$, so $m > 1$. Then $m - 1 \in \mathbb{N}$  
+$m -1 < m$, and $m$ is the least element of $T$, so $m -1 \in S$  
+By 2. $(m - 1) + 1 \in S$, i.e. $m \in S$, but this contradicts our choice of $m$.  
+So we must have that $T$  is empty, and $S = \mathbb{N}$  
