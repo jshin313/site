@@ -496,4 +496,4 @@ Use coulomb's Law to get magnitudes
 
  ### The Dipole: An Important Charge Distribution
  * **Electric dipole**: Consists of two point charges of equal magnitude but opposite signs, held a short distance apart
-
+ * Many molecules can be modeled as dipoles (e.g. water)
