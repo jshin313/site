@@ -435,7 +435,7 @@ $K$ tends to infinity for a perfect refrigerator since $W_in$ decreases as effic
 
 #### No Perfect Heat Engine
 * No perfect heat engine with $\eta = 1$
-* A Perfect Heat Engine means $Q_c = 0$. We could use its work output as the work input to an ordinary refrigerator. Leads to spontaenous transfer from $Q_C to Q_H$.
+* A Perfect Heat Engine means $Q_c = 0$. We could use its work output as the work input to an ordinary refrigerator. Leads to spontaneous transfer from $Q_C to Q_H$.
 * This combo violates the second law. Thus all heat engines MUST output some $Q_c$
 
 ### Limits of Efficiency
@@ -455,3 +455,45 @@ $$ \eta_{carnot} = 1 - \frac{T_C}{T_H}$$
 * Second Law (informal statement): No heat engine operating between energy reservoirs at $T_H$ and $T_C$ can exceed the Carnot efficiency
 $$ \eta = \frac{W_{out}}{Q_H} \le \eta_{carnot} =1 - \frac{T_C}{T_H}$$
 * Second Law (informal statement): No refrigerator operating between energy reservoirs at $T_H$ and $T_C$ can exceed the Carnot COP
+
+![Equation table for different processes](/processesequations.png)
+
+
+## 22: Electric Charge, Force, and Field
+* Goal: Learn to calculate and use the electric field
+* Questions
+1. What is Coulomb's Law?
+2. How to determine the electric force on a point charge?
+3. What is an electric field?
+4. What is the electric fields of a point charge?
+5. How to calculate the electric field of discrete charge distribution?
+
+### Electric Charges
+* Proton and electron
+
+### Electric Forces
+* **Coulomb's Law**: A force occurs for point charges that are separated by a distance $r$
+* For two positively/negatively charged particles, they experience a repulsive force of the magnitude.
+$$ F_{\text{1 on 2}} = F_{\text{2 on 1}} = \frac{K|q_1 | |q_2|}{r^2}$$
+* $K$ is the **electrostatic constant**
+$$ K = 8.99 \cross 10^9 N \cdot m^2 / C^2 = \frac{1}{4\pi \epsilon_0}$$
+* Permittivity constant $\epsilon_0$
+* Charge of one electron or proton is $1.6 \cross 10^{-19} C$
+$$ F = \frac{1}{4\pi \epsilon_0}\frac{|q_1 | | q_2|}{r^2}$$
+
+### Forces on Point Charges
+* Add up vectors
+Use coulomb's Law to get magnitudes
+### The Field Model
+
+* The  Electric Model
+ * Long range of interaction a distance
+ $$ \overrightarrow{E}(x, y, z) = \frac{\overrightarrow{F} \text{ at }(x, y, z)}{q}$$
+ * Unit of Electric field are $\frac{N}{C}$ and the magnitude is the **electric field strength**
+ * In the **Field Diagram** for protons, the field lines points a away from from source. For an electron, the source acts as a sink.
+ $$ \overrightarrow{E}  = \frac{1}{4\pi \epsilon_0} \frac{q}{r^2} \\hat{r}$$
+ $r$ is from the source charge to the test charge
+
+ ### The Dipole: An Important Charge Distribution
+ * **Electric dipole**: Consists of two point charges of equal magnitude but opposite signs, held a short distance apart
+
