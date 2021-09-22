@@ -519,3 +519,68 @@ By 1. $m \neq 1$, so $m > 1$. Then $m - 1 \in \mathbb{N}$
 $m -1 < m$, and $m$ is the least element of $T$, so $m -1 \in S$  
 By 2. $(m - 1) + 1 \in S$, i.e. $m \in S$, but this contradicts our choice of $m$.  
 So we must have that $T$  is empty, and $S = \mathbb{N}$  
+
+### Example 1
+* Prove that the following is true:
+$$ \sum_{i=1}^{n} \frac{n(n+1)}{2} \ \ \forall n \in \mathbb{N}$$
+
+* **Base Case**: $n = 1$
+$$ \sum_{n=1}^{1} i = 1 = \frac{1 \cdot (1 + 1)}{2} = \frac{2}{2} = 1$$
+
+  so the result is true when n = 1
+
+* **Inductive Hypothesis**: Suppose that $ \sum_{i=1}^{m} i = \frac{m(m+1)}{2}$ for some $m \in \mathbb{N}$
+  * We will prove that $\sum_{i=1}^{m+1} i = \frac{(m+1)((m+1) + 1)}{2} = \frac{(m+1)(m+2)}{2}$
+
+  $$ \sum_{i=1}^{m+1} = \left( \sum_{i=1}^{m} i \right) + (m+1) = \frac{m(m+1)}{2} + (m+1) = \frac{(m+1)(m+2)}{2}$$
+  * So by induction $ \sum_{i=1}^{n} i = \frac{n(n+1)}{2} \ \ \forall n \in \mathbb{N} $
+
+### Example 2
+* Prove that for all integers $n$ with $n \ge 4$, we have $2^n < n!$  
+* We proceed by induction
+* **Base Case:** $n = 4$
+$$ 2^4 = 16$$
+$$ 4! = 1 \cdot 2 \cdot 3 \cdot 4 = 24$$
+
+* **Inductive Hypothesis**: Suppose that $2^m < m!$ for some integer $m \ge 4$.  
+* We show that $2^{m+1} < (m+1)!$
+$$ 2^{m+1} = 2^m \cdot 2^1 < m! \cdot 2 \underbrace{<}_{\text{since } m \ge 4 \text{, so } 2 < m+1} m! \cdot (m+1) = (m+1)!$$
+* So by induction, $2^{n} < n!$ for all integers $n \ge 4$
+
+### Strong Induction Law
+Let $S$ be a subset of $\mathbb{N}$, and suppose $S$ has the following true properties:
+1. $1 \in S$
+2. $\left( \\{1, 2, 3, 4 \ldots n \\} \subseteq S \right)  \implies n + 1\in S$
+  Then $S = \mathbb{N}$
+
+#### Proof
+Let $T  = \\{ k \in \mathbb{N}: \\{1, 2, 3, 4 \ldots k\\} \subseteq S\\}$  
+(If $k \in T$, then $k \in S$, i.e. $T \subseteq S$)   
+$1 \in S$, so $\\{1\\} \subseteq S$, and so $1 \in T$  
+Now if $k \in T$, then $\\{1, 2, 3 \ldots k \\} \subseteq S$  
+So by 2. $k + 1 \in S$
+But then $\\{1, 2, 3 \ldots k , (k+1)\\} \in S$, so $k + 1 \in T$  
+So $1 \in T$ and $(k \in T) \implies (k+1 \in T)$. So by Weak Induction, $T= \mathbb{N}$. It follows that $S=\mathbb{N}$
+
+The difference between Weak Induction and Strong Induction is that Weak Induction only assumes $P(n)$ to be true and then shows that $P(n+1)$. However, Strong Induction has a "stronger" assumption by assuming that $P$ is true for all elements before $n$. Strong Induction assumes that $P(1), P(2), ...P(n)$ are all true. Then Strong Induction shows that $P(n+1)$ is true based on this assumption.
+
+### Proposition
+Let $n \in \mathbb{N}, \ n \neq 1$. Then $n$ is a product of prime numbers. 
+
+#### Proof
+* **Base Case**: $n = 2$
+$2$ is prime, so $2$ is its own prime factorization.
+
+* **Inductive Hypothesis**: Suppose the numbers $2, 3, 4, 5, 6\ldots m $ are all products of primes. We must show that $m + 1$ is also a product of primes.  
+
+* Since $m + 1 > 1$ either $m+1$ is prime or $m+1$ is composite.  
+* If $m+1$ is prime, it is its own prime factorization.
+* Else $m+1$ is composite. 
+$$ \exists a, b \in \mathbb{N} \ s.t. m + 1 = ab $$
+$$ a \in \\{2, 3, 4, \ldots m\\}$$
+$$ b \in \\{2, 3, 4, \ldots m\\}$$
+* By IH (Inductive Hypothesis), $ a = \prod_{i=1}^{s} p_i$ and $b = \prod_{j=1}^{t} q_j$ where each $p_i$ and $q_j$ is prime. 
+$$ m+1 = ab = \left( \prod_{i=1}^{s} p_i  \right) \left( \prod_{j=1}^{t} q_j \right) $$
+
+This is an example of where strong induction is useful and not weak.
+
