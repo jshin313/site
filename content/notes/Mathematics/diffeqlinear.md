@@ -380,3 +380,48 @@ $$ (A_1 A_2... A_k)^{-1} = A_{k}^{-1} A_{k-1}^{-1} ... A^{-1}_1$$
 $$ A(B\vb{b}) = I_n \vb{b} = \vb{b}$$
 For *every* $b$, $A \vb{x} = \vb{b}$ has the solution $\vb{x} = B\vb{b}$, which implies $rank(A) = n$.
 
+## 3.4: Summary of Determinants
+
+### Formulas for Determinants
+1. If $A = \begin{bmatrix} a_{11} \end{bmatrix}$, then $det(A) = a_{11}$
+2. If $A = \begin{bmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \end{bmatrix}$, then $det(A) = a_{11}a_{22} - a_{12}a_{21}$
+3. $det(A) = a_{i1}C_{i1} + a_{i2}C_{i2} + ... + a_{in}C_{in}$
+
+    $det(A) = a_{j1}C_{j1} + a_{j2}C_{j2} + ... + a_{jn}C_{jn}$
+
+$$C_{ij} = (-1)^{i + j} M_{ij}$$
+$M_{ij}$ is the determinant of the matrix obtained by deleting the $i$th row and $j$th column of A.
+
+#### Example
+$$A = \begin{bmatrix} 3 & 5 \\\\ 2 & 7 \end{bmatrix}$$
+$$M = \begin{bmatrix} 7 & 2 \\\\ 5 & 3 \end{bmatrix}$$
+$$C = \begin{bmatrix} 7 & -2 \\\\ -5 & 3 \end{bmatrix}$$
+
+### Properties of Determinants
+Let $A$ and $B$ both be $n \cross n$ matrices
+1. IF $B$ is obtained by permuting two rows (or columns) of $A$, then $$ det(B) = -det(A)$$
+2. If $B$ is obtained by multiplying any row (or column) of $A$ by a scalar $k$, then $$ det(B) = k det(A)$$
+3. If $B$ is obtained by adding a multiple of any row (or column) of $A$ to another row (or column) of $A$, then 
+$$ det(B) = det(A)$$
+4. For any scalar $k$
+$$ det(kA) = k^n det(A)$$
+5. $det(A^T) = det(A)$
+6. Let $a_1, a_2, \ldots,a_n$ denote the row vectors of $A$. Let $B = \[a_1, a_2, \ldots b_i \ldots, a_n\] ^T $ and $C = \[a_1, a_2, \ldots c_i \ldots a_n\] ^T $. If the $i$th row vector of $A$ is the sum of two vectors, $a_i = b_i + c_i$, then $$ det(A) = det(B) + det(C) $$
+7. If $A$ has a row (or column) of zeroes, then $det(A)=0$
+8. If two rows (or columns) or $A$ are scalar multiples of one another, then $det(A)=0$
+9. $det(AB) = det(A) det(B)$
+10. If $A$ is invertible, then $det(A) \neq 0$ and $det(A^{-1}) = \frac{1}{det(A)}$
+
+### Basic Theoretical Results
+1. The volume of a parallelepiped is $|det(A)|$, where $A$ is a matrix with the 3 vectors of the parallelepiped
+2. An $n \cross n$ matrix is invertible if and only if $det(A) \neq 0$
+3. An $n \cross n$ linear system $A\vb{x} = \vb{b}$ has a unique solution if and only if $det(A) \neq 0$
+4. An $n \cross n$ **homogeneous** linear system $A \vb{x} = \vb{0}$ has an infinite number of solutions if and only if $det(A) = 0$
+
+### Adjoint Method
+$$A^{-1} = \frac{1}{det(a)} adj(A)$$
+The $adj(A)$ is the transpose of the cofactor of $A$
+
+### Cramer's Rule
+If $det(A) \neq 0$, then the unique solution to $A\vb{x} = \vb{b}$ is $\vb{x} = (x_1, x_2, x_3, \ldots, x_n)$, where $x_i = \frac{det(B_i)}{det(A)}$ and $B_i$ is obtained by replacing the $i$th column vector of $A$ with $\vb{b}$
+
