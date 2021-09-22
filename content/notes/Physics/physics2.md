@@ -494,6 +494,7 @@ Use coulomb's Law to get magnitudes
  $$ \overrightarrow{E}  = \frac{1}{4\pi \epsilon_0} \frac{q}{r^2} \\hat{r}$$
  $r$ is from the source charge to the test charge
 
- ### The Dipole: An Important Charge Distribution
- * **Electric dipole**: Consists of two point charges of equal magnitude but opposite signs, held a short distance apart
- * Many molecules can be modeled as dipoles (e.g. water)
+### The Dipole: An Important Charge Distribution
+* **Electric dipole**: Consists of two point charges of equal magnitude but opposite signs, held a short distance apart
+* Many molecules can be modeled as dipoles (e.g. water)
+* 
