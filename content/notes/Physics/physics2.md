@@ -459,7 +459,7 @@ $$ \eta = \frac{W_{out}}{Q_H} \le \eta_{carnot} =1 - \frac{T_C}{T_H}$$
 ![Equation table for different processes](/processesequations.png)
 
 
-## 22: Electric Charge, Force, and Field
+## 22: Electric Charge and Force
 * Goal: Learn to calculate and use the electric field
 * Questions
 1. What is Coulomb's Law?
@@ -486,15 +486,73 @@ $$ F = \frac{1}{4\pi \epsilon_0}\frac{|q_1 | | q_2|}{r^2}$$
 Use coulomb's Law to get magnitudes
 ### The Field Model
 
+## 23: The Electric Field
+* Electric field created by charge
+
 * The  Electric Model
  * Long range of interaction a distance
  $$ \overrightarrow{E}(x, y, z) = \frac{\overrightarrow{F} \text{ at }(x, y, z)}{q}$$
  * Unit of Electric field are $\frac{N}{C}$ and the magnitude is the **electric field strength**
  * In the **Field Diagram** for protons, the field lines points a away from from source. For an electron, the source acts as a sink.
- $$ \overrightarrow{E}  = \frac{1}{4\pi \epsilon_0} \frac{q}{r^2} \\hat{r}$$
+ $$ \overrightarrow{E}  = \frac{1}{4\pi \epsilon_0} \frac{q}{r^2} \hat{r}$$
  $r$ is from the source charge to the test charge
 
 ### The Dipole: An Important Charge Distribution
 * **Electric dipole**: Consists of two point charges of equal magnitude but opposite signs, held a short distance apart
 * Many molecules can be modeled as dipoles (e.g. water)
-* 
+
+### Continuous Charge Distributions
+Question: What if the charge is continuous (not discrete)?
+
+For macroscopic charged objects, like rods or disks, we assume the charge has a continuous distribution.
+
+1. Divide the objects into small point charge-like pieces $dq$. Each piece creates a small $dE$ 
+2. The summation of fields of an infinite number of infinitesimally small pieces means integration.
+
+$$ \overrightarrow{E}(P) = \int d\overrightarrow{E} = \int \frac{k\ dq}{r^2} \\hat{r}$$
+
+### An Infinite Line of Charge
+* A straight infinite line of charge coincides with the x-axis and the line carries **uniform** charge with the charge density $\lambda$ (C/m).
+* The x-component of two equidistant points on the line will cancel out
+* Only the y-component adds up
+$$ dE_y = dE \cos \theta $$
+$$ dE = k\lambda \frac{dx}{r^2}, \ \ \ \cos \theta = \frac{y}{r} $$
+$$ dE_y = k\lambda \frac{dx}{r^3} $$
+with $r =  \sqrt{(x^2 + y^2)}$
+
+$$ E = E_y = \int_{-\infty}^{\infty} \frac{k\lambda y \ dx}{(x^2 + y^2)^{\frac{3}{2}}} = k\lambda y \int_{-\infty}^{\infty} \frac{dx}{(x^2 + y^2)^{\frac{3}{2}}}$$
+$$ \overrightarrow{E}(P) = \frac{2k\lambda}{y} \hat{j}$$
+
+* Notice that the electric field is proportional to $\frac{1}{distance}$ instead of $\frac{1}{distance^2}$ like for a point charge
+
+### Ring of Charge
+* A ring of radius $a$ carries a charge $Q$ distributed evenly over the ring. At any point $P$ on the x-axis, there is $dE$ and $dq$
+$$ r = \sqrt{x^2 + a^2} $$
+* Only x-components add up
+
+$$ E= \int_{ring} dE_x = \int_{ring} \frac{kx \ dq}{\sqrt{ x^2 + a^2}^3} =  \frac{kx}{\sqrt{ x^2 + a^2}^3}\int_{ring} dq $$
+$$ \overrightarrow{E}\left(P \right)  = \frac{kQx}{(x^2 + a^2)^{\frac{3}{2}}} \hat{i}$$
+* At the center of the ring, the net electric field is 0
+
+#### Disk of Charge
+$$ \eta = \frac{Q}{A} = \text{charge density}$$
+$$ E_{disk} = \frac{\eta}{2\epsilon_0} \left( 1 - \frac{z}{\sqrt{z^2 + R^{2}} } \right) $$
+
+#### Infinite Plane of Charge
+* An infinite plane is just a disk with radius of infinity
+$$ E_{plane} = \frac{\eta}{2\epsilon_0}$$
+
+* The electric field is the same at any point in space regardless of how "far" away a point is from the plane, since the plane is infinite
+
+* $E$ is away from the plane if the charge is + and towards the plane if charge is -
+
+#### Sphere of Charge
+$$ \overrightarrow{E}_{sphere} = \frac{Q}{4\pi \epsilon_0 r^2} \hat{r}, \ \ \   r \ge R$$
+
+#### Parallel-Plate Capacitor
+* One plane is positively charged and one plane is negatively charged
+* All charges are on one surface of hte plane because opposite charges attract
+* $E = 0$ outside the capacitor
+* For inside the capacitor
+$$ E = \frac{Q}{\epsilon_0 A}$$
+* A uniform electric field exists inside a parallel-plate capacitor
