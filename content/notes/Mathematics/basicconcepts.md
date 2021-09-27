@@ -299,8 +299,9 @@ $$
     * $\exists x \in \mathbb{Z}^+ \vert (\exists y \in \mathbb{Z} \vert x = y^2) \land (\exists w \in \mathbb{Z} \vert x= w^3)$
 
 #### Negating Quantifiers
-$$ \neg(\forall x P(x)) \implies \exists x \neg P(x)$$
-$$ \neg(\exists x P(x)) \implies \forall x \neg P(x)$$
+$$ \neg(\forall x P(x)) \iff \exists x \neg P(x)$$
+$$ \neg(\exists x P(x)) \iff \forall x \neg P(x)$$
+$$ \neg(\exists x P(x)) \iff \nexists \ \  x  \ \ P(x)$$
 
 #### Example
 $$ \forall x \in \mathbb{R} \  \exists k \in \mathbb{R}\  (x > 0 \land x=k^2)$$
@@ -584,3 +585,73 @@ $$ m+1 = ab = \left( \prod_{i=1}^{s} p_i  \right) \left( \prod_{j=1}^{t} q_j \ri
 
 This is an example of where strong induction is useful and not weak.
 
+
+## 4.1: The Language of Sets
+* A Set is a collection of objects
+  * Order doesn't matter
+  * No duplicate elements
+* $x \in A$ means $X$ is an element of $A$
+* $\text{#}A$ is the cardinality (# of elements)
+
+### Set Builder Notation
+$$ \\{varabie: condition\\} $$
+$$ \\{x \in A| P(x)\\} $$
+
+### Subset
+If $A$ and $B$ are sets, we write $A \subseteq B$ if $\forall x \in A, x \in B$
+
+$$ A \subseteq B \land B \subseteq A \equiv A= B $$
+
+$A \not\subseteq B$ means $\exists x \in A \ s.t. \  x \notin  B$
+
+If we want to prove $A \subseteq B$, then we can use the following skeleton:
+Let $x\in A$   
+
+Then check that $x$ also satisfies the membership criteria of $B$
+Hence $x \in B$
+
+
+#### Example
+1. Let $A = \\{x \in \mathbb{Z}: \exists a \in \mathbb{Z}$ so that $x = a^2\\}$   
+Let $B = \\{x \in \mathbb{Z}: x \equiv 0 \pmod 4 \lor x \equiv 1 \pmod 4 \\}$  
+Prove $A \subseteq B$  
+Let $x \in A$. Then $x\in \mathbb{Z}$, and $ \exists a \in \mathbb{Z}$ so that $ x = a^2$.  
+By the division algorithm, we can write $a = 4q + r, \ \  q \in \mathbb{Z}, \ \ r \in \\{0, 1, 2, 3\\}$  
+If $r = 0$, then $x = a^2 = \left( 4q \right)^2 = 4(4q^2) + 0$, so $x$ leaves remainder $0$ on division by $4$  
+If $r = 1$, then $x = a^2 = \left( 4q  + 1\right)^2 = 4(4q^2 + 2q) + 1$, so $x$ leaves remainder $1$ on division by $4$  
+If $r = 2$, then $x = a^2 = \left( 4q  + 2\right)^2 = 4(4q^2 + 4q + 1) $, so $x$ leaves remainder $0$ on division by $4$  
+If $r = 3$, then $x = a^2 = \left( 4q  + 3\right)^2 = 4(4q^2 + 6q + 2) + 1 $, so $x$ leaves remainder $1$ on division by $4$  
+
+    In each case $x \equiv_0 \pmod 4 \lor x \equiv 1 \pmod 4$. Thus $x \in B$, and it follows that $A \subseteq B$
+
+2. Let $A = \\{x \in \mathbb{Z}: \exists a \in \mathbb{Z}$ so that $x = a^2\\}$   
+    Let $B = \\{x \in \mathbb{Z}: x \equiv 0 \pmod 4 \lor x \equiv 1 \pmod 4 \\}$  
+    Prove $B \not\subseteq A$  
+
+    Consider $32 \in \mathbb{Z}$  
+    $ 32 = 4(8) + 0 $, so $32 \equiv 0 \pmod 4$, and we see that $32 \in B$  
+    $5^2 = 25 < 32$, and $6^2 = 36 > 32$, so $5 < \sqrt{32} < 6$, and $32 \not\subseteq A$
+
+    3. Let $A$ and $B$ be sets. $A = B$, if $(A \subseteq B) \land \\{B \subseteq A\\}$
+    Equivalent to $x \in A \\iff x \in B $  
+    Let $C = \\{x \in \mathbb{Z}: \text{x is odd}\\} $ 
+    Let $D = \\{x \in \mathbb{Z}: x \equiv 1 \pmod 4 \lor x \equiv 3 \pmod 4\\} $ 
+    Prove $C = D$  
+
+    x \in \mathbb{Z}, \$ and $\exists x = 2q + 1$. Prove that $x = 4t + 1 \lor x = 4+3$. Suppose by BWC, suppose that $x$ does not leave remainder 3 or 1. In the end, $x$ is found to be even, which is a contradiction since $x$ is supposed to be odd.
+
+    Prove the converse:
+* Let $x \in D$. Then $\forall \mathbb{Z}$ and $ x \equiv 1 \pmod 4 \lor x \equiv 3 \pmod 4$
+* If $x \equiv 1 \pmod 4$, then $x = 4t+1$, for some $t \in 2$
+* $x$ is still odd
+* If $x \equiv 3\pmod 4$ and $x =4t + 3$, for some $t \in \mathbb{Z}$, $x$ is still odd. In both cases, $x \in C$
+
+### Proposition
+Let $A, B, C$ be sets.  
+Suppose $A \subseteq B \land B \subseteq C$. Is it true that $A \subseteq C$?
+
+### What Sets Can't Be
+Let $S$ be a set  
+Call $S$ normal if $S \not\in  S$  
+Let $X = \text{set of all normal sets}$    
+Is $x$ itself normal?
