@@ -556,3 +556,103 @@ $$ \overrightarrow{E}_{sphere} = \frac{Q}{4\pi \epsilon_0 r^2} \hat{r}, \ \ \   
 * For inside the capacitor
 $$ E = \frac{Q}{\epsilon_0 A}$$
 * A uniform electric field exists inside a parallel-plate capacitor
+
+## 25: The Electric Potential
+
+### Potential from the Electric Field
+* Like gravity, the force exerted on a charge $q$, by the electric field is conservative
+* Work can be represented by the change of **electric potential energy**
+$$ \Delta U = U(B) - U(A)$$
+$$ \Delta U = -W(A \rightarrow B) = - \int_{A}^B \overrightarrow{F} \cdot d\overrightarrow{r}$$
+* $r$ is the positive vector along any path from point $A$ to point $B$
+
+* **Potential Difference**: 
+$$ \Delta V_{AB} = \frac{\Delta U_{AB}}{q} = - \int_A^B \overrightarrow{E} \cdot d\overrightarrow{r} $$
+  * Must define a reference point (V(A) = 0)
+
+### Potential Difference :Capacitor
+A plate is equipotent
+* Define reference point $A$ to be $0$
+$$ V_B = -\int_{A}^{B} \overrightarrow{E} \cdot d\overrightarrow{r} $$
+* Choose path as straight line
+$$E = -E\hat{i}$$
+$$ d\overrightarrow{r} = dx \hat{i}$$
+$$ d\overrightarrow{r} = dy \hat{i}$$
+* Notice that since $E$ is only in the $x$ direction, the contribution from the $y$ is $0$
+$$ V_B = - \int_A^B \overrightarrow{E} \cdot d\overrightarrow{r} = \int_0^X E dx = Ex$$
+Insert Diagram
+
+* The electric potential **decreases** in the direction of the electric field
+* When U increases, K decreases, and vice versa
+* Positive charge: "downhill" means U goes down and K goes up
+
+### Electric Potential of a Point Charge
+Insert Diagram
+* Easier to use a path parallel to $r_A$ and $r_B$
+
+$$ \Delta V_{AB} = \frac{\Delta U_{AB}}{q} $$
+
+$$ \overrightarrow{E} = \frac{kq}{r^2} \overrightarrow{r}$$
+$$ d\overrightarrow{dr} = dr \overrightarrow{r}$$
+
+$$ \Delta V_{ab} = -\int_{r_A}^{r_B} \frac{kq}{r^2} dr = -kq \int_{R_A}^{R_B} \frac{dr}{r^2} = kq \left( \frac{1}{r_B} - \frac{1}{r_A} \right) $$
+* Notice that the second part of the path (the curve) is always perpendicular to the electric field. This means the contribution is $0$ to the electric field along that $r$.
+
+$$ V_{\text{point charge}} = \frac{1}{4\pi \epsilon_0} \frac{q}{r}$$
+
+### Electric Potential of a Charged Sphere
+* Using Gauss's Law, we know that outside the sphere, the field is the same as a point charge
+$$ V = \frac{1}{4 \pi\epsilon_0}\frac{Q}{r}, \ \ r \ge R$$
+
+If the potential at the surface $V_0$ is known, the potential at $r$ is 
+$$ V = \frac{R}{r}V_0$$
+
+### Electric Potential for Multiple Charges
+* You can add electric potentials
+
+### Electric Potential for Ring
+% $$ V(P) = \int dV = \int \frac{kdq}{r}$$
+
+## 26: Potential and Field
+
+## 27: Current and Resistance
+### Current
+$$ I_e = n_e A v_d$$
+
+$v_d$ is the drift speed of the electrons (net motion of electrons "flowing")
+  * Due to random motion
+  * Very small value
+  $n_e$ is the number density (electrons in a given volume)
+$A$ is cross sectional area
+
+### Creating a Current
+* $\overrightarrow{E} = 0$ inside a conductor in static equilibrium
+* When charges are moving, there is a non-zero electric field causing electrons to move and current to flow
+
+$$ i_e = \frac{n_e e \tau A}{m}E$$
+$\tau$ is the mean time between collision (property of the conductor)
+
+$$ I = \frac{Q}{\Delta t} =  \frac{e N_e}{\Delta t} = ei_e$$
+
+Current is defined as the direction positive charges flow, so current is opposite the direction electrons flow
+
+### Conductivity and Resistivity
+$$ J = n_e e v_d = \frac{n_e e^2 \tau}{m}E$$
+$J$ is the current density and $\frac{n_e e^2 \tau}{m}$ only depends on the conducting material
+$$ \sigma = \text{conductivity} = \frac{n_e e^2 \tau}{m}$$
+$$ J = \sigma E$$
+1. Current is caused by an electric field
+2. Current density depends on the strength of the electric field
+3. Current density depends on the material's conductivity
+
+$$ \rho = \text{resistvity} = \frac{1}{\sigma}$$
+
+#### Superconductivity
+* Resistance is actually zero
+* Charge moves *without an electric field*
+
+### Ohm's Law
+
+$$ E_s = -dV / ds \implies E = \frac{\Delta V}{\Delta s}$$
+$$ I = JA = A\sigma E = \frac{A}{\rho}E = \frac{A}{\rho L}\Delta V$$
+$$ I = \frac{\Delta V}{R}$$
