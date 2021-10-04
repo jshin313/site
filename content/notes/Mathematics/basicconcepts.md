@@ -655,3 +655,58 @@ Let $S$ be a set
 Call $S$ normal if $S \not\in  S$  
 Let $X = \text{set of all normal sets}$    
 Is $x$ itself normal?
+
+## Midterm 1 Review
+### Problem 2
+Prove that $6 | 13^n - 7^n$  
+
+#### Inductive Hypothesis
+#####  Strong Induction
+Assume that for $\text{ } k = 1, 2, 3 \ldots m, \ \ 6 | 13^k - 7^k$, 
+#####  Weak Induction
+Assume that for some $ m \in \mathbb{N}, \ \ 6 | 13^m - 7^m$  
+   
+Show that $6 | 13^{m+1}- 7^{m+1}$
+
+### Problem 3
+Show by induction that $\forall n \in \mathbb{N} \ \ \sum_{i=1}^{n} i^2 = \frac{n(n+1)\left( 2n+1 \right) }{6}$  
+
+#### Base Case
+$$ \sum_{i=1}^{1} i^2 = 1^2 = 1, \ \ \frac{1(1+1)(2(1) + 1}{6 }= 1$$
+
+
+#### Inductive Hypothesis
+##### Weak Induction
+Suppose that for some $m \in \mathbb{N}, \ \ \sum_{i=1}^{m} i^2 = \frac{m(m+1)(2m+1)}{6}$  
+We will prove that $ \sum_{i=1}^{m+1} i^2 = \frac{(m+1)(m+2)(2m+3}{6} $
+
+
+
+## 4.2: Set Operations
+Let $A$ and $B$ be sets.
+
+### Union
+$$A \cup B = \\{x: x \in A \lor x \in B\\} $$
+
+Commutative since or is commutative
+
+### Intersection
+$$ A \cap B = \\{x: x \in A \land x \in B\\}$$
+
+Commutative since and is commutative
+
+### Relative Complement or Set Difference
+$$ A - B = \\{x: x \in A \land x \neq B\\}$$
+
+Not commutative
+
+### Example
+Let $A = \\{0, \pi e, i, 1\\}$  
+Let $B = \\{\pi, e, \sqrt{2}, \sqrt{3} \\}$
+
+a. $A \cup B = \\{0, \pi, e, i, 1, \sqrt{2} , \sqrt{3} \\}$
+b. $ A \cap B = \\{\pi, e\\} $
+c. $ A - B  = \\{0, i, 1\\}$
+
+### Universal Set
+$U - A = A^{C}$
