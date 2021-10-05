@@ -1,7 +1,7 @@
 ---
 title: "Physics 2"
 publishdate: 2021-08-23
-lastmod: 2021-09-13
+lastmod: 2021-10-5
 draft: false
 toc: true
 tags:
@@ -12,6 +12,8 @@ tags:
   - thermodynamics
   - optics
   - waves
+  - circuits
+  - magnetism
 ---
 
 ## 18: A Macroscopic Description of Matter
@@ -614,30 +616,47 @@ $$ V = \frac{R}{r}V_0$$
 % $$ V(P) = \int dV = \int \frac{kdq}{r}$$
 
 ## 26: Potential and Field
+### Capacitors
+$$ C_{parallel} = C_1 + C_2 + C_3 \ldots$$
+$$ \frac{1}{C_{serial}} = \frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3} +\ldots$$
+
+$$ Q = C\Delta V$$
+* If two capacitors $C_1$ and $C_2$ are in series, then $Q_{12} = Q_1 = Q_2$
+* The potential difference across two capacitors, $C_1$ and $C_2$ in parallel is the same 
+$$ V_{12} = V_1 = V_2$$
+
 
 ## 27: Current and Resistance
 ### Current
-$$ I_e = n_e A v_d$$
+* Weakly bound valence in metals
+* Normally electrons are moving randomly with no net flow of charge
+* An electric field causes a slow drift at speed $v_d$
+$$ i_e = n_e A v_d$$
 
 $v_d$ is the drift speed of the electrons (net motion of electrons "flowing")
-  * Due to random motion
   * Very small value
   $n_e$ is the number density (electrons in a given volume)
-$A$ is cross sectional area
+* $A$ is cross sectional area  
+* $i_e$ is the number of electrons flowing per time through a certain area
+
+
+* Most metals contribute 1 valence electron to the sea of electrons per atom
+* The number of electrons $n_e$ (number of electrons per cubic meter) is the same as the number of atoms per cubic meter
 
 ### Creating a Current
 * $\overrightarrow{E} = 0$ inside a conductor in static equilibrium
 * When charges are moving, there is a non-zero electric field causing electrons to move and current to flow
 
 $$ i_e = \frac{n_e e \tau A}{m}E$$
-$\tau$ is the mean time between collision (property of the conductor)
+* $\tau$ is the mean time between collision (property of the conductor)
 
 $$ I = \frac{Q}{\Delta t} =  \frac{e N_e}{\Delta t} = ei_e$$
+$I$ is the charge per time
 
 Current is defined as the direction positive charges flow, so current is opposite the direction electrons flow
 
 ### Conductivity and Resistivity
-$$ J = n_e e v_d = \frac{n_e e^2 \tau}{m}E$$
+$$ J = \frac{dI}{dA}=  n_e e v_d = \frac{n_e e^2 \tau}{m}E$$
 $J$ is the current density and $\frac{n_e e^2 \tau}{m}$ only depends on the conducting material
 $$ \sigma = \text{conductivity} = \frac{n_e e^2 \tau}{m}$$
 $$ J = \sigma E$$
@@ -645,7 +664,13 @@ $$ J = \sigma E$$
 2. Current density depends on the strength of the electric field
 3. Current density depends on the material's conductivity
 
-$$ \rho = \text{resistvity} = \frac{1}{\sigma}$$
+When $J(p)$ varies point to points, the current through an area is the surface integral of the current density over that area
+$$ dI = J \ \ dA$$
+$$ I = \int_{area} \overrightarrow{J} \cdot d\overrightarrow{A} $$
+
+$$ \rho = \text{resistivity} = \frac{1}{\sigma}$$
+
+$$ R = \text{resistance} = \frac{\rho L}{A}$$
 
 #### Superconductivity
 * Resistance is actually zero
@@ -654,5 +679,8 @@ $$ \rho = \text{resistvity} = \frac{1}{\sigma}$$
 ### Ohm's Law
 
 $$ E_s = -dV / ds \implies E = \frac{\Delta V}{\Delta s}$$
+If we assume $J$ is uniform and perpendicular to the cross section
 $$ I = JA = A\sigma E = \frac{A}{\rho}E = \frac{A}{\rho L}\Delta V$$
 $$ I = \frac{\Delta V}{R}$$
+
+ 

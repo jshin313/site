@@ -1,7 +1,7 @@
 ---
 title: "Differential Equations with Linear Algebra"
 publishdate: 2021-08-30
-lastmod: 2021-08-30
+lastmod: 2021-10-05
 draft: false
 toc: true
 tags:
@@ -425,3 +425,75 @@ The $adj(A)$ is the transpose of the cofactor of $A$
 ### Cramer's Rule
 If $det(A) \neq 0$, then the unique solution to $A\vb{x} = \vb{b}$ is $\vb{x} = (x_1, x_2, x_3, \ldots, x_n)$, where $x_i = \frac{det(B_i)}{det(A)}$ and $B_i$ is obtained by replacing the $i$th column vector of $A$ with $\vb{b}$
 
+## 4.2: Definition of a Vector Space
+* **Vector Space**: Nonempty set $V$ with two operators 
+  * **Addition**
+  * **Multiplication By Scalars**
+
+### Axioms
+0. The vector space is closed under both addition and multiplication by scalars
+$$ \overrightarrow{v} \in V, \overrightarrow{w} \in V, \ \ \overrightarrow{v} + \overrightarrow{w} \in V$$
+$$ \overrightarrow{k} \in \mathbb{R}, \overrightarrow{v} \in V, \ \ k \cdot \overrightarrow{v} \in V$$
+1. Commutative $$ \overrightarrow{v} \in V, \overrightarrow{w} \in V, \ \ \overrightarrow{v} + \overrightarrow{w} =\overrightarrow{w} + \overrightarrow{v}$$
+2. Associative $$ \overrightarrow{v} \in V, \overrightarrow{w} \in V,\overrightarrow{u} \in V, \ \ (\overrightarrow{v} + \overrightarrow{w}) + \overrightarrow{u} =\overrightarrow{w} + (\overrightarrow{v} + \overrightarrow{u})$$
+3. $\exists \overrightarrow{0} \in V, \ \ u + \overrightarrow{0} + \overrightarrow{u} = \overrightarrow{u} + \overrightarrow{0} = \overrightarrow{u} \ \ \forall u \in V$
+4. $\forall v \in V \ \ \exists - \overrightarrow{v} \ \  s. t. \ \ -\overrightarrow{v} + \overrightarrow{v} = \overrightarrow{0}$
+5. $1 \cdot \overrightarrow{v} = \overrightarrow{v} \ \ \forall v \in V $
+6. $r \cdot (s \cdot \overrightarrow{v}) = (r \cdot s) \overrightarrow{v}$
+7. $(r+s) \cdot \overrightarrow{v} = r \overrightarrow{v} + s\overrightarrow{v}$
+8. $r \cdot (\overrightarrow{v} + \overrightarrow{w}) = r \overrightarrow{v} + r\overrightarrow{w} $
+
+### Theorem
+Let $V$ be a vectorspace
+1. The zero vector is unique in $V$
+2. $r \overrightarrow{0} = \overrightarrow{0} $
+3. $0\overrightarrow{v} = \overrightarrow{0}$
+4. Every $\overrightarrow{v} \in V$ has a unique additive inverse, $-\overrightarrow{v}$
+5. If $r \overrightarrow{v} = \overrightarrow{0}$, then $r = 0 \land \overrightarrow{v} = \overrightarrow{0}$
+
+### Function Example
+
+### Matrix Example
+
+### Polynomial Example
+
+## 4.3: Subspaces
+**Subspace**: Let $V$ be a vector space. A non-empty subset $S \subset V$ is called a **subspace** if $S$ is also a vector space (closed under addition and multiplication by scalars).
+
+### Proposition
+$$ \text{S is a subspace} \iff \text{S is closed under both addition and multiplication by scalars}$$
+
+### Observation
+If $S \subset V$ and $S$ is a subspace of $V$, then $\overrightarrow{0} \in S$
+
+### Examples
+
+## 4.4: Spanning Sets
+Let $\\{\overrightarrow{v_1}, \overrightarrow{v_2},\overrightarrow{v_3},\overrightarrow{v_4}, ..., \overrightarrow{v_k}\\} \subset V$. We say $\overrightarrow{v_1}, \overrightarrow{v_2}, ...\overrightarrow{v_k}$ **spans** $V$ if every vector in $V$ is a linear combination of $\overrightarrow{v_1}, \overrightarrow{v_2},\overrightarrow{v_3},\overrightarrow{v_4}, ..., \overrightarrow{v_k}$
+
+$$ c_1 \cdot \overrightarrow{v_1} + c_2 \cdot \overrightarrow{v_2} + c_3 \cdot \overrightarrow{v_3} + c_4 \cdot \overrightarrow{v_4}+ ...+ c_k \cdot \overrightarrow{v_k} = \overrightarrow{b}, \ \ \forall \overrightarrow{b} \in V$$
+where $\overrightarrow{b}$ represents a vector in $V$
+
+### Definition
+Given $\overrightarrow{v_1}, \overrightarrow{v_2},\overrightarrow{v_3},\overrightarrow{v_4}, ..., \overrightarrow{v_k}$, the set of all linear combinations is the **span** of $\\{ \overrightarrow{v_1}, \overrightarrow{v_2},\overrightarrow{v_3},\overrightarrow{v_4}, ..., \overrightarrow{v_k}\\}$
+
+$$ span(\emptyset) = \\{\overrightarrow{0}\\}$$
+$$ span(\\{\overrightarrow{v}\\}) = \\{r \overrightarrow{v} \ | \ r \in \mathbb{R}\\}$$
+
+### Observation
+$$ \overrightarrow{v_1}, \overrightarrow{v_2},...\overrightarrow{v_k} \in S, \ \ S \subset V$$
+$span(\\{\overrightarrow{v_1}, \overrightarrow{v_2},...\overrightarrow{v_k}\\}) $ is a subspace of $V$
+
+### Terminology
+We can also say $v_1, v_2, v_3,...v_k$ **spans** a subspace, $W$, if $W = span(\\{v_1, v_2, ..., v_k\\})$
+
+We say $\\{v_1, v_2, ..., v_k\\}$ is a **spanning set** of $W$
+
+### Example
+
+## 4.5: Linear Dependence and Independence
+Let $\\{v_1, v_2, ..., v_k\\}$ be a non-empty subset in $V$. $\\{v_1, v_2, ..., v_k\\}$ is **linearly dependent** if $\exists (c_1, c_2, ... c_k) \in \mathbb{R}^k$ and at least one $c_j \neq 0$ and $c_1 \overrightarrow{v_1} + c_2 \overrightarrow{v_2} ... + c_k \overrightarrow{v_k} = \overrightarrow{0}$  
+
+$\\{v_1, v_2, ..., v_k\\}$ is **linearly independent** if $c_1 \overrightarrow{v_1} + c_2 \overrightarrow{v_2} ... + c_k \overrightarrow{v_k} = \overrightarrow{0} \implies c_1 = 0 = c_2 = c_k $
+
+### Example
