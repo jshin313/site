@@ -468,6 +468,9 @@ If $S \subset V$ and $S$ is a subspace of $V$, then $\overrightarrow{0} \in S$
 
 ### Examples
 
+### Nullspace
+The solution set of a homogeneous system is the **nullspace**
+
 ## 4.4: Spanning Sets
 Let $\\{\overrightarrow{v_1}, \overrightarrow{v_2},\overrightarrow{v_3},\overrightarrow{v_4}, ..., \overrightarrow{v_k}\\} \subset V$. We say $\overrightarrow{v_1}, \overrightarrow{v_2}, ...\overrightarrow{v_k}$ **spans** $V$ if every vector in $V$ is a linear combination of $\overrightarrow{v_1}, \overrightarrow{v_2},\overrightarrow{v_3},\overrightarrow{v_4}, ..., \overrightarrow{v_k}$
 
