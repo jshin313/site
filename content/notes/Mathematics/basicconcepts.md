@@ -678,9 +678,7 @@ $$ \sum_{i=1}^{1} i^2 = 1^2 = 1, \ \ \frac{1(1+1)(2(1) + 1}{6 }= 1$$
 #### Inductive Hypothesis
 ##### Weak Induction
 Suppose that for some $m \in \mathbb{N}, \ \ \sum_{i=1}^{m} i^2 = \frac{m(m+1)(2m+1)}{6}$  
-We will prove that $ \sum_{i=1}^{m+1} i^2 = \frac{(m+1)(m+2)(2m+3}{6} $
-
-
+We will prove that $\sum_{i=1}^{m+1} i^2 = \frac{(m+1)(m+2)(2m+3}{6}$
 
 ## 4.2: Set Operations
 Let $A$ and $B$ be sets.
@@ -710,3 +708,30 @@ c. $ A - B  = \\{0, i, 1\\}$
 
 ### Universal Set
 $U - A = A^{C}$
+
+### Proposition
+1. $A \cup B = B \cup A$
+2. $a \cap B = B \cap A$
+3. $(A \cup B)\cup C = A \cup (B\cup C)$
+4. $(A \cap B) \cap C = A \cap (B\cap C)$
+5. $A \cap \emptyset = \emptyset$
+6. $A \cup \emptyset = A$
+7. $A \cup (B\cap C) = (A \cup B) \cap (A \cup C)$
+8. $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
+
+#### Proof of 8
+$$ A \cap (B \cup C) = \\{x: x \in A \land x \in B \cup C\\}$$
+$$ = \\{x: x \in A \land (x \in B \lor x \in C)\\}$$
+$$ = \\{x: (x \in A \land x \in B) \lor (x \in A \land x \in C)\\}$$
+$$ = (A \cap B) \cup (A \cap C)$$
+
+### Cardinality
+If $A$ and $B$ are finite sets, then $\text{#}(A \cup B) = \text{#} A + \text{#} B - \text{#} (A \cup B)$
+
+### Cartesian Product
+The Cartesian product $A \cross B$:
+$$ A \cross B = \\{(a, b): a \in A, b \in B\\}$$
+
+
+#### Properties
+<!-- $A$\cross \emptyset A x \emptyset = \emptyet \cross A = 0$ -->
