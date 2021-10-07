@@ -814,6 +814,30 @@ $$ \pdv{F}{x} \dv{x}{t} + \pdv{F}{y} \dv{y}{t} + \pdv{F}{z} \dv{z}{t} = 0$$
 $$ \nabla F \cdot \vb{r}'(t) = 0$$
 $$ F_x(x_0, y_0, z_0) (x-x_0) + F_y(x_0, y_0, z_0) (y - y_0) + F_z(x_0, y_0, z_0)(z-z_0)=0$$
 
+## 14.7: Maximums and Minimums (Optimization)
+$z=f(x, y)$ to be optimized
+
+Local max at $(x_0, y_0)$ if $f(x, y) \le f(x_0, y_0)$ for all points $(x, y)$ near $(x_0, y_0)$
+
+### 1st Derivative Test
+Local extrema at $(a, b)$ if $\nabla f(a, b) = DNE$ or $\nabla f(a, b) = 0$ (Converse is not true)
+
+### 2nd Derivative Test
+Suppose $\nabla f(a, b) = \ev{0, 0}$  
+
+Calculate the following
+$$D = det\left(\begin{bmatrix}
+  f_{xx} & f_{xy} \\\\
+  f_{yx} & f_{yy}
+\end{bmatrix} \right) = f_{xx} f_{yy} - f_{xy}^2$$
+
+1. If $D(a, b) < 0$, there is no local extrema, but there is a saddlepoint
+2. If $D(a, b) = 0$, no conclusion is possible
+3. If $D(a, b) > 0$, then calculate $f_{xx}$
+  * If $f_x(a, b) > 0$, there is a local **min**
+  * If $f_x(a, b) < 0$, there is a local **max**
+  * If $f_x(a, b) = 0$, no conclusion is possible
+
 ## 15.1: Double Integrals over Rectangles
 Volume $V$ of a solid above the rectangle $R$ and below the surface $z = f(x, y)$:
 $$ V = \iint\limits_R f(x, y) dA $$
