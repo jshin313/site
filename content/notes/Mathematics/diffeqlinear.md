@@ -1,7 +1,7 @@
 ---
 title: "Differential Equations with Linear Algebra"
 publishdate: 2021-08-30
-lastmod: 2021-10-05
+lastmod: 2021-10-09
 draft: false
 toc: true
 tags:
@@ -13,7 +13,7 @@ tags:
 ---
 
 ## Class Description
-Textbook: Differential Equation and Linear Algebra by Stephen W. Goode Scott A. Annin
+Textbook: Differential Equation and Linear Algebra by Stephen W. Goode and Scott A. Annin
 
 ## 2.1: Matrix Definitions and Properties
 
@@ -582,3 +582,146 @@ This is a system, and if we get the determinant (Wronskin) to be nonzero, then t
 * If the Wronskian is zero, we don't know if the functions are linearly dependent or independent
 * The Wronskian only needs to be nonzero at one point for us to conclude that the functions are independent
 
+
+## 4.6: Bases and Dimension
+
+### Definition
+A set $\\{v_1, v_2, ..., v_k\\}$ in a vector space $V$ is a basis of $V$ if 
+1. $\\{v_1, v_2, ..., v_k\\}$ is linearly independent
+2. $span\\{v_1, v_2, ..., v_k\\} = V$
+
+A vector space is called **finite dimensional** if it admits a **finite basis**. Otherwise, $V$ is **infinite dimensional**.
+
+#### Example
+$\mathbb{R}^n, M_{k\cross n}(\mathbb{R}), P_n(\mathbb{R})$ are all finite dimensional  
+
+#### Example
+$P(\mathbb{R}) \subset C^{(k)}(\mathbb{R}) \subset F(\mathbb{R})$ are all infinite dimensional vector spaces  
+
+#### Example
+$$ \mathbb{R}^{n} \ \ \ \ \ \vb{e_1} = \begin{bmatrix}
+   1 \\\\
+   0 \\\\
+   0 \\\\
+   0 \\\\
+   \vdots \\\\
+   0 \\\\
+\end{bmatrix},
+\vb{e_2} = \begin{bmatrix}
+   0 \\\\
+   1 \\\\
+   0 \\\\
+   0 \\\\
+   \vdots \\\\
+   0 \\\\
+\end{bmatrix}, \cdots,
+\vb{e_n} = \begin{bmatrix}
+   0 \\\\
+   0 \\\\
+   0 \\\\
+   0 \\\\
+   \vdots \\\\
+   1 \\\\
+\end{bmatrix}
+$$
+$\\{\vb{e_1}, \vb{e_2}, \vb{e_3} ..., \vb{e_n}\\} $ is the **standard basis** for $\mathbb{R}^n$
+
+#### Example
+$$ M_{2}(\mathbb{R}) \ \ \ \ \ \vb{E_{11}} = \begin{bmatrix}
+   1 & 0\\\\
+   0 & 0\\\\
+\end{bmatrix},
+\vb{E_{12}} = \begin{bmatrix}
+   0 & 1\\\\
+   0 & 0\\\\
+\end{bmatrix},
+\vb{E_{21}} = \begin{bmatrix}
+   0 & 0 \\\\
+   1 & 0 \\\\
+\end{bmatrix},
+\vb{E_{22}} = \begin{bmatrix}
+   0 & 0 \\\\
+   0 & 1 \\\\
+\end{bmatrix}
+$$
+$$ a \begin{bmatrix}
+   1 & 0\\\\
+   0 & 0\\\\
+\end{bmatrix} + 
+b \begin{bmatrix}
+   0 & 1\\\\
+   0 & 0\\\\
+\end{bmatrix} + 
+c \begin{bmatrix}
+   0 & 0 \\\\
+   1 & 0 \\\\
+\end{bmatrix} + 
+d \begin{bmatrix}
+   0 & 0 \\\\
+   0 & 1 \\\\
+\end{bmatrix}
+= \begin{bmatrix}
+   0 & 0 \\\\
+   0 & 0 \\\\
+\end{bmatrix}
+$$
+$$ \implies a= b = c = d = 0$$
+
+$\\{\vb{E_{11}}, \vb{E_{12}}, \vb{E_{21}}, \vb{E_{22}}\\} $ is the **standard basis** for $M_2(\mathbb{R})$
+
+#### Example
+$\\{1, x, x^2, x^3, x^n\\}$ is the standard basis for $P_n(\mathbb{R}$
+
+### Observation
+If $\\{\vb{v_1}, \vb{v_2}, ..., \vb{v_k}\\}$ is a basis of $V$, then every vector $\vb{v} \in V$ can be written **uniquely** as $\vb{v} = c_1 \vb{v_1} + c_2 \vb{v_2} + ... + c_k \vb{v_k}$
+
+#### Proof
+$$\vb{v} = c_1 \vb{v_1} + c_2 \vb{v_2} + ... + c_k \vb{v_k} = \vb{v} = d_1 \vb{v_1} + d_2 \vb{v_2} + ... + d_k \vb{v_k} $$
+$$ (d_1 - c_1) \vb{v_1} + (d_2 - c_2) \vb{v_2} +... + (d_k - c_k) \vb{v_k} = 0 $$
+
+Since the vectors are linearly independent:
+$$ d_1 - c_1 = 0 = d_2 - c_2 = d_k - c_k$$
+$$ \implies d_1 = c_1, d_2 = c_2, ..., d_k = c_k$$
+
+### Theorem 4.6.4
+If a vector space, $V$, has a basis with exactly $n$ vectors, then any set $\\{\vb{w_1}, \vb{w_2}, ..., \vb{w_k}\\}$ of $k > n$ vectors is linearly dependent in $V$
+
+#### Proof
+$\\{\vb{v_1}, \vb{v_2}, ..., \vb{v_n}\\}$ is a basis
+
+### Corollary
+All bases of a finite dimensional vector space have the same number of vectors
+
+### Observation
+If $A$ is an invertible $n\cross n$ matrix, then the columns of $A$ form a basis of $\mathbb{R}^n$
+
+#### Proof
+NTS every $\vb{b} \in \mathbb{R}^n$ belongs to a span of the columns of $A$  
+
+In other words, NTS $A\vb{x} = \vb{b}$ is consistent  
+$A^{-1} \vb{b}$ is a solution of $A\vb{x} = \vb{b}$
+
+Now NTS columns of $A$ are linearly independent. NTS $A\vb{x} = \vb{0}$ has only the trivial solution.
+$$ A\vb{x} = \vb{0}$$
+$$ A^{-1} A \vb{x} = A^{-1}\vb{0} = \vb{0}$$
+$$ \implies \vb{c} = \vb{0}$$
+
+### Definition
+If $V$ is a finite dimensional vector space, then $dim(V) = \text{number of vectors in any basis of V}$  
+
+Convention:
+$$ dim(\\{\vb{0}\\} = 0$$
+
+#### Examples
+$$ dim(\mathbb{R}^n) = n$$
+$$ dim(P_n(\mathbb{R})) = n + 1$$
+$$ dim(M_{n\cross k}) = nk $$
+
+### Observation 
+If $dim(V) = n$, then any spanning set of $S$ must have at least $n$ vectors
+
+### Try to prove
+1. If $dim(V) = n$, then any set of $n$ linear independent vectors form a basis of $V$
+2. If $dim(V) = n$, then any spanning set with exactly $n$ vectors is also a basis of $V$
+3. If $W$ is a subspace of $V$and $V$ is a finite dimensional vector space, then $dim(W) \le dim(V)$
+4. If $W$ is a subspace of $V$ and $dim(W) = dim(V)$, then $W=V$
