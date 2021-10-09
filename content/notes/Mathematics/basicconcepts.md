@@ -732,6 +732,71 @@ If $A$ and $B$ are finite sets, then $\text{#}(A \cup B) = \text{#} A + \text{#}
 The Cartesian product $A \cross B$:
 $$ A \cross B = \\{(a, b): a \in A, b \in B\\}$$
 
+### Power Set
+If $X$ is a set, then $P(X) = \\{A: A \subseteq X\\}$ is called the **power set**
 
-#### Properties
-<!-- $A$\cross \emptyset A x \emptyset = \emptyet \cross A = 0$ -->
+### Example
+$$x = \\{a, b\\}$$
+$$P(X) = \\{\emptyset, \\{a\\}, \\{b\\}, \\{a, b\\}\\}$$
+
+#### Proposition
+Let $A$ and $B$ be sets.
+$$ (A \subseteq B) \iff \left( P(A) \subseteq P(B) \right)  $$
+
+Proof:
+
+Prove $(A \subseteq B) \implies \left( P(A) \subseteq P(B) \right)$
+$$ C\in P(A) \implies C \subseteq A $$
+$$ A \subseteq B\implies C \subseteq B \text{     by transitivity}$$
+$$ C \subseteq B \implies C \in P(B)$$
+
+Prove the converse
+$$ A \subseteq A \implies A \in P(A)$$
+$$ A \in P(B) \implies A \subseteq B $$
+
+### DeMorgan's Laws
+1. $ A - (B \cup C) = (A - B) \cap (A - C) $
+2. $A - (B \cap C) = (A - B) \cup (A - C)$
+
+#### Proof of 1
+$$ x \in A \land \left( x \notin \left( B \cup C \right)  \right) $$
+$$ x \in A \land \neg\left( x \in B \lor x \in C \right) $$
+$$ x \in A \land x \notin B \land x \notin C$$
+$$ \left( x \in A \land x \notin B \right) \land \left( x\not\in  C \land x \in A \right) $$
+$$ A - B \cap A - C$$
+
+Converse
+$$ \left( A - B \right) \cap \left( A - C \right) $$
+$$ x \in \left( A - B \right) \land x \in \left( A - C \right) $$
+$$ x \in A \land x \not \in B \land x \in A \land x \notin C$$
+$$x\in A \land \neg\left( x \in b\lor x \in C \right) $$
+$$ x \in A \land x \not\in  \left( B \cup C \right) $$
+$$ A - B\cup C$$
+
+## 4.3: Arbitrary Unions and Intersections
+$$ \left( A \cup B  \right) \cup C = A \cup \left( B \cup C \right) $$
+$$ \left( A \cap B \right)  \cap C = A \cap \left( B \cap C \right) $$
+so we can just write $A \cap B \cap C$ and $A \cup B \cup C$ without parentheses.
+
+### Definitions
+Let $A_1, A_2, A_3, \ldots, A_n, \ \ \ n \in \mathbb{N}$ be sets
+1. $\bigcap_{i=1}^{n} A_i = A_1 \cap A_2 \cap A_3 \cap \ldots \cap A_n $
+1. $\bigcup_{i=1}^{n} A_i = A_1 \cup A_2 \cup A_3 \cup \ldots \cup A_n $
+
+### Proposition
+Let $n \in \mathbb{N}$, and $B_1, B_2, B_3, \ldots B_n$ be sets.
+1. $A \cap \left( \bigcap_{i=1}^{n} B_i \right) = \bigcap_{i=1}^{n} \left( A \cap B_i \right) $
+2. $A \cup \left( \bigcup_{i=1}^{n} B_i \right) = \bigcup_{i=1}^{n} \left( A \cup B_i \right) $
+3. $A - \left( \bigcup_{i=1}^{n} B_i \right) = \bigcap_{i=1}^{n} \left( A - B_i \right) $
+4. $A - \left( \bigcap_{i=1}^{n} B_i \right) = \bigcup_{i=1}^{n} \left( A - B_i  \right) $
+
+#### Proof of 2
+Base Case: $n = 1$
+$$ \bigcap_{i=1}^{1} \left( A \cup B_i \right) = A \cup B_1 = A \cup \left( \bigcap_{i=1}^{1} B_i \right) $$
+
+Inductive Hypothesis:  
+Suppose that for some $m \in \mathbb{N}$, $A \cup \left( \bigcap_{i=1}^{m} B_i \right) $ holds  
+Let $B_1, B_2, B_3, \ldots B_n$ be sets
+$$ A \cup \left( \bigcap_{i=1}^{m+1} B_i \right) = A \cup \left( \bigcap_{i=1}^{m} B_i \cap B_{m+1} \right) $$
+$$ A \cup \left( \bigcap_{i=1}^{m} B_i \right) \cap \left( A \cup B_{m+1} \right) $$
+$$ \bigcap_{i=1}^{m} \left( A \cup B_i \right) \cap \left( A \cup B_{m+1} \right) = \bigcap_{i=1}^{m+1} \left( A \cup B_i \right)  $$
