@@ -284,7 +284,22 @@ $$
 * **Non-Free variable**: Correspond to a pivotal column
 
 ### Theorem 2.5.9
-$A$ is a coefficient $n \cross n$ matrix, there is a *unique* solution if and only if $rank(A) = n$ 
+Let $A$ is a coefficient $m \cross n$ matrix. $A^\\#$ is the augmented matrix
+1. If $rank(A) < rank(A^\\#)$, then the system is inconsistent
+2. If $rank(A) = rank(A^\\#)$, then the system is consistent 
+  * $rank(A) = n$ if and only if there is only one solution
+  * $rank(A)  < n $ if and only if there is an infinite amount of solutions (free variables exist)
+
+### Corollary 2.5.11
+For a **homogeneous system**, if $m < n$, then there is an **infinite** amount of solutions.
+
+#### Proof
+We know $rank(A) = rank(A^\\#)$ since it's a homogeneous system.  
+We also know $rank(A) \le m$ for any system. If $m < n$, then  $rank(A) < n$ by transitivity.  
+By [Theorem 2.5.9](#theorem-259), the system has an infinite amount of solutions
+
+#### Remark
+The inverse is not true. There can still be an infinite amount of solutions if $m \ge n$ for a homogeneous system
 
 ## 2.6: The Inverse of a Square Matrix
 When $A$ and $B$ are both $n \cross n$ matrices:
@@ -330,7 +345,7 @@ Thus there is only one solution since we know $A^{-1}$ is also unique.
 **Theorem**: An $n \cross n$ matrix $A$ is invertible if and only if $rank(A) = n$  
 
 **Proof**:   
-Let's prove $A^{-1} \text{ exists} \implies rank(A) = n$ first. If $A^{-1}$, then by Theorem 2.6.5, any $n\cross n$ linear system has a unique solution. Thus by Theorem 2.5.9, we know that $rank(A) = n$  
+Let's prove $A^{-1} \text{ exists} \implies rank(A) = n$ first. If $A^{-1}$, then by [Theorem 2.6.5](#theorem-265), any $n\cross n$ linear system has a unique solution. Thus by Theorem [2.5.9](#theorem-259), we know that $rank(A) = n$  
 
 Now we prove the converse:
 $$rank(A) = n \implies A \text{ is invertible}$$
@@ -414,9 +429,14 @@ $$ det(kA) = k^n det(A)$$
 
 ### Basic Theoretical Results
 1. The volume of a parallelepiped is $|det(A)|$, where $A$ is a matrix with the 3 vectors of the parallelepiped
-2. An $n \cross n$ matrix is invertible if and only if $det(A) \neq 0$
-3. An $n \cross n$ linear system $A\vb{x} = \vb{b}$ has a unique solution if and only if $det(A) \neq 0$
-4. An $n \cross n$ **homogeneous** linear system $A \vb{x} = \vb{0}$ has an infinite number of solutions if and only if $det(A) = 0$
+
+### Theorem 3.2.5
+* An $n \cross n$ matrix is invertible if and only if $det(A) \neq 0$
+* An $n \cross n$ linear system $A\vb{x} = \vb{b}$ has a unique solution if and only if $det(A) \neq 0$
+
+
+### Corollary 3.2.6
+An $n \cross n$ **homogeneous** linear system $A \vb{x} = \vb{0}$ has an infinite number of solutions if and only if $det(A) = 0$
 
 ### Adjoint Method
 $$A^{-1} = \frac{1}{det(a)} adj(A)$$
@@ -495,8 +515,63 @@ We say $\\{v_1, v_2, ..., v_k\\}$ is a **spanning set** of $W$
 ### Example
 
 ## 4.5: Linear Dependence and Independence
-Let $\\{v_1, v_2, ..., v_k\\}$ be a non-empty subset in $V$. $\\{v_1, v_2, ..., v_k\\}$ is **linearly dependent** if $\exists (c_1, c_2, ... c_k) \in \mathbb{R}^k$ and at least one $c_j \neq 0$ and $c_1 \overrightarrow{v_1} + c_2 \overrightarrow{v_2} ... + c_k \overrightarrow{v_k} = \overrightarrow{0}$  
+
+### Minimal Spanning Set
+* **Minimal Spanning Set**: The smallest set of vectors that spans a vector space
+
+* A minimal spanning set of $V = \mathbb{R}^2$ is $\\{(1,0), (0,1)\\}$
+$$ span(\\{(1,0),(0,1)\\}) = span(\\{(1,0),(0,1), (1, 2)\\}) = \mathbb{R}^2$$
+
+#### Theorem 4.5.2
+If you have a spanning set, you can remove a vector from a spanning set if it is a linear combination of the other vectors and still get a spanning set.
+
+### Linear Dependence/Independence
+Let $\\{v_1, v_2, ..., v_k\\}$ be a non-empty subset in $V$. $\\{v_1, v_2, ..., v_k\\}$ is **linearly dependent** if $\exists (c_1, c_2, ... c_k) \in \mathbb{R}^k$ and at least one $c_j \neq 0$ and $c_1 \overrightarrow{v_1} + c_2 \overrightarrow{v_2} ... + c_k \overrightarrow{v_k} = \overrightarrow{0}$ 
 
 $\\{v_1, v_2, ..., v_k\\}$ is **linearly independent** if $c_1 \overrightarrow{v_1} + c_2 \overrightarrow{v_2} ... + c_k \overrightarrow{v_k} = \overrightarrow{0} \implies c_1 = 0 = c_2 = c_k $
 
 ### Example
+
+### Theorem 4.5.6
+A set of vectors (with at least two vectors) is linearly dependent $\iff$ there is at least one vector that is a linear combination of the other vectors
+
+### Proposition 4.5.8
+Any set of vectors with the zero vector is linearly dependent
+
+### Corollary 4.5.17
+For a set of vectors $v_1, v_2, v_3, ..., v_k$ where $v_i \in \mathbb{R}^n$, and $A = [v_1, v_2, v_3, ..., v_k]$ with A having dimensions $n \cross k$
+1. If $k > n$, then the vectors are linearly dependent (since there is an infinite number of solutions due to free variables [Theroem 2.5.11]()) 
+2. If $k = n$, then the vectors are linearly dependent if and only if $det(A) = 0$ ([Corollary 3.2.6](#corollary-326))
+3. If $k < n$, nothing can be concluded
+
+### Wronskian
+Let $f_1, f_2, ... f_k \in C^{k-1}(I)$ be functions that are differentiable up to $k -1$.
+$$ W\[f_1, f_2, ..., f_k\](x) = \begin{vmatrix}
+f_1 & f_2 & f_3 & \cdots & f_k \\\\
+f'_1 & f'_2 & f'_3 & \cdots & f'_k \\\\
+\vdots & \vdots & \vdots & \ddots &\vdots \\\\
+f_1^{(k-1)} & f_2^{(k-1)} & f_3^{(k-2)} & \cdots & f_k^{(k-1)} \\ \\
+\end{vmatrix}$$
+
+Order matters 
+$$ W\[f_1, f_2, f_3, ..., f_k\](x) = - W\[f_2, f_1, f_3, ..., f_k\](x)$$
+
+### Theorem 4.5.23
+If $W\[f_1, f_2, f_3, ..., f_k\](x) \neq 0$ for some $x_0$ on $I$, then $f_1, f_2, f_3, ..., f_k$ is linearly independent on $I$
+
+#### Proof
+Suppose the following, for all $x$ in $I$
+$$c_1 f_1 (x) + c_2 f_2 (x) + · · · + c_k f_k (x) = 0$$
+
+If we differentiate, we get the following:
+$$c_1f_1 + c_2 f_2 + c_3 f_3 + \cdots + c_k f_k $$
+$$ c_1 f'_1 + c_2 f'_2 + c_3 f'_3 + \cdots + c_k f'_k$$
+$$ \vdots $$
+$$ c_1 f_1^{(k-1)} + c_2 f_2^{(k-1)} + c_3 f_3^{(k-2)} + \cdots + c_k f_k^{(k-1)} $$
+
+This is a system, and if we get the determinant (Wronskin) to be nonzero, then there is only one solution (trivial) by [Theorem 3.2.5](#theorem-325)
+
+#### Remarks
+* If the Wronskian is zero, we don't know if the functions are linearly dependent or independent
+* The Wronskian only needs to be nonzero at one point for us to conclude that the functions are independent
+
