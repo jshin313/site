@@ -655,7 +655,21 @@ $I$ is the charge per time
 
 Current is defined as the direction positive charges flow, so current is opposite the direction electrons flow
 
+### Conservation of Current and the Junction Rule
+
+### Law 1
+Due to conservation of charge, the current must be the same at all cross-sections along a current-carrying wire
+
+### Law 2 (Kirchhoff's Junction Law)
+For a junction, the law of conservation of current requires that the sum of the current in the branches
+
+$$ \sum I_{in} = \sum I_{out} $$
+
 ### Conductivity and Resistivity
+$$ v_x = v_{0x} + a \Delta t = v_{0x} + \left( \frac{eE}{m} \right) \Delta t $$
+* Assume $v_{0x} = 0$ and $\tau = \Delta t$ for all collisions
+$$ v_d = \frac{e\tau}{m}E$$
+* **Average Time between Collisions/Electron Lifetime/Scattering Time**: $\tau$ is a material dependent quantity
 $$ J = \frac{dI}{dA}=  n_e e v_d = \frac{n_e e^2 \tau}{m}E$$
 $J$ is the current density and $\frac{n_e e^2 \tau}{m}$ only depends on the conducting material
 $$ \sigma = \text{conductivity} = \frac{n_e e^2 \tau}{m}$$
@@ -677,10 +691,12 @@ $$ R = \text{resistance} = \frac{\rho L}{A}$$
 * Charge moves *without an electric field*
 
 ### Ohm's Law
+If we assume the electric field is uniform:
+$$ \Delta V = E \cdot L$$
+Remember $E = \frac{F}{q} = \frac{\Delta V}{d}$
 
 $$ E_s = -dV / ds \implies E = \frac{\Delta V}{\Delta s}$$
 If we assume $J$ is uniform and perpendicular to the cross section
 $$ I = JA = A\sigma E = \frac{A}{\rho}E = \frac{A}{\rho L}\Delta V$$
 $$ I = \frac{\Delta V}{R}$$
 
- 
