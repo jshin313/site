@@ -536,11 +536,12 @@ $\\{v_1, v_2, ..., v_k\\}$ is **linearly independent** if $c_1 \overrightarrow{v
 A set of vectors (with at least two vectors) is linearly dependent $\iff$ there is at least one vector that is a linear combination of the other vectors
 
 ### Proposition 4.5.8
-Any set of vectors with the zero vector is linearly dependent
+1. Any set of vectors with the zero vector is linearly dependent
+2. Any set of **two** vectors is linearly dependent if and only if the vectors are proportional
 
 ### Corollary 4.5.17
 For a set of vectors $v_1, v_2, v_3, ..., v_k$ where $v_i \in \mathbb{R}^n$, and $A = [v_1, v_2, v_3, ..., v_k]$ with A having dimensions $n \cross k$
-1. If $k > n$, then the vectors are linearly dependent (since there is an infinite number of solutions due to free variables [Theroem 2.5.11]()) 
+1. If $k > n$, then the vectors are linearly dependent (since there is an infinite number of solutions due to free variables [Corollary 2.5.11](#corollary-2511)) 
 2. If $k = n$, then the vectors are linearly dependent if and only if $det(A) = 0$ ([Corollary 3.2.6](#corollary-326))
 3. If $k < n$, nothing can be concluded
 
