@@ -539,6 +539,12 @@ A set of vectors (with at least two vectors) is linearly dependent $\iff$ there 
 1. Any set of vectors with the zero vector is linearly dependent
 2. Any set of **two** vectors is linearly dependent if and only if the vectors are proportional
 
+### Corollary 4.5.14
+Any nonempty, finite set of linearly dependent vectors contains a subset of linearly independent with the same linear span
+
+#### Proof
+By [Theorem 4.5.6](#theorem-456), there is a vector that is a linear combination of the other vectors. If we delete that, we still have same span. If the resulting subset is linearly independent, then we're done. If the resulting subset is linearly dependent, then we can repeat the same process of removing the vector that is a linear combination.
+
 ### Corollary 4.5.17
 For a set of vectors $v_1, v_2, v_3, ..., v_k$ where $v_i \in \mathbb{R}^n$, and $A = [v_1, v_2, v_3, ..., v_k]$ with A having dimensions $n \cross k$
 1. If $k > n$, then the vectors are linearly dependent (since there is an infinite number of solutions due to free variables [Corollary 2.5.11](#corollary-2511)) 
