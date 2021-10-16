@@ -700,3 +700,21 @@ If we assume $J$ is uniform and perpendicular to the cross section
 $$ I = JA = A\sigma E = \frac{A}{\rho}E = \frac{A}{\rho L}\Delta V$$
 $$ I = \frac{\Delta V}{R}$$
 
+## 28: Fundamentals of Circuits
+
+### Kirchoff's Loop Law
+For a loop (any path that starts and ends at the same point), the law of conservation of energy requires
+$$ \Delta V_{loop} = \sum (\Delta V)_i = 0$$
+
+Note: this can be true only if at least one $(\Delta V)_i$ is positive (there is a power supply).  
+
+Let us define $\Delta V$ to be negative for resistors and any component that consumes electricity.
+
+* From negative to positive for a battery: $\Delta V = +\epsilon$
+* From positive to negative for a battery: $\Delta V = - \epsilon$ 
+* From positive to negative for a resistor: $\Delta V = -\Delta V_R = -IR$
+
+### Energy and Power
+The rate of transfer of thermal energy through a resistor
+$$ P_R = \frac{dE_{th}}{dt} = \frac{dq}{dt} \Delta V_{R} = I \Delta V_R = I^2 R =\frac{(\Delta V)^2}{R}$$
+
