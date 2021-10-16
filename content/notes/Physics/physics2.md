@@ -503,6 +503,15 @@ Use coulomb's Law to get magnitudes
 * **Electric dipole**: Consists of two point charges of equal magnitude but opposite signs, held a short distance apart
 * Many molecules can be modeled as dipoles (e.g. water)
 
+
+For a point lying on the axis of the dipole
+$$ E = \frac{1}{4\pi\epsilon_0 \frac{2qd}{r^3}}$$
+
+For a point perpendicular to the dipole
+$$ E = -\frac{1}{4\pi\epsilon_0 \frac{qd}{r^3}}$$
+
+Where $d$ is the distance between the dipoles
+
 ### Continuous Charge Distributions
 Question: What if the charge is continuous (not discrete)?
 
@@ -528,7 +537,7 @@ $$ \overrightarrow{E}(P) = \frac{2k\lambda}{y} \hat{j}$$
 * Notice that the electric field is proportional to $\frac{1}{distance}$ instead of $\frac{1}{distance^2}$ like for a point charge
 
 ### Ring of Charge
-* A ring of radius $a$ carries a charge $Q$ distributed evenly over the ring. At any point $P$ on the x-axis, there is $dE$ and $dq$
+* A ring of radius $a$ carries a charge $Q$ distributed evenly over the ring. At any point $P$ on the x-axis, there is $dE$ and $dq$, where the x-axis passes through the center of the ring 
 $$ r = \sqrt{x^2 + a^2} $$
 * Only x-components add up
 
@@ -536,11 +545,13 @@ $$ E= \int_{ring} dE_x = \int_{ring} \frac{kx \ dq}{\sqrt{ x^2 + a^2}^3} =  \fra
 $$ \overrightarrow{E}\left(P \right)  = \frac{kQx}{(x^2 + a^2)^{\frac{3}{2}}} \hat{i}$$
 * At the center of the ring, the net electric field is 0
 
-#### Disk of Charge
+### Disk of Charge
 $$ \eta = \frac{Q}{A} = \text{charge density}$$
 $$ E_{disk} = \frac{\eta}{2\epsilon_0} \left( 1 - \frac{z}{\sqrt{z^2 + R^{2}} } \right) $$
 
-#### Infinite Plane of Charge
+where the z-axis passes through the center of the disk and the point lies on the z-axis
+
+### Infinite Plane of Charge
 * An infinite plane is just a disk with radius of infinity
 $$ E_{plane} = \frac{\eta}{2\epsilon_0}$$
 
@@ -548,10 +559,10 @@ $$ E_{plane} = \frac{\eta}{2\epsilon_0}$$
 
 * $E$ is away from the plane if the charge is + and towards the plane if charge is -
 
-#### Sphere of Charge
+### Sphere of Charge
 $$ \overrightarrow{E}_{sphere} = \frac{Q}{4\pi \epsilon_0 r^2} \hat{r}, \ \ \   r \ge R$$
 
-#### Parallel-Plate Capacitor
+### Parallel-Plate Capacitor
 * One plane is positively charged and one plane is negatively charged
 * All charges are on one surface of hte plane because opposite charges attract
 * $E = 0$ outside the capacitor
