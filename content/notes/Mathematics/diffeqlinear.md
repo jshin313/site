@@ -592,6 +592,10 @@ A set $\\{v_1, v_2, ..., v_k\\}$ in a vector space $V$ is a basis of $V$ if
 
 A vector space is called **finite dimensional** if it admits a **finite basis**. Otherwise, $V$ is **infinite dimensional**.
 
+#### Note
+All minimal spanning sets form a basis and all bases are minimal spanning sets
+
+
 #### Example
 $\mathbb{R}^n, M_{k\cross n}(\mathbb{R}), P_n(\mathbb{R})$ are all finite dimensional  
 
@@ -625,6 +629,8 @@ $$ \mathbb{R}^{n} \ \ \ \ \ \vb{e_1} = \begin{bmatrix}
 \end{bmatrix}
 $$
 $\\{\vb{e_1}, \vb{e_2}, \vb{e_3} ..., \vb{e_n}\\} $ is the **standard basis** for $\mathbb{R}^n$
+
+**Standard Basis**: A set of vectors for a vector space where each vector has has zero in all of its components except one
 
 #### Example
 $$ M_{2}(\mathbb{R}) \ \ \ \ \ \vb{E_{11}} = \begin{bmatrix}
@@ -667,10 +673,10 @@ d \begin{bmatrix}
 $$
 $$ \implies a= b = c = d = 0$$
 
-$\\{\vb{E_{11}}, \vb{E_{12}}, \vb{E_{21}}, \vb{E_{22}}\\} $ is the **standard basis** for $M_2(\mathbb{R})$
+$\\{\vb{E_{11}}, \vb{E_{12}}, \vb{E_{21}}, \vb{E_{22}}\\}$ is the *standard basis* for $M_2(\mathbb{R})$
 
 #### Example
-$\\{1, x, x^2, x^3, x^n\\}$ is the standard basis for $P_n(\mathbb{R}$
+$\\{1, x, x^2, x^3, ..., x^n\\}$ is the standard basis for $P_n(\mathbb{R})$
 
 ### Observation
 If $\\{\vb{v_1}, \vb{v_2}, ..., \vb{v_k}\\}$ is a basis of $V$, then every vector $\vb{v} \in V$ can be written **uniquely** as $\vb{v} = c_1 \vb{v_1} + c_2 \vb{v_2} + ... + c_k \vb{v_k}$
@@ -687,10 +693,42 @@ $$ \implies d_1 = c_1, d_2 = c_2, ..., d_k = c_k$$
 If a vector space, $V$, has a basis with exactly $n$ vectors, then any set $\\{\vb{w_1}, \vb{w_2}, ..., \vb{w_k}\\}$ of $k > n$ vectors is linearly dependent in $V$
 
 #### Proof
-$\\{\vb{v_1}, \vb{v_2}, ..., \vb{v_n}\\}$ is a basis
+Let $\\{\vb{v_1}, \vb{v_2}, ..., \vb{v_n}\\}$ be a basis of vector space, $V$  
 
-### Corollary
+Let $\\{\vb{u_1}, \vb{u_2}, ..., \vb{u_m}\\}$ be a set of $m$ arbitrary vectors that is a subset of $V$ with $m > n$  
+
+NTS $\\{\vb{u_1}, \vb{u_2}, ..., \vb{u_m}\\}$ is linearly dependent.  
+
+Since $\\{\vb{v_1}, \vb{v_2}, ..., \vb{v_n}\\}$ is a basis, it is a spanning set, so every vector in $\\{\vb{u_1}, \vb{u_2}, ..., \vb{u_m}\\}$ can be written as a linear combination of $\vb{v_1}, \vb{v_2}, ..., \vb{v_n}$.
+
+There must exist $a_{ij}$ such that
+$$ \vb{u_1} = a_{11}\vb{v_1} + a_{21}\vb{v_2} ... + a_{n1} \vb{v_n}$$
+$$ \vb{u_2} = a_{12}\vb{v_2} + a_{22}\vb{v_2} ... + a_{n2} \vb{v_n}$$
+$$ \vdots$$
+$$ \vb{u_m} = a_{1m}\vb{v_2} + a_{2m}\vb{v_2} ... + a_{nm} \vb{v_n}$$
+
+NTS that $c_1 \vb{u_1} + c_2 \vb{u_2} + ... + c_m \vb{u_m} = \vb{0}$ to show that $\vb{u_1}, \vb{u_2}, ..., \vb{u_m}$ is linearly dependent.  
+
+Combine the last two equations:
+$$ c_1(a_{11}\vb{v_1} + a_{21}\vb{v_2} ... + a_{n1} \vb{v_n}) + c_2 (a_{12}\vb{v_2} + a_{22}\vb{v_2} ... + a_{n2} \vb{v_n}) + ... + c_m(a_{1m}\vb{v_2} + a_{2m}\vb{v_2} ... + a_{nm} \vb{v_n}) = \vb{0}$$
+
+Rearrange:
+$$ (a_{11}c_1 + a_{12}c_2 + ... a_{1m}c_m)\vb{v_1} + (a_{21}c_1 + a_{22}c_2 + ... a_{2m}c_m)\vb{v_1} + ... +(a_{n1}c_1 + a_{n2}c_2 + ... a_{nm}c_m)\vb{v_n} $$
+
+We know $\vb{v_1}, \vb{v_2}, ..., \vb{v_n}$ is linearly independent, so the following is true:
+$$ (a_{11}c_1 + a_{12}c_2 + ... a_{1m}c_m) = 0$$
+$$ (a_{21}c_1 + a_{22}c_2 + ... a_{2m}c_m) = 0$$
+$$ \vdots$$
+$$ (a_{n1}c_1 + a_{n2}c_2 + ... a_{nm}c_m) = 0$$
+
+This forms an $n\cross m$ matrix with $n < m$. So by [Corollary 2.5.11](#corollary-2511), there is an infinite amount of solutions, and the vectors $\vb{u_1}, \vb{u_2}, ... \vb{u_m}$ is linearly **dependent**.
+
+### Corollary 4.6.5
 All bases of a finite dimensional vector space have the same number of vectors
+
+#### Proof
+Let there be a basis with $m$ vectors and another basis with $n$ vectors.  
+If $m > n$, then by [Theorem 4.6.4](#theorem-464), then one of the set of vectors is linearly dependent (not a basis). If $m < n$, then the other set of vectors is linearly dependent. Thus $m =n$ is the only way for both to be linearly independent.
 
 ### Observation
 If $A$ is an invertible $n\cross n$ matrix, then the columns of $A$ form a basis of $\mathbb{R}^n$
@@ -710,18 +748,40 @@ $$ \implies \vb{c} = \vb{0}$$
 If $V$ is a finite dimensional vector space, then $dim(V) = \text{number of vectors in any basis of V}$  
 
 Convention:
-$$ dim(\\{\vb{0}\\} = 0$$
+$$ dim(\\{\vb{0}\\}) = 0$$
 
 #### Examples
 $$ dim(\mathbb{R}^n) = n$$
 $$ dim(P_n(\mathbb{R})) = n + 1$$
 $$ dim(M_{n\cross k}) = nk $$
 
-### Observation 
-If $dim(V) = n$, then any spanning set of $S$ must have at least $n$ vectors
+### Corollary 4.6.6
+If $dim(V) = n$, then any spanning set of $V$ must have at least $n$ vectors
 
-### Try to prove
-1. If $dim(V) = n$, then any set of $n$ linear independent vectors form a basis of $V$
-2. If $dim(V) = n$, then any spanning set with exactly $n$ vectors is also a basis of $V$
-3. If $W$ is a subspace of $V$and $V$ is a finite dimensional vector space, then $dim(W) \le dim(V)$
-4. If $W$ is a subspace of $V$ and $dim(W) = dim(V)$, then $W=V$
+#### Proof
+If the spanning set had less than $n$ vectors, there would be a basis with less than $n$ vectors, which contradicts [Corollary 4.6.5](#corollary-465)
+
+### Theorem 4.6.10
+If $dim(V) = n$, then any set of $n$ linear independent vectors in $V$ form a basis of $V$
+
+#### Proof
+Let $\vb{v}\in V$ and $\\{\vb{v}, \vb{v_1}, \vb{v_2}, ..., \vb{v_n}\\}$ be a linearly dependent set by [Theorem 4.6.4](#theorem-464).  
+Then the following is true
+
+$$ c_0 \vb{v} + c_1 \vb{v_1} + c_2 \vb{v_2} + ... + \vb{v_n} = \vb{0} $$
+
+We know $c_0 \neq 0$ since we can use a proof by contradiction. We know $c_1 \vb{v_1} + c_2 \vb{v_2} + ... + c_n\vb{v_n} = \vb{0}$ is linearly independent, so if $c_0 = $, then $c_1 = 0 = c_2 = ... = c_n$, which is a contradiction.
+
+$$ \vb{v} = \frac{1}{c_0} (c_1 \vb{v_1} + c_2 \vb{v_2} + ... + c_n \vb{v_n})$$
+
+Every $\vb{v} \in V$ can be written as a linear combination of the $n$ linearly independent vectors in $V$, so they span $V$. Since the vectors span $V$ and are linearly independent, they also form a basis.
+
+
+### Theorem 4.6.12
+If $dim(V) = n$, then any spanning set with exactly $n$ vectors is also a basis of $V$
+
+### Corollary 4.6.14
+If $W$ is a subspace of $V$and $V$ is a finite dimensional vector space, then $dim(W) \le dim(V)$  
+If $W$ is a subspace of $V$ and $dim(W) = dim(V)$, then $W=V$
+
+## 6.6: Linear Transformations
