@@ -729,3 +729,23 @@ Let us define $\Delta V$ to be negative for resistors and any component that con
 The rate of transfer of thermal energy through a resistor
 $$ P_R = \frac{dE_{th}}{dt} = \frac{dq}{dt} \Delta V_{R} = I \Delta V_R = I^2 R =\frac{(\Delta V)^2}{R}$$
 
+## 29: Magnetism
+* Magnetic fields are similar to electric field, except that magnetic fields can only exist as dipoles
+
+* The force on a north pole is parallel to $\overrightarrow{B}$ while the force on a south pole is opposite to $\overrightarrow{B}$.
+
+### Magnetic Field of a Moving Charge
+* **Biot-Savart Law**
+$$ \vec{B}_{\text{point charge}} = \frac{\mu_0}{4\pi}\frac{q \vec{v} \cross \hat{r}}{r^2}$$
+* The above is analogous to Coulomb's Law
+
+### Superposition of Magnetic Fields
+$$\vec{B}_{tota} = \vec{B_1} + \vec{B_2} + ... + \vec{B}_n $$
+Add magnetic fields vectorally, the $\hat{r}$ unit vector will be different for each of the individual magnetic fields
+
+### Magnetic Field of a Long Straight Wire
+$$ \Delta Q \vec{v} = I \Delta \vec{s}$$
+$$ d\vec{B} = \frac{\mu_0}{4\pi} \frac{I\Delta \vec{s} \cross \hat{r}}{r^2}$$
+$$ B = \int d\vec{B} =  $$
+where $s$ is the length of the wire
+

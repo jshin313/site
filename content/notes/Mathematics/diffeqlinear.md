@@ -785,3 +785,50 @@ If $W$ is a subspace of $V$and $V$ is a finite dimensional vector space, then $d
 If $W$ is a subspace of $V$ and $dim(W) = dim(V)$, then $W=V$
 
 ## 6.6: Linear Transformations
+
+## Appendix A: Review of Complex Numbers
+* **Complex Number**: Has a **real** part and an **imaginary** part 
+$$ z = a + ib$$
+$$ Re(z) = a$$
+$$ Im(z) = b$$
+
+* **Conjugate**: If we have $z = a + ib$, then the conjugate is $\bar z = a - ib$
+$$ \bar{\bar{z}} = z$$
+$$ \bar{z} z = z \bar z = a^2 + b^2 $$
+* **Modulus/Absolute Value**: $|z| = \sqrt{a^2 + b^2}$
+$$ |z|^2 = a^2 + b^2 = z\bar z$$
+
+### Complex Valued-Functions
+Complex valued functions are of the following form:
+$$ w(x) = u(x) + i v(x)$$
+
+* **Euler's Formula**
+Derivation involves using Maclaurin expansion for $e^x$
+$$ e^{ib} = \cos{b} + i \sin{b}$$
+
+$$ e^{(a+ib)x}= e^{ax} (\cos bx + i \sin bx)$$
+
+### Differentiation of Complex-Valued Functions
+$$ w'(x) = u'(x) + iv'(x)$$
+$$ \dv{}{x}(e^{rx}) = re^{rx}$$
+where $r$ is a complex number
+$$ \dv{}{x}(x^r) = rx^{r-1}$$
+where $r$ is a complex number
+
+## 7.1: The Eigenvalue/Eigenvector Problem
+* If $A$ is an $n\cross n$ matrix
+$$ A\vec{v} = \lambda \vec{v}$$
+The *nontrivial* solutions $\vec{v}$ are called **eigenvalues** of A. The corresponding non-zero vectors $\vec{v}$ are called eigenvectors of $A$
+
+* A way to formulate this is by interpreting $A$ as a matrix of a linear transformation $T: \mathbb{C}^n \to \mathbb{C}^n$
+$$ T(\vec{v}) = A\vec{v}$$
+* Geometrically, the linear transformation leaves the direction of $\vec{v}$ unchanged, but stretches $\vec{v}$ by a factor of $\lambda$.
+
+### Solution to the Problem
+$I$ is the identity matrix
+$$ (A-\lambda I)\vec{v} = \vec{0}$$
+According to [Corollary 3.2.6](#corollary-326), nontrivial solutions exist only when
+$$ det((A-\lambda I)\vec{v}) = 0$$
+
+1. Find scalars $\lambda$ with $det(A-\lambda I) = 0$
+2. If $\lambda_1, \lambda_2, ..., \lambda_k$ are the distinct eigenvalues obtained from above, then solve the $k$ systems of linear equations to find the eigenvectors corresponding to each eigenvalue

@@ -897,6 +897,13 @@ For a function $f(x, y)$, the surface area can be computed with the following:
 $$ A(S) = \iint\limits_D \sqrt{f_x(x, y)^2 + f_y(x, y)^2 + 1} \\; dA$$ 
 
 ## 16.2: Line Integrals
+$C$ is a curve
 
 $$ \int_{C} f(x, y) \ \ ds= \int_{a}^{b} f(x(t), y(t)) \ \  \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \ \ dt$$
 
+## 16.7: Surface Integrals
+$S$ is a surface given by $z = f(x, y)$ where $(x, y) \in D$
+
+$$ \iint\limits_S g(x, y, z) \ dS = \iint\limits_D g(x, y, f(x, y)) \sqrt{1 + f_x(x, y)^2 + f_y(x,y)^2} \ dA$$
+
+For surface area, $g(x, y, z) = 1$
