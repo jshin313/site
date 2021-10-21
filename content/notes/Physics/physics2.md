@@ -746,6 +746,27 @@ Add magnetic fields vectorally, the $\hat{r}$ unit vector will be different for 
 ### Magnetic Field of a Long Straight Wire
 $$ \Delta Q \vec{v} = I \Delta \vec{s}$$
 $$ d\vec{B} = \frac{\mu_0}{4\pi} \frac{I\Delta \vec{s} \cross \hat{r}}{r^2}$$
-$$ B = \int d\vec{B} =  $$
 where $s$ is the length of the wire
 
+#### Infinite Wire
+$$ B_{wire} = \int d\vec{B} = \frac{\mu_0 I}{2\pi r} $$
+
+#### N -Turn Current Loop
+$$ B_{\text{coil center}} = \frac{\mu_0 NI}{2R} $$
+
+### Magnetic Field of a Current Loop
+On axis magnetic field (axis through center of loop):
+$$ \vec{B}(P) = \frac{\mu_0 Ia^2}{2(x^2 + a^2)^{3/2}}\hat i $$
+
+For large distances $|x| >>a$ the following is true
+$$B = \frac{\mu_0 Ia^2}{2|x|^3} = \frac{\mu_0 IA}{2\pi |x|^3 }$$
+
+
+### Magnetic Dipole Moment
+A current loop is a magnetic dipole.
+$$ \vec{\mu} =  \text{Magnetic Dipole Moment} = NIA$$
+
+Magnetic Dipole is always perpendicular to the area of the loop (from south to north pole)
+
+$$ \vec{B}_{dipole} = \frac{\mu_0 2 \vec{\mu}}{4\pi|x^3|}$$
+direction above is on the axis of the magnetic dipole
