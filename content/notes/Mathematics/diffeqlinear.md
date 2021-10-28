@@ -808,6 +808,9 @@ $$ e^{ib} = \cos{b} + i \sin{b}$$
 
 $$ e^{(a+ib)x}= e^{ax} (\cos bx + i \sin bx)$$
 
+$$ x^{a+bi} = e^{a+ib} \ln{x} $$
+$$ x^r = e^{r \ln{x}}$$
+
 ### Differentiation of Complex-Valued Functions
 $$ w'(x) = u'(x) + iv'(x)$$
 $$ \dv{}{x}(e^{rx}) = re^{rx}$$
@@ -832,3 +835,4 @@ $$ det((A-\lambda I)\vec{v}) = 0$$
 
 1. Find scalars $\lambda$ with $det(A-\lambda I) = 0$
 2. If $\lambda_1, \lambda_2, ..., \lambda_k$ are the distinct eigenvalues obtained from above, then solve the $k$ systems of linear equations to find the eigenvectors corresponding to each eigenvalue
+  * Solve by solving the system $(A - \lambda I) \vb{v} = 0$

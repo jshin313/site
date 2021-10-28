@@ -770,3 +770,55 @@ Magnetic Dipole is always perpendicular to the area of the loop (from south to n
 
 $$ \vec{B}_{dipole} = \frac{\mu_0 2 \vec{\mu}}{4\pi|x^3|}$$
 direction above is on the axis of the magnetic dipole
+
+### Cyclotron
+$$F= qvB = \frac{mv^2}{r}$$
+$$ r = \frac{mv}{qB}$$
+
+**Cyclotron frequency (1/T)**
+$$ f = \frac{1}{T} = \frac{v}{2\pi r} = \frac{v}{2\pi (mv/qB)} = \frac{qB}{2\pi m} $$
+
+Cyclotron frequency does not depend on the speed of the particle!!!!
+
+When the particle has a component of $\vb{v}$ along the field $B$, it forms a helix/spiral
+
+* Perpendicular component is responsible for circular motion
+* The parallel component is responsible for 
+
+### Spectrometer: Charged Particle in B
+1. Positive ions of charge $q$ and $m$ are accelerated from rest by a potential difference $\Delta V$
+
+$$ \frac{1}{2} mv^2 = q\Delta V$$
+
+2. The particles follow a Clockwise (If $q>0$) circular path in uniform magnetic field (out of screen). After half an orbit, they land on detector
+
+Find $d$ (diameter)
+
+$$ d = 2r = \frac{2mv}{qB} = \frac{2m}{qB}\sqrt{\frac{2q\Delta V}{m}} = 2 \sqrt{\frac{2m\Delta V}{qB^2}}$$
+
+### Magnetic Force on a Current
+$$ \vec{F} = q\vec{v} \cross \vec{B}$$
+Consider a segment of length $L$ in which the charges $Q$ have a drift velocity of $v_d$
+
+$$ \vec{F_q} = q\vec{v_d} \cross\vec{B}$$
+$$ Qv_d = IL \implies $$
+
+$$\vec{F} = I\vec{L} \cross \vec{B}$$
+
+Note: $I$ is always in direction of $\vec{L}$
+
+### Magnetic Force Between Parallel Wires
+If two parallel wires have currents that both go up, they will attract.
+
+The wire on the left creates a magnetic field that goes into the page on the right wire. So the right wire is pulled to the left. The right wire creates a magnetic field out of the page on the left wire. Thus the left wire has a force to the right.
+
+### Forces and Torques on Loops
+We know a current loop is a magnetic dipole
+Consider a $l\cross l$ current loop with current $I$ in uniform $B$ making angle $\theta$ with the field
+
+$$ d = \frac{1}{2} l \sin \theta$$
+$$ \tau = 2Fd = 2IlB \frac{1}{2} l \sin\theta = Il^2B \sin\theta = IAB \sin\theta = \mu B \sin \theta$$
+
+$$ \vec{\tau} = \vec{\mu} \cross \vec{B}$$
+
+Applicable to any loop of any shape
