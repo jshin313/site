@@ -822,3 +822,90 @@ $$ \tau = 2Fd = 2IlB \frac{1}{2} l \sin\theta = Il^2B \sin\theta = IAB \sin\thet
 $$ \vec{\tau} = \vec{\mu} \cross \vec{B}$$
 
 Applicable to any loop of any shape
+
+## 30: Electromagnetic Induction
+
+### Induced Current
+Question: If electric currents produce magnetic fields, is the reverse possible?
+
+### Magnetic Flux
+$$ \text{Number of lines through an area dA} = \vec{B} \cdot d\vec{A}$$
+
+**Magnetic flux** of $\vec{B}$ through a loop, denoted by $\Phi$, counts the total number of lines passing through that loop
+
+$$ \Phi_m = \int \vec{B} \cdot d\vec{A}$$
+
+Note that the $\vec{A}$ vector is the *normal* vector through the loop
+
+* $\theta$ is the angle between $\vec{B}$ and the *normal* vector $\vec{A}$
+
+
+$$ \Phi_m = AB \cos{\theta}$$
+
+When $\theta = 0$, the magnetic field is parallel to the normal vector of the loop. In other words, the magnetic field is perpendicular to the loop's area.
+
+1 weber = 1 Wb = 1 $T \cdot m^2$
+
+### Faraday's Law
+$$ \varepsilon = \left|\frac{d\phi_M}{dt}\right|=\left|\frac{d}{dt} (AB\cos{\theta}) \right| =\left|A\frac{d}{dt} (B\cos{\theta}) + B\frac{d}{dt} (A\cos{\theta}) \right| $$
+
+If we slide a conducting wire along a U-shaped conducting rail:
+$$ \varepsilon = \frac{d}{dt} (xlB) = \frac{dx}{dt} l B = vlB $$
+
+$$I = \frac{\varepsilon}{R} = \frac{vlB}{R}$$
+
+### Lenz's Law
+* Question: Which direction is the induced current
+* An induced current always moves in the direction that its magnetic field opposes the original change of flux
+The magnetic field $\vec{B}_{induced}$ due to the induced current points
+1. in the **opposite** direction to the original $\vec{B}$ if the flux is **increasing**
+2. in the **same** direction as the original $\vec{B}$ if the flux is **decreasing**
+3. is zero if the flux is not changing
+
+### Induced Electric Fields
+* There must be an **induced electric field** tangent to the loop at all points
+* EMF = the work per unit charge done as a charge goes around a closed loop
+$$ \varepsilon = \left|\frac{d\phi}{dt}\right| = A\left|\frac{dB}{dt}\right|$$
+$$ W = q \oint \vec{E} \cdot d\vec{s}$$
+$$ \varepsilon = \frac{W}{q}$$
+$$ \implies \oint \vec{E} \cdot d\vec{s} = \left|\frac{d\phi}{dt}\right| $$
+
+#### Generalization of Faraday's Law
+
+$$ \oint \vec{E} \cdot d\vec{s} = -\frac{d\phi}{dt}$$
+
+* Direction of electric field follows Lenz's Law
+
+### Mutual Inductance
+Suppose there are two coils: Coil 1 has a changing current $I_1$ and generates a changing magnetic field. Coil 2 is close to coil 1 and has an induced EMF from Coil 1.   
+
+**Inductance** is a property of Coil 2, denoted by $M_{21}$, measured in Henry ($\frac{T\cdot m^2}{A}$)
+$$ M_{21} = \frac{\phi_2}{I_1} $$
+$$ \varepsilon_2 = -M_{21} \frac{dI_1}{dt}$$
+
+### Self-Inductance
+A changing current in a coil wil also induce an EMF $\varepsilon_L$ in itself
+$$ \varepsilon_L = -L \frac{dI}{dt}$$
+
+$L$ is the self inductance
+$$ L = \frac{\phi}{I}$$
+
+Example: For solenoid of length $l$
+$$ L = \frac{\phi}{I} = \frac{NBA}{I} = \frac{\mu_0 N^2 A}{l} = \mu_0 n^2 Al$$
+
+### Magnetic Energy in an Inductor
+* Energy can be stored in an electric field of a **capacitor**
+* Similarly, energy can be stored in a magnetic field of an **inductor**
+$$ U= L \int_{0}^{I} I \ \ dI \frac{1}{2} LI^2$$
+
+### Magnetic Energy Density
+* For an ideal solenoid
+$$ L = \mu_0 n^2 Al$$
+$$ B = \mu_0 nI$$
+
+$$ U = \frac{1}{2} LI^2 = \frac{1}{2} \frac{B^2}{\mu_0}Al$$
+
+Energy per unit volume, **Magnetic Energy Density**
+$$ u_B = \frac{B^2}{2\mu_0} $$
+
+Although the energy density was derived via a solenoid, these equations are universal.
