@@ -761,6 +761,10 @@ $$ \vec{B}(P) = \frac{\mu_0 Ia^2}{2(x^2 + a^2)^{3/2}}\hat i $$
 For large distances $|x| >>a$ the following is true
 $$B = \frac{\mu_0 Ia^2}{2|x|^3} = \frac{\mu_0 IA}{2\pi |x|^3 }$$
 
+### Solenoid
+$$ n = N/L$$
+$$ B = \mu_0 n I = \mu_0 \frac{N}{L} I$$
+
 
 ### Magnetic Dipole Moment
 A current loop is a magnetic dipole.
@@ -811,6 +815,8 @@ Note: $I$ is always in direction of $\vec{L}$
 If two parallel wires have currents that both go up, they will attract.
 
 The wire on the left creates a magnetic field that goes into the page on the right wire. So the right wire is pulled to the left. The right wire creates a magnetic field out of the page on the left wire. Thus the left wire has a force to the right.
+
+$$ F_{\text{parallel wires}} = \frac{\mu_0 l I_1 I_2}{2\pi d} $$
 
 ### Forces and Torques on Loops
 We know a current loop is a magnetic dipole

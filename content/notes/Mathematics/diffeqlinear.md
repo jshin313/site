@@ -836,3 +836,134 @@ $$ det((A-\lambda I)\vec{v}) = 0$$
 1. Find scalars $\lambda$ with $det(A-\lambda I) = 0$
 2. If $\lambda_1, \lambda_2, ..., \lambda_k$ are the distinct eigenvalues obtained from above, then solve the $k$ systems of linear equations to find the eigenvectors corresponding to each eigenvalue
   * Solve by solving the system $(A - \lambda I) \vb{v} = 0$
+
+## 7.2: General Results for Eigenvalues and Eigenvectors
+$$ p(\lambda) = (-1)^n(x - \lambda_1)^{m_1} (x - \lambda_2)^{m_2} (x -\lambda_3)^{m_3} ... (x - \lambda_k)^{m_k}$$
+$$ m_1 + m_2 + ... + m_k = n$$
+
+### Definition
+The **Eigenspace** $E_i$ is the set of all vectors $\vb{v}$ satisfying $A\vb{v} = \lambda_i \vb{v}$  
+
+The **Eigenspace** contains the zero vector
+
+### Theorem 7.2.3
+1. For each $i$, $E_i$ is a subspace of $\mathbb{C}^n$
+2. $1 \le dim(E_i) \le m_i$
+
+* **Algebraic Multiplicity**: $m_i$
+* **Geometric Multiplicity**: $dim(E_i)$
+
+### Theorem 7.2.5
+Let $\lambda_1, \lambda_2, ... \lambda_m$ be distinct eigenvalues corresponding to eigenvectors $\vb{v_1}, \vb{v_2}, ..., \vb{v_m}$
+
+Eigenvectors corresponding to **distinct** eigenvalues are **linearly independent**
+
+Note 1: By definition of linear independence $\vb{v_1}, \vb{v_2}, ..., \vb{v_m}$ are distinct. However, there can exist more eigenvectors of the same $A$ that are not linearly independent and correspond to non-distinct eigenvalues  
+
+Note 2: It is impossible for (non)distinct linearly dependent eigenvectors to correspond to distinct eigenvalues  
+
+Note 3: Eigenvectors corresponding to nondistinct eigenvectors can be either linearly independent or linearly dependent
+
+#### Proof
+
+Proof by induction  
+Base Case: $\\{\vb{v_1}\\}$ is linearly independent  
+Inductive hypothesis: Suppose $\\{\vb{v_1}, \vb{v_2}, ..., \vb{v_k}\\}$ is linearly independent  
+
+Need to show (NTS): $\\{\vb{v_1}, \vb{v_2}, ..., \vb{v_k}, \vb{v_{k+1}}\\}$ is also linearly independent
+
+### Corollary 7.2.6
+Let $E_1, E_2, .., E_k$ be eigenspaces of the $n\cross n$ matrix $A$
+. In each eigenspace, choose a set of linearly independent eigenvectors. Then union of linearly independent sets is also linearly independent.
+
+### Proof
+Proof by contradiction. Assume the union of linearly independent sets is linearly dependent.
+$$ c_1 \vb{v_1} + c_2 \vb{v_2}, ..., c_k\vb{v_k} = 0$$
+$$= \vb{w_1} + \vb{w_2} + ... + \vb{w_k} = 0$$
+
+Linearly dependence between $w_i$ implies there is a $w_j \neq 0$. But since each set is linearly independent, $w_j = 0$ for all $j$. This is a contradiction.
+
+### Definition
+An $n\cross n$ matrix $A$ with $n$ linearly independent eigenvectors is **nondefective**  
+
+Any $n$ linearly independent eigenvectors of $A$ form an **eigenbasis** of $A$  
+
+$A$ is **defective** if $A$ has less than $n$ linearly independent eigenvectors  
+
+Note: $A$ cannot have more than $n$ linearly independent eigenvectors, but $A$ can still have more than $n$ eigenvectors
+
+### Corollary 7.2.10
+If an $n\cross n$ has a $n$ **distinct** eigenvalues, then it is nondefective.
+
+Note: if $A$ does *not* have $n$ distinct eigenvalues, it may still be nondefective
+
+### Proof
+Use [Theorem 7.2.5](#theorem-725)
+
+### Theorem 7.2.11
+For an $n\cross n$ matrix $A$
+
+$$A \text{ is nondefective} \iff (\forall i) (dim[E_i] = m_i) $$
+
+or 
+
+$$ m_1 + m_2 + ... m_k = n$$
+
+## 7.3: Diagonalization
+
+### Definition
+Let $A$ and $B$ be $n \cross n$ matrices. $A$ and $B$ are **similar** if there exists $S$ such that $B = S^{-1} AS$
+
+### Theorem 7.3.3
+Similar matrices have the same eigenvalues (including multiplicities)  
+
+They also have the same characteristic polynomial
+
+#### Proof
+$$det(B-\lambda I) = det(S^{-1}AS - \lambda I) =det(S^{-1}AS - \lambda S^{-1}S)$$
+$$ = det(S^{-1}(A-\lambda I) S) = det(S^{-1})det(A-\lambda I ) det(S)$$
+$$ = \frac{1}{det(S)} det(A-\lambda I) det(S) = det(A-\lambda I)$$
+
+### Theorem 7.3.4
+An $n\cross n$ matrix $A$ is similar to a diagonal matrix iff $A$ is nondefective
+
+#### Proof
+First suppose $A$ is a diagonal matrix
+$$S^{-1}AS = D $$
+$$ AS = SD $$
+$$ [A\vb{v_1}, A\vb{v_2}, ..., A\vb{v_n}] = [\lambda_1\vb{v_1}, \lambda_2 \vb{v_2},...,\lambda_n \vb{v_n}]$$
+So $\vb{v_1}, \vb{v_2}, ... \vb{v_n}$ are linearly independent. Thus $A$ is nondefective  
+
+Conversely, suppose $A$ is nondefective. Then
+$$ AS = A[\vb{v_1}, \vb{v_2}, ..., \vb{v_n}] = [\lambda_1 \vb{v_1}, \lambda_2 \vb{v_2}, ..., \lambda_n \vb{v_n} $$
+$$ AS = SD$$
+where $D = diag(\lambda_1, \lambda_2, ..., \lambda_n$.   
+$S$ is invertible since the columns of $S$ is linearly independent. So the following is true
+$$ S^{-1} AS = D$$
+A is similar to a diagonal matrix
+
+### Definition
+A matrix is **diagonalizable** if it is similar to a diagonal matrix
+
+### Solving Systems of Differential Equations
+$$ \frac{dx_1}{dt} = a_{11}x_1 + a_{12} x_2$$
+$$ \frac{dx_2}{dt} = a_{21}x_1 + a_{22} x_2$$
+the above can be represented as
+$$ \vec{x'} = A \vec{x}$$
+
+where
+
+$$ \vec{x} = \begin{bmatrix} x_1 \\\\ x_2 \end{bmatrix}, \ \ \ \ \ \vec{x'} = \begin{bmatrix} x_{1}' \\\\ x_{2}' \end{bmatrix}, \ \ \ \ \  A = [a_{ij}] $$
+
+Let $S = [\vb{v_1}, \vb{v_2}]$
+
+$$ \vec{x} = S\vec{y}$$
+$$ \vec{x'} = S\vec{y}$$
+$$ S\vec{y'} = AS \vec{y}$$
+$$ \vec{y'} = (S^{-1} AS) \vec{y}$$
+$$ \begin{bmatrix} y_{1}' \\\\ y_{2}' \end{bmatrix} = \begin{bmatrix} \lambda_1 & 0 \\\\ 0 & \lambda_2 \end{bmatrix} \begin{bmatrix} y_1 \\\\ y_2 \end{bmatrix}$$
+$$ y_1' = \lambda_1 y_1, \ \ \ \ \ y_2' = \lambda_2 y_2$$
+$$ y_1(t) = c_1 e^{\lambda_1 t}, \ \ \ \ y_2(t) = c_2 e^{\lambda_2 t}$$
+$$ \vec{x}(t) = c_1 e^{\lambda_1 t} \vec{v_1} + c_2 e^{\lambda_2 t} \vec{v_2}$$
+
+### An Introduction to the Matrix Exponential Function
