@@ -915,3 +915,74 @@ Energy per unit volume, **Magnetic Energy Density**
 $$ u_B = \frac{B^2}{2\mu_0} $$
 
 Although the energy density was derived via a solenoid, these equations are universal.
+
+## 31: Electromagnetic Fields and Waves
+
+### Maxwell's Law
+1. $\oint \vec{E} \cdot d\vec{A} = \frac{Q_in}{\epsilon_0} $
+  * Charged particles create an electric field
+2. $\oint \vec{B} \cdot d\vec{A} = 0$
+  * There are no isolated magnetic poles
+3. $\oint \vec{E} \cdot d\vec{s} = -\frac{d\phi_m}{dt}$
+  * An electric field can also be created by a changing magnetic field
+4. $\oint\vec{B} \cdot d\vec{s} = \mu_0 I_{through} + \epsilon_0  \mu_0 \frac{d\phi_e}{dt}$
+  * Currents (or changing electric flux) create a magnetic field
+
+### Maxwell's Correction to Ampere's Law
+* Ampere's Law only works for steady currents
+* An example of when ampere's law fails is with a capacitor
+* A changing electric field flux can also create magnetic field as well
+  * $\phi_e$ increases as the capacitor charges
+* The electric field is $$E = \frac{Q}{\epsilon_0 A}$$
+* The electric flux (through $S_2$) is $$ \phi_e = E * A = \frac{Q}{\epsilon_0}$$
+* The rate the flux changes (through $S_2$
+$$ \frac{d\phi_e}{dt} = \frac{1}{\epsilon_0} = \frac{dQ}{dt} = \frac{I}{\epsilon_0}$$
+
+* Maxwell added a correction term to Ampere's Law called the **displacement current**
+$$ I_{disp} = \frac{d\phi_e}{dt}$$
+
+### Ampere-Maxwell (AM) Law
+* The A-M law states that either a changing electric flux or electric current through a closed loop creates a magnetic flux around the loop
+* A magnetic field can be created either by an electric current or by a changing electric field
+$$ \oint \vec{B} \cdot d\vec{s} = \mu_0 (I_{through} + I_{dist}) = \mu_0 \left(I_{through} + \epsilon_0 \frac{d\phi_e}{dt}\right)$$
+
+### Maxwell's Equations in Vacuum (Special Case)
+* In a vacuum (empty space) there is no electric charge ($q = 0$) and no current ($I=0$) since there is no wire
+
+Gauss's Law ($\vec{E}$)
+$$ \oint \vec{E} \cdot d\vec{A} = 0$$
+Gauss's Law ($\vec{B}$)
+$$ \oint \vec{E} \cdot d\vec{r}= - \frac{d\phi_B}{dt}$$
+Faraday
+$$ \oint \vec{B} \cdot d\vec{A} = 0$$
+Ampere
+$$ \oint \vec{B} \cdot d\vec{r} = \mu_0 \epsilon_0 \frac{d\phi_E}{dt}$$
+
+* Complete symmetry between magnetic field and electric field
+* The only source of either field is the change in time of the other field
+
+### Plane Waves
+* Simplest solution of Maxwell's equations is the plane wave
+* A **plane wave** consists of E&M fields that vary in space ONLY in the direction of the wave propagation
+* The plane is normal to the direction of propagation
+* The electric field and magnetic field is the same everywhere on the plane
+
+$$ E_y = E_0 \sin(kx - \omega t)$$
+$$ B_z = B_0 \sin(kx - \omega t)$$
+Let the $E$ be only along the $y$ axis and $B$ along the z-axis and let the wave move in the direction of the x-axis
+$\vec{E} \cross \vec{B}$ is the direction of the propagation (x-axis)
+
+### Properties of Plane EM Waves
+
+* **Wave Number**: $k = \frac{2\pi}{\lambda}$ Describes variation of wave with respect to $x$
+* **Angular Frequency**: $\omega = 2\pi f = \frac{2\pi}{T}$ Variation of wave with respect to $t$
+* **Velocity** $v = \lambda f = \frac{\omega}{k} $
+
+* The plane wave only satisfies Maxwell's equations in a vacuum if the wave speed is given by
+$$ v = \frac{\omega}{k} = \frac{1}{\sqrt{\epsilon_0\mu_0}} = c = 3.0 \cdot 10^{8} m/s$$
+
+Results
+1. Light is an EM wave
+2. Optics can be viewed as a branch of E&M
+
+$$ E = \frac{\omega}{k} B = c B$$

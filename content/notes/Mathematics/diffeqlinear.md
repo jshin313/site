@@ -966,4 +966,23 @@ $$ y_1' = \lambda_1 y_1, \ \ \ \ \ y_2' = \lambda_2 y_2$$
 $$ y_1(t) = c_1 e^{\lambda_1 t}, \ \ \ \ y_2(t) = c_2 e^{\lambda_2 t}$$
 $$ \vec{x}(t) = c_1 e^{\lambda_1 t} \vec{v_1} + c_2 e^{\lambda_2 t} \vec{v_2}$$
 
-### An Introduction to the Matrix Exponential Function
+## 7.4: An Introduction to the Matrix Exponential Function
+If $A$ is an $n \cross n$ matrix of constants, the **matrix exponential function** is as follows:
+$$ e^{At} = I_n + At + \frac{1}{2!} (At)^2 + \frac{1}{3!}(At)^3 + ... + \frac{1}{k!}(At)^k ...$$
+
+### Properties of the Matrix Exponential Function
+1. If A and B are $n \cross n$ matrices satisfying $AB = BA$
+$$ e^{(A+B)t} = e^{At}e^{Bt}$$
+2. For all $n \cross n$ matrices $A$, $e^{At}$ is invertible and
+$$\left( e^{At}\right)^{-1} = e^{(-A)t} = e^{-At}$$
+$$ e^{At}e^{-At} = I_n$$
+
+### More results
+If $A = diag(d_1, d_2, ... d_n)$ then $e^{At} = diag(e^{d_1 t}, e^{d_2 t}, ... e^{d_nt})$  
+
+### Theorem 7.4.3
+If $A$ is not a diagonal matrix, but is diagonalizable
+$$ e^{At} = Se^{Dt}S^{-1}$$
+
+
+## 1.2: Basic Terminology and Ideas
