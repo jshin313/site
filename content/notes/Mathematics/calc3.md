@@ -907,3 +907,89 @@ $S$ is a surface given by $z = f(x, y)$ where $(x, y) \in D$
 $$ \iint\limits_S g(x, y, z) \ dS = \iint\limits_D g(x, y, f(x, y)) \sqrt{1 + f_x(x, y)^2 + f_y(x,y)^2} \ dA$$
 
 For surface area, $g(x, y, z) = 1$
+
+## 16.4: Green's Theorem
+To evaluate a line integral:
+$$ \int_C \vec{F} \cdot d\vec{r}$$
+Three options
+1. From definition: use a parametrization $\vec{r}(t)$ for C, etc.
+2. Use Fundamental Theorem: only works if $\vec{F}$ is **conservative** and needs a potential
+3. **Green's Theorem**: Needs C to be closed
+
+### Given 
+* A curve $C$ ("piecewise smooth") in $xy$-plane
+  * closed: start = end
+  * simple: does not cross itself (no figure 8)
+  * positively oriented (counterclockwise) - easy adjustment if clockwise
+* $D$ (region in the $xy$-plane
+* a vector field $\vec{F} = \ev{P(x, y), Q(x, y)}$
+
+### Green's Theorem
+$$ \int_C \vec{F} \cdot d\vec{r} = \iint\limits_{D} (Q_x - P_y) \ \ dA $$
+
+Remarks
+1. Green's Theorem implies the criterion (earlier)
+$$ \vec{F} \text{ conservative } \iff P_y = Q_x$$
+* Forward implication follows from Clairaut's Theorem
+* Reverse implication follows from Green's Theorem
+2. Right Hand Side (RHS) is usually earlier than the LHS
+
+### Example
+Evaluate $\oint x^2 y^2 \ dx + xy \ dy$  
+
+$C$: arc of the parabola $y=x^2$ from $(0,0)$ to $(1, 1)$ followed by the line segments $(1, 1)$ to $(0, 1)$ and from $(0,1)$ to $(0,0)$
+
+$$ P = x^2 y^2, \ \ Q = xy $$
+
+$$ P_y = 2yx^2, \ \ Q_x = y$$
+
+$$ \int_C \vec{F} \cdot d\vec{r} = \iint\limits_D (y - 2yx^2) \ dA$$
+
+$$ = \int_{0}^{1} \int_{x^2}^{1} (y - 2yx^2)\ dy \ dx$$
+$$ = \int_0^1 \left. \frac{y^2}{2} - y^2 x^2 \right\vert_{y = x^2}^{y = 1} dx = \int_0^1 \left(-\frac{x^4}{2}+ x^4 + (\frac{1}{2} - x^2)\right) dx$$
+
+
+### Example
+
+$$ \oint \vec{F} \cdot d\vec{r}$$
+$$ \vec{F} = \ev{e^{-x} + y^2 , e^{-y} + x^2}$$
+$C$: Arc of the curve $y = \cos x$ from $(-\frac{\pi}{2}, 0)$ to $(\frac{\pi}{2} , 0)$ followed by the line segment back from $(\frac{\pi}{2}, 0)$ to $(\frac{-\pi}{2}, 0)$
+
+Clockwise!  
+
+Rule: For any  curve $C$, $-C$ denotes $C$ with the direction reversed
+
+### Outlook
+Green's Theorem implies the earlier criterion: $P_y = Q_x \implies \vec{F} \text{ is conservative }$
+$$ \int_C \vec{F} \cdot d\vec{r} = \iint_D \underbrace{0}_{Q_x - P_y = 0} dA = 0$$
+
+for any closed, single curve (any orientation), $C$  
+
+It then follows that, for any curve $C$ (not necessarily closed), $\int_C \vec{F} \cdot d\vec{r}$ only depends on the end points of $C$
+
+
+* Independence of path
+
+## 16.4: Curl and Divergence (n = 3)
+3-dimensions
+
+**Given**: $\vec{F} = \ev{P(x, y, z), Q(x, y, z), R(x, y, z)}$
+
+Let $\nabla = \ev{\pdv{}{x}, \pdv{y}, \pdv{t}}$  
+
+then for a function $f = f(x, y, z)$
+$\nabla f = \ev{\pdv{x} f, \pdv{y} f, \pdv{z} f}$ as we know already (gradient)
+
+### Definition
+$$ div \vec{F} = \nabla \cdot \vec{F} = \pdv{x} P + \pdv{y} Q + \pdv{z} R =P_x + Q_y + R_z$$
+
+$$ curl \vec{F} = \nabla \cross \vec{F} = \begin{bmatrix} \hat{i} & \hat{j} & \hat{k} \\\\ \pdv{x} & \pdv{y} & \pdv{z} \\\\ P & Q & R \end{bmatrix} = \ev{R_y - Q_z, P_z - R_x, Q_x - P_y}$$
+
+### Theorem
+$$ \vec{F} \text{ conservative } \iff \curl\vec{F} = \ev{0, 0, 0}$$
+
+Remarks
+1. Generalizes our old criterion for conservativity of $\vec{F} = \ev{P(x, y), Q(x, y), 0}$
+2. Again (as for n=2), the implication $\implies$ follows from Clairaut's Theorem
+
+$$ \vec{F} \text{ is conservative} \implies \exists f: \nabla f = \vec{F} \implies \curl \vec{F} = \nabla \cross \nabla f = \ev{0, 0, 0}$$
