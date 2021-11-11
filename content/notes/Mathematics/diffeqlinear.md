@@ -986,3 +986,44 @@ $$ e^{At} = Se^{Dt}S^{-1}$$
 
 
 ## 1.2: Basic Terminology and Ideas
+* Definition of **Linear Differential Equation**
+$$ a_0 (x) y^(n) + a_1(x) y^{(n-1)} + ... + a_n(x) y = F(x)$$
+where $a_0, a_1, ..., a_n$ and $F$ are functions of $x$ only
+* The **order** of the above equation is $n$
+* A **nonlinear** differential equation does not satisfy the above form
+
+### Examples of Linear Differential Equations
+Order 3
+$$ y''' + e^{3x}y'' + x^3 y' + (cos x) y = \ln x$$
+Order 1
+$$ xy' - \frac{2}{1+x^2} y = 0$$
+
+### Examples of Nonlinear Differential Equations
+$$ y'' + x^4 \cos (y') - xy = e^{x^2}$$
+$$ y'' + y^2 = 0$$
+Both order 2
+
+### Solutions to Differential Equations
+
+#### Definition 1.2.4
+A function $y=f(x)$ that is (at least) $n$ times differentiable on an interval $I$ is called a **solution** to the differential equation on $I$ if the substitution $y=f(x), y' = f'(x) , ..., y^(n) = f^(n)(x)$ reduces the differential equation to an identity valid for all $x$ in $I$
+
+#### Definition 1.2.8
+A solution to an $n$-th order differential equation on an interval $I$ is called the **general solution** on I if the following is satisfied
+1. The solution contains $n$ constants $c_1, c_2, ..., c_n$
+2. All solutions to the differential equation can be obtained by assigning appropriate values to the constants
+
+Not all differential equations have a general solution
+
+### Initial-Value Problems
+An $n$-th order differential equation together with $n$ auxiliary conditions of the form 
+
+$$ y(x_0) = y_0 , y'(x_0) = y_1, ..., y^(n-1)(x_0) = y_{n-1}$$
+where $y_0, y_1, ..., y_{n-1}$ are constants
+
+### Theorem
+For the initial value problem 
+$$ y^{(n)} + a_1 (x) y^{(n-1)} + ... + a_{n-1}(x)y' + a_n(x)y = F(x) $$
+$$ y(x_0) = y_0 , y'(x_0) = y_1, ..., y^(n-1)(x_0) = y_{n-1}$$
+
+if $a_1, a_2, ..., a_n, F$ are continuous on $I$, then there is a unique solution on $I$
