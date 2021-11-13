@@ -1027,3 +1027,36 @@ $$ y^{(n)} + a_1 (x) y^{(n-1)} + ... + a_{n-1}(x)y' + a_n(x)y = F(x) $$
 $$ y(x_0) = y_0 , y'(x_0) = y_1, ..., y^(n-1)(x_0) = y_{n-1}$$
 
 if $a_1, a_2, ..., a_n, F$ are continuous on $I$, then there is a unique solution on $I$
+
+## 1.4: Separable Differential Equations
+
+### Definition
+A first-order differential equations is called **separable** if it can be written in the following form
+$$ p(y) \frac{dy}{dx} = q(x) $$
+
+## 1.6: First Order Linear Differential Equations
+
+### Definition
+$$ a(x) \frac{dy}{dx} +b(x)y = r(x)$$
+
+$$ \frac{dy}{dx} + p(x) y = q(x)$$
+First Order Linear differential equations can be represented as the above forms  
+
+### Solving the Differential Equation
+
+$h(x)$ is called the **integrating factor**:
+$$ h(x) = h'(x) p(x) = e^{\int p(x) \ dx}$$
+
+There can be multiple integrating factors, but we only need one (which means we only need one anti-derivative of $p(x)$ to obtain the integrating factor
+
+$$ h(x) \cdot \left( \frac{dy}{dx} + p(x)y\right)= h(x) \cdot q(x)$$
+$$ h(x)\cdot \frac{dy}{dx} + h(x) \cdot p(x)y= h(x) \cdot q(x)$$
+
+By the product rule
+
+$$ \dv{(h(x) \cdot y(x))}{dx} = h(x) q(x)$$
+
+$$ \implies h(x) \cdot y(x) = \int h(x) q(x) \ dx $$
+
+$$ y(x) = \frac{1}{h(x)} \int h(x) q(x) \ dx$$
+
