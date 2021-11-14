@@ -902,7 +902,7 @@ $$ L = \frac{\phi}{I} = \frac{NBA}{I} = \frac{\mu_0 N^2 A}{l} = \mu_0 n^2 Al$$
 ### Magnetic Energy in an Inductor
 * Energy can be stored in an electric field of a **capacitor**
 * Similarly, energy can be stored in a magnetic field of an **inductor**
-$$ U= L \int_{0}^{I} I \ \ dI \frac{1}{2} LI^2$$
+$$ U= L \int_{0}^{I} I \ \ dI = \frac{1}{2} LI^2$$
 
 ### Magnetic Energy Density
 * For an ideal solenoid
