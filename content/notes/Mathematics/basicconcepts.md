@@ -577,7 +577,7 @@ $2$ is prime, so $2$ is its own prime factorization.
 * Since $m + 1 > 1$ either $m+1$ is prime or $m+1$ is composite.  
 * If $m+1$ is prime, it is its own prime factorization.
 * Else $m+1$ is composite. 
-$$ \exists a, b \in \mathbb{N} \ s.t. m + 1 = ab $$
+$$ \exists a, b \in \mathbb{N} \ \ s.t. m + 1 = ab $$
 $$ a \in \\{2, 3, 4, \ldots m\\}$$
 $$ b \in \\{2, 3, 4, \ldots m\\}$$
 * By IH (Inductive Hypothesis), $ a = \prod_{i=1}^{s} p_i$ and $b = \prod_{j=1}^{t} q_j$ where each $p_i$ and $q_j$ is prime. 
@@ -800,3 +800,41 @@ Let $B_1, B_2, B_3, \ldots B_n$ be sets
 $$ A \cup \left( \bigcap_{i=1}^{m+1} B_i \right) = A \cup \left( \bigcap_{i=1}^{m} B_i \cap B_{m+1} \right) $$
 $$ A \cup \left( \bigcap_{i=1}^{m} B_i \right) \cap \left( A \cup B_{m+1} \right) $$
 $$ \bigcap_{i=1}^{m} \left( A \cup B_i \right) \cap \left( A \cup B_{m+1} \right) = \bigcap_{i=1}^{m+1} \left( A \cup B_i \right)  $$
+
+## 8.2: 
+Recall: Let $A$ be a set. $\forall n \in \mathbb{N}$, let $I_n = \\{1, 2, 3, ...n\\}$
+1. We say $A$ is finite if $A = \emptyset$ or $\exists n \in N \ s.t. \ \exists f: A \rightarrow I_n$ (bijection)
+$$\\# A = 0 \text{ or } \\#A = n$$
+
+2. Every subset of a finite set is finite.
+3. If $A$ and $B$ are finite sets, and $A \cup B = \emptyset$, then $\\#(A \cup B) = \\#A + \\#B$
+
+### Pigeonhole Principle
+If $n +1 $ or more pigeons are placed into $n$ pigeonholes, then at least one pigeonhole will contain more than 1 pigeon
+
+#### Example 1
+Choose 5 points interior to a 2m by 2m square. Prove that among these 5 there is a pair such that the distance between the two points in the pair is $\le \sqrt{2}$ m.
+
+**Answer**: Divide square into four $1 \cross 1$ square. Notice that there must be one square with 2 points. The greatest distance between any two points in one of the sub squares is just the diagonal $\sqrt{2}$.
+
+#### Example 2
+Show there is a multiple of $7$ whose decimal digits are all 1's or 0's  
+
+Consider $1, 11, 111, 1111, 11111, 111111, 1111111, 11111111$  
+2 numbers on this list must leave the same remainder upon division by $7$
+
+Say there are 
+
+$$ a_j = \underbrace{111...1}_{\text{j-ones}} $$
+
+$$ a_k = \underbrace{111...1}_{\text{k-ones}} \ \ \ \ k > j$$  
+
+Then $7 | a_k - a_j$ since $a_k \equiv a_j \mod 7$  
+Thus the $a_k - a_j$ have only 0 and 1 as digits.
+
+1. Suppose $A_1, A_2, A_3, ..., A_n$ are pairwise disjoint sets ($A_i \cap A_j = \emptyset, \text{ whenever } i \neq j$)  
+Then $\\#\left(\cup_{i=1}^{n} A_i\right) = \sum_{i=1}^{n} \left(\\#A_i\right)$
+
+2. Let $A$ and $B$ be finite sets. Then $\\# (A \cup B) = \\#A + \\#B - \\#(A \cap B)$
+
+$$ \\#(A \cross B) = (\\#A) \cdot (\\#B)$$
