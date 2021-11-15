@@ -875,6 +875,13 @@ $$ \varepsilon = \left|\frac{d\phi}{dt}\right| = A\left|\frac{dB}{dt}\right|$$
 $$ W = q \oint \vec{E} \cdot d\vec{s}$$
 $$ \varepsilon = \frac{W}{q}$$
 $$ \implies \oint \vec{E} \cdot d\vec{s} = \left|\frac{d\phi}{dt}\right| $$
+For an induced electric field that is produced by a changing magnetic field producing "pinwheel" pattern of induced electric fields
+$$ \oint \vec{E} \cdot d\vec{s} = 2\pi r E = \left|\frac{d\phi}{dt}\right| $$
+where $r$ is the distance from the center  
+And the area of the magnetic flux is only the area formed by the real or imaginary closed curve of integration (loop)
+
+#### Solenoid Induced Electric Field
+$$ E_{inside} = \frac{r}{2} \left|\dv{B}{t}\right|$$
 
 #### Generalization of Faraday's Law
 
@@ -915,6 +922,16 @@ Energy per unit volume, **Magnetic Energy Density**
 $$ u_B = \frac{B^2}{2\mu_0} $$
 
 Although the energy density was derived via a solenoid, these equations are universal.
+
+### Generators
+$$ \phi_m = \vec{A}\cdot \vec{b} = AB \cos \theta = AB \cos \omega t$$
+$$ \omega = 2\pi f$$
+$$ \varepsilon_{coil} = -N \dv{\phi_m}{t} = - ABN \dv{}{t} (\cos \omega t) = \omega ABN \sin \omega t$$
+
+### Transformers
+$S$ = Secondary
+$P$ = Primary
+$$ \frac{N_S}{N_P} = \frac{V_S}{V_P} $$
 
 ## 31: Electromagnetic Fields and Waves
 
@@ -986,3 +1003,12 @@ Results
 2. Optics can be viewed as a branch of E&M
 
 $$ E = \frac{\omega}{k} B = c B$$
+
+### Intensity and Power
+$$ \vec{S} = \frac{1}{\mu_0} \vec{E} \cross \vec{B}$$
+The Poynting vector, $\vec{S}$ points in the direction the EM wave is traveling.
+
+$$ I = \frac{P}{A} = S_{avg} = \frac{1}{2c\mu_0} E_0^2 = \frac{c\epsilon_0}{2} E_0^2$$
+The above relates the intensity of an EM wave to the amplitude of the wave's electric field
+
+$$ I = \frac{P_{source}}{4\pi r^2}$$
