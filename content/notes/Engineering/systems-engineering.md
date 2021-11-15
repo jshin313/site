@@ -124,3 +124,73 @@ Constraints
 * Document decisions
 
 ## How to Use Requirements
+
+### What is a Requirement?
+* A **Contractually Binding** statement
+* Documentation of **Decisions**
+  * Documentation of **Problem** Space
+  * Documentation of **Solution** Space
+
+### Why We Use Requirements?
+* Good Practice
+* Engineers eventually produce codes, standards, guides, etc. used in contracts
+* Engineers usually don't get to build anything, they contract designs out
+  * This means they have to write a contract and write requirements
+* People respond well to contracts and contract language
+
+* We **Never** make up Requirements
+  * They are always come from **somewhere** (somebody's decision)
+  * They are always justified
+  * Contracts, Memos, Meeting Minutes, Competition Rubrics, Plans
+
+* Requirements from elsewhere
+  * May not be in proper requirements language
+  * Competition rubrics are full of requirements (cannot use a "shall" word search)
+* How business is conducted
+* Project failures can be traced to poor, inconsistent, incomplete requirements
+
+### Key Characteristics of a Good Requirements
+* Complete enough to **Stand alone**
+* Quantifiable
+* Verifiable
+* Addresses only one concept or parameter
+* Completely **understandable** and **not open to interpretation** or **subject to judgement**
+* **Only** included if **Absolutely necessary**
+
+### Requirement Writing Requirements
+* Employ Key Characteristics 
+* Shall use the word **shall**
+  * Contract word
+  * "Will" simply means futurity
+  * "Must" is invalid and should never be used
+  * "Should" should never be used
+* Style for Requirements
+  * Simple and concise language
+  * No descriptive adjectives or adverbs (*no words ending in "ly"*)
+  * No "And/Or" usage (ambiguity)
+    * Make multiple requirements
+  * No pronouns
+  * No indefinites - "etc", "as a minimum", "including but not limited to", "support"
+  * Active voice
+
+### Requirements Justification
+* Requirements are documentation of decisions, which must be justifiable
+* Every requirement shall be **traceable** to a **set** of sources
+  * Contracts, memos, competition rubrics
+  * Justification requires traceability and may require rationale
+* "Proof consists of evidence and reasoning"
+
+### Requirements Derivation
+
+#### A Spacecraft Power Requirements Derivation Example
+**System Level Baseline**: Provide Coverage of Atlantic and Pacific Oceans between 10$^{\circ}$ and 60$^{\circ}$
+  * Orbit Coverage analysis
+* **Segment Level Baseline**: Provide payload operation of 4 hr/day
+  * Spacecraft conceptual design and payload analysis
+* **Vehicle Level Baseline** Provide 100W average power with 2000W peak for 4hr/day
+  * Subsystem Conceptual Design Survey and Equipment Survey
+* **Component-Level Baseline**
+  * Solar Arrays - Provide 250W/Panel
+  * Batteries - Provide 60AH Storage with 50% Depth-of-charge
+  * Charge Controller - Allow battery to achieve 95% charge
+  
