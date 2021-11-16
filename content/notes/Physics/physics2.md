@@ -1012,3 +1012,11 @@ $$ I = \frac{P}{A} = S_{avg} = \frac{1}{2c\mu_0} E_0^2 = \frac{c\epsilon_0}{2} E
 The above relates the intensity of an EM wave to the amplitude of the wave's electric field
 
 $$ I = \frac{P_{source}}{4\pi r^2}$$
+
+### Polarization
+Electric field vector and Poynting vector define the **plane of polarization**
+
+#### Malus's Law
+$$ I = I_0 \cos^2 \theta$$
+
+## 33: Ray Optics
