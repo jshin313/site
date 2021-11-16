@@ -901,7 +901,7 @@ $C$ is a curve
 
 $$ \int_{C} f(x, y) \ \ ds= \int_{a}^{b} f(x(t), y(t)) \ \  \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \ \ dt$$
 
-## 16.7: Surface Integrals
+## 16.7: Surface Integrals (of Functions)
 $S$ is a surface given by $z = f(x, y)$ where $(x, y) \in D$
 
 $$ \iint\limits_S g(x, y, z) \ dS = \iint\limits_D g(x, y, f(x, y)) \sqrt{1 + f_x(x, y)^2 + f_y(x,y)^2} \ dA$$
@@ -993,3 +993,71 @@ Remarks
 2. Again (as for n=2), the implication $\implies$ follows from Clairaut's Theorem
 
 $$ \vec{F} \text{ is conservative} \implies \exists f: \nabla f = \vec{F} \implies \curl \vec{F} = \nabla \cross \nabla f = \ev{0, 0, 0}$$
+
+#### Example
+$$\vec{F} = \ev{xyz^4, x^2 z^4, 4x^2 yz^3}$$
+* Is the above conservative?
+* If so, find a potential
+
+$$ \nabla \cross \vec{F} = \ev{R_y - Q_z, P_z - R_x, Q_x - P_y} $$
+
+$$ P_y = xz^4$$
+$$ Q_x = 2xz^4$$
+
+$xz^4 \neq 2xz^4$, so $\vec{F}$ is not conservative
+
+### Facts
+1. $\vec{F}$ is conservative $\iff$ curl $\vec{F} = \vec{0}$ 
+2. div(curl($\vec{F}$)) = 0
+
+## 16.7: Surface Integrals (Of Vector Fields)
+
+### Recall: Line integrals of vector fields
+
+$$ \int\limits_C \vec{F} \cdot d\vec{r} = \int\limits_C \vec{F} \cdot \vec{T} \ ds$$
+where $\vec{T}$ is a unit tangent vector to $C$ in the direction of increasing $T$  
+
+Calculation (in general): use parametrization
+$$ = \int_a^b \vec{F}\left( \vec{r}(t) \right) \cdot \vec{r}' (t) \ dt $$
+
+
+### New: Surface Integrals of Vector Fields
+* Only for surfaces of the form
+$$ S: z = g(x, y) \ \ \ \ (x, y) \in D$$
+
+$$ \iint\limits_S \vec{F} \cdot d\vec{S} = \iint\limits_S \vec{F} \cdot \underbrace{\vec{n}}_{\text{unit normal vector}} \ dS $$
+
+$$ = \iint\limits_D \vec{F} \cdot \vec{n} \sqrt{1 + g_x^2 + g_y^2} \ dA $$
+
+#### Applications
+"Flux" of $\vec{F}$ across the surface $S$
+* $> 0 $ means more gas flows through $S$ in the direction of $\vec{n}$ (upwards) than the opposite direction
+
+#### In detail
+* Upward orientation
+$$ \vec{n} = \frac{\ev{1, 0, g_x} \cross \ev{0, 1, g_y}}{|\ev{1, 0, g_x} \cross \ev{0, 1, g_y}|} = \frac{\ev{-g_x, -g_y, 1}}{\sqrt{1+g_x^2 + g_y^2}}$$
+
+where $\ev{1, 0, g_x}$ and $\ev{0, 1, g_y}$ are tangent vectors to a point on $S$
+
+#### Formula (For calculations)
+Assuming $n$ is upwards (if downwards, then negate the formula for $n$)
+$$ \vec{F} = \ev{P, Q, R}$$
+$$ \frac{\ev{-g_x, -g_y, 1}}{\sqrt{1+g_x^2 + g_y^2}}$$
+$$ \iint\limits_{S} \vec{F} \cdot d\vec{S} = \iint\limits_D \left(\vec{-P  \ g_{x} - Q \ g_{y} + R\right) \ dA$$
+
+#### Example
+$$ \vec{F} = \ev{-x, -y, z^3}$$
+
+* $S$: part of the cone $z = \sqrt{x^2 + y^2}$
+between the surfaces $z = 1$ and $z = 3$
+* Orientation: Downwards
+
+$$ g_x = \frac{x}{x^2 + y^2}$$
+$$ g_y = \frac{y}{x^2 + y^2}$$
+
+$$ \iint\limits_{S} \vec{F} \cdot d\vec{S} = - \iint\limits_D (-P g_x - Q g_y + R) \ dA$$
+$$ = - \iint\limits_{D} \left(\frac{x^2}{\sqrt{x^2 + y^2}} + \frac{y^2}{\sqrt{x^2 + y^2}}\right) + (z^3) \ dA$$
+$$ = -\iint\limits_{D} \left(\frac{x^2}{\sqrt{x^2 + y^2}} + \frac{y^2}{\sqrt{x^2 + y^2}}\right) + (x^2 + y^2)^{3/2} \ dA$$
+$$ = - \int_{0}^{2\pi} \int_{1}^{3} (r^2 + r^4) \ dr \ d\theta = - \frac{1712}{15} \pi$$
+
+Application: Net flow of gas is up since flux is negative and normal is down
