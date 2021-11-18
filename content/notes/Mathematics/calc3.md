@@ -896,6 +896,12 @@ $$ \iint\limits_D f(x, y) \\, dA = \int_{\alpha}^{\beta} \int_{h_1(\theta)}^{h_2
 For a function $f(x, y)$, the surface area can be computed with the following:
 $$ A(S) = \iint\limits_D \sqrt{f_x(x, y)^2 + f_y(x, y)^2 + 1} \\; dA$$ 
 
+## 15.6: Triple Integrals
+
+## 15.7: Triple Integrals with Cylindrical Coordinates
+
+## 15.8: Triple Integrals with Spherical Coordinates
+
 ## 16.2: Line Integrals
 $C$ is a curve
 
@@ -1042,9 +1048,10 @@ where $\ev{1, 0, g_x}$ and $\ev{0, 1, g_y}$ are tangent vectors to a point on $S
 #### Formula (For calculations)
 Assuming $n$ is upwards (if downwards, then negate the formula for $n$)
 $$ \vec{F} = \ev{P, Q, R}$$
-$$ \frac{\ev{-g_x, -g_y, 1}}{\sqrt{1+g_x^2 + g_y^2}}$$
+$$ \vec{n} = \frac{\ev{-g_x, -g_y, 1}}{\sqrt{1+g_x^2 + g_y^2}}$$
 
-$$ \iint\limits_{S} \vec{F} \cdot d\vec{S} = \iint\limits_D \left(-P  \ g_{x} - Q \ g_{y} + R\right) \ dA$$
+$$ \iint\limits_{S} \vec{F} \cdot d\vec{S} = \iint\limits_D \vec{F} \cdot \vec{n} \sqrt{1 + g_x^2 + g_y^2} \ dA$$
+$$ \iint\limits_{S} \vec{F} \cdot d\vec{S} = \iint\limits_D \vec{F} \cdot \ev{-g_x, -g_y, 1} \ dA= \iint\limits_D \left(-P  \ g_{x} - Q \ g_{y} + R\right) \ dA$$
 
 #### Example
 $$ \vec{F} = \ev{-x, -y, z^3}$$
@@ -1062,3 +1069,46 @@ $$ = -\iint\limits_{D} \left(\frac{x^2}{\sqrt{x^2 + y^2}} + \frac{y^2}{\sqrt{x^2
 $$ = - \int_{0}^{2\pi} \int_{1}^{3} (r^2 + r^4) \ dr \ d\theta = - \frac{1712}{15} \pi$$
 
 Application: Net flow of gas is up since flux is negative and normal is down
+
+## 16.8: Stokes' Theorem
+Calculates result for surface integral in a certain case
+
+$$ \iint\limits_S (curl \ \vec{F}) \cdot d\vec{S} = \oint\limits_C \vec{F} \cdot d\vec{r}$$
+
+* $S$ is an oriented (up or down) surface in $\mathbb{R}^3$
+* $\vec{F} = \ev{P, Q, R}$
+* $C$: Closed curve that forms **boundary** of the surface $S$ in $\mathbb{R}^3$ oriented according to Right Hand Rule (RHR)
+
+### Special Case of Stokes' Theorem
+$$ \vec{F} = \ev{P, Q, 0}$$
+$$ P= P(x, y) \ \ \ Q = Q(x, y)$$
+
+$$ curl \ \vec{F} = \ev{0, 0, Q_x - P_y}$$
+
+$$ (x, y) \in D$$
+
+$$S = D \text{ in the xy plane} = \text{interior of curve }C$$
+
+Stokes' Theorem states: 
+$$ \oint\limits_C \vec{F} \cdot d\vec{r} = \iint\limits_D (Q_x - P_y) \ dA$$
+
+* Note that the above result is just Green's Theorem
+* Stokes' Theorem can be viewed as a general version of Green's Theorem
+
+### Example
+Calculate the following
+$$ \iint\limits_S \left(curl \ \vec{F}\right) \cdot d \vec{S} $$
+
+$$ \vec{F} = \ev{x^2 z^2 , yz^2, \tan^{-1} (x^2 yz^2)}$$
+$$ S: z = \sqrt{x^2+y^2} \text{ cone oriented up} \ 0 \le z \le 2$$
+
+Boundary curve $C$ (counter-clockwise by RUHR)
+$$ x^2 + y^2 = 4$$
+
+Parametrization is still counter-clockwise
+$$ C: \vec{r}(t) = \ev{ 2\cos t,2 \sin t, 2}$$
+
+
+$$ \iint\limits_S (curl \ \vec{F})\cdot d\vec{S} = \oint\limits_C \vec{F} \cdot d\vec{r}$$
+$$ = \oint\limits_C  = 0$$
+Just calculate line integral
