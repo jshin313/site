@@ -1020,3 +1020,107 @@ Electric field vector and Poynting vector define the **plane of polarization**
 $$ I = I_0 \cos^2 \theta$$
 
 ## 33: Ray Optics
+
+### Ray Model of Light
+* Light travels in **straight lines**
+* Rays can cross without disturbing each other
+* Rays travel forever until they interact with matter
+* Objects are sources of light rays
+
+### Law of Reflection
+* The incident ray and reflected ray are in the same plane normal to the surface
+* The angle of reflection equals the angle of incidence
+$$ \theta_i = \theta_f$$
+
+### Refraction
+
+#### Snell's Law
+$$ n_1 \sin\theta_1 = n_2 \sin \theta_2$$
+* If $n_2 > n_1$, then $\theta 2 < \theta_1$, then light bends **towards** the normal
+* Bending occurs because the wavelength $\lambda$ decreases in more dense media since $v$ also decreases $v = f\lambda$
+
+$$ v_{medium} = \frac{c}{n}$$
+
+### Mirrors
+* **Flat**: Virtual image only
+$$ s' = s$$
+
+* **Parabolic**: All rays parallel to mirror axis converge to single **focal** point
+* **Spherical Mirror**: Approximates parabolic mirror close to the mirror
+$$ f = r/2$$
+
+* **Focal Point (F)**: Any incoming parallel rays will be reflected towards this focal point
+* **Center Point (C)**: The distance from this point to the mirror is the same in any direction
+* **Real Image**: Where two (or more) light rays **converge**
+* **Virtual Image**: An image formed when **diverging** rays appear to meet at a point "behind" the mirror
+
+### Concave Mirror
+* **Concave** mirrors can create either **real** or **virtual** mirrors
+  * If $s > 2f$, the image is *real, inverted, and reduced* in size
+  * If $2f > s > f$, the image is *real, inverted, and enlarged*
+  * If $s < f$, the image is *virtual, upright, and enlarged*
+    * Note that for a flat mirror, this is the case. The reflection is virtual and the focal pint is infinitely away from the mirror
+
+![3 cases for concave mirror](/physics2/concavemirror.png)
+
+### Convex Mirror
+* Incoming rays reflects on the outside of its spherical curvature, causing light to diverge
+* Features
+1. The focal point is **behind** the mirror ($f < 0$)
+2. The image is *virtual, upright, and reduced* in size
+
+![1 case for convex mirror](/physics2/convexmirror.png)
+
+
+### Mirror and Magnification equations
+* If the image, focal point, or center of curvature is on the **reflecting** side of the mirror, the corresponding distance ($s'$, $f$, $R$) is **positive** and **negative** otherwise
+
+$$ M = \frac{h'}{h} = \frac{-s'}{s}$$
+* $M$ is magnification
+* $h'$ is the new height of the image and $h$ is the height of the original image
+* $s'$ and $s$ correspond to the distance from the mirror for the new and old images, respectively
+
+$$ \frac{1}{s} + \frac{1}{s'} = \frac{1}{f}$$
+
+### Images with Lenses
+1. **Converging** Lens which bring incoming parallel rays to focus
+  * Center thickeness is greater than edge thickness
+2. **Diverging** Lens: Bend parallel rays so they appear to diverge from a focus
+  * Center thickeness is less than edge thickness
+
+* **Thin Lens**: Thickness is small compared to the curvature of radii of its two surfaces
+* **Converging Lenses**
+  * Double convex
+  * Planoconvex
+  * Convex Meniscus
+* **Diverging Lenses**
+  * Double concave
+  * Planoconcave
+  * Concave Meniscus
+
+* 3 types of **principal** light rays
+  1. parallel to the principal axis
+  2. pass through the near focal point
+  3. directed at the center of the lens
+
+### Converging Lens
+* Can produce real and virtual images that are either enlarged or reduced
+* 3 distinct cases
+![3 distinct cases](/physics2/convergelens.png)
+
+### Diverging Lens
+* Virtual image that is upright and reduced in size
+  * Virtual image is on the same size as the original object
+
+### Thin Lens Equation
+$$ \frac{1}{s} + \frac{1}{s'} = \frac{1}{f}$$
+
+### Magnification Equation
+$$ M = \frac{h'}{h} = -\frac{s'}{s}$$
+
+### Lens Sign Conventions
+1. Focal length is **positive** for converging lenses and **negative** for diverging lenses
+2. The object distance $s$ is **positive** if it's on the **same** side as **incoming** light rays; negative otherwise
+3. The image distance $s'$ is **positive** if the image is on the **same** side as **outgoing** light rays
+4. The height of the image $h'$ is **positive** if the image is **upright** and negative if the image is inverted
+
