@@ -1043,7 +1043,8 @@ where $\ev{1, 0, g_x}$ and $\ev{0, 1, g_y}$ are tangent vectors to a point on $S
 Assuming $n$ is upwards (if downwards, then negate the formula for $n$)
 $$ \vec{F} = \ev{P, Q, R}$$
 $$ \frac{\ev{-g_x, -g_y, 1}}{\sqrt{1+g_x^2 + g_y^2}}$$
-$$ \iint\limits_{S} \vec{F} \cdot d\vec{S} = \iint\limits_D \left(\vec{-P  \ g_{x} - Q \ g_{y} + R\right) \ dA$$
+
+$$ \iint\limits_{S} \vec{F} \cdot d\vec{S} = \iint\limits_D \left(-P  \ g_{x} - Q \ g_{y} + R\right) \ dA$$
 
 #### Example
 $$ \vec{F} = \ev{-x, -y, z^3}$$
