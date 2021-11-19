@@ -801,7 +801,7 @@ $$ A \cup \left( \bigcap_{i=1}^{m+1} B_i \right) = A \cup \left( \bigcap_{i=1}^{
 $$ A \cup \left( \bigcap_{i=1}^{m} B_i \right) \cap \left( A \cup B_{m+1} \right) $$
 $$ \bigcap_{i=1}^{m} \left( A \cup B_i \right) \cap \left( A \cup B_{m+1} \right) = \bigcap_{i=1}^{m+1} \left( A \cup B_i \right)  $$
 
-## 8.2: 
+## 8.2: Finite Sets
 Recall: Let $A$ be a set. $\forall n \in \mathbb{N}$, let $I_n = \\{1, 2, 3, ...n\\}$
 1. We say $A$ is finite if $A = \emptyset$ or $\exists n \in N \ s.t. \ \exists f: A \rightarrow I_n$ (bijection)
 $$\\# A = 0 \text{ or } \\#A = n$$
@@ -838,3 +838,92 @@ Then $\\#\left(\cup_{i=1}^{n} A_i\right) = \sum_{i=1}^{n} \left(\\#A_i\right)$
 2. Let $A$ and $B$ be finite sets. Then $\\# (A \cup B) = \\#A + \\#B - \\#(A \cap B)$
 
 $$ \\#(A \cross B) = (\\#A) \cdot (\\#B)$$
+
+## 8.3: Infinite Sets
+
+### Theorem
+Let $A$ be a nonempty set. Suppose $g: \mathbb{N} \to A$. Then $A$ is countable.
+
+#### Proof
+Either $A$ is finite or it is not
+
+If $A$ is finite, there is nothing to prove, since $A$ is obviously countable. So suppose $A$ is infinite.
+
+We must construct a bijection from $\mathbb{N} \to A$ to show that $A$ is countable (countably infinite).  
+
+Put $f(1) = g(1)$
+
+Suppose inductively, that we have defined $f(1), f(2), f(3), ..., f(n)$ so that $f(i) \neq f(j)$ whenever $i \neq j$ 
+
+$$i, j \in \\{1, 2, 3, ..., n\\}$$
+$$\\{ g(1), g(2), g(3), ..., g(n) \\} \subseteq \\{f(1), f(2), f(3), ..., f(n) \\}$$
+
+Define $f(n+1)$
+
+$B_n = \\{f(1), f(2), f(3)..., f(n)\\}$ is finite and $A$ is infinite, so $a \\ B$ is nonempty  
+
+Then $X = \\{m\in \mathbb{N}: g(m) \notin B_n \\}$ is also nonempty, since $g$ is surjective.
+
+Then $X$ is a nonempty subset of $\mathbb{N}$. Then by the Well-Ordering Principle, $X$ has a least element, say $m_0 = min(X)$
+
+$$\text{Let } f(n+1) = g(m_0)$$
+$$ f(n+1) \neq f(i) \ \forall i \in \\{1, 2, 3, .., n\\}$$
+
+$$ \\{g(1), ..., g(n)\\} \subseteq B_n \implies m_0 \ge n+1$$
+
+$$ g(n+1) \in \\{f(1), f(2), f(3), ..., f(n), f(n+1)\\}$$
+
+$$\forall a, b \in \mathbb{N} \ \, a < b \implies f(a) \neq f(b) $$
+So $f$ is injective.
+
+We have defined an injective function $f$ so that we don't have "duplicate" values of $g(x)$ ($A$) in the codomain of $f$
+
+Let $c \in A$  
+$$g \text{ is surjective } \implies \exists x \in \mathbb{N} \text{ s.t. } c= g(x)$$
+$$ \\{g(1), g(2), ..., g(x)\\} \subseteq \\{f(1), f(2), f(3), ..., f(x)\\} \implies \exists t \in \\{1, 2, 3, ..., x\\} \text{  s.t.  } g(x) = f(t)$$
+
+$$ c\in img(f) \implies f \text{ is surjective }$$
+
+
+### Proposition
+Let $A$ be a nonempty countable set. Then $\exists g : \mathbb{N} \to A$ such that $g$ is surjective.
+
+#### Proof
+Note: $I_m = \\{1, 2, 3, ..., m\\}$  
+
+If $A$ is countably infinite, then $\exists f: A \to \mathbb{N}$ which is bijective. Then $f^{-1}: \mathbb{N} \to A$ is also bijective and thus surjective.  
+
+If $A$ is finite, then $\exists f: I_m \to A$  for some $m \in \mathbb{N}$
+$$ g: \mathbb{N} \to A$$
+$$ x \to \begin{cases} f(x) & 1 \le x \le m \\\\ f(1) & x > m \end{cases}$$
+
+### Proposition
+Let $A$ and $B$ be denumerable sets (countably infinite). Then $A \cup B$ is also enumerable.
+
+#### Proof
+If $A$ and $B$ are denumerable, then $\exists f: \mathbb{N} \to A$ and $\exists g: \mathbb{N} \to B$ which are also bijections.
+
+Define the following:
+$$ h: \mathbb{N} \to A \cup B $$
+$$ x \to \begin{cases} f(x/2) & \text{ x is even} \\\\ g(\frac{x+1}{2}) & \text{x is odd}\end{cases}$$
+
+Let $y \in A\cup B$   
+
+If $y \in A$, then $y=f(x)$ for some $x \in \mathbb{N}$, ($f$ is surjective)
+$$ h(2x) = f\left(\frac{2x}{2}\right) = f(x) = y$$
+
+If $y \in B$, then $y=g(x)$ for some $x \in \mathbb{N}$, ($g$ is surjective)
+$$ h(2x-1) = f\left(\frac{(2x-1)+1}{2}\right) = g(x) = y$$  
+
+In either case, $g(x) = y$, so $y\in im(h)$, and $h$ is surjective.  
+
+By the previous theorem, $A \cup B$ is denumerable.
+
+### Corollary
+If $A_1, A_2, A_3, .., A_n$ are all countable, then $\cup_{i=1}^{n} A_i$ is also countable.
+
+### Proposition
+$\mathbb{N} \cross \mathbb{N}$ is countable
+
+$$ g: \mathbb{N} \to \mathbb{N} \cross \mathbb{N}$$
+$$ x \to \begin{cases} (m,n) & \text{ if } x = 2^m 3^n \\\\ (1, 1) & \text{ else} \end{cases}$$
