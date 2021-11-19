@@ -1060,3 +1060,28 @@ $$ \implies h(x) \cdot y(x) = \int h(x) q(x) \ dx $$
 
 $$ y(x) = \frac{1}{h(x)} \int h(x) q(x) \ dx$$
 
+## 8.1: Linear Differential Equations
+
+## 8.2: Constant Coefficient Homogeneous Linear Differential Equations
+
+For the differential equation
+$$ y^{(n)} + a_1 y^{(n-1)} + ... + a_{n-1}y' + a_n y =0$$
+if $a_1, a_2, ..., a_n$ are **constant**, then we can write it as follows
+
+$$ P(D) y = 0$$
+$$ P(D) = D^n + a_1 D^{n-1} + ... a_{n-1}D + a_n$$
+
+* $P(D)$ is the **polynomial differential operator**
+* **Auxiliary Polynomial**
+$$P(r) = r^n + a_1 r^{n-1} + .. a_{n-1} r + a_n$$
+
+* **Auxiliary Equation**
+$$P(r) = 0$$
+
+### Theorem 8.2.2
+If $P(D)$ and $Q(D)$ are polynomial differential operators, then 
+$$ P(D) Q(D) = Q(D) P(D)$$
+
+* Polynomial differential operators are **commutative**
+* Note: When we write $P(D) Q(D) f$, we mean $P(D) \circ Q(D) f$
+* Note: The polynomial differential operators commute because polynomials commute!
