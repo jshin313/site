@@ -637,6 +637,10 @@ $$ Q = C\Delta V$$
 $$ V_{12} = V_1 = V_2$$
 
 
+### Capacitance in Terms of Distance and Area
+For a parallel-plate capacitor
+$$ C = \frac{\epsilon_0 A}{d} = \frac{Q}{\Delta V_C} $$
+
 ## 27: Current and Resistance
 ### Current
 * Weakly bound valence in metals
@@ -952,11 +956,11 @@ $$ \frac{N_S}{N_P} = \frac{V_S}{V_P} $$
   * $\phi_e$ increases as the capacitor charges
 * The electric field is $$E = \frac{Q}{\epsilon_0 A}$$
 * The electric flux (through $S_2$) is $$ \phi_e = E * A = \frac{Q}{\epsilon_0}$$
-* The rate the flux changes (through $S_2$
-$$ \frac{d\phi_e}{dt} = \frac{1}{\epsilon_0} = \frac{dQ}{dt} = \frac{I}{\epsilon_0}$$
+* The rate the flux changes (through $S_2$ assuming $A$ doesn't change)
+$$ \frac{d\phi_e}{dt} = \frac{1}{\epsilon_0} \frac{dQ}{dt} = \frac{I}{\epsilon_0}$$
 
 * Maxwell added a correction term to Ampere's Law called the **displacement current**
-$$ I_{disp} = \frac{d\phi_e}{dt}$$
+$$ I_{disp} = \epsilon_0 \frac{d\phi_e}{dt}$$
 
 ### Ampere-Maxwell (AM) Law
 * The A-M law states that either a changing electric flux or electric current through a closed loop creates a magnetic flux around the loop
@@ -1012,6 +1016,13 @@ $$ I = \frac{P}{A} = S_{avg} = \frac{1}{2c\mu_0} E_0^2 = \frac{c\epsilon_0}{2} E
 The above relates the intensity of an EM wave to the amplitude of the wave's electric field
 
 $$ I = \frac{P_{source}}{4\pi r^2}$$
+
+### Radiation Pressure
+$$ F = \frac{\Delta p}{\Delta t} = \frac{P}{c}$$
+where $P$ is power and $p$ momentum
+
+$$ p_{rad} =\frac{F}{A} = \frac{P/A}{c} = \frac{I}{c} $$
+where $p_{rad}$ is radiation pressure
 
 ### Polarization
 Electric field vector and Poynting vector define the **plane of polarization**
