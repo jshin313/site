@@ -1018,15 +1018,40 @@ Not all differential equations have a general solution
 ### Initial-Value Problems
 An $n$-th order differential equation together with $n$ auxiliary conditions of the form 
 
-$$ y(x_0) = y_0 , y'(x_0) = y_1, ..., y^(n-1)(x_0) = y_{n-1}$$
+$$ y(x_0) = y_0 , y'(x_0) = y_1, ..., y^{(n-1)}(x_0) = y_{n-1}$$
 where $y_0, y_1, ..., y_{n-1}$ are constants
 
-### Theorem
+### Theorem 1.2.12
 For the initial value problem 
 $$ y^{(n)} + a_1 (x) y^{(n-1)} + ... + a_{n-1}(x)y' + a_n(x)y = F(x) $$
 $$ y(x_0) = y_0 , y'(x_0) = y_1, ..., y^(n-1)(x_0) = y_{n-1}$$
 
 if $a_1, a_2, ..., a_n, F$ are continuous on $I$, then there is a unique solution on $I$
+
+### Example
+Prove that the general solution to the differential equation 
+$$ y'' + \omega^2 y = 0 \ \ \  -\infty < x < \infty$$
+is $$ y(x) = c_1 \cos \omega x + c_2 \sin \omega x $$
+
+#### Solution
+First, verify that $y(x) = c_1 \cos \omega x + c_2 \sin \omega x$ is a solution to the differential equation on $(-\infty, \infty)$ 
+
+Then to show that **every** solution is of that form, use the [Theorem](#theorem-1212) that states that there is only one solution to an initial value problem.  
+
+Suppose $y_1=f(x)$ is a solution and is the unique solution to the IVP of the following 
+$$ y_1'' + \omega^2 y_1 = 0, \ \ y_1(0) = f(0), \ \ y_1'(0) = f'(0)$$
+
+We can find $c_1$ and $c_2$ for $y_2 =c_1 \cos \omega x + c_2 \sin \omega x$ and $y_2(0) = f(0), \ y_2'(0) = f'(0)$
+
+$$ c_1 = f(0), \ \ c_2 = \frac{f'(0)}{\omega}$$
+$$ y_2(x) = f(0) \cos \omega x + \frac{f'(0)}{\omega} \sin \omega x$$
+
+Notice that both $y_1$ and $y_2$ solve the same IVP problem. Thus they must be the same.
+$$ y_1(x) = y_2(x)$$
+$$ y_1 (x) = f(x) \implies y_2(x) = f(x)  = y_1(x)$$
+
+Since $f(x)$ is an arbitrary solution to the differential equation
+$$ f(x) = f(0) \cos \omega x + \frac{f'(0)}{\omega} \sin \omega x = c_1 \cos \omega x + c_2 \sin \omega x$$
 
 ## 1.4: Separable Differential Equations
 
@@ -1061,11 +1086,107 @@ $$ \implies h(x) \cdot y(x) = \int h(x) q(x) \ dx $$
 $$ y(x) = \frac{1}{h(x)} \int h(x) q(x) \ dx$$
 
 ## 8.1: Linear Differential Equations
+The mapping $D: C^1(I) \to C^0 (I)$ defined by $D(f) = f'$ is a linear transformation
+
+$$ D^k(f) = \frac{d^k f}{dx^k}$$
+
+$L$, a linear differential operator of order $n$
+$$ L = D^n + a_1 D^{n-1} + ... + a_{n-1}D + a_n $$
+$$ Ly = y^{(n)} + a_1 y^{(n-1)} + ... + a_{n-1}y' + a_n y$$
+
+Note that in general, $L_1 L_2 \neq L_2 L_1$
+
+### Example
+$$ L = D^2 + 4x D -3x$$
+Find $L(x^2)$
+
+#### Solution
+$$ Ly = y'' + 4x y' - 3xy$$
+$$ L(x^2) = 2 + 8x^2 - 3x^3$$
+
+### Example 
+Find the kernel of $L = D - 2x$  
+
+#### Solution
+Finding the kernel of $L$ is synonymous with finding all functions that satisfy $Ly = 0$
+$$ y' - 2xy = 0$$
+Use integrating factor to get $$ \left(e^{-x^2}y\right)' = 0$$
+$$ e^{-x^2 y} = c$$
+$$ Ker(L) = \\{ce^{x^2}: c \in \mathbb{R}\\}$$
+
+### Linear Differential Equations
+**Homogeneous** Linear DE's are of the following form:
+$$ y^{(n)} + a_1(x) y^{(n-1)} + ... + a_{n-1}(x) y' + a_n(x) y =0$$
+
+**Nonhomogenous** Linear DE's are of the following form:
+$$ y^{(n)} + a_1(x) y^{(n-1)} + ... + a_{n-1}(x) y' + a_n(x) y =F(x)$$
+$$ Ly = F(x)$$
+
+### Theorem 8.1.3
+Let $a_1, a_2, ..., a_n$ and $F$ be functions of $x$ continuous on $I$. For any $x_0$ in $I$, the initial value problem (IVP)
+$$ Ly = F(x)$$
+$$ y(x_0) = y_0, \ \ y'(x_0) = y_1, ..., y^{(n-1)}(x_0) = y_{n-1}$$
+
+has a unique solution on $I$
+
+### Theorem 8.1.4
+The set of all solutions to the following $n$th order homogeneous linear DE on $I$ is a **vector space** of dimension $n$
+$$ y^{(n)} + a_1(x) y^{(n-1)} + ... + a_{n-1}(x) y' + a_n(x)y = 0$$
+
+#### Proof
+Rewrite the above as $Ly = 0$  
+We know that the kernel of any linear transformation from $V \to W$ is a subspace of $V$ from Chapter 6. So the solution space of the homogeneous linear DE is a vector space.  
+
+Use a proof by induction.  
+
+Note: Any set of $n$ linearly independent solutions $y_1, y_2, ..., y_n$ to $$ y^{(n)} + a_1(x) y^{(n-1)} + ... + a_{n-1}(x) y' + a_n(x) y = 0$$ is a basis of the solution space of the homogeneous linear DE  
+
+**General Solution**
+$$ y(x) = c_1 y_1(x) + c_2 y_2(x) + ... c_n y_n(x)$$
+
+### Example
+Find all solutions of the form $y(x) = e^{rx}$ for the DE $y'' - 2y' - 15y = 0$
+
+#### Solution
+$$ y(x) = e^{rx}, \ \ y'(x) = re^{rx},  \ \ y''(x) = r^2 e^{rx} $$
+$$ (r+3) (r-5) = 0$$
+$$ y_1(x) = e^{-3x},\ \ y_2(x) = e^{5x}$$
+The Wronskian, $W\[y_1, y_2\](x) = 8e^{2x}\neq 0$ for all x, so $y_1, y_2$ are linearly independent. From Theorem 8.1.4, we know $y_1, y_2$ form a basis for all solutions to the differential equation since $dim(span\\{y_1, y_2\\}) = 2$ and the dimension of the solution space of the DE is $2$ as well.  
+
+Thus the general solution is the following:
+$$ y(x) = c_1e^{-3x}+ c_2 e^{5x}$$
+
+### Theorem 8.1.6
+Let $y_1, y_2, y_3, ..., y_n$ are solutions of the $n$th order DE $Ly = 0$.   
+If $W\[y_1, y_2, ..., y_n\](x_0) = 0$  for some point on $I$, then  $y_1, y_2, ..., y_n$  is linearly dependent on $I$
+
+### Theorem 8.1.8
+Let $y_1, y_2, ..., y_n$ be linearly independent solutions to $Ly=0$ on $I$ and let $y = y_p$ be a **particular** solution to $Ly=F$ on $I$. Then every solution to $Ly = F$ on $I$ is of the form
+$$ y = c_1 y_1 + c_2 y_2 + ... c_n y_n + y_p$$
+for appropriate constants $c_1, c_2, ..., c_n$
+
+#### Proof
+$$ Ly_p = F$$
+Let $y_a = u$ be a solution to $Ly_a = F$
+$$ Lu = F$$
+$$ L(u - y_p) = 0$$
+If $y_b = u-y_p$, then $u - y_p$ is a solution to $Ly_b = 0$ 
+$$ u - y_p = y_c = c_1 y_1 + c_2 + ... c_n y_n $$
+since $y_1, ..., y_n$ is linearly independent and solutions to $Ly_c=0$.
+$$ u = \underbrace{c_1 y_1 + c_2 y_2 + ... c_n y_n}_{y_c \text{ (Complementary function)}} + y_p$$
+$$ y(x) = y_c(x) + y_p(x)$$
+
+### Theorem 8.1.10
+If $y = u_p$ and $y = v_p$ are particular solutions to $Ly = f(x)$ and $Ly = g(x)$, respectively, then $y = u_p + v_p$ is a solution to $Ly = f(x) + g(x)$
+
+#### Proof
+$$ L(u_p + v_p) = L(u_p) + L(v_p) = f(x) + g(x)$$
 
 ## 8.2: Constant Coefficient Homogeneous Linear Differential Equations
 
 For the differential equation
 $$ y^{(n)} + a_1 y^{(n-1)} + ... + a_{n-1}y' + a_n y =0$$
+
 if $a_1, a_2, ..., a_n$ are **constant**, then we can write it as follows
 
 $$ P(D) y = 0$$
