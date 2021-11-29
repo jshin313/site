@@ -801,6 +801,17 @@ $$ A \cup \left( \bigcap_{i=1}^{m+1} B_i \right) = A \cup \left( \bigcap_{i=1}^{
 $$ A \cup \left( \bigcap_{i=1}^{m} B_i \right) \cap \left( A \cup B_{m+1} \right) $$
 $$ \bigcap_{i=1}^{m} \left( A \cup B_i \right) \cap \left( A \cup B_{m+1} \right) = \bigcap_{i=1}^{m+1} \left( A \cup B_i \right)  $$
 
+## 5.3: Injective and Surjective Functions
+
+## 5.4: Invertible Functions
+
+## 7.1: Introduction to Equivalence Relations and Partitions
+
+## 7.2: Equivalence Relations
+
+## 8.1: Introduction to Finite and Infinite Sets
+$$A_m$$
+
 ## 8.2: Finite Sets
 Recall: Let $A$ be a set. $\forall n \in \mathbb{N}$, let $I_n = \\{1, 2, 3, ...n\\}$
 1. We say $A$ is finite if $A = \emptyset$ or $\exists n \in N \ s.t. \ \exists f: A \rightarrow I_n$ (bijection)
@@ -927,3 +938,70 @@ $\mathbb{N} \cross \mathbb{N}$ is countable
 
 $$ g: \mathbb{N} \to \mathbb{N} \cross \mathbb{N}$$
 $$ x \to \begin{cases} (m,n) & \text{ if } x = 2^m 3^n \\\\ (1, 1) & \text{ else} \end{cases}$$
+
+
+### Fundamental Theorem of Arithmetic 
+Let $n \in \mathbb{N} - \\{1\\}$.  Then $n$ is a "product" of prime numbers (i.e. $n$ is either prime itself or a product of primes). Moreover, this prime factorization is **unique**.
+
+#### Proof (Existence)
+We can use induction to prove the *existence* of a prime factorization.  
+
+See [this proof](#proposition-6)
+
+#### Proof (Uniqueness)
+**Lemma:** Let $a_1, a_2, a_3, ..., a_n \in \mathbb{Z}$. Let $p$ be prime and suppose $p | \left(\prod\limits_{i=1}^{n} a_i\right)$, then $p|a_i$ for some $i \in \\{1, 2, 3, ..., n\\}$. (Based on Euclid's Lemma by induction)  
+
+Now suppose $n = p_1 \cdot p_2 \cdot p_3... \cdot p_s$ and $n = q_1 \cdot q_2 \cdot q_3... \cdot q_s$ are both prime factorizations of $n$ ($q_i$ and $p_i$ are always prime).
+
+Assume without loss of generality (WLOG), $s \le t$
+
+$$ p_1(p_2\ p_3 \...p_s) = q_1 \ q_2 \ q_3 ... q_t$$
+$$ p_1 | q_1\  q_2\  q_3 ... \ q_t$$
+
+By Euclid's Lemma $p_1 | q_i$ for some $i \in \\{1,2, 3, ..., t\\}$. By reordering the $q_i$'s, WLOG, we can assume that $p_1 | q_1$.  
+But $p_1 = q_1$, since the only positive integer factors of $q_1$ are $1$ and $q_1$, but $p_1$ is prime $\implies p_1 \neq 1$.
+
+$$ p_1\ p_2\ p_3 \...p_s = q_1 \ q_2 \ q_3 ... q_t$$
+$p_1 = q_1 $, so 
+$$ p_2\ p_3 \...p_s = q_2 \ q_3 ... q_t$$
+
+We can use the same technique to show that $p_2 = q_2$, $p_3 = q_3$, and so on.  
+
+After $s$ repetitions, we get $p_i = q_i$ for $i = 1, 2, 3, ..., s$  
+
+Now we need to show that $s = t$  
+
+We assumed $s\le t$. Suppose BWOC $s<t$  
+
+$$ p_1 \ p_2 ... \ p_s = n = q_1 \ q_2 \ q_3 ... \ q_s \ q_{s+1} \ q_{s+2} ... \ q_t $$
+But $p_i = q_i$ for $i \in \\{1, 2, ..., s\\}$, so
+$$ 1 = q_{s+1}\ q_{s+2} \ ... q_t$$
+This is a impossible since $q_j \ge 2$ for all $j$. So $s = t$
+
+### Proof that $\ \mathbb{Q} \ $ is countable
+
+#### Proposition
+$\mathbb{N} \cross \mathbb{N}$ is countable
+
+##### Proof
+Define $g: \mathbb{N} \to \mathbb{N} \cross \mathbb{N}$
+
+$$ x \to \begin{cases} (m, n) & x = 2^m3^n \\\\ (1, 1) & else \end{cases}$$
+
+Example: $$g(96) = g(2^5 3^1) = (5, 1)$$
+
+Uniqueness of prime factorization guarantees there's only one way to write $x$ as a prime factorization of $2$ and $3$, so this means the function is well defined. Let $(x, y) \in \mathbb{N} \cross \mathbb{N}$. Then $g(2^x 3^y) = (x, y)$, so $g$ is surjective.  
+
+#### Continuing Proof
+Now let $\mathbb{Q}^+ = \\{\frac{a}{b}: a, b \in \mathbb{N}\\}$ 
+$$ h: \mathbb{N} \cross \mathbb{N} \to \mathbb{Q}^+$$
+$$(a, b) \to \frac{a}{b}$$
+$h$ is surjective. Then $(h \circ g): \mathbb{N} \to \mathbb{Q}$ is surjective (composition of surjective functions is surjective). So $\mathbb{Q}^+$ is countable.  
+
+Put $\mathbb{Q}^- = \\{-\frac{a}{b}: a, b \in \mathbb{N}\\}$
+$\mathbb{Q}^-\approx \mathbb{Q}^+$, so $\mathbb{Q}^-$ is also countable. (Construct bijection between them to show that they are equiponent (e.g. $f(x) = -x$))
+
+$\\{0\\}$ is clearly countable.
+
+$$ \mathbb{Q} = \mathbb{Q}^- \cup \\{0\\} \cup \mathbb{Q}^+$$
+So $\mathbb{Q}$ is countable!
