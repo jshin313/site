@@ -1102,7 +1102,7 @@ $$ \iint\limits_S \left(curl \ \vec{F}\right) \cdot d \vec{S} $$
 $$ \vec{F} = \ev{x^2 z^2 , yz^2, \tan^{-1} (x^2 yz^2)}$$
 $$ S: z = \sqrt{x^2+y^2} \text{ cone oriented up} \ 0 \le z \le 2$$
 
-Boundary curve $C$ (counter-clockwise by RUHR)
+Boundary curve $C$ (counter-clockwise by RHR)
 $$ x^2 + y^2 = 4$$
 
 Parametrization is still counter-clockwise
@@ -1110,5 +1110,40 @@ $$ C: \vec{r}(t) = \ev{ 2\cos t,2 \sin t, 2}$$
 
 
 $$ \iint\limits_S (curl \ \vec{F})\cdot d\vec{S} = \oint\limits_C \vec{F} \cdot d\vec{r}$$
-$$ = \oint\limits_C  = 0$$
 Just calculate line integral
+
+## 16.9 Divergence Theorem (Dim 3)
+Given 
+* $\vec{F} = \ev{P, Q, R}$
+* $E$ as a solid in $\mathbb{R}^3$ ("simple" $\implies$ bounded)
+* $S = \partial E$ (boundary of $E$ oriented upwards)
+
+$$ \iint\limits_{S} \vec{F} \cdot \vec{dS} = \iiint\limits_{E} div\ \vec{F} \ dV$$
+
+### Example
+$$ \vec{F} = \ev{x^2 y z , xy^2 z, xyz^2}$$
+
+S = the box enclosed by the following
+$$ x= 0, x = a, y = 0, y=b, z = 0. z =c$$
+
+Orientation is outwards
+
+$$ \iint\limits_{S} \vec{F} \cdot \vec{dS} = \iiint\limits_{E} div \ \vec{F} \ dV$$
+$$= \int_0^a \int_0^b \int_0^c div \ \vec{F} \ dz \ dy \ dx $$
+
+$$= \int_0^a \int_0^b \int_0^c div \ \vec{F} \ dz \ dy \ dx = a^2b^2c^2 \div F $$
+
+### Example
+$$ \vec{F} = \ev{z, y, zx}$$
+S = surface of the tetrahedron enclosed by the coordinate planes & the plane 
+$$\frac{x}{a} + \frac{y}{b} + \frac{z}{c} = 1$$
+
+E = inside tetrahedron
+
+$$ \iint\limits_{S} \vec{F} \cdot \vec{dS} = \iiint\limits_{E} div\ \vec{F} \ dV$$
+$$\iiint\limits_{E} (1 +x)  \ dV$$
+$$ 0 \le x \le b$$
+$$ 0 \le y \le b\left(1 - \frac{x}{a}\right)$$
+$$ 0\le z \le c\left(1 - \frac{x}{a} - \frac{y}{b}\right)$$
+
+$$ \int_0^{a} \int_{0}^{b(1-\frac{x}{a})} \int_0^{c(1-\frac{x}{a} - \frac{y}{b})} (1+x) dz \ dy \ dx$$
