@@ -1135,3 +1135,88 @@ $$ M = \frac{h'}{h} = -\frac{s'}{s}$$
 3. The image distance $s'$ is **positive** if the image is on the **same** side as **outgoing** light rays
 4. The height of the image $h'$ is **positive** if the image is **upright** and negative if the image is inverted
 
+## 32: Wave Optics
+Light can be viewed in two ways
+* As a ray (see the last chapter)
+* As a wave (this chapter)
+
+The Wave Nature of Light can be seen through
+* Double Slit Experiment
+* Single Slit Experiment
+* Diffraction
+
+What is Light?
+  * Light is an electromagnetic **wave**
+    * Shares some similarity to water waves
+    * Water also experiences **diffraction** (spreading out of waves)
+    * The reason why light doesn't experience diffraction in large openings is because light's wavelength is quite small but most openings are quite large
+
+The wave model
+* When light passes through openings smaller than $1$mm, light exhibits wave behavior, so it does spread out
+The Ray Model
+* When light passes through openings larger than $1$mm, it behaves like particles and travels in straight lines
+
+### Double Slit Experiment
+Take a pair of slits, each $0.04$mm wide and spaced around $0.25$ mm apart. The laser beam illuminates both slits. Viewing screen is far behind the slits.
+
+Two separate light waves overlap and interfere, resulting in a pattern of light and dark waves (similar to throwing two stones in water).
+
+#### A Brief Review of Interference
+**Constructive Interference**: A full-wavelength path difference results in constructive interference.  
+$$ \Delta r = m \lambda, \ \ m = 0, 1, 2, ...$$
+
+**Destructive Interference**: Crest meets trough, means waves cancel. Half-Wavelength path difference leads to destructive interference.
+$$ \Delta r = \left(m+\frac{1}{2}\right) \lambda, \ \ m = 0, 1, 2, ...$$
+
+#### Bright Fringes (Constructive Interference)
+![Double Slit Experiment](/physics2/doubleslit.png)
+
+$$\Delta r= d\sin \theta = m \lambda$$
+Note that $\Delta r$ is the difference between $r_1$ and $r_2$.  
+
+To find the actual $y$ position of the fringe, use the following approximation when $\lambda << d << L$
+$$ \sin \theta = \tan \theta = \frac{y}{L}$$
+
+$$ \Delta r = \frac{d y}{L} = m \lambda$$
+
+$$ y_{light} = \frac{m \lambda L}{d}$$
+
+##### Dark Fringe
+$$ y_{dark} = \frac{\left(m + \frac{1}{2}\right)\lambda L}{d} $$
+
+
+Fringe spacing is 
+$$ \Delta y = y_m - y_{m-1} = \frac{\lambda L}{d}$$
+
+
+### Diffraction Grating
+**Diffraction Grating (DG)**: A system with many closely spaced slits
+
+* **d**: the distance between narrow slits
+* **N**: The number of lines per meter printed on a DG
+$$ d = \frac{1}{N}$$
+
+Bright and narrow fringes follows the same rules:
+$$ d\sin \theta_m = m\lambda \ \ \ \ \ \ \ m =  0, 1, 2, 3...$$
+
+Consider what happens when white light passes through a diffraction grating.  
+For all frequencies, the path differences, $\Delta r = 0$ $m=0$. Thus at $m=0$, the light is white. However, at other $m$ values, the path difference for each frequency is different, so each color shows up at different places.
+
+![Diffraction Grating](/physics2/diffractiongrating.png)
+
+### Single Slit Diffraction
+* If we send a beam of monochromatic light through a single narrow slit, with viewing screen at distance $L$ and slit width $a$, $L >> a$, diffraction occurs
+* Unlike with the double slit, there is one large, broad central maximum
+* **Perfect Destructive Interference**-  Minima:
+$$ a \sin \theta_p = p \lambda, \ \ \ \ p =1, 2, 3, ...$$
+* **Width of Single-Slit Central Maximum**
+$$ w = \frac{2\lambda L}{a}$$
+
+### Circular-Aperture Diffraction
+* Q: What if the rectangular slit is replaced with a hole of diameter $D$?
+* A: The diffraction pattern of monochromatic light appears as a central circular max with second bright fringes ringed around
+* Angle of first **min**
+$$\theta_1  = \frac{1.22\lambda}{D}$$
+
+* **Width of central maximum**
+$$ w = 2y_1 = 2L \tan \theta_1 \approx \frac{2.44 \lambda L}{D}$$
