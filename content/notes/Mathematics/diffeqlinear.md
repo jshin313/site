@@ -1335,4 +1335,59 @@ $$ y'' + a_1 y' + a_2y = F(x) + iG(x)$$
 then
 $$ u'' + a_1 u' + a_2 u = F(x)\text{ and } v'' + a_1 v' + a_2 v = G(x)$$
 
+### Example
+Find the general solution to
+$$ y'' + 9y = 5\cos (2x) $$
+
+ Note that $$F(x) = 5\cos(2x) = Re(5e^{2ix})$$
+
+$$ z'' + 9z = 5e^{2ix}$$
+$$ z_p = z_p(x)$$
+
+Note that
+$$ y_p(x) = Re(z_p(x))$$
+
+Since $2i$ is not a root of $r^2 + 9$, use the first row of the [table](#table) to get the following
+$$ z_p(x) = Ae^{2ix}$$
+$$ z_p(x)' = 2iAe^{2ix}$$
+$$ z_p(x)''= A(2i)^2 e^{2ix} = -4 A e^{2ix}$$
+
+$$ -4A e^{2ix} + 9Ae^{2ix} = 5e^{2ix}$$
+$$ (5A - 5)e^{2ix} = 0 \implies 5A - 5 = 0 \implies A = 1$$
+
+So
+$$ z_p(x) = e^{2ix} $$
+$$y_p(x) =  Re(e^{2ix}) = \cos (2x)$$
+
+### Example
+$$ y'' + y' - 6y = 4\cos (2x) $$
+Consider complex version of $F(x)$ of above
+$$ z'' + z' - 6z = 4e^{2ix}$$
+Consider homogeneous of above
+$$ z'' + z' - 6z = 0$$
+$$ (r^2 + r - 6) = (r-2)(r+3)$$
+$$ r = 2, r= -3$$
+$$ z(x) = c_1 e^{2x} + c_2 e^{-3x} , \ \ \ c_1, c_2 \in \mathbb{C}$$
+
+Find $y_p$ by finding $z_p$. Note $2i$ is not a root of $(r-2)(r+3)$, so we get the following
+$$ z_p(x) = Ae^{2ix} , \ \ \ A\in mathbb{C}$$
+$$ z'_p(x) =2iAe^{2ix}$$
+$$ z''_p(x) =-4e^{2ix}$$
+$$ \left( -4A + 2iA - 6A \right)e^{2ix} = 4e^{2ix} $$
+$$ (2i - 10) Ae^{2ix} = 4e^{2ix}$$
+$$ (-5+i)A = 2$$
+$$ A = -\frac{5+i}{13}$$
+So
+$$z_p(x) = -\frac{5+i}{13}e^{2ix} $$
+$$ y_p(x) = Re(z_p(x)) = Re\left( -\frac{5+i}{13}e^{2ix} \right)  = Re\left( -\frac{1}{13}(5\cos 2x - \sin 2x + i(\cos(2x) + 5\sin(2x))) \right) $$
+$$ y_p(x) =-\frac{1}{13}( 5\cos_2x - \sin 2x)$$
+$$ y(x) = y_c(x) + y_p(x)$$
+$$ y(x) = c_1e^{2x} + c_2 e^{-3x}  -\frac{1}{13}( 5\cos_2x - \sin 2x), \ \ \ \ c_1, c_2 \in \mathbb{C}$$
+
+### Example
+If we wanted to solve the following
+$$ y'' + y' - 6y = 4\sin 2x$$
+we can just use the above $z_p$ value and just take the $Im(z_p)$ value since
+$$ 4\sin(2x) = Im(4e^{2ix})$$
+
 ## 8.6: RLC Circuits
