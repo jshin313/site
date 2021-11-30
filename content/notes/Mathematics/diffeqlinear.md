@@ -1323,3 +1323,16 @@ The previous section showed how to find the solutions to $y_c$, the homogeneous 
 ### Table
 Just use this table here
 ![Table with results of annhiliator method](/dela/8.3table.png)
+
+## 8.4: Complex-Valued Trial Solutions
+Alternative Method for Solving the following constant coefficient differential equation
+$$ y'' + a_1 y' + a_2 y = F(x)$$
+where $$ F(x) = x^k e^{ax} \sin bx\text{ or } F(x) = x^k e^{ax} \cos bx$$
+
+## Theorem 8.4.1
+If $y(x) = u(x) + iv(x)$ is a complex-valued solution to 
+$$ y'' + a_1 y' + a_2y = F(x) + iG(x)$$
+then
+$$ u'' + a_1 u' + a_2 u = F(x)\text{ and } v'' + a_1 v' + a_2 v = G(x)$$
+
+## 8.6: RLC Circuits
