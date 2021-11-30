@@ -1309,3 +1309,17 @@ $$\frac{1}{2} (f_1 + f_2) = e^{3x} \cos 4x$$
 $$\frac{1}{2i} (f_1 - f_2) = e^{3x} \sin 4x$$
 
 $$ \text{Basis: }\\{e^{3x} \cos 4x, e^{3x}\sin 4x\\}$$
+
+## 8.3: The Method of Undetermined Coefficients: Annihilators
+According to [Theorem 8.1.8](#theorem-818), the general solution to the non-homogeneous differential equation
+$$ P(D)y = F(x)$$
+is of the form 
+$$ y(x) = y_c(x) + y_p(x)$$
+
+The previous section showed how to find the solutions to $y_c$, the homogeneous linear differential equation. This section will explore how to find $y_p$, a particular solution to the non-homogeneous linear differential equation.
+
+### Insert Part about Annihilators Here
+
+### Table
+Just use this table here
+![Table with results of annhiliator method](/dela/8.3table.png)
