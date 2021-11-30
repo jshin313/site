@@ -1329,7 +1329,7 @@ Alternative Method for Solving the following constant coefficient differential e
 $$ y'' + a_1 y' + a_2 y = F(x)$$
 where $$ F(x) = x^k e^{ax} \sin bx\text{ or } F(x) = x^k e^{ax} \cos bx$$
 
-## Theorem 8.4.1
+### Theorem 8.4.1
 If $y(x) = u(x) + iv(x)$ is a complex-valued solution to 
 $$ y'' + a_1 y' + a_2y = F(x) + iG(x)$$
 then
