@@ -1094,7 +1094,9 @@ $L$, a linear differential operator of order $n$
 $$ L = D^n + a_1 D^{n-1} + ... + a_{n-1}D + a_n $$
 $$ Ly = y^{(n)} + a_1 y^{(n-1)} + ... + a_{n-1}y' + a_n y$$
 
-Note that in general, $L_1 L_2 \neq L_2 L_1$
+Note that in general, $L_1 L_2 \neq L_2 L_1$  
+
+Note that $L_1 L_2$ means the composition of the linear transformations and can be written like $L_1 \circ L_2$. You CANNOT just treat each $L_1$ and $L_2$ as polynomials and multiply them together.
 
 ### Example
 $$ L = D^2 + 4x D -3x$$
@@ -1113,6 +1115,7 @@ $$ y' - 2xy = 0$$
 Use integrating factor to get $$ \left(e^{-x^2}y\right)' = 0$$
 $$ e^{-x^2 y} = c$$
 $$ Ker(L) = \\{ce^{x^2}: c \in \mathbb{R}\\}$$
+
 
 ### Linear Differential Equations
 **Homogeneous** Linear DE's are of the following form:
@@ -1206,3 +1209,103 @@ $$ P(D) Q(D) = Q(D) P(D)$$
 * Polynomial differential operators are **commutative**
 * Note: When we write $P(D) Q(D) f$, we mean $P(D) \circ Q(D) f$
 * Note: The polynomial differential operators commute because polynomials commute!
+* Note: You CAN treat the linear transformations as polynomials and multiply them together
+
+### Theorem 8.2.4
+If $P(D) = P_1(D) P_2(D) ... P_k(D)$, where $P_i(D)$ is a polynomial differential operator, then, for each $i$, $1 \le k$, any solution to $P_i (D)y = 0$ is also a solution to $P(D)y=0$
+
+### Lemma 8.2.5
+Consider the differential operator $(D-r)^m$, where $m$ is a positive integer, and $r$ is a real or complex number. For any $u \in C^m(I)$,
+
+$$ (D-r)^m (e^{rx}u ) = e^{rx} D^m(u)$$
+
+### Theorem 8.2.6
+The differential equation $(D-r)^m y = 0$, where $m$ is a positive integer and $r$ is real or complex, has the following $m$ solutions that are linearly independent
+$$ e^{rx}, xe^{rx}, ..., x^{m-1}e^{rx}$$
+
+The above functions also form a basis of $ker((D-\lambda)^m)$ and a basis of the solution space of $(D-\lambda)^m (y) = 0$
+
+#### Proof
+Using the above lemma, we get
+$$ (D-\lambda)^m (e^{\lambda x}x^j) = e^{\lambda x} D^m (x^j)$$
+$$ j \in \\{0, 1, 2, ..., m-1\\}$$
+But since $m > j$, $D^m (x^j) = 0 $, so
+$$ (D-\lambda)^m (e^{\lambda x}x^j) = e^{\lambda x} 0 = 0$$
+$$ (D-\lambda)^m (e^{\lambda x}x^j) = 0$$
+
+#### Complex Roots of the Auxiliary Equation
+If the roots of the auxiliary equation are complex, then the solutions are
+$$ e^{(a\pm bi)x} , xe^{(a\pm bi)x}, x^2e^{(a\pm bi)x}, ..., x^{m-1}e^{(a\pm bi)x}$$
+for real valued solutions use Euler's formula
+$$ e^{(a + ib)x} = e^{ax} (\cos bx + i\sin bx)$$
+$$ f_1 = x^ke^{(a+bi)x} = x^ke^{ax}(\cos (bx) + i \sin (bx))$$
+$$ f_2 = x^k e^{(a-bi)x} = x^k e^{ax}(\cos (bx) - i \sin (bx))$$
+$$ 0\le k \le m-1$$
+
+$$ y_1(x) = \frac{1}{2} (f_1(x) + f_2(x)) = x^k e^{ax} \cos bx$$
+$$ y_2(x) = \frac{1}{2i} (f_1(x) - f_2(x)) = x^k e^{ax} \sin bx$$
+
+The are the real-valued solutions to the differential equation
+$$ e^{ax}\cos bx, e^{ax}\sin bx, xe^{ax} \cos bx, xe^{ax} \sin bx, ..., x^{m-1}e^{ax}\cos bx, x^{m-1} e^{ax} \sin bx$$
+
+
+### General Result
+For the differential equation
+$$ P(D)y = 0$$
+$$ (D-r_1)^{m_1} (D-r_2)^{m_2} ... (D-r_k)^{m_k}y = 0$$
+1. If $r_i$ is **real**, the following are linearly independent solutions
+$$ e^{r_ix}, xe^{r_ix}, ...x^{m_i-1}e^{r_ix}$$
+2. If $r_i$ is **complex** ($r_i = a+bi$), then the following functions are linearly independent solutions corresponding to $a \pm bi$
+$$ e^{ax}\cos bx, xe^{ax} \cos bx, ..., x^{m_j-1}e^{ax}\cos bx$$
+$$ e^{ax}\sin bx, xe^{ax} \sin bx, ..., x^{m_j-1}e^{ax}\sin bx$$
+
+### Special Case
+For the differental equation 
+$$(D-r_1)(D-r_2)...(D-r_n)$$
+the following are solutions  
+$$ f_1(x) = e^{\lambda_1x}, f_2(x)= e^{\lambda_2 x}, ..., f_n(x) e^{\lambda_n x} $$
+
+#### Proof
+$f_1, f_2, ..., f_n$ is linearly independent since $W = S$, where $S$ is the solution space and
+$$ W = span(f_1, f_2, ..., f_n) \subset S$$
+$$ dim(W) = dim(S) = n$$
+
+You can also use the Wronskian to show linear independence (with the vandermont determinant)  
+
+So the general solution of the differential equation is $c_1  e^{\lambda_1x} + c_2 e^{\lambda_2 x}+ ...+ c_n e^{\lambda_n x}$
+
+
+### Example
+Find the general solution to 
+$$ D^3 (D-2)^2 (D^2 + 1)^2 y = 0 $$
+
+#### Solution
+$$ P(r) = r^3(r-2)^2(r^2 + 1)^2$$
+
+$r = 0$ (multiplicity 3)
+$$ y_1(x) = 1, y_2(x) = x, y_3(x) = x^2$$
+$r = 2$ (multiplicity 2)
+$$ y_1(x) = e^{2x}, y_2(x) = xe^{2x}, y_3(x) = x^2e^{2x}$$
+$r = \pm i$ (multiplicity 2)
+$$ y_1(x) = \sin(x), y_2(x) = x\sin(x), y_3(x) = \cos(x), y_4(x) = x\cos(x)$$
+
+### Example
+Find the basis of the solution space for 
+$$ y'' - 6y' + 25y = 0$$
+
+$$ P(r) = r^2 - 6 + 25$$
+$$ = r^2 - 2 \cdot 3  + 9 + 16$$
+$$ = (r- 3)^2 + 16$$
+$$ = (r-3)^2 - (4i)^2$$
+$$ = (r-3 - (4i)) (r-3 + (4i))$$
+
+Roots are $3+4i$ and $3-4i$, so the complex valued basis:
+$$ \\{e^{(3+4i)x}, e^{(3-4i)x}\\}$$
+Real valued basis
+$$f_1 = e^{(3+4i)x} = e^{3x}(\cos 4x + i\sin 4x)  $$
+$$f_2 = e^{(3-4i)x} = e^{3x}(\cos 4x -i \sin 4x)  $$
+
+$$\frac{1}{2} (f_1 + f_2) = e^{3x} \cos 4x$$
+$$\frac{1}{2i} (f_1 - f_2) = e^{3x} \sin 4x$$
+
+$$ \text{Basis: }\\{e^{3x} \cos 4x, e^{3x}\sin 4x\\}$$
