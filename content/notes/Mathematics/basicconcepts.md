@@ -1005,3 +1005,162 @@ $\\{0\\}$ is clearly countable.
 
 $$ \mathbb{Q} = \mathbb{Q}^- \cup \\{0\\} \cup \mathbb{Q}^+$$
 So $\mathbb{Q}$ is countable!
+
+### Example
+Is it true that if $A$ and $B$ are countable sets, then so is $A \cross B$?  
+
+If $A = \emptyset \lor B = \emptyset$ , then answer is yes, since $A \cross B = \emptyset$. So assume $A$ and $B$ are nonempty.  
+
+Since $A$ and $B$ are also countable, there are surjections $f: \mathbb{N} \to A$ and $g: \mathbb{N} \to B$
+
+We will use the fact that $\mathbb{N} \cross \mathbb{N}$ is countable.
+
+$$ h: \mathbb{N}\cross \mathbb{N}\to A \cross B$$
+$$ (x, y) \to (f(x), g(y))$$
+
+h is surjective:
+$$ \text{Let } (a, b) \in A \cross B$$
+$$ \text{f is surjective } \implies( \exists c \in \mathbb{N}) (f(c) = a)$$
+$$ \text{g is surjective } \implies( \exists d \in \mathbb{N}) (f(d) = b)$$
+
+$$h((c, d)) = (f(c), g(d)) = (a, b) $$
+$$ (a, b) \in im(h)$$
+So $h$ is surjective.
+
+Now since $\mathbb{N}\cross\mathbb{N}$ is countable, there is a surjection
+$$t: \mathbb{N} \to \mathbb{N}\cross\mathbb{N}$$
+
+$$ h\circ t: \mathbb{N} \to A \cross B$$
+$h\circ t$ is also a surjection, so $A \cross B$ is also countable.
+
+### Proposition
+Let $A$ and $B$ be sets with $A$ being countable. Let $B \subseteq A$. Then $B$ is also countable.
+
+#### Proof
+If $B = \emptyset$, then $B$ is finite and thus countable. Assume $B \neq \emptyset$
+
+Since  $A$ is countable, there is a surjection
+$$ f: \mathbb{N}\to A$$
+
+Fix $b \in B$. Define
+$$
+g: \mathbb{N}\to B
+$$ 
+$$
+n \to \begin{cases}
+  f(n) & f(n) \in B \\\\
+  b & f(n) \not\in  B
+\end{cases}
+$$ 
+Let $b \in B$. Since  $f$ is surjective, $\exists x \in \mathbb{N}$ with 
+$$ f(x) = y\in B $$
+
+Then $g(x) = f(x) = y$, so $y \in im(g)$, so $g$ is surjective.
+
+$$ \text{B is countable}$$
+
+### Corollary
+Let $X$ be a set and suppose $Y \subseteq X$  
+
+If $Y$ is uncountable, then $X$ is uncountable.
+
+### Theorem (Cantor): $[0, 1) \ $ is uncountable.
+
+#### Proof
+Suppose BWOC, that $[0, 1)$ is countable.  
+
+In this case, there would exist a surjection $f: \mathbb{N}\to [0, 1)$
+Super scripts are not exponents, 0.abcd denotes decimal expansion of a numer
+$$
+f(2) = 0.d_1^1 d_2^1 d_3^1 \ldots
+$$
+$$
+f(2) = 0.d_1^2 d_2^2 d_3^2 \ldots
+$$
+$$
+f(3) = 0.d_1^3 d_2^3 d_3^3 \ldots
+$$
+$$
+f(4) = 0.d_1^4 d_2^4 d_3^4 \ldots
+$$
+$$
+\\\\
+d_i^t \in \\{0, 1, 2, 3, \ldots 9\\}
+$$ 
+
+Consider the following number
+$$
+r =0.r_1r_2r_3r_4 \ldots
+$$ 
+$$
+r = \begin{cases}
+  4 & d_i^i \neq 4 \\\\
+  5 & d_i^i \neq 4
+\end{cases}
+$$ 
+
+$$
+(\forall n \in \mathbb{N})\left( f(n) \neq r_n \right) 
+$$
+since 
+$$
+\left( \forall n\in\mathbb{N} \right) r_n \neq d_n^n
+$$ 
+
+So $r \not\in im(f)$, contradicting surjectivity of $f$.
+
+Hence $[0, 1)$ is uncountable.
+
+### Corollary
+$\mathbb{R}$ is uncountable
+
+#### Proof
+$[0, 1) \subseteq \mathbb{R}$
+
+## Groups
+### Definitions
+Let $G$ be a set.   
+
+An operation, $\star$, on $G$ is a function $\star: G \cross G \to X$  
+where $X$ is a set. We write $g \star h$ instead of $\star(g, h)$.
+
+We say that $\star$ is closed if $im(\star) \subseteq G$  
+
+Addition is closed
+$$ +: \mathbb{Z} \cross \mathbb{Z} $$
+Multiplication is closed
+$$ \cdot : \mathbb{Z} \cross \mathbb{Z} $$
+Division is not closed
+$$ /: (\mathbb{Z} - \\{0\\}) \cross \left( \mathbb{Z} - \\{0\\} \right) $$
+
+
+#### Identity
+$$ a \star x = b$$
+$$ a^{-1} \star (a \star x) = a^{-1} \star b$$
+$$ (a^{-1} \star a) \star x = a^{-1} \star b$$
+$$
+e \star x = a^{-1} \star b
+$$ 
+where $e$ is the identity element
+$$
+x = a^{-1} \star b
+$$ 
+
+#### Property of a Group
+Let $G$ be a set and let $\star$ be a closed operation on $G$.
+
+We say that  $(G, \star)$ is a **group** if 
+1. $(\forall a, b, c \in G) \left( a \star \left( b \star c \right) = \left( a \star b \right) \star c  \right) $ 
+2. $(\exists e \in G) \left( \forall a \in G \ \ \ a \star e = e \star a = a \right) $
+3. $(\forall a \in G \ \ \ \exists a^{-1} \in G )\left( a \star a^{-1} = a^{-1} \star a = e \right) $
+4. (If $\forall a, b, \in G \ \ \ a \star b = b \star a$, then the group is an **abellian group**)
+
+
+### Examples of a Group
+1. $(\mathbb{Z}, +)$
+2. $\left( \mathbb{Q} - \\{0\\}, \cdot \right) $
+3. $\left( V, +\right) $, where $V$ is only $\mathbb{R}$-vector space
+4. $\left( \mathbb{R}, + \right) $
+5. $\left( \mathbb{R} - \\{0\\}, \cdot \right) $
+
+
