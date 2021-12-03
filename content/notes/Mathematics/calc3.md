@@ -1147,3 +1147,23 @@ $$ 0 \le y \le b\left(1 - \frac{x}{a}\right)$$
 $$ 0\le z \le c\left(1 - \frac{x}{a} - \frac{y}{b}\right)$$
 
 $$ \int_0^{a} \int_{0}^{b(1-\frac{x}{a})} \int_0^{c(1-\frac{x}{a} - \frac{y}{b})} (1+x) dz \ dy \ dx$$
+
+## Summary of Green's, Stokes', Divergence Theorems
+
+1. **Green's Theorem**
+$$ \vec{F} = \ev{P, Q}, \ \ \ P(x, y) = P,  \ \ \ Q(x, y) = Q$$
+$C$ **closed** curve in $xy$ plane ($\mathbb{R}$) oriented counter clockwise (positive orientation)
+$$ \oint\limits_C = \vec{F} \cdot d\vec{r} = \iint\limits_D (Q_x - P_y) \ dA$$
+  where $D$=Interior of $C$
+
+2. **Stokes' Theorem**
+$$ \vec{F} = \ev{P, Q, R}, \ \ \ P(x, y) = P,  \ \ \ Q(x, y) = Q, \ \ \ R = R(x, y)$$
+  **Closed** curve $C$ in $\mathbb{R}^3$ oriented counter-clockwise when viewed from above
+
+$$ \oint\limits_C \vec{F} \cdot d\vec{r} = \iint\limits_S \curl F \cdot d\vec{s}$$ where $S$ is a surface in $\mathbb{R}$ with boundary $C$ and $\vec{n}$ oriented up
+
+3. **Divergence Theorem**
+  $F$ is the same as in Stokes'
+  $S$ is a surface, closed in $\mathbb{R}^3$ oriented **out**
+$$ \iint \vec{F} \cdot d\vec{S} = \iiint\limits_{E} \div F \ \ dV$$
+  $E$ is a solid in the interior of $S$
