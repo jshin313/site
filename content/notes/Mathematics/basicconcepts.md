@@ -803,11 +803,59 @@ $$ \bigcap_{i=1}^{m} \left( A \cup B_i \right) \cap \left( A \cup B_{m+1} \right
 
 ## 5.3: Injective and Surjective Functions
 
+### Definition
+Let $X, Y$ be sets, and let  $f: X \to Y$
+1.  $f$ is **one-to-one (1-1)** or **injective** if
+$$
+\left( \forall x_1, x_2 \in X \right) [f(x_1) = f(x_2) \implies x_1 = x22]
+$$ 
+     the contrapositive of the above is also true
+2. $f$ is **onto** or **surjective** if 
+$$
+(\forall y \in Y) \left( \exists x \in X \right) [y = f(x)]
+$$ 
+
+3. $f$ is **bijective** $f$ is both injective and bijective.
+
+### Theorem 5.3.10
+Let $X, Y, Z$ be sets. Let $f: X \to Y$ and $g: Y \to Z $
+1. If $f$ and $g$ are both 1-1, then $g \circ f$ is also 1-1
+2. If $f$ and $g$ are both onto, then $g \circ f$ is also onto
+3. If $f$ and $g$ are both bijections, then $g \circ f$ is also a bijection
+4. If $g \circ f$ is 1-1, then $f$ is 1-1, but $g$ is not necessarily 1-1
+5. If $g \circ f$ is onto, then $g$ is onto, but $f$ is not necessarily onto
+
 ## 5.4: Invertible Functions
 
-## 7.1: Introduction to Equivalence Relations and Partitions
+### Definition
+Let $X, Y$ be sets, and let  $f: X \to Y$. We say that  $f$ is **invertible** if there exists a function $g: Y \to X$ such that for all $x\in X$ and for all  $y \in Y$
+ $$
+ y = f(x) \iff x = g(y)
+$$ 
+
+### Proposition 5.4.3
+Let $X$ and  $Y$ be sets, and let $f: X \to Y$ and  $g: Y \to X$. Then  $f$ is invertible and $g$ is an inverse function of $f$ iff $g \circ f = I_X$ and  $f \circ g = I_Y$ 
+
+### Theorem 5.4.7
+Let $X, Y$ be sets and let $f: X \to Y$
+1.  $f$ is invertible iff $f$ is a bijection
+2. If $f$ is invertible, then its inverse function is unique
+
+## 7.1: Relations
+### Definitions
+Let $A$ and $B$ be sets, and let $R \subseteq A \cross B$ be a relation from $A$ to $B$. For  $a \in A$ and $b \in B$,
+
+$$ a R b \ \ \ \text{ iff } (a, b) \in R $$
+$$ a \not R b \ \ \ \text{ iff } (a, b) \not\in R $$
 
 ## 7.2: Equivalence Relations
+
+### Definition
+Let $\sim$ is a relation on a set  $A$
+1. $\sim$ is **reflexive** if  $\left( \forall a \in A \right)\left( a \sim a \right)  $
+2. $\sim$ is **symmetric** if  $\left( \forall a, b \in A \right) \left( a \sim b \implies b \sim a \right) $
+3. $\sim$ is **transitive** if  $\left( \forall a, b, c \in A \right) [\left( a \sim b \land b \sim c  \right) \implies a \sim c] $
+4. $\sim$ is an **equivalence relation** if $\sim$ is reflexive, symmetric, and transitive
 
 ## 8.1: Introduction to Finite and Infinite Sets
 $$A_m = \\{1, 2, ..., m\\} = \\{i \in \mathbb{N} : i \le m\\} $$
@@ -1192,9 +1240,9 @@ $$
 Let $G$ be a set and let $\star$ be a closed operation on $G$.
 
 We say that  $(G, \star)$ is a **group** if 
-1. $(\forall a, b, c \in G) \left( a \star \left( b \star c \right) = \left( a \star b \right) \star c  \right) $ 
-2. $(\exists e \in G) \left( \forall a \in G \ \ \ a \star e = e \star a = a \right) $
-3. $(\forall a \in G \ \ \ \exists a^{-1} \in G )\left( a \star a^{-1} = a^{-1} \star a = e \right) $
+1. **Commutative**: $(\forall a, b, c \in G) \left( a \star \left( b \star c \right) = \left( a \star b \right) \star c  \right) $ 
+2. **Identity Element**: $(\exists e \in G) \left( \forall a \in G \ \ \ a \star e = e \star a = a \right) $
+3. **Inverse**: $(\forall a \in G \ \ \ \exists a^{-1} \in G )\left( a \star a^{-1} = a^{-1} \star a = e \right) $
 4. (If $\forall a, b, \in G \ \ \ a \star b = b \star a$, then the group is an **abellian group**)
 
 
@@ -1205,4 +1253,86 @@ We say that  $(G, \star)$ is a **group** if
 4. $\left( \mathbb{R}, + \right) $
 5. $\left( \mathbb{R} - \\{0\\}, \cdot \right) $
 
+### Is the Identity Element Unique?
+Suppose that
+$$\forall a \in G \ \ \ a \star e = e \star a = a$$
+$$
+\forall a \in G \ \ \ a \star  d  = d \star a = a
+$$
+$$
+d \star e = d
+$$ 
 
+$$
+d \star e = e
+$$ 
+
+$$
+d = e
+$$ 
+Thus the identity is unique.
+
+### Is the Inverse Unique
+Suppose $b \star a = a \star b = e$ and $c \star a = a \star c = e$ (i.e. both $b$ and $c$ are inverses of $a$
+
+
+$$ b \star a \star c = \left( b \star a  \right)  \star c = e \star c = c$$
+$$ b \star a \star c = b \star \left( a \star c \right)  = b \star e = b$$
+
+$$ \implies b = c $$
+$a^{-1}$ is unique
+
+
+
+### Notation
+We often just write "let $G$ be a group" and use multiplication for the operation on $G$, even if the operation isn't traditional multiplication
+
+$ab$ instead of $a \star b$
+$a + b$ instead of $a \star b$ sometimes when group is **abelian**
+
+### Examples of Finite Groups
+
+Fix $n \in \mathbb{N}$. Then $\mathbb{Z} / n \mathbb{Z} = \\{[0], [1], [2], \ldots [n-1] \\}$ with 
+$$ [a] + [b] = [a + b]$$
+forms a group
+* $[0]$ is the identity
+* $[-a]$ is the inverse of $a$ 
+
+### Example of Non-Abelian Groups
+$$ G = \left\\{\begin{bmatrix} a & b \\\\ c & d \end{bmatrix}: ab - bc \neq 0  \right\\}$$
+
+### Example of Non-Abelian Groups
+Let $X = \\{1, 2, 3\\}$  
+Let  $S_3 = \\{f: f: X \to X \text{ and f is bijective}\\}$
+
+$$ f_1 = \begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 2 & 3 \end{pmatrix} $$
+means $f_1(1) = 1, \ \ f_1(2) = 2,  \ \ f_1(3) = 3$
+
+
+$$ f_2 = \begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 3 & 2 \end{pmatrix} $$
+means $f_2(1) = 1, \ \ f_1(2) = 3,  \ \ f_1(3) = 2$
+
+$$ f_3 = \begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 3 & 1 \end{pmatrix} $$
+$$ f_4 = \begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 2 & 1 \end{pmatrix} $$
+$$ f_5 = \begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 1 & 2 \end{pmatrix} $$
+$$ f_6 = \begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 3 \end{pmatrix} $$
+
+$$
+f_1, f_2, f_3, f_4, f_5, f_6 \in S_3
+$$ 
+If $f, g \in S_3$  
+$f \circ g = g \circ f$ is not true in general, so the group is not abelian.  
+
+More generally, if $X$ is any nonempty set,
+$$ Sym(X) = \\{f: f: X \to X,  \ \ f \text{ is bijective }\\}$$
+is the **symmetric group** with composition of functions as its operation.  
+
+### More Definitions
+* If $\left( G, \star \right) $ is a group and $H \subseteq G$ is nonempty, we say that  $H$ is a subgroup of $G$ if the restriction of $\star$ to $H \cross H$ makes $H$ into a group itself.
+* Equivalently, if $G$ is a group and $H \subseteq G$ is nonempty, then $H$ is a subgroup if $\forall a, b \in H, \ ab^{-1} \in H $
+
+### Homomorphisms and Isomorphisms
+Let  $G_1$ and  $G_2$ be groups. We say that $\phi: G_1 \to G_2$ is a **homomorphism** if 
+$$\forall a, b, \in G_1 \ \  \ \ \phi(ab) = \phi(a) \cdot \phi(b)$$
+
+If $\phi$ is also bijective, it is instead called an **isomorphism**
