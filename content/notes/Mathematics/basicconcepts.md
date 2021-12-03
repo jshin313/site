@@ -810,7 +810,49 @@ $$ \bigcap_{i=1}^{m} \left( A \cup B_i \right) \cap \left( A \cup B_{m+1} \right
 ## 7.2: Equivalence Relations
 
 ## 8.1: Introduction to Finite and Infinite Sets
-$$A_m$$
+$$A_m = \\{1, 2, ..., m\\} = \\{i \in \mathbb{N} : i \le m\\} $$
+$$ A_0 = \emptyset $$
+
+### Definition 8.1.2
+1. $X$ is **equinumerous** with $Y$, denoted $X \approx Y$, if there exists a bijection  $f: X \to Y$
+
+2.  $X$ is **finite** if $X = \emptyset$ or there exists $m\in \mathbb{N}$ such that $A_m \approx X$. In other words there exists a bijection $f: \\{1, 2, 3, \ldots, m\\} \to X$
+
+3. If $A_m \approx X$, then the cardinality of $X$ is $n$, denoted as $\\#X= n$. We define  $\\#\emptyset = 0$
+
+4. We say $X$ is infinite if $X$ is not finite.
+
+$\approx$ is an equivalence relation on the collection of all nonempty sets.
+
+### Example
+Show $\mathbb{N} \approx \mathbb{Z}$  
+
+First, define $f: \mathbb{N}\to \mathbb{Z}$ for all $n \in \mathbb{N}$
+$$
+f(n) = \begin{cases}
+  \frac{n}{2} & \text{ n is even } \\\\
+  \frac{-\left( n-1 \right) }{2} & \text{ n is odd }
+\end{cases}
+$$ 
+
+Show $f$ is 1-1.  
+Define $ n_1, n_2 \in \mathbb{N}$ and suppose $f(n_2) = f(n_1)$  
+If both are even, then 
+$$\frac{n_1}{2}= \frac{n_2}{2} \implies n_1 =n_2 $$
+If both $ n_1$ and $ n_2$ are odd,
+$$\frac{-\left( n_1-1 \right) }{2} = \frac{-\left( n_2-1 \right) }{2} $$
+One can't be odd and one even.  
+
+Show $f$ is onto.  
+Suppose $n \in \mathbb{Z}$ If $n \ge 1$, then $$
+f(2n) = \frac{2n}{2} = n
+$$ 
+If $n\le 0$ 
+$$
+f(-2n+1) = \frac{-\left( -2n+1 \right) -1}{2} = n
+$$ 
+$ n \in im(f)  \ \forall n \in \mathbb{Z}$, so $f$ is onto.
+
 
 ## 8.2: Finite Sets
 Recall: Let $A$ be a set. $\forall n \in \mathbb{N}$, let $I_n = \\{1, 2, 3, ...n\\}$
