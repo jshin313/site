@@ -1121,7 +1121,7 @@ $$ Ker(L) = \\{ce^{x^2}: c \in \mathbb{R}\\}$$
 **Homogeneous** Linear DE's are of the following form:
 $$ y^{(n)} + a_1(x) y^{(n-1)} + ... + a_{n-1}(x) y' + a_n(x) y =0$$
 
-**Nonhomogenous** Linear DE's are of the following form:
+**Nonhomogeneous** Linear DE's are of the following form:
 $$ y^{(n)} + a_1(x) y^{(n-1)} + ... + a_{n-1}(x) y' + a_n(x) y =F(x)$$
 $$ Ly = F(x)$$
 
@@ -1370,7 +1370,7 @@ $$ r = 2, r= -3$$
 $$ z(x) = c_1 e^{2x} + c_2 e^{-3x} , \ \ \ c_1, c_2 \in \mathbb{C}$$
 
 Find $y_p$ by finding $z_p$. Note $2i$ is not a root of $(r-2)(r+3)$, so we get the following
-$$ z_p(x) = Ae^{2ix} , \ \ \ A\in mathbb{C}$$
+$$ z_p(x) = Ae^{2ix} , \ \ \ A\in \mathbb{C}$$
 $$ z'_p(x) =2iAe^{2ix}$$
 $$ z''_p(x) =-4e^{2ix}$$
 $$ \left( -4A + 2iA - 6A \right)e^{2ix} = 4e^{2ix} $$
@@ -1391,3 +1391,223 @@ we can just use the above $z_p$ value and just take the $Im(z_p)$ value since
 $$ 4\sin(2x) = Im(4e^{2ix})$$
 
 ## 8.6: RLC Circuits
+
+### Components of Electric Circuit
+* Voltage Source
+  * $E(t)$
+* Resistor 
+  * Resistance (R) measured in Ohms $\Omega$
+  * Voltage Drop: $V_{drop} = IR$
+* Capacitor
+* Capacitance (C) measured in Farads (F)
+  * Voltage Drop: $V_{drop}= \frac{q}{C}$
+* Inductor
+  * Inductance (L) measured in Henrys (H)
+  * Voltage Drop: $V_{drop}= L \ I'(t)$
+
+### Representing the Circuit as a DE
+Consider a circuit with a voltage source, one resistor, one inductor, and one capacitor
+$$ IR + \frac{q}{C} + LI' = E(t)$$
+
+$$
+I = I(t), \ \ \ \ q = q(t),  \ \ \ q'(t) = I(t), \ \ \ \ I'(t) = q''(t)
+$$ 
+
+$$
+q'I + \frac{q}{c} + Lq'' = E(t)
+$$ 
+
+$$
+q'' + \frac{R}{L}q' + \frac{q}{LC} = \frac{E(t)}{L}
+$$ 
+
+The above is a 2nd order linear differential equation with constant coefficients.
+
+$$ q(t) = q_c(t) + q_p(t)$$
+
+If $E(t) = 0$
+$$
+q'' + \frac{R}{L}q' + \frac{q}{LC} = 0
+$$ 
+$$
+r^2 + \frac{R}{L}r + \frac{1}{LC} = 0
+$$ 
+
+$$
+r = \frac{-R\pm \sqrt{R^2 - \frac{4L}{C}} }{2L}
+$$ 
+1. **Underdamped** if $R^2 < 4L /C$
+$$ q_c = c_1 e^{\left( -\frac{R}{2L} + i\sqrt{\frac{4L}{C} - R^2}t  \right) }+ c_2 e^{\left( -\frac{R}{2L} - i\sqrt{\frac{4L}{C} - R^2}t  \right) } $$ 
+$$ q_c = e^{-\frac{R}{2L} t} \left( c_1 \cos \mu t + c_2 \sin \mu t \right) $$ 
+$$ \mu = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L} $$ 
+
+2. **Critically Damped** if $R^2 = \frac{4L}{C}$
+$$
+q_c = c_1 e^{-\frac{Rt}{2L}}  + c_2 t e^{-\frac{Rt}{2L}}
+$$ 
+
+3. **Overdamped** if $R^2 > \frac{4L}{C}$
+
+$$
+q_c = e^{-\frac{Rt}{2L}}(c_1 e^{\mu t} + c_2 e^{-\mu t})
+$$ 
+
+$$
+\mu = \frac{\sqrt{R^2 - \frac{4L}{C}} }{2L}
+$$ 
+In all three cases, $\lim\limits_{t \to \infty} q_c(t) = 0$
+
+So after some time,  $$
+q(t) = q_p(t)
+$$ 
+
+$q_p(t)$ is also known as the **steady state charge**
+
+## 9.1: First-Order Linear Systems
+A system of differential equations of the form is called a **first-order linear system**   
+
+$$ \frac{dx_1}{dt} = a_{11}(t) x_1(t) + a_{12}(t) x_2(t) + \ldots + a_{1n}(t) x_n(t) + b_1(t)$$
+$$ \frac{dx_2}{dt} = a_{21}(t) x_1(t) + a_{22}(t) x_2(t) + \ldots + a_{2n}(t) x_n(t) + b_2(t)$$
+$$ \vdots$$
+$$ \frac{dx_n}{dt} = a_{n1}(t) x_1(t) + a_{n2}(t) x_2(t) + \ldots + a_{nn}(t) x_n(t) + b_n(t)$$
+
+where $a_{ij}(t)$ and  $b_i(t)$ are specified functions on an interval  $I$
+
+If $ b_1=b_2=\ldots b_n = 0$, then the system is called **homogeneous**  
+
+Note that *any* $n$-th order linear differential equation can be replaced by an equivalent system of *first-order* differential equation
+
+### Example
+Convert the following system of differential equations to a first-order system
+$$ \frac{dx}{dt}-ty = \cos t, \ \ \ \frac{d^2y}{dt^2} - \frac{dx}{dt} + x = e^t$$
+
+Let $x_1 = x$, $x_2 = y$,  $x_3 = \frac{dy}{dt}= \frac{dx_2}{dt}$
+
+$$ \frac{dx_1}{dt} = tx_2 + \cos t $$
+$$\frac{dx_2}{dt} = x_3$$ 
+$$ \frac{dx_3}{dt} = -x_1 + \frac{dx_1}{dt} + e^t$$
+$$ \frac{dx_3}{dt} = -x_1 + \left(tx_2 + \cos t \right)  + e^t$$
+
+## 9.2: Vector Formulation
+
+The following first-order system
+$$ \frac{dx_1}{dt} = a_{11}(t) x_1(t) + a_{12}(t) x_2(t) + \ldots + a_{1n}(t) x_n(t) + b_1(t)$$
+$$ \frac{dx_2}{dt} = a_{21}(t) x_1(t) + a_{22}(t) x_2(t) + \ldots + a_{2n}(t) x_n(t) + b_2(t)$$
+$$ \vdots$$
+$$ \frac{dx_n}{dt} = a_{n1}(t) x_1(t) + a_{n2}(t) x_2(t) + \ldots + a_{nn}(t) x_n(t) + b_n(t)$$
+can be written as follows
+$$ \vec{x'}(t) = A(t) \vec{x}(t) + \vec{b}(t)$$
+
+$$\vec{x}(t) = \begin{bmatrix} x_1(t) \\\\ x_2(t)\\\\ \vdots \\\\ x_n(t) \end{bmatrix}, \ \ \  \vec{x'}(t) = \begin{bmatrix} x_1'(t) \\\\ x_2'(t)\\\\ \vdots \\\\ x_n'(t) \end{bmatrix} $$ 
+$$ A(t) = \begin{bmatrix} a_{11}(t) & a_{12}(t) & \ldots & a_{1n}(t) \\\\ a_{21}(t) & a_{22}(t) & \ldots &a_{2n}(t) \\\\ \vdots &  \vdots &  &\vdots \\\\ a_{n1}(t) & a_{n2}(t) & \ldots & a_{nn}(t) \\\\ \end{bmatrix}, \ \ \ \ \vec{b}(t) = \begin{bmatrix} b_1(t) \\\\ b_2(t) \\\\ \vdots  \\\\ b_n(t) \end{bmatrix} $$
+
+$\vec{x}$, $\vec{x'}$, $\vec{b}$ are column $n$-vector functions.  
+
+Let  $V_n(I)$ be the set of all column $n$ vector functions on interval,  $I$
+
+$$ \vec{x}, \vec{x'}, \vec{b} \in V_n(I) $$ 
+
+### Theorem 9.2.1
+$V_n(I)$ is a vector space.
+
+### Definition 9.2.2
+If $\vec{x_1}(t), \vec{x_2}(t), \ldots \vec{x_n}(t)$ are all vectors in $V_n(I)$
+then the **Wronskian** 
+$$ W\[\vec{x_1}, \vec{x_2}, \ldots \vec{x_n}\](t) = det([\vec{x_1}(t), \vec{x_2}(t), \ldots \vec{x_n}(t)]) $$
+
+### Theorem 9.2.4
+If $ W\[\vec{x_1}, \vec{x_2}, \ldots \vec{x_n}\](t)(t_0)$  is **nonzero** at any point $t_0$ in $I$, the vector valued functions, $\vec{x_1}(t), \vec{x_2}(t), \ldots, \vec{x_n}(t)$ are linearly independent on $I$
+
+### Example
+Show that $\vec{x_1}(t) = \begin{bmatrix} e^t \\\\ -e^t \end{bmatrix}$ and $\vec{x_2}(t) = \begin{bmatrix} e^t \\\\ e^t \end{bmatrix}$ are linearly independent.
+
+$$ W\[\vec{x_1}, \vec{x_2}\] = \begin{vmatrix} e^t & e^t \\\\ -e^t & e^t \end{vmatrix} = 2e^{2t} \neq 0$$
+
+## 9.3: General Results for First-Order Linear Differential Systems
+
+### Theorem 9.3.1
+Let $A(t)$ and  $\vec{b}(t)$ be continuous on $I$.  
+The initial value problem
+$$ \vec{x'}(t) = A(t) \vec{x}(t) + \vec{b}(t), \ \ \ \vec{x}(t_0) = \vec{x_0}$$ has a unique solution on $I$
+
+### Homogeneous Vector Differential Equations
+$$ \vec{x'}(t) = A(t) \vec{x}(t)$$
+
+### Theorem 9.3.2
+Let $A(t)$ be an  $n \cross n$ matrix continuous on  $I$. The set of all solutions of the homogeneous vector differential equation $\vec{x'}(t) = A(t) \vec{x}(t)$ is a vector space of dimension $n$  
+
+* Any set of $n$ solutions to the homogeneous vector differential equation is called a **fundamental solution set** of  $\vec{x'} = A \vec{x}$  
+* The corresponding matrix $X(t) = \[\vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}\]$ is a **fundamental matrix**
+* The fundamental solution set is just a basis of the solution space of $\vec{x'} = A \vec{x}$
+
+### Theorem 9.3.4
+Let $A(t)$ be an  $n \cross n$ matrix function that is continuous on  $I$. If $\vec{x_1}, \vec{x_2}, \vec{x_3}, \ldots, \vec{x_n}$ is a linearly independent set of **solutions** to $\vec{x'} = A\vec{x}$ on  $I$, then 
+$$ W\[\vec{x_1}, \vec{x_2},\ldots, \vec{x_n}\] \neq 0$$ 
+at every point in $t$ in $I$
+
+* This means to see if $ \vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}$ is a fundamental set, we only need to compute the Wronksian at one point. If $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) \neq 0$, then the solutions are linearly independent (and form a basis/fundamental set), but if  $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) \neq 0$, the solutions are linearly independent on $I$.
+* The general solution to $\vec{x'} = A \vec{x}$ is just the linear combination of the elements of the basis
+
+#### Proof
+
+### Example
+$$ \vec{x'} = A\vec{x}$$
+$$ A = \begin{bmatrix} 1 & 2 \\\\ -2 & 1 \end{bmatrix} $$
+$$ \vec{x_1}(t) = \begin{bmatrix} -e^t \cos 2t \\\\ e^t \sin 2t \end{bmatrix}, \ \ \ \ \vec{x_2}(t) = \begin{bmatrix} e^t \sin 2t \\\\ e^t \cos 2t \end{bmatrix} $$
+
+Verify that $\\{x_1, x_2\\}$ is a fundamental set of solutions for the vector DE and write the general solution to the vector DE
+
+#### Solution
+1. Find $\vec{x_1'}$ and  $\vec{x_2'}$ and validate that $\vec{x_1'} = A \vec{x_1}$ and $\vec{x_2'} = A \vec{x_2}$
+2. Then use the Wronksian to show that the wronskian is never zero, so  $\\{\vec{x_1}, \vec{x_2}\\}$ is linearly independent and a fundamental set of solutions
+
+
+### Nonhomogeneous Vector Differential Equations
+Let $A(t)$ be a matrix function that is continuous on  $I$ and let  $\\{\vec{x_1}, \ldots, \vec{x_n}\\}$ be a fundamental set on $I$ for  $\vec{x'}(t) = A(t) \vec{x}(t)$. If $\vec{x_p}(t)$ is a particular solution to the nonhomogeneous vector differential equation 
+$$ \vec{x'}(t) = A(t) \vec{x}(t) + \vec{b}(t)$$
+
+on $I$, then  every solution to the above vector DE is of the form
+$$ \vec{x}(t) = c_1\vec{x_1} + c_2\vec{x_2} + \ldots+ c_n \vec{x_n} + \vec{x_p}$$
+
+
+## 9.4: Vector Differential Equations: Nondefective Coefficient Matrix
+### Theorem
+If $A(t)$ is constant and diagonalizable $n\cross n$ matrix, then it is straightforward to find a basis/fundamental set for  $\vec{x'} = \vec{x}$.  
+
+Let $\vec{v_1}, \vec{v_2}, \ldots, \vec{v_n}$ be $n$ linearly independent eigenvectors with $A\vec{v_j} = \lambda_j \vec{v_j}$ (eigenvectors are distinct but not necessarily eigenvalues). Then $\\{e^{\lambda_1 t} \vec{v_1}, e^{\lambda_2 t} \vec{v_2}, \ldots, e^{\lambda_n t} \vec{v_n}\\}$ is a fundamental set of solutions.
+
+#### Proof
+Since $A$ is diagonalizable, there is an invertible matrix $n \cross n$ $S$ such that
+$$ S^{-1} AS = D$$
+where $D$ is a diagonal matrix.
+
+$$ A = SDS^{-1}$$
+$$ \vec{x'} = \frac{d}{dt} \vec{x} = A \vec{x}$$
+$$ \frac{d}{dt} \vec{x} = SDS^{-1} \vec{x}$$
+$$ S^{-1}\frac{d}{dt} \left(\vec{x}\right) = D\left( S^{-1} \vec{x} \right) $$
+$\frac{d}{dt}$ is a linear transformation so,
+$$ \frac{d}{dt} \left(S^{-1} \vec{x}\right) = D\left( S^{-1} \vec{x} \right) $$
+Let $\vec{y}(t) = S^{-1} \vec{x}(t)$
+$$\frac{d}{dt} \vec{y}(t) = D \vec{y}$$
+$$ y_1' = \lambda_1y_1, y_2' = \lambda_2 y_2,\ldots, y_n' =\lambda_n y_n $$
+$$ y_1 = c_1e^{\lambda_1t},  y_2 = c_2e^{\lambda_2t}, \ldots, y_n = c_ne^{\lambda_nt}, \ \ \ c_1, c_2, \ldots, c_n \in \mathbb{R}$$
+$$ \vec{y}(t) = \begin{bmatrix} c_1e^{\lambda_1 t} \\\\ c_2e^{\lambda_2 t} \\\\ \vdots \\\\  c_ne^{\lambda_n t} \end{bmatrix} $$
+$$ \vec{x}(t) = S\vec{y} = S\begin{bmatrix} c_1e^{\lambda_1 t} \\\\ c_2e^{\lambda_2 t} \\\\ \vdots \\\\  c_ne^{\lambda_n t} \end{bmatrix} $$
+$$ \vec{x}(t) = \begin{bmatrix} c_1e^{\lambda_1 t} \vec{v_1} \\\\ c_2e^{\lambda_2 t} \vec{v_2} \\\\ \vdots \\\\ c_n e^{\lambda_n t} \vec{v_n} \end{bmatrix}  $$
+
+### Example
+Find a fundamental set of solutions of $\vec{x'} = A \vec{x}$
+$$ A = \begin{bmatrix} -1  & 2 \\\\ 2 & 2 \end{bmatrix} $$
+
+#### Solution
+$$ \begin{vmatrix} \lambda +1 & -2 \\\\ -2 & \lambda - 2 \end{vmatrix} = \left( \lambda + 1 \right)\left( \lambda - 2 \right) - 4 = (\lambda - 3)(\lambda + 2) = 0  $$
+Roots: $3, -2$
+
+$$ E_3(A) = nullspace  \begin{bmatrix} 4 & -2 \\\\ -2 & 1 \end{bmatrix}  = span\left\\{ \begin{bmatrix} 1 \\\\ 2 \end{bmatrix} \right\\} $$
+$$ E_{-2}(A) = nullspace  \begin{bmatrix} -1 & -2 \\\\ -2 & -4 \end{bmatrix}  = span\left\\{ \begin{bmatrix} -2 \\\\ 1 \end{bmatrix} \right\\} $$
+
+$$ S = \begin{bmatrix} 1 & 2 \\\\ 2 & -1 \end{bmatrix} $$
+General Solution:
+$$ \vec{x}(t) = S \begin{bmatrix} c_1 e^{3t} \\\\ c_2e^{-2t} \end{bmatrix} $$
+Fundamental Set:
+$$ \left\\{e^{3t} \begin{bmatrix} 1 \\\\ 2  \end{bmatrix}, e^{-2t} \begin{bmatrix} 2 \\\\ -1 \end{bmatrix}  \right\\}$$
