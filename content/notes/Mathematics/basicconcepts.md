@@ -933,6 +933,7 @@ $$ a_k = \underbrace{111...1}_{\text{k-ones}} \ \ \ \ k > j$$
 Then $7 | a_k - a_j$ since $a_k \equiv a_j \mod 7$  
 Thus the $a_k - a_j$ have only 0 and 1 as digits.
 
+### More on Finite Sets
 1. Suppose $A_1, A_2, A_3, ..., A_n$ are pairwise disjoint sets ($A_i \cap A_j = \emptyset, \text{ whenever } i \neq j$)  
 Then $\\#\left(\cup_{i=1}^{n} A_i\right) = \sum_{i=1}^{n} \left(\\#A_i\right)$
 
@@ -942,8 +943,14 @@ $$ \\#(A \cross B) = (\\#A) \cdot (\\#B)$$
 
 ## 8.3: Infinite Sets
 
+### Definitions
+1. The set $X$ is **denumerable** or **enumerable** or **countably infinite** if there is a bijection  $f: \mathbb{N} \to X$ and $f$ is onto and 1-1.
+$$ \mathbb{N} \approx X$$
+2. The set $X$ is **countable** if $X$ is finite or denumerable.
+3. The set $X$ is **uncountable** if $X$ is not countable, if $X$ is infinite and not denumerable
+
 ### Theorem
-Let $A$ be a nonempty set. Suppose $g: \mathbb{N} \to A$. Then $A$ is countable.
+Let $A$ be a nonempty set. Suppose $g: \mathbb{N} \to A$ is surjective. Then $A$ is countable.
 
 #### Proof
 Either $A$ is finite or it is not
