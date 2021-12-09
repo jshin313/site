@@ -1473,7 +1473,7 @@ $$ \frac{dx_n}{dt} = a_{n1}(t) x_1(t) + a_{n2}(t) x_2(t) + \ldots + a_{nn}(t) x_
 
 where $a_{ij}(t)$ and  $b_i(t)$ are specified functions on an interval  $I$
 
-If $ b_1=b_2=\ldots b_n = 0$, then the system is called **homogeneous**  
+If $b_1=b_2=\ldots b_n = 0$, then the system is called **homogeneous**  
 
 Note that *any* $n$-th order linear differential equation can be replaced by an equivalent system of *first-order* differential equation
 
@@ -1498,7 +1498,7 @@ $$ \frac{dx_n}{dt} = a_{n1}(t) x_1(t) + a_{n2}(t) x_2(t) + \ldots + a_{nn}(t) x_
 can be written as follows
 $$ \vec{x'}(t) = A(t) \vec{x}(t) + \vec{b}(t)$$
 
-$$\vec{x}(t) = \begin{bmatrix} x_1(t) \\\\ x_2(t)\\\\ \vdots \\\\ x_n(t) \end{bmatrix}, \ \ \  \vec{x'}(t) = \begin{bmatrix} x_1'(t) \\\\ x_2'(t)\\\\ \vdots \\\\ x_n'(t) \end{bmatrix} $$ 
+$$ \vec{x}(t) = \begin{bmatrix} x_1(t) \\\\ x_2(t)\\\\ \vdots \\\\ x_n(t) \end{bmatrix}, \ \ \  \vec{x'}(t) = \begin{bmatrix} x_1'(t) \\\\ x_2'(t)\\\\ \vdots \\\\ x_n'(t) \end{bmatrix} $$ 
 $$ A(t) = \begin{bmatrix} a_{11}(t) & a_{12}(t) & \ldots & a_{1n}(t) \\\\ a_{21}(t) & a_{22}(t) & \ldots &a_{2n}(t) \\\\ \vdots &  \vdots &  &\vdots \\\\ a_{n1}(t) & a_{n2}(t) & \ldots & a_{nn}(t) \\\\ \end{bmatrix}, \ \ \ \ \vec{b}(t) = \begin{bmatrix} b_1(t) \\\\ b_2(t) \\\\ \vdots  \\\\ b_n(t) \end{bmatrix} $$
 
 $\vec{x}$, $\vec{x'}$, $\vec{b}$ are column $n$-vector functions.  
@@ -1545,7 +1545,7 @@ Let $A(t)$ be an  $n \cross n$ matrix function that is continuous on  $I$. If $\
 $$ W\[\vec{x_1}, \vec{x_2},\ldots, \vec{x_n}\] \neq 0$$ 
 at every point in $t$ in $I$
 
-* This means to see if $ \vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}$ is a fundamental set, we only need to compute the Wronksian at one point. If $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) \neq 0$, then the solutions are linearly independent (and form a basis/fundamental set), but if  $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) = 0$, the solutions are linearly dependent on $I$.
+* This means to see if $\vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}$ is a fundamental set, we only need to compute the Wronksian at one point. If $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) \neq 0$, then the solutions are linearly independent (and form a basis/fundamental set), but if  $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) = 0$, the solutions are linearly dependent on $I$.
 * The general solution to $\vec{x'} = A \vec{x}$ is just the linear combination of the elements of the basis
 
 #### Proof
@@ -1553,7 +1553,7 @@ Show the contrapositive: If $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) = 0$  at som
 
 If $W[\vec{x_1}, \ldots \vec{x_n}\] (t_0) = 0$ ,then $\vec{x_1}(t_0), \vec{x_2}(t_0), \ldots, \vec{x_n}(t_0)$ is linearly dependent by [4.5.17](#corollary-4517).  
 
-Then there exists $ c_1, c_2, \ldots, c_n$, not all zero, such that
+Then there exists $c_1, c_2, \ldots, c_n$, not all zero, such that
 $$ c_1 \vec{x_1}(t_0) + c_2\vec{x_2} (t_0) + \ldots + c_n \vec{x_n}(t_0) = \vec{0}$$
 
 Let $\vec{x}(t) =  c_1 \vec{x_1}(t) + c_2\vec{x_2} (t) + \ldots + c_n \vec{x_n}(t)$. Then $\vec{x}(t)$ is the unique solution to
