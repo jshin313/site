@@ -899,8 +899,21 @@ $$ A(S) = \iint\limits_D \sqrt{f_x(x, y)^2 + f_y(x, y)^2 + 1} \\; dA$$
 ## 15.6: Triple Integrals
 
 ## 15.7: Triple Integrals with Cylindrical Coordinates
+Cylindrical to rectangular
+$$ x = r \cos \theta, \ \ \ y  = r \sin \theta, \ \ \ z = z$$
+
+Rectangular to Cylindrical
+$$ r^2 = x^2 + y^2, \ \ \ \tan \theta = \frac{y}{x}, \ \ \ z = z$$
+
+
 
 ## 15.8: Triple Integrals with Spherical Coordinates
+
+$$ x = \rho \sin \phi \cos \theta, \ \ \ y = \rho \sin \phi \sin \theta, \ \ \  z= \rho \cos \phi $$
+
+$$ \rho^2 = x^2 + y^2 + z^2$$
+
+$$ \iiint\limits_{E} f(x, y, z) \ dV= \int_c^d \int_\alpha^\beta \int_a^b f(\rho \sin \phi \cos \theta, \rho \sin \phi \sin \theta, \rho \cos \phi) \ \rho^2 \sin \phi \ d \rho \ d\phi \ d\theta  $$
 
 ## 16.2: Line Integrals
 $C$ is a curve
