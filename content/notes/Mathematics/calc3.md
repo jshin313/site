@@ -916,9 +916,23 @@ $$ \rho^2 = x^2 + y^2 + z^2$$
 $$ \iiint\limits_{E} f(x, y, z) \ dV= \int_c^d \int_\alpha^\beta \int_a^b f(\rho \sin \phi \cos \theta, \rho \sin \phi \sin \theta, \rho \cos \phi) \ \rho^2 \sin \phi \ d \rho \ d\phi \ d\theta  $$
 
 ## 16.2: Line Integrals
+
+### Line Integrals of Functions
 $C$ is a curve
 
 $$ \int_{C} f(x, y) \ \ ds= \int_{a}^{b} f(x(t), y(t)) \ \  \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \ \ dt$$
+
+### Line integrals of Vector Fields
+
+Calculate a line integral along a curve $C$ in a vector field $\vec{F}$
+
+$$ \int\limits_C \vec{F} \cdot d\vec{r} = \int\limits_C \vec{F} \cdot \vec{T} \ ds$$
+where $\vec{T}$ is a unit tangent vector to $C$ in the direction of increasing $T$  
+
+Calculation (in general): use parametrization
+$$ = \int_a^b \vec{F}\left( \vec{r}(t) \right) \cdot \vec{r}' (t) \ dt $$
+
+
 
 ## 16.7: Surface Integrals (of Functions)
 $S$ is a surface given by $z = f(x, y)$ where $(x, y) \in D$
@@ -1030,15 +1044,6 @@ $xz^4 \neq 2xz^4$, so $\vec{F}$ is not conservative
 2. div(curl($\vec{F}$)) = 0
 
 ## 16.7: Surface Integrals (Of Vector Fields)
-
-### Recall: Line integrals of vector fields
-
-$$ \int\limits_C \vec{F} \cdot d\vec{r} = \int\limits_C \vec{F} \cdot \vec{T} \ ds$$
-where $\vec{T}$ is a unit tangent vector to $C$ in the direction of increasing $T$  
-
-Calculation (in general): use parametrization
-$$ = \int_a^b \vec{F}\left( \vec{r}(t) \right) \cdot \vec{r}' (t) \ dt $$
-
 
 ### New: Surface Integrals of Vector Fields
 * Only for surfaces of the form
