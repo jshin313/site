@@ -1536,7 +1536,7 @@ $$ \vec{x'}(t) = A(t) \vec{x}(t)$$
 ### Theorem 9.3.2
 Let $A(t)$ be an  $n \cross n$ matrix continuous on  $I$. The set of all solutions of the homogeneous vector differential equation $\vec{x'}(t) = A(t) \vec{x}(t)$ is a vector space of dimension $n$  
 
-* Any set of $n$ solutions to the homogeneous vector differential equation is called a **fundamental solution set** of  $\vec{x'} = A \vec{x}$  
+* Any set of $n$ linear independent solutions to the homogeneous vector differential equation is called a **fundamental solution set** of  $\vec{x'} = A \vec{x}$  
 * The corresponding matrix $X(t) = \[\vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}\]$ is a **fundamental matrix**
 * The fundamental solution set is just a basis of the solution space of $\vec{x'} = A \vec{x}$
 
@@ -1545,10 +1545,24 @@ Let $A(t)$ be an  $n \cross n$ matrix function that is continuous on  $I$. If $\
 $$ W\[\vec{x_1}, \vec{x_2},\ldots, \vec{x_n}\] \neq 0$$ 
 at every point in $t$ in $I$
 
-* This means to see if $ \vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}$ is a fundamental set, we only need to compute the Wronksian at one point. If $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) \neq 0$, then the solutions are linearly independent (and form a basis/fundamental set), but if  $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) \neq 0$, the solutions are linearly independent on $I$.
+* This means to see if $ \vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}$ is a fundamental set, we only need to compute the Wronksian at one point. If $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) \neq 0$, then the solutions are linearly independent (and form a basis/fundamental set), but if  $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) = 0$, the solutions are linearly dependent on $I$.
 * The general solution to $\vec{x'} = A \vec{x}$ is just the linear combination of the elements of the basis
 
 #### Proof
+Show the contrapositive: If $W\[\vec{x_1}, \ldots, \vec{x_n}\](t_0) = 0$  at some point $t_0$ in $I$, then $\vec{x_1}, \ldots, \vec{x_n}$ is linearly dependent.  
+
+If $W[\vec{x_1}, \ldots \vec{x_n}\] (t_0) = 0$ ,then $\vec{x_1}(t_0), \vec{x_2}(t_0), \ldots, \vec{x_n}(t_0)$ is linearly dependent by [4.5.17](#corollary-4517).  
+
+Then there exists $ c_1, c_2, \ldots, c_n$, not all zero, such that
+$$ c_1 \vec{x_1}(t_0) + c_2\vec{x_2} (t_0) + \ldots + c_n \vec{x_n}(t_0) = \vec{0}$$
+
+Let $\vec{x}(t) =  c_1 \vec{x_1}(t) + c_2\vec{x_2} (t) + \ldots + c_n \vec{x_n}(t)$. Then $\vec{x}(t)$ is the unique solution to
+$$ \vec{x'} = A(t) \vec{x}(t), \ \ \ \vec{x}(t_0) = \vec{0} $$ 
+
+We know that $\vec{x}(t) = \vec{0}$ is a solution to the IVP above, so by uniqueness
+$$ \vec{x}(t) =  c_1 \vec{x_1}(t) + c_2\vec{x_2} (t) + \ldots + c_n \vec{x_n}(t) = 0$$
+
+But not all $ c_1, c_2, \ldots, c_n$ are zero, so $ x_1, x_2, \ldots, x_n$ are linearly dependent on $I$.
 
 ### Example
 $$ \vec{x'} = A\vec{x}$$
