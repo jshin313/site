@@ -510,7 +510,9 @@ $$ E = \frac{1}{4\pi\epsilon_0} \frac{2qd}{r^3}$$
 For a point perpendicular to the dipole
 $$ E = -\frac{1}{4\pi\epsilon_0} \frac{qd}{r^3}$$
 
-Where $d$ is the distance between the dipoles
+Where $d$ is the distance between the dipoles  
+
+$r$ is the distance from the center of the dipole. Above only works if $r >> d$
 
 ### Continuous Charge Distributions
 Question: What if the charge is continuous (not discrete)?
