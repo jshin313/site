@@ -505,10 +505,10 @@ Use coulomb's Law to get magnitudes
 
 
 For a point lying on the axis of the dipole
-$$ E = \frac{1}{4\pi\epsilon_0 \frac{2qd}{r^3}}$$
+$$ E = \frac{1}{4\pi\epsilon_0} \frac{2qd}{r^3}$$
 
 For a point perpendicular to the dipole
-$$ E = -\frac{1}{4\pi\epsilon_0 \frac{qd}{r^3}}$$
+$$ E = -\frac{1}{4\pi\epsilon_0} \frac{qd}{r^3}$$
 
 Where $d$ is the distance between the dipoles
 
