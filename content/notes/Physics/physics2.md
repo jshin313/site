@@ -16,6 +16,11 @@ tags:
   - magnetism
 ---
 
+## Class Information
+This second semester calculus-based introductory physics course is a follow-up to Physics 1061. The course focuses on developing algorithmic problem-solving skills and is intended as a preparation for advanced courses in physics as well as preparation for further study in upper division science and engineering. Topics include temperature, heat and the first law of thermodynamics, kinetic theory of gases, entropy and the second law of thermodynamics, electrical charges, the electric field, Gauss's Law, electrostatic potential, capacitors and dielectrics, current, resistance, Kirchhoff's laws, the magnetic field, Ampere's Law, Faraday's Law, inductance, geometrical optics, and interference and diffraction of light.
+
+Textbook: Physics for Scientists and Engineers A Strategic Approach with Modern Physics (2016, Pearson) by Randall Knight
+
 ## 18: A Macroscopic Description of Matter
 
 ### Solids, Gases, Liquids
