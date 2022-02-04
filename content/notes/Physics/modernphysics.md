@@ -139,3 +139,141 @@ Derivation in textbook:
 
 ![Table Summary of Formulas](/modernphysics/relativitysummary.png)
 
+## Particle-Like Properties of Electromagnetic Radiation
+
+### Review of Electromagnetic Waves
+$$ \vec{E} = \vec{E}_0 \sin(kz - \omega t)$$
+$$ \vec{B} = \vec{B}_0 \sin(kz - \omega t)$$
+* **Wave Number**, $k$ 
+$$ k =2\pi/\lambda$$
+* **Angular Frequency** ($\omega$)
+$$ B_0 =\frac{E_0}{c} $$
+* **Pointing Vector**, shows direction the EM wave propagates
+$$ \vec{S} =  \frac{1}{\mu_0} \vec{E} \cross \vec{B}$$
+
+$$ P = SA = \frac{1}{\mu_0} E_0 B_0 A \sin^2 (kz-\omega t)$$
+$$ P = \frac{1}{\mu_0 c} E_0^2 A \sin^2 (kz - \omega t)$$
+
+* Note the following
+ 1. $P \propto E_0^2$
+ 2. Intensity fluctuates with time with frequency $2f = 2 (\omega/ 2 \pi)$
+
+### Diffraction
+
+### Crystal Diffraction of X Rays
+* **Diffraction Grating**: Device with many slits that allow us to observe interference patterns
+  * Superior resolution - allows separation of wavelengths close to one another
+    * Reasonable values of $\theta$ requires $d$ to be on the same order of magnitude as the wavelength of light being used
+
+* Maxima corresponding to different wavelengths appear at different angles $theta$
+  * $d$ is the slit spacing
+  * $n$ is the order of the maximum ($n = 1, 2, 3, ...$)
+$$ d \sin \theta = n \lambda $$
+
+**X Ray Diffraction** needs light on the order of $0.1$ nm in wavelength to have useful $\theta$
+  * This means the grating spacing has to be less than $1$ nm
+    * The spacing between atoms in most materials is around this value
+  * Use the atoms in materials as diffraction grating!
+
+  ![X Ray Diffraction Diagram](/modernphysics/xraydiffraction.png)
+
+**Bragg's Law**
+$$ 2d \sin \theta = n \lambda$$
+
+* Instead of using x-ray diffraction to separate different wavelengths, we use **X-Ray** diffraction to see the spacing between the planes inside materials
+
+* We use more than one wavelength to get more $d_i$ and corresponding $\theta_i$
+
+  ![Multiple planes due to multiple wavelengths](/modernphysics/xraymulti.png)
+
+### The Photoelectric Effect
+* **Photoelectric effect**: When a metal surface is illuminated with light, it emits electrons, called **photoelectrons**
+
+$$ K_{max} = eV_s$$
+* The maximum $K$ of an electron is depending on the **stopping voltage** $V_s$
+* The stopping voltage is determined by incrementally turning up $V_{ext}$ until the ammeter reads $0$
+* The **work function** ($\phi$) is the minimum energy required to remove an electron from a material
+
+  ![Diagram for apparatus used for photoelectric effect](/modernphysics/photoelectricapparatus.png)
+
+#### Classic Theory of Photoelectric Effect
+Classical wave theory predicts the following
+
+1. $K_{max} \propto I$ since increasing the brightness of a light source increases the energy delivered to the surface and thus increases the electric field $E_0 \propto I$
+2. The Photoelectric effect should occur at any frequency and wavelength since according to wave theory, only the intensity of the light matters
+3. The first electrons should be emitted in a time interval of the order of seconds after the radiation strikes the surface
+  * The time interval $\Delta t$ necessary to absorb an energy of $\phi$
+$$ \Delta t = \frac{\Delta E}{\Delta t} = \frac{\phi}{IA} $$
+
+Experimental results of photoelectric effect
+1. For a fixed wavelength, the $K_{max}$ is totally independent of the intensity
+  * Doubling intensity yields no change in stopping voltage, which means the $K_{max}$ doesn't change either
+2. The photoelectric effect does not occur at all if below a certain frequency
+3. The first photoelectrons are emitted in the order of nanoseconds
+
+* Above results show wave theory is not enough to account for photoelectric effect
+
+#### Quantum Theory of the Photoelectric Effect
+* Einstein proposed that the energy of EM radiation is not continuously distributed over the wavefront, but rather in discrete packets called **photons**
+* Energy of a photon
+$$ E = hf = \frac{hc}{\lambda}$$
+* Einstein believed the entire energy of the photon is delivered instantaneously to a single **photoelectron**
+  * Explains why only certain frequencies work for photoelectric effect
+  * Explains why release of photoelectron is nearly instantaneous
+* Photoelectron is only released when the photon energy $hf$ exceeds the work function $\phi$. The excess energy appears as $K$
+$$ K_{max} = hf - \phi$$
+* Intensity doesn't appear in the above
+  * For a fixed frequency, doubling the intensity means twice as many photons strike the surface and twice as many photoelectrons are released, but each photon has the same $K_{max}$
+
+* Experiments by Millikan using the photoelectric effect were able to obtain $h$, Planck's constant
+
+### Thermal Radiation
+* Another phenomena that can't be explained by classical wave theory
+* Every object radiates thermal radiation with intensity
+
+#### Stefan's Law
+$$ I = \sigma T^4$$
+
+#### Wien's Displacement Law
+$$ \lambda_{max} T = 2.8978 \cross 10^{-3} \ m \cdot K$$
+$$ \lambda_{max} \propto 1/T$$
+
+* **Blackbody**: Perfect emitter and absorber of radiation
+  * **Whitebody** Reflects all incoming radiation perfectly
+
+#### Classical Theory of Thermal Radiation
+
+**Rayleigh-Jeans Formula**: Intensity per unit wavelength interval $d\lambda$
+$$ I(\lambda) = \frac{2\pi c}{\lambda^4} kT$$
+* Works for long wavelengths, but fails miserably for shorter wavelengths, dubbed the **ultraviolet catastrophe**
+* Problem for classical physics, since E&M and Thermo, which the Rayleigh-Jeans formula was derived from, have been tested and found to be accurate, but fail for this case
+
+  ![Rayleigh Jeans Prediction Vs. Experimental Result](/modernphysics/rayleighjeans.png)
+
+#### Quantum Theory of Thermal Radiation
+* Max Planck developed a theory where each oscillator can emit and absorb energy in discrete quantities that are integer multiples of a basic quantity of energy, $\epsilon$
+
+$$ E_n = n \epsilon$$
+$$ n = 1, 2, 3, ...$$
+
+$$ \epsilon = hf$$
+
+This leads to a revised formula for the intensity of radiation (derivation in textbook)
+
+$$ I(\lambda) = \frac{2 \pi h c^2}{\lambda^5}\frac{1}{e^{hc/\lambda k T} - 1}$$
+
+* By Stefan's Law, the following relationship between the Stefan-Boltzmann Constant and Planck's constant can be derived
+
+$$ \sigma = \frac{2 \pi^5 k^4}{15 c^2 h^3}$$
+* Using the known value of the Stefan-Boltzmann Constant and intensity data in 1900, Planck was able to calculate the value of $h$
+* 15 years later, Millikan arrived at a similar value of $h$ in a completely different experiment (Photoelectric effect), showing that the theory of quantization is a property of electromagnetic fields
+
+### The Compton Effect
+* Another way for radiation to interact with matter
+* Radiation hits electron and leads to the incoming photon and electron being scattered
+* More proof that photon exists, since the interaction implies a photon is a particle with momentum
+
+  ![Compton Effect geometry diagram](/modernphysics/comptongeometry.png)
+
+$$ \lambda' - \lambda = \frac{h}{m_e c}(1-\cos \theta)$$
+$$ K_e = E_p - E_p'$$
