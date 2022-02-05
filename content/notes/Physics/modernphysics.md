@@ -179,6 +179,7 @@ $$ d \sin \theta = n \lambda $$
 
 **Bragg's Law**
 $$ 2d \sin \theta = n \lambda$$
+* Here $\theta$ is the angle of incidence measured from the plane of the crystal
 
 * Instead of using x-ray diffraction to separate different wavelengths, we use **X-Ray** diffraction to see the spacing between the planes inside materials
 
@@ -227,6 +228,8 @@ $$ K_{max} = hf - \phi$$
 
 * Experiments by Millikan using the photoelectric effect were able to obtain $h$, Planck's constant
 
+* **Note**: The value $hc = 1240 \ eV \cdot nm$ may be useful
+
 ### Thermal Radiation
 * Another phenomena that can't be explained by classical wave theory
 * Every object radiates thermal radiation with intensity
@@ -237,6 +240,7 @@ $$ I = \sigma T^4$$
 #### Wien's Displacement Law
 $$ \lambda_{max} T = 2.8978 \cross 10^{-3} \ m \cdot K$$
 $$ \lambda_{max} \propto 1/T$$
+* The $\lambda_{max}$ at which the peak intensity occurs
 
 * **Blackbody**: Perfect emitter and absorber of radiation
   * **Whitebody** Reflects all incoming radiation perfectly
@@ -276,4 +280,19 @@ $$ \sigma = \frac{2 \pi^5 k^4}{15 c^2 h^3}$$
   ![Compton Effect geometry diagram](/modernphysics/comptongeometry.png)
 
 $$ \lambda' - \lambda = \frac{h}{m_e c}(1-\cos \theta)$$
+$$ \frac{1}{E_p'} - \frac{1}{E_p} = \frac{1}{m_e c^2} (1-\cos \theta) $$
 $$ K_e = E_p - E_p'$$
+
+* **Compton wavelength of the Electron**: Not a true wavelength but a *change* of wavelength
+$$h/m_e c = 0.002426 \ nm$$
+
+### Bremsstrahlung
+When an electron is accelerated by a potential difference $\Delta V$
+$$ K_e = e\Delta V$$
+An electron can hit a target and slow down, and in doing so, release the energy as **bremsstrahlung** (braking radiation)
+
+In general, the energy of the photon emitted when the electron deaccelerates:
+$$E_p = hf = K_e - K_e'$$
+
+If the electron stops completely (at rest)
+$$ \lambda_{min} = \frac{hc}{e\Delta V}$$
