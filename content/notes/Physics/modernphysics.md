@@ -296,3 +296,49 @@ $$E_p = hf = K_e - K_e'$$
 
 If the electron stops completely (at rest)
 $$ \lambda_{min} = \frac{hc}{e\Delta V}$$
+## The Wavelike Properties of Particles
+
+### De Broglie
+By this point in time, scientists knew that light had wavelike properties and had the wave-particle duality. But it was unclear whether this was only for light or whether matter could exhibit wavelike phenomena.  
+
+They knew $E = hf$ for light, but is this due to the Kinetic Energy, total energy, or relativistic energy (all the same for light)?  
+
+De Broglie hypothesized that matter can exhibit wavelike properties.
+
+$\lambda$ is the **de Broglie** wavelength
+$$ \lambda = \frac{h}{p}$$
+
+* Experimental evidence like diffraction of electrons and neutrons through solids, showed that matter could actually exhibit wavelike properties
+
+### Heisenberg Uncertainty Relationships
+$$\Delta x \Delta p_x \ge \frac{1}{2} \hbar $$
+* $\Delta x$ is uncertainty in position
+* $\Delta p$ is uncertainty in momentum
+$$\hbar = \frac{h}{2\pi}$$
+
+$$\Delta E \Delta t \ge \frac{1}{2} \hbar $$
+
+## The Rutherford-Bohr Model of the Atom
+
+### Frank-Hertz Experiment
+* Direct evidence that electrons in atoms can exist in discrete excited states
+
+  ![Frank Hertz Apparatus Setup](/modernphysics/fhapparatus.png)
+
+The Filament, $F$, is heated and emits electrons. There is a voltage $V$ between $C$ and $G$, that accelerates the electrons towards the grid, $G$. In the tube is a gas such as *mercury*. There is a retarding voltage $V_0$ that only allows the electrons to reach $P$ if $V > V_0$. The ammeter measures the current from electrons reaching $P$.  
+
+1. As $V$ increases, more electrons have enough KE to get to $P$. Whenever an electron collides with a mercury atom, energy is conserved (perfectly elastic). 
+2. Then at a certain $V$, ($4.9$ for mercury), all collision with mercury atoms are perfectly inelastic, and all the energy from the electron goes into raising the mercury atom's electrons to the first energy level. So less electrons have enough KE to reach the $P$, so current drops.
+3. Repeat 1. and 2.
+
+  ![Graph of Current vs. Voltage V](/modernphysics/fhgraph.png)
+
+* Every time there is a drop in current, the voltage at the peak current is a multiple of 4.9
+* Also note that the distance between the peaks is 4.9
+
+  ![Graph of Current vs. Voltage V 2](/modernphysics/fhgraph2.png)
+
+* $V_n$ is the $V$ at the peak
+
+### Summary
+![Chapter 6 Summary Formulas](/modernphysics/chapter6summary.png)
