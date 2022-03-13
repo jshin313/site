@@ -1,4 +1,3 @@
-
 ---
 title: "Introduction to Modern Physics"
 publishdate: 2022-01-27
@@ -17,7 +16,7 @@ The course will provide an introduction to the special theory of relativity and 
 
 Textbook: Modern Physics by Kenneth Krane
 
-## Special Relativity
+## 2: Special Relativity
 
 ### Galilean Transforms
 * **Galilean Relativity**: Also known as classical relativity. Describes how two inertial (non accelerating) reference frames see the same event (turns out to not work in all cases).
@@ -139,7 +138,7 @@ Derivation in textbook:
 
 ![Table Summary of Formulas](/modernphysics/relativitysummary.png)
 
-## Particle-Like Properties of Electromagnetic Radiation
+## 3: Particle-Like Properties of Electromagnetic Radiation
 
 ### Review of Electromagnetic Waves
 $$ \vec{E} = \vec{E}_0 \sin(kz - \omega t)$$
@@ -296,7 +295,8 @@ $$E_p = hf = K_e - K_e'$$
 
 If the electron stops completely (at rest)
 $$ \lambda_{min} = \frac{hc}{e\Delta V}$$
-## The Wavelike Properties of Particles
+
+## 4: The Wavelike Properties of Particles
 
 ### De Broglie
 By this point in time, scientists knew that light had wavelike properties and had the wave-particle duality. But it was unclear whether this was only for light or whether matter could exhibit wavelike phenomena.  
@@ -318,7 +318,7 @@ $$\hbar = \frac{h}{2\pi}$$
 
 $$\Delta E \Delta t \ge \frac{1}{2} \hbar $$
 
-## The Rutherford-Bohr Model of the Atom
+## 6: The Rutherford-Bohr Model of the Atom
 
 ### Frank-Hertz Experiment
 * Direct evidence that electrons in atoms can exist in discrete excited states
@@ -340,5 +340,96 @@ The Filament, $F$, is heated and emits electrons. There is a voltage $V$ between
 
 * $V_n$ is the $V$ at the peak
 
+### Rutherford Scattering Experiment
+Juicy derivation in textbook
+
 ### Summary
 ![Chapter 6 Summary Formulas](/modernphysics/chapter6summary.png)
+
+## 5: The Schrödinger Equation
+Schrödinger Equation describes the electron (or any other quantum state) as a wave. Using the wave function, we can find the average momentum, average position, and the probability of finding the particle in certain positions.
+
+### Summary
+![Chapter 5 Summary Formulas](/modernphysics/chapter5summary.png)
+
+## 7. The Hydrogen Atom In Wave Mechanics
+![Probability of electrons for different l values](/modernphysics/electronl.png)
+Above shows the probability of finding an electron in $n=8$ with angular momentum $l=2$ (top) and $l=6$ (bottom) in the xz plane, with the height of the peaks corresponding to the probability.
+
+### Deficiencies in Bohr-Rutherford Model
+* Looking at spectral lines showed two streaks close to each other, not addressed by Bohr Model
+	* Later found to be due to intrinsic spin of electron
+* The Bohr Model has the electron in an orbit around the nucleus at a fixed radius
+
+
+### One Dimensional Atom
+$$ U(x) = -\frac{e^2}{4\pi \epsilon_0 x}$$
+We can use the Schrödinger Equation to solve the above Coloumb potential in one dimension
+
+$$ -\frac{\hbar}{2m} \frac{d^2 \psi}{dx^2} - \frac{e^2}{4\pi \epsilon_0 x} \psi(x) = E \psi(x) $$
+A trial solution for the above differential equation: 
+$$ \psi (x) = Ax e^{-bx}$$
+
+Substituting the trial solution gives
+$$ b = \frac{me^2}{4\pi \epsilon_0 \hbar^2} = \frac{1}{a_0} $$
+
+where $a_0$ is the Bohr radius
+
+### Angular Momentum in the Hydrogen Atom
+* Bohr's model treated angular momentum as quantized, with the angular momentum of an electron as $|\vec{L} | = n\hbar, \ \ n = 1, 2, 3, ...$
+* But the quantum version of angular momentum
+$$ |\vec{L}| = \sqrt{l(l+1)} \hbar , \ \  \ l = 0, 1, 2, 3,... $$
+* $m_l$, the magnetic quantum number, describes the angular momentum for one component
+$$ L_z = m_l  \hbar, \ \ \ m_l =0, \pm 1, \pm 2, ... \pm l$$
+
+* We can only know at most one component of $L$ and $|\vec{L}|$, that is we can only know $l$ and $m_l$. Since a vector has to be described by at least 3 number, there is some incomplete information about the angular momentum vector. Thus we will never know the other two components of the angular momentum
+* If we know $L_z$, we can't know $L_y$ or $L_x$, which is equivalent to
+$$ \Delta L_z \Delta \phi \ge \hbar$$
+
+Graphical Representation of the uncertainty for angular momentum
+![Uncertainty in Angular Momentum Visualized as Cone](/modernphysics/angularmomentumuncertainty.png)
+
+### The Hydrogen Atom Wave Function
+We can represent the wave function in 3D in spherical coordinates
+$$ \frac{\hbar^2}{2m} \[\pdv[2]{\psi}{r} + \frac{2}{r} \pdv{\psi}{r} + \frac{1}{r^2 \sin \theta} \pdv{\theta} \left(\sin \theta \pdv{\psi}{\theta}\right) + \frac{1}{r^2 \sin^2 \theta} \pdv[2]{\psi}{\phi}\] + U(r) \psi(r, \theta, \phi = E \psi (r, \theta, \phi)$$
+
+The potential energy only depends on $r$ since the Colomb potential only depends on $r$, so the wave function that solves the above is of the following form
+
+$$ \psi (r, \theta, \phi) = R(r) \Theta (\theta) \Phi(\phi)$$
+* **Radial Function** $R(r)$
+* **Polar Function** $\Theta (\theta)$
+* **Azimuthal Function** $\Phi(\phi)$
+Each function is a function of a single variable
+
+$$ \psi_{n, l, m_l} (r, \theta, \phi) = R_{n, l}(r) \Theta_{l, m_l} (\theta) \Phi_{m_l}(\phi)$$
+
+* $n$, **principle quantum number**: corresponds to the energy level of an electron, $1, 2, 3, ...$
+* $l$, **angular momentum quantum number**: $0, 1, 2, 3, ..., n-1$
+* $m_l$, **magnetic quantum number**: $0, \pm 1, \pm 2, ..., \pm l$
+
+* You can find the probability density by integrating $|\psi_{n, l, m_l}(r, \theta,\phi)|^2 dV$
+
+### Intrinsic Spin (Stern-Gerlach Experiment)
+An orbiting electron creates a magnetic dipole moment in an external magnetic field, which allow counting $l$ and observing a component of $\vec{L}$
+* The Stern-Gerlach experiment had a non-uniform magnetic field cause an uneven force applied to the incoming atoms to move to one direction or another
+	* The atoms went to specific spots on the target screen, showing quantization
+	* Three spots, center (no deflection, up, and down)
+	* However each of these three spots was actually composed of two more sub subspots, indicating the electron itself also had a spin
+	* Electron's intrinsic spin arises from relativistic effects
+
+	![Orbital and Spin Angular Momentum Table](/modernphysics/amtable.png)
+
+### Energy Levels and Spectroscopic Notation
+
+![l letter correspondance table](/modernphysics/spectroscopic.png)
+
+#### Selection Rule
+When an electron loses energy and goes to a lower state, the selection rule shows the most probable transitions, obtained by solving Schrödinger's equation and computing transition probabilities
+$$ \Delta l = \pm 1$$
+
+Examples:
+* 3s cannot emit photon in 2s ($\delta l = 0$) and instead goes to 2p $\Delta l = 1$)
+* 3p can go to 2s or 1s, but not $2p$
+
+### Summary
+![Summary Chatper 7](/modernphysics/summary7.png)
