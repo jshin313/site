@@ -59,10 +59,21 @@ tags:
 * Autofeed
   * Automatically set the X and Y to go a certain speed
 
-### Drilling
-<!-- * Use a bit to find location -->
-<!-- * Use first bit to make small indentation -->
+### Facing Off/Using End Mill
+* Use the end mill (use end mill holder and not drill chuck) to cut part to exact width, height, and length) in x, y, z
+* You can use a special bit to find zero (where your part begins), or just use end mill if you're already cutting
 
+### Drilling
+* There's a special bit used for zeroing out and finding where your part is
+	* Touch the edge of the bit to the part until it looks aligned and then zero
+
+		* Do this for both y and x
+	* Move the x and y so that you're half the bit's diameter into the part (e.g. 0.01 inches)
+		* This makes it so that the center of the drill is over (0, 0)
+* Use centering bit to make small indentation and a pilot hole so drilling holes don't make the bits wobble/walk
+* Go up drill bit sizes gradually until you get to your final target drill bit (e.g. #5 increments)
+* Drill into the piece a little bit and then pull out so chips can get out
+* Make sure to use coolant
 
 ## Lathe
 
