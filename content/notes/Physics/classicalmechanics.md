@@ -2,7 +2,7 @@
 title: "Classical Mechanics"
 publishdate: 2022-03-07
 lastmod: 2022-03-15
-draft: true
+draft: false
 toc: true
 tags:
   - notes
