@@ -133,7 +133,7 @@ $$ 1/year \cdot \sqrt{\frac{1+u/c}{1-u/c}}=2.0/year$$
 * $8 * 0.5 + 8 * 2 = 20\  pulses$
 * So according to Twin2, during the 16 year journey, Twin2 receives 20 pulses, meaning Twin2 aged less
 
-### Summary
+### Chapter 2 Summary
 Derivation in textbook:
 
 ![Table Summary of Formulas](/modernphysics/relativitysummary.png)
@@ -320,10 +320,10 @@ $$\Delta E \Delta t \ge \frac{1}{2} \hbar $$
 
 ## 6: The Rutherford-Bohr Model of the Atom
 
-### Frank-Hertz Experiment
+### Franck-Hertz Experiment
 * Direct evidence that electrons in atoms can exist in discrete excited states
 
-  ![Frank Hertz Apparatus Setup](/modernphysics/fhapparatus.png)
+  ![Franck Hertz Apparatus Setup](/modernphysics/fhapparatus.png)
 
 The Filament, $F$, is heated and emits electrons. There is a voltage $V$ between $C$ and $G$, that accelerates the electrons towards the grid, $G$. In the tube is a gas such as *mercury*. There is a retarding voltage $V_0$ that only allows the electrons to reach $P$ if $V > V_0$. The ammeter measures the current from electrons reaching $P$.  
 
@@ -428,8 +428,63 @@ When an electron loses energy and goes to a lower state, the selection rule show
 $$ \Delta l = \pm 1$$
 
 Examples:
-* 3s cannot emit photon in 2s ($\delta l = 0$) and instead goes to 2p $\Delta l = 1$)
+* 3s cannot emit photon in 2s ($\Delta l = 0$) and instead goes to 2p $\Delta l = 1$)
 * 3p can go to 2s or 1s, but not $2p$
 
 ### Summary
 ![Summary Chatper 7](/modernphysics/summary7.png)
+
+## 8: Many-Electron Atoms
+* Orbit of earth around sun
+	* Simplify by only considering two body problem
+	* Good approximation since other planet's gravity is miniscule compared to sun's
+* Electrons and Nucleus
+	* Can't approximate like in the above problem when dealing with more than one electron around the nucleus
+	* Each electron exerts a force on every other electron around the nucleus
+		* This force is significant, so you can't just correct for it and only consider the force from nucleus
+	* Example of **Many-body problem**, with 3 or more particles mutually interacting with each other
+
+### Pauli Exclusion Principle
+* We might think that all the electrons will occupy the lowest energy level, which is the 1s state
+	* But if this were true, the properties of atoms would vary smoothly
+		* Most properties of different elements don't vary smoothly, with the exception of the energy of x-rays emitted by atoms
+* **Pauli Exclusion Principle**: No two electrons in a single atom can have the same set of quantum numbers ($n$, $l$, $m_l$ , $m_s$).
+
+### Electronic Structure of Many-Electron Atoms
+![Energy Levels](/modernphysics/energylevels.png)
+![Shells](/modernphysics/shells.png)
+* Electrons in the same shell (same $n$) have the same average distance from the nucleus
+* **Subshells**: Specific combinations of $n$ and $l$
+	* E.g. 3s, 4p, 3d, 2s, etc.
+	* Total number of electrons with in a subshell is $2(2l + 1)$
+		* 2 factor comes from two spin $m_s$ values, and the $2l+1$ comes from possible values for $m_l$ for a given $l$
+### Outer Electrons: Screening and Optical Transitions
+* **Electron Screening**: Electrons in the outer levels experience less of the charge from the nuclues due to the repulsive forces from the electrson in inner shells. Thus the effective charged experienced by the outer electrons is less
+
+### Inner Electrons: Absorption Edges and X-Rays
+* If we repeat the [Franck Hertz Experiment](#franck-hertz-experiment) but with tens of kV instead of tens of volts, we can knock out the inner electrons instead of the outer electrons
+* We get the following graph if we perform FH experiment on Hg with kV
+	* 83.1 kV corresponds to 0.0149 nm, which is in the X-ray region
+![Graph of current vs. accelerating voltage](/modernphysics/Khg.png)
+
+* If we bombard a thin film of mercury with x-rays, we see the absorption drops at 0.0149 nm (photoelectric effect), in agreement with above experiment
+	* **Absorption Edge**: Sudden drop in current or absorption
+![Graph of absorption vs. incident photon wavelength](/modernphysics/absorptionhg.png)
+* K corresponds to $n=1$, so the *K Absorption Edge* is the absorption edge for when the innermost electron
+
+### X-Ray Transitions
+* We showed previously, that one way to produce x-rays is through [Bremsstrahlung](#bremsstrahlung) by accelerating electrons and then slowing them down
+	* This produces a **continous** x-ray spectrum
+* One way to produce **discrete** x-ray spectrum is by allowing an inner electron to move down to a lower energy level
+	* E.g. knock out 1s electron. This leaves vacancy in K shell, so another electron from another shell $L, M, N, ...$ comes to fill the K vacancy
+	* If an electron from the $L$ shell comes to fill the $K$ vacancy, the X-ray created is a $K_\alpha$ X-ray
+	* If an electron from the $M$ shell comes to fill the $K$ vacancy, the X-ray created is a $K_\beta$ X-ray
+
+![X-Ray Transition Diagram](/modernphysics/X-rays-transitions.png)
+
+### Moseley's Law
+The energy for a $K_\alpha$ X-ray is related to the atomic number of the element $Z$
+$$ \Delta E = (10.2 \ eV ) (Z- 1)^2 $$
+
+### Chapter 8 Summary
+![Chapter 8 summary table of formulas](/modernphysics/chap8summary.png)
