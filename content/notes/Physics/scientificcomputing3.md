@@ -84,9 +84,7 @@ $$ J(\theta_0, \theta_1) = \frac{1}{2m} \sum_{i=1}^{m} (h_{\theta} (x^{(i)}) - y
 ### Gradient Descent
 * To find the minimum for $J(\theta_0, \theta_1)$, we can use the Gradient descent algorithm
 
-Repeat until convergence
-
-$$ \theta_j= \theta_j - \alpha \pdv{\theta_j} J(\theta_0, \theta_1) (\text{for j = 0, 1) $$
+$$ \text{Repeat until convergence } \left\\{ \theta_j := \theta_j - \alpha \pdv{\theta_j} J(\theta_0, \theta_1) \ \ (\text{for j = 0, 1}) \right\\} $$
 
 * Make sure to only update $\theta_j$ after everything
 * **Learning Rate**: $\alpha$, controls how big the step size is
@@ -105,6 +103,64 @@ $$ \pdv{\theta_0} J(\theta_0, \theta_1) = \left\[\frac{1}{m} \sum_{i=1}^m \left(
 * For j = 1
 $$ \pdv{\theta_1} J(\theta_0, \theta_1) = \left\[\frac{1}{m} \sum_{i=1}^m \left(\left(h_\theta (x^{(i)}) - y^{(i)}\right)\cdot x^{(i)}\right)\right\] $$
 * Since we're not going to use a lot of data, we can use all the samples for each step of GD ("batch processing")
+
+### Linear Regression with Multiple Features
+Example: Housing Price
+
+| Size      | # of Bedrooms | # of Floors | Age of Home | Price ($K) |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| $x_1$      | $x_2$       | $x_3$       | $x_4$       | y       |
+| 404   | 5        | 1        |   45      | 460        |
+| 1416   | 3        | 2        |   40      | 232        |
+| 1534   | 3        | 2        |   30      | 315        |
+* $n=4$ where $n$ is the number of features
+* $x^{(i)}$: Input (features) of $i$-th sample
+* $x^{(i)}_j$: value of feature j in the $i$-th sample
+
+* Hypothesis: 
+	* Previous: $h_\theta (x) = \theta_0 + \theta_1 x$
+	* Now: $h_\theta (x) = \theta_0 + \theta_1 x + \theta_2 x + \theta_3 x + \theta_4 x + ... + \theta_n x $
+
+* For convenience of notation, define $x_0 = 1 \implies x^{(i)}_0 = 1$
+
+$$ h_\theta (x) = \underbrace{\theta_0 x_0}_{\text{Bias Term}} + \theta_1 x + \theta_2 x + \theta_3 x + \theta_4 x + ... + \theta_n x $$
+
+$$ x = \begin{bmatrix} x_0 \\\\ x_1 \\\\ x_2 \\\\ x_3 \\\\ x_4 \end{bmatrix} \in \mathbb{R}^{n+1}, \ \ \ \ \theta = \begin{bmatrix} \theta_0 \\\\ \theta_1 \\\\ \theta_2 \\\\ \theta_3 \\\\ \theta_4 \end{bmatrix} \in \mathbb{R}^{n+1}$$
+
+$$ h_\theta (x) = \theta^T x$$
+
+Pseudocode for Multivariable Gradient Descent for Multivariable Linear Regression
+$$ \text{Repeat} \left\\{ \ \ \  \theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta x^{(i)} - y^{(i)}) x_j^{(i)}\ \ \ \right\\}$$
+
+Eg: $j=0$
+$$ \theta_0 := \theta_0 - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta x^{(i)} - y^{(i)}) x_0^{(i)}$$
+Eg: $j=2$
+$$ \theta_2 := \theta_2 - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta x^{(i)} - y^{(i)}) x_2^{(i)}$$
+
+### Feature Scaling
+* Examples
+	* $x_1$ = size (0 to 2000 sq ft.)
+	* $x_2$ = # of bedrooms (1 to 5)
+* The problem with the above means there might be problems with gradient descent due to how different the ranges are for each feature
+* If you graph $\theta_2$ vs $\theta_1$ without features scaling, you get ellipses around the minimum
+* If you graph $\theta_2$ vs $\theta_1$ with features scaling, you get circles around the minimum
+* Features have to be on the same scale, roughly $-1 \le x_i \le 1$
+
+#### Mean Normalization
+* Let $\mu_i$ be the mean and $s_i$ be the range
+* Replace $x_i$ with $x_i - \mu_i$ to make zero mean
+* $x_i = \frac{x_i - \mu_i}{s_i}$
+
+* Using the above for the housing price example
+$$x_1 = \frac{\text{size} - 1000}{2000}$$
+$$x_2 = \frac{\text{# of bedrooms} - 3}{5}$$
+
+### Logistic Regression
+* Not really used for ML, but an important example of something that gives a non-linear relationship
+* Linear Regression doesn't work for classification problems (Email Spam, Benign Tumor/Cancer)
+	* $y \in\\{0, 1\\}$
+	* Gives wrong predictions
+	* Linear regression doesn't confine the values to a specific range
 
 ## Unsupervised Learning
 * ML finds patterns in data on its own without explicitly labeling training data with a target
