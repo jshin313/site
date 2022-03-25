@@ -50,7 +50,16 @@ Provide machine with "right answers" train the machine to predict the unknown ta
 * Problem: Find boundary between "cancer" and "not cancer"
 * This is a type of classification problem
 
-### Regression Problem
+
+## Unsupervised Learning
+* ML finds patterns in data on its own without explicitly labeling training data with a target
+### Examples
+* Points on a plane, find clusters
+* Cluster customers into different groups
+* Astronomial data analysis: Find clusters in star/galaxy photo
+
+
+## Regression Problem
 * Regression Problem: Predict real-valued output
 * Training Set: Data where you know the target value and value for the **feature** for each point
 	* **Feature** = parameter = input variable
@@ -60,8 +69,9 @@ Provide machine with "right answers" train the machine to predict the unknown ta
 * Let $(x, y)$ denote one training sample and $(x^{(i)}, y^{(j)})$ denote the $i$th training sample
 * The learning algorithm generates a hypothesis map/function, $h$, which maps $x$ values to $y$
 * Univariate linear regression: Linear regression with one variable (one feature)
-#### Linear Regression
-* Choose slope ($\theta_0$) and intercept ($\theta_1$) so that h(x) is close to y and for our training set (x, y)
+
+## Linear Regression
+* Choose slope ($\theta_0$) and intercept ($\theta_1$) so that $h(x)$ is close to $y$ and for our training set $(x, y)$
 * Hypothesis function
 $$ h_\theta(x^{(i)}) = \theta_0 + \theta_1 x ^{(i)}$$
 * Function to minimize
@@ -81,7 +91,7 @@ $$ J(\theta_0, \theta_1) = \frac{1}{2m} \sum_{i=1}^{m} (h_{\theta} (x^{(i)}) - y
 * Considering the multivariable function $J(\theta_1, \theta_0)$ means that the cost function $J(\theta_1, \theta_0)$ is a paraboloid, still with one minimum
 ![Graph of paraboloid](/scientificcomputingiii/paraboloid.png)
 
-### Gradient Descent
+## Gradient Descent
 * To find the minimum for $J(\theta_0, \theta_1)$, we can use the Gradient descent algorithm
 
 $$ \text{Repeat until convergence } \left\\{ \theta_j := \theta_j - \alpha \pdv{\theta_j} J(\theta_0, \theta_1) \ \ (\text{for j = 0, 1}) \right\\} $$
@@ -94,7 +104,7 @@ $$ \text{Repeat until convergence } \left\\{ \theta_j := \theta_j - \alpha \pdv{
 	* One solution is to use a larger $\alpha$ value
 	* A better solution is to add a "Kinetic Term". Consider a particle in a well and add kinetic term so particle can oscillate and get out of the well (local minimum)
 
-### Gradient Descent for Linear Regression
+## Gradient Descent for Linear Regression
 * Gradient Descent for Linear Regression will always converge since $|\alpha|$ decreases and goes to zero
 $$ \pdv{\theta_j} J(\theta_0, \theta_1) = \pdv{\theta_j} \left\[\frac{1}{2m} \sum_{i=1}^m \left(h_\theta (x^{(i)}) - y^{(i)}\right)^2\right\] $$
 $$ = \pdv{\theta_j} \left\[\frac{1}{2m} \sum_{i=1}^m \left(\theta_0 + \theta_1 x^{(i)} - y^{(i)}\right)^2\right\] $$
@@ -104,7 +114,7 @@ $$ \pdv{\theta_0} J(\theta_0, \theta_1) = \left\[\frac{1}{m} \sum_{i=1}^m \left(
 $$ \pdv{\theta_1} J(\theta_0, \theta_1) = \left\[\frac{1}{m} \sum_{i=1}^m \left(\left(h_\theta (x^{(i)}) - y^{(i)}\right)\cdot x^{(i)}\right)\right\] $$
 * Since we're not going to use a lot of data, we can use all the samples for each step of GD ("batch processing")
 
-### Linear Regression with Multiple Features
+## Linear Regression with Multiple Features
 Example: Housing Price
 
 | Size      | # of Bedrooms | # of Floors | Age of Home | Price ($K) |
@@ -119,25 +129,25 @@ Example: Housing Price
 
 * Hypothesis: 
 	* Previous: $h_\theta (x) = \theta_0 + \theta_1 x$
-	* Now: $h_\theta (x) = \theta_0 + \theta_1 x + \theta_2 x + \theta_3 x + \theta_4 x + ... + \theta_n x $
+	* Now: $h_\theta (x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3 + \theta_4 x_4 + ... + \theta_n x_n $
 
 * For convenience of notation, define $x_0 = 1 \implies x^{(i)}_0 = 1$
 
-$$ h_\theta (x) = \underbrace{\theta_0 x_0}_{\text{Bias Term}} + \theta_1 x + \theta_2 x + \theta_3 x + \theta_4 x + ... + \theta_n x $$
+$$ h_\theta (x) = \underbrace{\theta_0 x_0}_{\text{Bias Term}} + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3 + \theta_4 x_4 + ... + \theta_n x_n $$
 
-$$ x = \begin{bmatrix} x_0 \\\\ x_1 \\\\ x_2 \\\\ x_3 \\\\ x_4 \end{bmatrix} \in \mathbb{R}^{n+1}, \ \ \ \ \theta = \begin{bmatrix} \theta_0 \\\\ \theta_1 \\\\ \theta_2 \\\\ \theta_3 \\\\ \theta_4 \end{bmatrix} \in \mathbb{R}^{n+1}$$
+$$ X = \begin{bmatrix} x_0 \\\\ x_1 \\\\ x_2 \\\\ x_3 \\\\ x_4 \\\\ \vdots \\\\ x_n \end{bmatrix} \in \mathbb{R}^{n+1}, \ \ \ \ \Theta = \begin{bmatrix} \theta_0 \\\\ \theta_1 \\\\ \theta_2 \\\\ \theta_3 \\\\ \theta_4 \\\\ \vdots \\\\ \theta_n \end{bmatrix} \in \mathbb{R}^{n+1}$$
 
-$$ h_\theta (x) = \theta^T x$$
+$$ h_\theta (x) = \Theta^T X$$
 
 Pseudocode for Multivariable Gradient Descent for Multivariable Linear Regression
-$$ \text{Repeat} \left\\{ \ \ \  \theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta x^{(i)} - y^{(i)}) x_j^{(i)}\ \ \ \right\\}$$
+$$ \text{Repeat} \left\\{ \ \ \  \theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta (x^{(i)}) - y^{(i)}) x_j^{(i)}\ \ \ \right\\}$$
 
 Eg: $j=0$
-$$ \theta_0 := \theta_0 - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta x^{(i)} - y^{(i)}) x_0^{(i)}$$
+$$ \theta_0 := \theta_0 - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta (x^{(i)}) - y^{(i)}) x_0^{(i)}$$
 Eg: $j=2$
-$$ \theta_2 := \theta_2 - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta x^{(i)} - y^{(i)}) x_2^{(i)}$$
+$$ \theta_2 := \theta_2 - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta (x^{(i)}) - y^{(i)}) x_2^{(i)}$$
 
-### Feature Scaling
+## Feature Scaling
 * Examples
 	* $x_1$ = size (0 to 2000 sq ft.)
 	* $x_2$ = # of bedrooms (1 to 5)
@@ -146,27 +156,174 @@ $$ \theta_2 := \theta_2 - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta x^{(i)} - y^
 * If you graph $\theta_2$ vs $\theta_1$ with features scaling, you get circles around the minimum
 * Features have to be on the same scale, roughly $-1 \le x_i \le 1$
 
-#### Mean Normalization
+### Mean Normalization
 * Let $\mu_i$ be the mean and $s_i$ be the range
-* Replace $x_i$ with $x_i - \mu_i$ to make zero mean
-* $x_i = \frac{x_i - \mu_i}{s_i}$
+* $x_i' = \frac{x_i - \mu_i}{s_i}$
 
 * Using the above for the housing price example
 $$x_1 = \frac{\text{size} - 1000}{2000}$$
 $$x_2 = \frac{\text{# of bedrooms} - 3}{5}$$
 
-### Logistic Regression
+## Logistic Regression - Classification
 * Not really used for ML, but an important example of something that gives a non-linear relationship
 * Linear Regression doesn't work for classification problems (Email Spam, Benign Tumor/Cancer)
 	* $y \in\\{0, 1\\}$
 	* Gives wrong predictions
 	* Linear regression doesn't confine the values to a specific range
 
-## Unsupervised Learning
-* ML finds patterns in data on its own without explicitly labeling training data with a target
-### Examples
-* Points on a plane, find clusters
-* Cluster customers into different groups
-* Astronomial data analysis: Find clusters in star/galaxy photo
+Example:  we have data that is either 0 or 1
+* We want $0 \le h_\theta(x) \le 1$ (nonlinear function!)
+* Define the following
+$$ h_\theta(x) = g (\Theta^T X) = g(z)$$
+
+The Sigmoid Function/Logistic Function satisfies this:
+$$ g(z) = \frac{1}{1+e^{-z}}$$
+
+Note that 
+$$ \lim_{z\to\infty} g(z) = 1$$
+$$ \lim_{z\to-\infty} g(z) = 0$$
+$$ g(0) = \frac{1}{2} $$
+
+![Sigmoid FUnction Graph](/scientificcomputingiii/sigmoid.png)
+
+### Interpretation of $\ h_\theta(x) = g(z)$
+* $h_\theta(x)$: Estimated probability that $y=1$ on input $x$
+
+#### Example
+We're classifying tumors based on size. 1 = Tumor is cancer, 0 = tumor is benign
+$$ X = \begin{bmatrix} x_0 \\\\ x_1 \end{bmatrix} = \begin{bmatrix} 1 \\\\ \text{Tumor Size} \end{bmatrix}$$
+If $ h_\theta(x) = 0.7$, then that means there's a 70% chance that the tumor is a cancer
+
+### Statistical Understanding
+Probability that $y=1$, given $x$, parameterized by $\theta$
+$$ h_\theta(x) = P(y = 1 | x; \theta)$$
+
+Note the following is true:
+$$  P(y = 1 | x; \theta) + P(y = 0 | x; \theta) = 1$$
+
+### Decision Boundary
+Suppose $h_\theta(x) = g(\Theta^T X)=g(z)$, where $g(z)$ is the sigmoid function
+
+$$ \text{predict } \begin{cases}y = 1 & \text{ if } h_\theta(x) \ge 0.5  \\\\ y = 0 & \text{ if } h_\theta(x) < 0.5 \end{cases}$$
+
+For the g(z), sigmoid/logistic function:
+* $g(z) \ge 0.5$ when $z = \Theta^T X \ge 0$
+* $g(z) < 0.5$ when $z = \Theta^T X < 0$
+
+$$ h_\theta(x) = g(\theta_0 x_0 + \theta_1 x_1 + \theta_2 x_2) = g(\theta_0 + \theta_1 x_1 + \theta_2 x_2)$$
+The Line formed by $\theta_0 + \theta_1 x_1 + \theta_2 x_2 = 0$ will form the **decision boundary**
+
+### Non-Linear Decision Boundary
+The above decision boundary example was linear
+* Imagine a data set such that the data is separated into two parts by a decision boundary that is a circle 
+$$ h_\theta(x) = g(\overbrace{\theta_0 + \theta_1 x_1 + \theta_2 x_2}^{\text{Linear Terms}} + \underbrace{\theta_3 x_1^2 + \theta_4 x_2^2}_{\text{Non Linear Terms}}) $$
+
+* Example: Radius of circle is 1
+	* $x_1^2 + x_2^2 = 1$
+	$$ \Theta = \begin{bmatrix} \theta_0 \\\\ \theta_1 \\\\ \theta_2 \\\\ \theta_3 \\\\ \theta_4 \end{bmatrix} = \begin{bmatrix} -1 \\\\ 0 \\\\ 0 \\\\ 1 \\\\ 1 \end{bmatrix}$$
+$$ \text{predict } \begin{cases}y = 1 & \text{ if } -1 + x_1^2 + x_2^2 \ge 0  \\\\ y = 0 & \text{ if } -1 + x_1^2 + x_2^2 < 0 \end{cases}$$
+
+#### General Decision Boundary With a Lot of Linear Terms
+$$ h_\theta(x) = g(\theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_1^2 + \theta_4 x_1^2 x_2 + \theta_5 x_1 x_2^2 + \theta_6 x_1^3 x_2 + ...)$$
+
+* The problem with this general problem: What if the decision boundary is simple like a linear line? How do we know beforehand that the decision boundary is linear? We'll make the decision boundary overly complex with the extra terms if we use the general solution above. Overfitting to be covered in later sections.
+
+### Cost Function
+$$\text{Training Set } = \\{(x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), ..., (x^{(m)}, y^{(m)})\\}$$
+where $m$ is the number of samples
+
+$$ x \in \begin{bmatrix} x_0 \\\\ x_1 \\\\ x_2 \\\\ \vdots \\\\ x_n \end{bmatrix}$$
+$$ h_\theta(x) = \frac{1}{1+e^{-\Theta^T X}}$$
+
+* How do we choose parameter $\theta$?
+$$ J(\theta) = \overbrace{\frac{1}{m}}^{\text{Normalization constant}} \sum_{i=1}^m \text{Cost}(h_\theta (x^{(i)}), y^{(i)})$$
+* For linear regression we saw
+$$ \text{Cost}(h_\theta (x^{(i)}), y^{(i)}) = \frac{1}{2} (h_\theta(x^{(i)}) - y^{(i)})^2$$
+$$ \implies J(\theta) = \frac{1}{2m} \sum_{i=1}^m (h_\theta (x^{(i)}) - y^{(i)})^2$$
+	* Unlike in linear regression, if we choose $J$ as above with $h_\theta(x)$ as the logistic function, $J$ does not have just one minimum, but might have many local minimums, so $J$ is a **non-convex** function
+	* So we have to choose a different cost function and different $J$
+
+Choose $J$ in the following form
+$$ J = \sum_{i=1}^m \[y^{(i)} J_1 + (1-y^{(i)})J_2\]$$
+The following does what we want
+$$ J = - \frac{1}{M}\sum_{i=1}^m \[y^{(i)} \log (h_\theta(x) ) + (1-y^{(i)}) \log(1-h_\theta(x))\]$$
+* Consider the case when $y=0$ and $h_\theta(x) = 0.99999$ (really bad prediction) as an example of how the above $J$ works well
+	* Since the hypothesis function, $h_\theta(x)$ gives a bad prediction, then $J$ approaches $\infty$ as desired
+
+### Gradient Descent for Logistic Regression
+* Recall that the gradient descent algorithm is the following:
+$$ \text{Repeat until convergence } \left\\{ \theta_j := \theta_j - \alpha \pdv{\theta_j} J(\theta_0, \theta_1) \ \ (\text{for j = 0, 1}) \right\\} $$
+* It turns out the gradient descent algorithm looks exactly the same as for linear regression, just replace $h_\theta(x)$ with the one for logistic regression (See https://math.stackexchange.com/a/477261 for proof)
+$$ \pdv{J(\theta)}{\theta_j} = \frac{1}{m} \sum_{i=1}^m \left(h_\theta(x^{(i)}) - y^{(i)}\right) x_j^{(i)}$$
+$$ \text{Repeat} \left\\{ \ \ \  \theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta (x^{(i)}) - y^{(i)}) x_j^{(i)}\ \ \ \right\\}$$
+
+### Conversion to Matrix Form
+Note:
+
+* If we have two column vectors, $A$ and $B$, which have dimensions $k \times 1$, then the following is true (see [Wikipedia Link](https://en.wikipedia.org/wiki/Row_and_column_vectors)):
+$$ A = \begin{bmatrix} a_1 \\\\ a_2 \\\\ \vdots \\\\ a_k \end{bmatrix}, \ \  B = \begin{bmatrix} b_1 \\\\ b_2 \\\\ \vdots \\\\ b_k \end{bmatrix}$$
+$$ A \cdot B = A^T B $$
+
+In the gradient descent algorithm and cost function, $J$, there are a bunch of summations, $\sum$, that must be computed every time we do something       
+
+* This is computationally intensive 
+* Instead, we can convert the summations into matrix multiplication or dot product of column vectors since matrix multiplication/dot products are faste rto compute (especially with libraries like numpy) 
+
+Define the following
+* $n$: the # of features 
+* $m$: the # of training samples
+* $\mathcal{X}$: The training data represented as a $m \cross n$ matrix
+$$ \mathcal{X} = \begin{bmatrix} x_1^{(1)} & x_2^{(1)} \\\\ x_1^{(2)} & x_2^{(2)} \\\\ x_1^{(3)} & x_2^{(3)}\end{bmatrix}$$
+
+In this example, $n=2$ and $m=3$
+Note that the matrix of training data, $\mathcal{X}$, is different than the column vector, $X$
 
 
+#### Important Matrices and their Dimensions
+
+$$ X = \begin{bmatrix} x_0 \\\\ x_1 \\\\ x_2 \\\\ x_3 \\\\ x_4 \\\\ \vdots \\\\ x_n \end{bmatrix}, \ \ \ \ \Theta = \begin{bmatrix} \theta_0 \\\\ \theta_1 \\\\ \theta_2 \\\\ \theta_3 \\\\ \theta_4 \\\\ \vdots \\\\ \theta_n \end{bmatrix}, \ \  Y = \begin{bmatrix}y^{(1)} \\\\y^{(2)} \\\\ \vdots \\\\ y^{(n)} \end{bmatrix}
+, \ \ H_\theta(X) = \begin{bmatrix} h_\theta(x^{(1)}) \\\\ h_\theta(x^{(2)}) \\\\ \vdots \\\\ h_\theta(x^{(n)}) \end{bmatrix} $$
+
+* $\mathcal{X}$: $m \cross n$ (training data set)
+* $\Theta$: $n \cross 1$ ($n$ is based on # features)
+* $Y$: $m \cross 1$ (Target value for each training sample (row))
+* $H_\theta(X)$: $m \cross 1$ vector with $h_\theta(x^{(i)})$ as components. It is the prediction for each $x^{(i)}$ row/sample
+* $S$: $n \cross 1$ (# of features), where 
+$$ S_j =\sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) x^{(i)}_j  $$
+
+Then we have the following equivalencies:
+
+$$ \Theta^T X = \Theta \cdot X $$
+$$ S_j  = \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) x^{(i)}_j \implies S = \mathcal{X}^T  H  = \mathcal{X} \cdot H$$
+
+#### Gradient Descent Algorithm in Matrix Form
+We can then rewrite the gradient descent algorithm as follows:
+$$ \text{Repeat} \left\\{ \ \ \  \theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta (x^{(i)}) - y^{(i)}) x_j^{(i)}\ \ \ \right\\} $$
+$$ \implies \text{Repeat} \left\\{ \ \ \  \theta_j := \theta_j - \alpha S_j \ \ \ \right\\}$$
+$$ \implies \text{Repeat} \left\\{ \ \ \ \Theta := \Theta - \alpha S \ \ \ \right\\}$$
+
+## Other Optimization Algorithms
+### Conjugate Gradient
+* Popular a lot for Computational Chemistry/Material Science (DFT)
+* Google "BFGS" and "L-BFGS"
+
+#### Advantages
+* No need to manually pick $\alpha$
+* Often faster than gradient descent (GD)
+
+#### Disadvantages
+* More complex
+* A lot of other parameters
+	* Parameter akin to Speed of particle on potential
+	* Paremeter akin to Random motion of particle
+
+## Multi Classification Problem
+* Instead of just a binary classification (yes, no), what if we want to classify data into more than just two categories
+
+### Example
+* **Email Tagging**: Classify inbox into Work emails ($y=1$), friend emails ($y=2$), family email ($y=3$), hobby emails ($y=4$)
+
+#### One vs. All (One vs. Rest)
+* You can reuse the binary classification algorithm to classify data into $y=1$ and $y\neq 1$
+* Then afterwards, classify the $y\neq 1$ data into $y=2$ and $y\neq2$
+* Repeat
