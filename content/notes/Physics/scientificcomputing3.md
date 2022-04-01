@@ -1,7 +1,7 @@
 ---
 title: "Scientific Computing III"
 publishdate: 2022-03-08
-lastmod: 2022-03-08
+lastmod: 2022-04-01
 draft: false
 toc: true
 tags:
@@ -327,3 +327,158 @@ $$ \implies \text{Repeat} \left\\{ \ \ \ \Theta := \Theta - \alpha S \ \ \ \righ
 * You can reuse the binary classification algorithm to classify data into $y=1$ and $y\neq 1$
 * Then afterwards, classify the $y\neq 1$ data into $y=2$ and $y\neq2$
 * Repeat
+
+## OverFitting
+![Example of underfitting and overfitting](/scientificcomputingiii/fitting.png)
+
+* Options to address overfitting
+1. Reduce number of features
+	* Manually select which features to keep (requires domain knowledge to know which ones to keep and which ones are less important)
+	* Model Selection Algorithm
+2. Regularization
+	* Want to make \$\theta_j$ for higher order terms small
+	$$ J_\theta - \[ \frac{1}{m} \sum_{i=1}^m  y^{(i)} \]$$
+
+### Gradient Descent for Logistic Regression
+Repeat {
+$$ \theta_0 := \theta_0 - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta (x^{(i)}) - y^{(i)}) x_0^{(i)}$$
+$$ \theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta (x^{(i)}) - y^{(i)}) x_j^{(i)} + \frac{\lambda}{m} \theta_j, \  \ j = 1, 2, 3, 4, \cdots n$$
+}
+
+## K-Means Cluster - Unsupervised Learning
+### Uses
+* Film Recommendation
+* Social Network, Finding similarities between users
+	* Represent each user as node in graph, with connection as edge
+* Materials Science, represent each material as node with properties as edges
+
+* Cluster
+### Algorithm
+* *Input*
+	* Number of Clusters (K)
+	* Training Set: $\\{x^{(1)}, x^{(2)}, ..., x^{(m)}\\}$
+		* $m$ is number of samples
+1. Randomly pick $K$ cluster centroids, $\mu_1, \mu_2, ..., \mu_k \in \mathbb{R}^k$
+	* Sometimes more efficient to choose $K$ samples as the centroids
+2. Repeat {
+	// Cluster Assignment
+	for i=1 to m:
+		$c^{(i)}$:= index of cluster centroid closest to $x^{(i)}$
+
+	// Move Centroid
+	for k=1 to K:
+		$\mu_k$:= average (mean) of all the points assigned to cluster $k$
+}
+
+### Example:
+* $x^{(1)}, x^{(5)}, x^{(6)}$
+* Suppose $c^{(1)} = 3, \ c^{(5)} = 3, \ c^{(6)} = 3$
+* Then $\mu_3 = \frac{1}{3} (x^{(1)}+ x^{(5)}+ x^{(6)})$
+
+### Optimization Objective
+$$J(c^{(1)}, ..., c^{(m)}, \mu_1, ..., \mu_k) = \frac{1}{m}\sum_{i=1}^m |x^{(i)} - \mu_{c^{(i)}}|^2$$
+* Want to minimize $J$
+	1. Minimize J with respect to $c^{(1)}, ..., c^{(m)}$ while holding $\mu_1, ..., \mu_k$ constant
+	2. Minimize J with respect to $\mu_1, ..., \mu_k$  while holding  constant $c^{(1)}, ..., c^{(m)}$
+
+### Random Initialization
+1. Randomly pick $K$ samples $K < m$
+2. Set $\mu_1, \cdots \mu_k$ equal to the above $K$ samples
+
+### What is the right value of K
+* Graph of J vs. K should give you an obvious "elbow" point (drops steeply) and then drops smoothly and less steeply afterwards
+	* The $K$ value for the elbow point should be the one to choose (most of the time)
+
+	* However, sometimes the graph doesn't drop steeply. This means you have too many features or that the K-means algorithm itself is not a good algorithm to use in this case
+
+## PCA (Principle Component Analysis)
+* If we have too many features (too many dimensions) when doing K-means algorithm, we can reduce to fewer dimensions
+* **PCA, Kernel PCA, ICA**: "Powerful unsupervised learning techniques for extracting hidden (potentially lower dimensional) structure from high dimensional datasets"
+* In the data cleaning step of workflow
+
+### Uses
+* Visualization
+* More efficient (time, memory, etc.)
+* Fewer dimensions implies better generalizations
+* Noise Removal
+
+### Idea
+* Want to pick the most important features (principle components)
+* Project the data onto the principle component axis(es) so that variance among data is maximized
+* Alternatively: Find a direction (a vector $u^{(1)} \in \mathbb{R}^n$) onto which to project the data so as to minimize the projection error/distance
+
+[A Tutorial on Principal Component Analysis by Jonathon Shlens](https://arxiv.org/abs/1404.1100)
+
+### Algorithm
+* Reduce from $n$-dimensions to $k$-dimensions
+* Find $k$ vectors $u^{(1)}, u^{(2)}, u^{(3)}, ..., u^{(n)}$ onto which to project the data
+* Compute"Covariance Matrix", $\Sigma$
+$$ \Sigma = \frac{1}{m}\sum_{i=1}^n (x^{(i)}) (x^{(i)})^T$$
+* $\Sigma$ yields an $n\cross n$ matrix
+* Calculate eigenvectors of the covariance matrix, $\Sigma$
+	$$\[U, S, V\]= \text{Singular Value Decomposition}$$
+	* where the columns of $U$ make up the principle components
+		* First column of U, $u^{(1)}$ is PC1 (Principal Component 1)
+		* Second column of U, $u^{(2)}$ is PC2
+		* And so on until $u^{(n)}$
+
+### Example: Supervised Learning Speedup
+*$m$ Samples: $(x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), (x^{(3)}, y^{(3)}),..., (x^{(m)}, y^{(m)})$
+* Suppose there are 1000 features
+* Extract inputs and unlabaled dataset:  $x^{(1)}, x^{(2)}, ... ,x^{(m)} \in \mathbb{1000}$
+
+* Do PCA to reduce dimensions from training set $x$ to $z$
+$$z^{(1)}, z^{(2)}, ... ,z^{(m)} \in \mathbb{1000}$$
+* New training Set has features reduced: $(z^{(1)}, y^{(1)}), (z^{(2)}, y^{(2)}), (z^{(3)}, y^{(3)}),..., (z^{(m)}, y^{(m)})$
+
+### Difference/Connection Between SVD and PCA
+* PCA transforms data linearly into a new set that are not correlated (orthgonal)
+* SVD is a method in linear algebra used to diagonalize a matrix into special matrices
+* We use SVD to find PCs (Principle Axises in PCA)
+
+### Matrix Diagonalization
+* For some square matrices, $A$: $n \cross n$
+$$ A = V \lambda V^{-1}$$
+* where each column in $V$ gives you the eigenvectors
+* And $\lambda$ is a diagonal matrix with the eigenvalues corresponding to the eigenvectors
+
+* $V$ and $V^{-1}$ are orthogonal
+
+### Singular Value Decomposition
+For any matrix, $A$ is $m \cross n$
+* $m$ is the number of samples
+* $n$ is the number of features
+
+* $AA^{T}$ is the covariance matrix ($m \cross m$)
+
+* $ A^T A$ ($n \cross n$)
+
+* $AA^T \to u_i$ as eigenvectors
+* $A^T A \to v_i$ as eigenvectors $\to $ singular vectors
+
+* $U$ is the covariance matrix with $u_i$ as columns
+* $V$ is the matrix with $v_i$ as columns
+* **SVD states that any matrix $A$ can be written as follows**
+	$$ A = US V^T$$
+	* $S$ is a diagonal matrix with singular values $\sigma_i = \sqrt{\underbrace{\lambda_i}}_{\text{eigenvalue from }U}$
+
+	$$ A_{m \cross n} = U_{m\cross m} S_{m\cross n} V^T_{n \cross n}$$
+* Each $u_i$ in the $U$ matrix corresponds to the principle components
+	* we can order the eigenvectors so that the higher eigenvalues come first
+	* Higher eigenvalues mean larger variance (so more important PC)
+	* You can then project the data onto the first few PCs since the $u_i$ give the axises
+
+## Neural Networks: Non Linear Classification Example
+* Using a neural network is a solution for non linear regression or classification problems with a large number of features
+
+* Using the sigmoid function is not feasible since the number of nonlinear terms in $z$ for $g(Z)$ is too much
+
+### Neuron Model
+* Each neuron can have multiple inputs (can be from other neurons). Depending on the current strength, the neuron fires
+	* Non linear activation!
+* Inputs: $x_1, x_2, x_3$
+	* The wires coming into the neuron are how heavily weighted each input is, in other words, $\theta_1, \theta_2, \theta_3, \cdots$ corresponding with each $x_1, x_2, x_3, \cdots$
+	* The output is $h_\theta(x) = \frac{1}{1+e^{-\Theta T X}}$ based on the input, $x_i$ and input weights ($\theta_i$)
+		* The sigmoid function is the activation function
+
+$$ X = \begin{bmatrix} x_0=1 \\\\ x_1 \\\\ x_2 \\\\ x_3 \end{bmatrix}, \ \ \ \Theta = \begin{bmatrix} \theta_0 \\\\ \theta_1 \\\\ \theta_2 \\\\ \theta_3 \end{bmatrix}$$
