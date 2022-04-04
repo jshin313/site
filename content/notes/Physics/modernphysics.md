@@ -842,3 +842,6 @@ where $K$ is the thermal conductivity and $L$ is the **Lorenz number**
 * External current excites electron from valence to conduction, when the electron drops, light is emitted
 	* Note that the energy gap is on the order of $1 \ eV$ which is perfect since visible light is on the order of $2 \ eV$ to $3 \ eV$
 * Running the photodiode in reverse can be used to count photons or used as a solar cell type thing
+
+### Chapter 11 Summary
+![Chapter 11 Summary](/modernphysics/chap11.png)
