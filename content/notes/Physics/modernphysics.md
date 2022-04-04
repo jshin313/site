@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Modern Physics"
 publishdate: 2022-01-27
-lastmod: 2022-01-27
+lastmod: 2022-03-27
 draft: false
 toc: true
 tags:
@@ -9,6 +9,14 @@ tags:
   - college
   - physics
   - special relativity
+  - statistical physics
+  - quantum mechanics
+  - photoelectric effect
+  - compton scattering
+  - rutherford
+  - waves
+  - solid state
+  - statistical physics
 ---
 
 ## Class Information
@@ -350,7 +358,24 @@ Juicy derivation in textbook
 Schrödinger Equation describes the electron (or any other quantum state) as a wave. Using the wave function, we can find the average momentum, average position, and the probability of finding the particle in certain positions.
 
 ### Summary
+### Two-Dimensional Quantum Oscillator
+$$ E = \frac{h^2}{8mL^2}(n_x^2 + n^2_y)$$
+
+* Note that if there are two ways for $E=13E_0$
+	* $n_x = 3, n_y = 2$
+	* $n_x = 2, n_y = 3$
+* There are *three* ways for $E=50E_0$
+	* $n_x = 7, n_y = 1$
+	* $n_x = 1, n_y = 7$
+	* $n_x = 5, n_y = 5$
+* The number of ways for a system to be at a certain energy is called the **degeneracy**
+	* $E=50E_0$ has a degeneracy of 3, and $E=13E_0$ has a degeneracy of 2
+	* Degeneracy arises from more than one quantum number
+		* The number of quantum numbers describing a system is equal to the number of dimensions (e.g. 2 quantum numbers for 2D problem)
+	* Degeneracy gives rise to a lot of the properties and structure of atoms
+
 ![Chapter 5 Summary Formulas](/modernphysics/chapter5summary.png)
+
 
 ## 7. The Hydrogen Atom In Wave Mechanics
 ![Probability of electrons for different l values](/modernphysics/electronl.png)
@@ -403,9 +428,19 @@ Each function is a function of a single variable
 
 $$ \psi_{n, l, m_l} (r, \theta, \phi) = R_{n, l}(r) \Theta_{l, m_l} (\theta) \Phi_{m_l}(\phi)$$
 
+#### Quantum Numbers
+Since the hydrogen wave function is 3D, we have 3 quantum numbers:
+
 * $n$, **principle quantum number**: corresponds to the energy level of an electron, $1, 2, 3, ...$
 * $l$, **angular momentum quantum number**: $0, 1, 2, 3, ..., n-1$
 * $m_l$, **magnetic quantum number**: $0, \pm 1, \pm 2, ..., \pm l$
+
+Recall that $n$ determines the energy level
+	* At $n=1$, the degeneracy is 1 (number of possible quantum number combinations)
+	* At $n=2$, the degeneracy is 4
+	* At $n=3$, the degeneracy is 9
+	* In general, at energy $E_n$, the degeneracy is $n^2$
+
 
 * You can find the probability density by integrating $|\psi_{n, l, m_l}(r, \theta,\phi)|^2 dV$
 
@@ -488,3 +523,322 @@ $$ \Delta E = (10.2 \ eV ) (Z- 1)^2 $$
 
 ### Chapter 8 Summary
 ![Chapter 8 summary table of formulas](/modernphysics/chap8summary.png)
+
+## 9: Molecular Structure
+### Chapter 9 Summary
+![Chapter 9 Summary](/modernphysics/chap9summary.png)
+
+## 10: Statistical Mechanics
+* Some experiments can be described by looking at single isolated events
+	* Rutherford Scattering
+	* Compton Scattering
+* But for many phenomena, you have to analyze the **average** behavior using statistics
+	* Classical Statistics
+	* Quantum Statistics
+
+### Statistical Analysis
+* **Microscopic** properties
+	* Velocity and Position of every single atom
+	* Not practical for even a small system containing $10^{15}$ atoms
+* **Macroscopic** properties 
+	* Temperature and pressure of a gas
+	* Relationship between microscopic and macoscopic properties
+
+#### Macro/Micro state Example
+Consider a system with 4 particles with a maximum allowed energy of 2 units of energy
+![Example of above](/modernphysics/10example1.png)
+* **Macrostate**
+	* A: Only one particles has 2E
+	* B: Two particles have 2E
+* **Microstate**
+	* Total of 10 microstates (with 40 particles total)
+	* The number of microstates for a particular macrostate is called the **multiplicity** and denoted with $W_{macrostate}$
+	* $W_A = 4$ means macrostate A has 4 microstates
+	* $W_B = 6$ means macrostate B has 6 microstates
+	* *All microstates of a system are equally probable*
+		* E.g. In this example, the probability of finding a system in macrostate B 60% of the time
+		* Probability of finidng a particle with 2E is 4/40 = 10%
+
+### Classical and Quantum Statistics
+Consider a system with 6 units of energy total and with 5 identical particles
+![Example of above](/modernphysics/10example2.png)
+
+* Multiplicity of each macrostate (Number of microstates per macrostate):
+$$W= \frac{N!}{N_0! N_1! N_2! N_3! N_4! N_5! N_6!} $$
+	* Where $N$ is the total particles and $N_E$ is the number of particles at energy E
+* Total number of microstates for $N$ distinguishable particles sharing $Q$ units of energy
+$$ W_{total} = \frac{(N+Q-1)!}{Q! (N-1)!}$$
+
+* Probability of finding a particle with energy, $E$
+	$$ p(E) = \frac{\sum\limits_i N_i W_i}{N\sum\limits_i W_i}$$
+	* Where $N_i$ is the number of particles with energy E in each particular macrostate
+
+![Curve of P(E) vs. E](/modernphysics/curveP.png)
+* The curve shows $p \propto e^{-\beta E}$ which turns out to be correct 
+	* Some other phenomena do not behave as well with classical physics such as electric conductivity, heap capacity
+
+### Quantum Statistics
+1. Quantum particles must be treated as indistinguisable
+	* Multiplicity of each macrostate is 1
+2. Quantum mechanics imposes limits on max number of particles in a given state
+	* E.g. electrons have spin up or down, no two electrons in the same state
+
+### The Density of States
+
+* **Distribution Function**: $f(E)$ Gives probability of finding particle of energy $E$
+* Our ultimate goal is to find a function that gives us the number of particles at energy $E$
+	* This quantity depends on $f(E)$ but also how many states are available at a given energy $E$
+		* The number of states available at energy $E$ is just the degeneracy, $d_n$
+			* Example: For dilute hydrogen gas, the number of states available at each energy level, $E_n$, is the degeneracy which is $2n^2$ for a state with principle quantum number, $n$
+			* Example: For a molecule with rotational excited states like HCL, the number of states available at each energy level, $E_L$, is the degeneracy which is $2L+1$ for a state with angular momentum number $L$ (See Chapter 9)
+* Thus we have the following expression for the number of particles at a given $E_n$
+$$ N_n = d_n f(E_n) $$
+	* where $N_n$ is the number of particles at a given $E_n$
+$$ N = \sum N_n = \sum d_n f(E_n)$$
+* $N$: total number of particles
+
+* For large systems, we can't keep track of every individual particle and separate out each individual state, so we look at the number of states in a small interval $dE$ at energy $E$ (equivalently, the number of states between $E$ and $E+dE$)
+	* treats $E$ as continuous
+* The **Density of States** $g(E)$ is defined so that $g(E) dE$ is the number of available states per unit volume between $E$ and $E+dE$ (or equivalently in $dE$ at energy $E$)
+* The number of populated states, $dN$ in the interval $E$ to $E+dE$ is as follows
+$$ dN = N(E) dE = V g(E) f(E) dE$$
+$$ N = \int dN = \int_0^\infty N(E) dE = V \int_0^\infty g(E) f(E) dE $$
+* $N(E)$: number of particles *per unit energy interval* at a particular energy E (has units of $\text{energy}^{-1}$)
+
+#### Density of States of Gas of Particles (Electrons or Molecules)
+$$ g(E) = \frac{4\pi(2s+1)\sqrt{2} (mc^2)^{3/2}}{(hc)^3} E^{1/2}$$
+where $s$ is the spin
+
+* Derivation in textbook
+
+#### Density of States in a Gas of Photons
+$$ g(E) = \frac{8\pi}{(hc)^3} E^2$$
+* Derivation in textbook
+
+### Quantum Statistics
+* Particles that don't obey Pauli Exclusion principle have integer spins $0, 1, 2, ...$ in units of $\bar h$ and are called **Bosons**
+	* Their properties are determined by the **Bose-Einstein Distribution Function**
+	$$ f_{BE}(E) = \frac{1}{A_{BE}e^{E/kT} - 1}$$
+		* where $A_{BE}$ is a normalization constant that remains pretty constant with respect to $T$
+
+* Particles that do obey Pauli Exclusion principle have half integer spins $1/2, 3/2, ...$ in units of $\bar h$ and are called **Fermions**
+	* Their properties are determined by the **Fermi-Dirac Distribution Function**
+	$$ f_{FD}(E) = \frac{1}{A_{FD}e^{E/kT} + 1}$$
+		* where $A_{FD}=e^{-E_F/kT}$ is a normalization constant that depends on $T$
+	$$ f_{FD}(E) = \frac{1}{e^{(E-E_F)/kT} + 1}$$
+		* $E_F$ is the **Fermi Energy**
+
+* Suppose the normalization constants are $1$
+* For small $T$, $f_{BE} \to \infty$, so all the bosons try to occupy the lowest energy state (Boson Einstein Condensation)
+* For small $T$, not all the fermions can occupy the same state due to the Pauli Exclusion Principle. When $E<E_F$, $f_{FD} \to 1$ and for $E>E_F$, $f_{FD} \to 0$. When $E=E_F$, $f_{FD} = 0.5$ (like the logistics function)
+
+![Distribution Functions for maxwell-boltzman, FD, and BE](/modernphysics/distribution.png)
+
+* Consider a gas of electrons with $g(E)$ and $f_{FD}$. $N(E) = V g(E) f_{FD}(E)$
+	* The figure below shows a possible configuration of electrons
+	* Notice that only the states near $E_F$ are affected by an increase in temperature. The states at very low energies stay filled while the states at very high energies remain unfilled
+
+![N(E) graph for electron gas](/modernphysics/electrongas.png)
+
+#### Limits of Classical Statistics
+* Quantum behaviour can be neglected when $\lambda_{Broglie} \ll d$, where $d$ is the separation between the particles (i.e. no particle lies within the wave packets of its neighbors)
+
+* Thus we can still use classical statistics whenever $\lambda \ll d$ or $\lambda/d \ll 1$
+
+### Chapter 10 Summary
+![Chapter summary part 1](/modernphysics/chap10summary1.png)
+![Chapter summary part 2](/modernphysics/chap10summary2.png)
+
+## 11: Solid State Physics
+* Properties of solids based on quantum mechanical interactions
+* Solid State Physics is often called **Condensed Matter** Physics nowadays
+### Crystal Structures
+* **Crystal**: Atoms/Molecules occupy places in a **latice** at periodic intervals
+	* Salt, Metals, etc.
+	* **Long-Range** order: We can determine how the crystal looks by looking at a local arrangement of molecules/atoms, due to the repeating nature of the lattice
+* **Amorphous Solid**: No repeating pattern/structure
+	* Glass, Paper
+#### Ionic Solid
+* Coulomb Force
+* **Cubic Lattice**
+* **Face Centered Cubic (FCC)**
+* **Body Centered Cubic (BCC)**
+
+* Adding up the individual Coulomb potential energies from every other atom yields a convergent infinite series
+
+#### Covalent Solid
+
+#### Metalic Solid
+* D orbitals form a "sea of electrons" (Fermi-Gas)
+
+#### Molecular Solid
+* Depends on Dipole Bonds (e.g. hydrogen bonds)
+* Note how much weaker bonds in molecular solids are
+	* Coulomb force $\propto \frac{1}{R^2}$
+	* Dipole $\propto \frac{1}{R^3}$
+
+### Heat Capacity of Solids
+### Classical thermodynamics
+* The equipartiaion theorem states each degree of freedom has $\frac{1}{2} kT$ energy
+* 6 degrees of freedom for particle in a lattice
+* Expect there to be $\frac{6}{2}kT = 3kT$ energy per atom in a lattice
+* Heat Capacity, $C$ is just $\frac{dE}{dT}$
+	* $\implies C = \frac{d(\frac{1}{2}kT)}{T} = 3k$
+* This would mean that the heat capacity for all solids is the same at all temperatures
+	* Result is known as **Law of Dulong and Petit**
+		* Works well at room temperature, but not as temperature is decreased
+
+### Apply Quantum Statistics
+* Assume heat capacity is due to electrons in metal (Fermi Gas)
+	* $kT \ll E_F$
+	
+We get the following result
+$$ C = \frac{\pi^2}{2} \frac{RkT}{E_f} $$
+
+* The above results predicts that the graph of $C vs. T$ is linear, however, this is not the case
+* Copper's heat capacity at $C$ is much higher than predicted by above, indicating the contribution by electrons is smaller than expected
+
+### Einstein's Theory
+* Assumed oscillations of the solid (not atom) obey Bose-Einstein statistics
+	* EM quanta (i.e. photons) obey Bose-Einstein statistics
+	* Similarly, **phonons** quanta of vibrational energy obey Bose-Einstein stats
+	* Assume that all phonons have same vibrational frequency
+Quantized oscillator
+$$ E = (n+\frac{1}{2}) \bar h \omega$$
+* $N_A$ atoms/mol
+* $3N_A$ oscillations/mol
+
+Boson gas
+$$ E_{int} = 3N_A f_{BE}  = \frac{3N_A}{e^{-\bar h \omega/ kT } - 1}$$
+$$ C = \frac{dE}{dT} = 3R(\frac{T_E}{T})^2\frac{e^{T_E/T}}{(e^{T_E/T}-1)^2}, \ \ T_E = \frac{\bar h}{K}$$
+* $T_E$ is the *Einstein temperature*
+
+* **Peter Debye**: Then expanded on above, and assumed phonons have a continous spectrum of frequencies (like photons) instead of discrete frequencies
+$$ C = \frac{12\pi^4}{5}(\frac{T}{T_D})$$
+* $T_D$ is the *Debye temperature*
+* The total heat capacity is a combination of the Bosonic lattice vibrations and the Fermic Gas electron contributions
+$$ C = aT + bT^3$$
+* The $aT$ term (electron contribution) has a greater effect at very low temperatures since the $T^3$ term goes rapidly to zero 
+
+### Electrons in Metals
+Electrons can be treated as fermi gas
+$$ N = \int_0^\infty N(E) dE = \frac{8\sqrt{2}\pi Vm^{3/2}}{h^3} \int_0^\infty \frac{E^{1/2} dE}{e^{(E-E_F)/kT} + 1}$$
+$$ \implies E_F(T) \approx E_F(0) \left\[1- \frac{\pi^2}{12}\left(\frac{kT}{E_F(0)}\right)^2\right\]$$
+* Even though the Fermi energy depends on temperature, we can assume it is constant for a material since the Fermi energy at 0K and room temperature is pretty much the same
+
+#### Electric Conduction
+$$ \vec{j} = \sigma \vec{E}$$
+where $j$ is the current density, the current per unit cross-sectional area, $E$ is the electric field applied to the metal, and $\sigma$ is the conductivity of the metal
+* Assume current is constant in conductor
+	* When electrons are accelerated by $\vec{E}$, they collide with atoms in lattice and are slowed down
+	$$ \vec{F}  = m\vec{a}= -e \vec{E}$$
+	$$ \implies \vec{a} = \frac{-e\vec{E}}{m} $$
+	* Electrons acquire on average a **drift velocity** $\vec{v_d}$ every time it is accelerated equal to acceleration times time, $\tau$
+	$$ \vec{v_d} = \frac{-e\vec{E}}{m} \tau$$
+* We also have $\vec{j}$ proportional to $n$, the density of electrons in the conductor
+	$$  \vec{j} = -n e \vec{v}_d$$
+* Combinbing gives
+$$ \vec{j} = \frac{ne^2 \tau}{m}\vec{E}, \ \ \sigma = \frac{ne^2\tau}{m}$$
+$$ \tau = \frac{l}{v_{avg}}$$
+	* $l$ is the **mean free path** (average distance electrons travel before colliding with atoms)
+	* $v_{avg}\neq v_{D}$ since $v_{avg}$ is the average velocity the electrons travel through the lattice while $v_d$ is the small increase in speed that comes from $\vec{E}$
+For a classical particle
+$$ K = \frac{3}{2}kT$$
+* If we take $l$ to be the spacing between the lattice and treat the electrons semi-clasically, this gives $\sigma \propto T^{-1/2}$, however experimental data shows $\sigma \propto T^{-1}$
+
+### Quantum Theory of Electrical Conduction
+* Treating the electrons as a fermi gas instead of a classical particle with velocity $v_F$  yields an even worse value for $\sigma$
+* Thus that means our $l$ assumption should be updated
+	* A perfect lattice means the mean free path is infinite and thus $\sigma$ is infinite
+	* A perfect lattice means a infinite conductivity
+* In a real metal lattice, the following contribute to electron scattering
+1. Atoms are in random thermal motion, so the lattice is not always perfect
+	* Dominates at high temperatures, depends on $T$
+2. Lattice imperfections/impurities
+	* Dominates at lower temperatures, independent of $T$
+
+* For thermal motion: Average vibrational potential energy is proportional to $T$, agreeing with measurements
+* Thermal conductivity behaves in almost the same way as electrical conductivity
+* The ratio of thermal conductivity and electrical conductivity is independent of material, but depends on temperature, since $kT$ determines number of electrons available for thermal conduction
+* **Wiedemann-Franz Law**
+$$ \frac{K}{\sigma T} \approx L = \pi^2k^2/3e^2 $$
+where $K$ is the thermal conductivity and $L$ is the **Lorenz number**
+	* Not always correct since it assumes $l$ is the same for thermal and electrical conductivity [See wikipedia for derivation](https://en.wikipedia.org/wiki/Wiedemann%E2%80%93Franz_law)
+
+### Band Theory of Solids
+* Consider Sodium with a half-filled 3s subshell
+* When we move more an more sodium atoms together, the wavefunctions overlap. When we have a very large number $\approx 10^{22}$ or more, there is a solid **band** that forms, since the individual wavefunctions are no longer distinguishable
+	* Each band can hold $2(2l+1)N$ electrons, where $N$ is the number of atoms
+
+![Sodium Wavefunctions](/modernphysics/sodiumwavefunctions.png)
+* Notice that $E_F$ is located halfway in the 3s band
+	* 3s is the **conduction band**
+	* Even a small potential (~1V), electrons can absorb energy since there are $N$ unoccupied states in the 3s band all within an energy of $1 \ eV$ of each other
+* At the ground state, Sodium's 3s band holds $N$ electrons and when $T=0$
+
+* Consider all the other bands in sodium
+![Sodium Bands](/modernphysics/sodiumbands.png)
+* **Conductors** have the Fermi level halfway within a band
+	* There are $N$ free electrons that can move to $N$ unoccupied states
+* **Insulators** have the Fermi level halfway between two different bands (See below) and a large gap with $E_{g} \gg kT$, wher $E_g$ is the gap energy
+	* Even when the FD distribution spreads out when $T$ increases, the spread is not large enough to bridge the gap between the **Valence Band** and the **conduction Band**
+	* Even though there are a large number of electrons in the valence band for electrical conduction, there are not many unoccupied states they can move to, so there is no way they contribute to conduction
+	* Although the conduction band has lots of empty states, there are almost no electrons in the conduction band to contribute
+![Insulator band](/modernphysics/insulatorband.png)
+* **Semiconductor**: Similar band structure as insulators, but with the gap energy at around $1 \ eV$
+	* A small population of electrons can occupy a bit of the conduction band
+	* Below is an example of the band structure at room temperature. Note the lighter blue indicates that there are a few electrons in the conduction band with lots of unoccupied states to move to, and there are a lot of electrons in the valence band with  a few unoccupied states to move to as well, which both contribute to a bit ofconduction
+	* The conductivity of semiconductors also depends more on the temperature as well, since increasing temperature spreads out the $f_{FD}$ function, meaning more conduction
+	* **Doping**, which involves introducing small amounts of impurities, can also move the $E_F$ around, affecting conductivity 
+
+	![Semiconductor Bands](/modernphysics/semiconductorbands.png)
+
+### Superconductivity
+* For an ordinary conductor, as $T$ approaches $0$, the contribution to resistance from impurities in the lattice remains constant, so the resistance approaches a constant value
+* However, for a supercondcutor, the resistance rapidly goes to 0 below a certain $T_C$, called the cricial temperarture
+* BCS theory states that as temperature is decreased for a superconductor, there is an energy gap, $E_g$ that widens
+	* At and below $T_C$ **Cooper pairs** form to the left of the energy gap, where the pairs are electrons that behave as non-fermions (meaning the population can exceed limits of the FD distribution)
+	* The energy gap represents the binding energy of the cooper pairs
+	$$ E_g = 3.53 kT_C$$
+
+	![Superconductor Population](/modernphysics/superconductorgraph.png)
+
+### Intrinsic and Impurity Semiconductors
+* $E-E_F = 0.5 \ eV$ if $E_F$ is in the middle of a gap of $E_G = 1 \ eV$, $kT ~ 0.025 \ eV$ at room temperature, so $e^{-E_g/2kT} \approx 10^{-9}$
+* There is one atom in $10^9$ contributes to conduction in a semiconductor
+* Thus if there are $10^{20}$ atoms in a material, there around $10^{11}$ conduction electrons in a semiconductor, $10^{20}$ in a conductor, and none in an insulator
+* Holes exist in the valence band if some electrons are in the conduction band
+	* Conduction in an **intrinsic** semiconductor is due to the electrons moving in the conduction band and also due to the positively charged holes "moving"
+	* Electrons move more easily, so contribute more than holes to conduction
+* Doping creates **impurity semiconductors**
+	* **N-Type**: Uses Donor atoms that donate electrons to the conduction band
+		* Phosphorus, arsenic, etc.
+	* **P-Type**: Uses acceptor atoms that add holes to the valence band
+		* Boron, Gallium, etc.
+	* Adding donors or acceptors creates new energy bands/states
+	* At $T=0$, the donor states are all filled and the acceptor states are all empty (recall that at $T=0$, all bands below $E_F$ are filled and all below are empty)
+	* As $T$ increases, $E_F$ starts moving towards the middle of the gap
+
+	![Doped Bands](/modernphysics/dopedbands.png)
+
+
+### Semiconductor Devices
+#### Diode
+* When a P-type semiconductor and N-Type semiconductor are placed in contact with one another, electrons move from the n-type to the p-type
+* In the middle of the two is the **depletion region**, where charge carriers are somewhat depleted, since the holes are already filled with electrons from the n-type
+* Excess electrons that have filled holes in p-type give it a negative charge and the lack of electrons in the n-type give it a positive charge
+* At equilibrium, there is enough negative charge in the p region to repel more electrons. At equilibrium, $E_F$ is the same for both p region and n region as well.
+* At equilibrium there is a potential $\Delta V_0$, so there is an energy barrier $e\Delta V_0$
+* **Drift Current and Diffusion Current**: equal at equilibrium
+* When you apply a voltage, the energy barrier is raised or lowered, and affects the drift and diffusion currents, so that they are no longer equal
+	* **Reverse Bias**: Causes very little current to flow
+	* **Forward Bias**: Causes a significant amount of current to flow
+* Note how current basically only flows through one way: **Diode**
+![PN Junction Diagram at Equilibrium](/modernphysics/pnjunction.png)
+![PN Junction with Biases](/modernphysics/bias.png)
+![IV Curve for P-N Diode](/modernphysics/ivpndiode.png)
+
+#### Photodiode
+* External current excites electron from valence to conduction, when the electron drops, light is emitted
+	* Note that the energy gap is on the order of $1 \ eV$ which is perfect since visible light is on the order of $2 \ eV$ to $3 \ eV$
+* Running the photodiode in reverse can be used to count photons or used as a solar cell type thing
