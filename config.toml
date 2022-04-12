@@ -122,3 +122,5 @@ disableHugoGeneratorInject = false
     [markup.goldmark]
       [markup.goldmark.renderer]
         unsafe = true
+	hardWraps = true
+
