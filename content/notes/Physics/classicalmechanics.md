@@ -154,3 +154,68 @@ $$ x(t) = x_p (t) + x_h(t) $$
 
 $$ x(t) = A_1 \cos(\omega t - \delta_1) +  (A_2)(\cos (\omega_1 t - \delta_2)e^{-\beta t}$$
 $$ x(t) = A \cos(\omega t - \delta_1) + (c_1 e^{i\omega_1 t} + c_2 e^{-\omega_1 t} ) e^{-\beta t}$$
+
+## Chapter 8: Rigid Bodies
+$$ \vec{L} = \underbrace{I}_{3 x 3 \text{  matrix }} \omega$$
+
+$$ I = \begin{bmatrix} I_{xx} & I_{xy} & I_{xz} \\\\ I_{yx} & I_{yy} & I_{yz} \\\\ I_{zx} & I_{zy} & I_{zz} \end{bmatrix}$$
+
+$I$ is a symmetric matrix, which guarantees it is diagonalizable, which means we can find the eigenvectors and thus the principal axes.
+
+### Inertia Tensor of a Solid Cone
+Consider a cone with the vertex at the origin, with uniform density $\rho$, height $h$, mass $M$, and radius $R$
+$$ I_{zz} = \sum_\alpha m_\alpha (x^2_\alpha + y^2_\alpha)$$
+
+* Choose cylindrical polar coordinates ($r, \phi, z$)
+
+$$ I_{zz} = \sum_\alpha m_\alpha (x^2_\alpha + y^2_\alpha) = \int_V  r^2 \ dm$$
+$$ dm = \rho \ dV  = \rho \ r\  d \phi \ dr \ dz $$
+$$ I_{zz} =\rho \int_V  \ r^3 \   dr  \ d\phi \ dz $$
+Physics integration notation is weird
+$$ I_{zz} =\rho \int_0^h dz \int_0^{2\pi} d\phi \int_{0}^{z\frac{R}{h}} dr \ r^3 = \rho \int dz \int d\phi   $$
+Note the bounds for $r$ ends at $r = z \frac{R}{h}$ since every $z$ has a differnet $r$. Note the following relation is always true for any value of $r$ and $z$:
+$$ \frac{r}{z} = \frac{R}{h}$$
+Now continue with the integration
+$$ I_{zz} = \rho \int dz \int d\phi \ \left. \frac{r^4}{4} \right\vert_{0}^{\frac{zR}{h}}  = \rho \int dz \int d\phi \  \left(\frac{R}{h}\right)^4 \frac{z^4}{4}  = \frac{3}{10} MR^2$$
+Now find $I_{xx}$
+$$ I_{xx} = \sum_\alpha m_\alpha (y_\alpha^2 + z_\alpha^2)$$
+$$ I_{xx} = \int_V dm \ (y^2 + z^2)= \rho \int dV \ (y^2 + z^2) = \int dz \int d\phi \int r \ dr \ (y^2 + z^2) $$
+$$ I_{xx} = \int dz \int d\phi \int r \ dr \ y^2  + \int dz \int d\phi \int r \ dr \ z^2)$$
+Note that
+$$ I_{zz} = \rho \int_V (x^2 + y^2) \ dV = \frac{3}{10} MR^2$$
+$$ I_{zz} = \rho \int_V (y^2)\ dV + \rho\int_V (y^2) = \frac{3}{10}MR^2 \ dV \implies  \rho \int_V (y^2)\ dV = \frac{3}{20}MR^2$$
+since x and y are symmetric since we have a circle
+$$ I_{xx} = \int dz \int d\phi \int r \ dr \ y^2 + \int dz \int d\phi \int r \ dr \ z^2$$
+
+$$ I_{xy} = - \sum_\alpha m_\alpha x_\alpha y\alpha = -\rho \int_V dV \ x y = 0$$
+Since along the x axis, the cone is symmetric, and along the $y$-axis, the cone is symmetric.
+
+$$ I_{cone} = \begin{bmatrix} \frac{3}{20}M(R^2 + 4h^2) & 0 & 0 \\\\ 0 & \frac{3}{20}M(R^2 + 4h^2) & 0 \\\\ 0 & 0 & \frac{3}{10}MR^2 \end{bmatrix}$$
+
+### Principal Axes of Inertia
+$$ \vec{L} = I \vec{\omega}$$
+* So $\vec{L} \neq \vec{\omega}$ in general
+* Can we find particular directions of $\vec{\omega}$ so that the resulting $\vec{L}$ is in the same direction of $\vec{\omega}$?
+	* If so, then we get 
+	$$\vec{L} = \lambda \vec{\omega}, \ \lambda \in \mathbb{R}$$
+	* It turns out we *can* find principal axes for any rigid body, and these directions are called **principal axes**
+	* Note in the above, $\lambda$ is an **eigenvalue**!
+
+* **Statement of Existence of Principal axes**: For any rigid body at any point $\underbrace{O}_{\text{origin}}$, there are at least three principal axes and the inertial tensor, $I$, is diagonal. When $\vec{\omega}$ is along any of the three axes, the $\vec{L}$ will be along the same direction of $\vec{\omega}$
+
+$$\vec{L} = I \vec{\omega} = \lambda \vec{\omega}$$
+Eigenvalue problem!
+
+$$ \hat I = \begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1\end{bmatrix}$$
+$$ I \omega = \lambda \hat I \vec{\omega} \implies$$
+$$ \left(I - \lambda \hat I \right)\vec{ \omega} = 0 $$
+
+Define $A = I - \lambda \hat I$
+$$ A \vec{\omega} = 0$$
+
+The above is satisfied only if $\vec{\omega} = 0$ or $det(A) = 0$. The former is when there is no rotation at all.  
+
+We are guaranteed to have $\lambda_1, \lambda_2, \lambda_3$ and $\omega_1, \omega_2, \omega_3$
+
+
+### Finding Principle Axes
