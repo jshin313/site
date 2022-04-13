@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Modern Physics"
 publishdate: 2022-01-27
-lastmod: 2022-03-27
+lastmod: 2022-04-12
 draft: false
 toc: true
 tags:
@@ -17,6 +17,7 @@ tags:
   - waves
   - solid state
   - statistical physics
+  - nuclear physics
 ---
 
 ## Class Information
@@ -845,3 +846,7 @@ where $K$ is the thermal conductivity and $L$ is the **Lorenz number**
 
 ### Chapter 11 Summary
 ![Chapter 11 Summary](/modernphysics/chap11.png)
+
+## Chapter 12
+### Chapter 12 Summary
+![Chapter 12 Summary](/modernphysics/chap12.png)
