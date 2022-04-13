@@ -478,7 +478,45 @@ For any matrix, $A$ is $m \cross n$
 	* Non linear activation!
 * Inputs: $x_1, x_2, x_3$
 	* The wires coming into the neuron are how heavily weighted each input is, in other words, $\theta_1, \theta_2, \theta_3, \cdots$ corresponding with each $x_1, x_2, x_3, \cdots$
-	* The output is $h_\theta(x) = \frac{1}{1+e^{-\Theta T X}}$ based on the input, $x_i$ and input weights ($\theta_i$)
+	* The output is $h_\theta(x) = \frac{1}{1+e^{-\Theta^T X}}$ based on the input, $x_i$ and input weights ($\theta_i$)
 		* The sigmoid function is the activation function
 
-$$ X = \begin{bmatrix} x_0=1 \\\\ x_1 \\\\ x_2 \\\\ x_3 \end{bmatrix}, \ \ \ \Theta = \begin{bmatrix} \theta_0 \\\\ \theta_1 \\\\ \theta_2 \\\\ \theta_3 \end{bmatrix}$$
+$$ X = \begin{bmatrix} x_0=1 \\\\ x_1 \\\\ x_2 \\\\ x_3 \end{bmatrix}, \ \ \ \theta^{(j)} = \begin{bmatrix} \theta_0^{(j)} \\\\ \theta_1^{(j)} \\\\ \theta_2^{(j)} \\\\ \theta_3^{(j)} \end{bmatrix}$$
+
+### Example
+![Insert diagram]()
+* $a_i^{(j)}$ = "activation" of unit $i$ in layer $j$
+* $a^{(2)}_3$ means the 3rd node in the 2nd layer
+* $\theta^{(j)}$ = vector of weights controlling function mapping from layer $j$ to $j+1$
+$$ a_1^{(2)} = g(\theta_{10}^{(1)} x_0 + \theta_{11}^{(1)}x_1 + \theta_{12}^{(1)} x_2 + \theta_{13}^{(1)} x_3) = g(z_1^{(2)}) $$
+$$ a_2^{(2)} = g(\theta_{20}^{(1)} x_0 + \theta_{21}^{(1)}x_1 + \theta_{22}^{(1)} x_2 + \theta_{23}^{(1)} x_3) = g(z_2^{(2)}) $$
+$$ a_3^{(2)} = g(\theta_{30}^{(1)} x_0 + \theta_{31}^{(1)}x_1 + \theta_{32}^{(1)} x_2 + \theta_{33}^{(1)} x_3) = g(z_3^{(2)}) $$
+* $\theta_j$ is a vector with dimension $ 1 \times (s_{j+1} \cdot (s_j + 1))$ , where $j$ layer and $s_j$ is the number of nodes at layer $j$
+	* $\theta^{(1)} = 3 \times (3+1) = 12$
+	* $\theta^{(2)} = 1 \times (3+1) = 4$
+
+#### Forward Propogation: Vectorized Implementation
+$$ X = \begin{bmatrix} x_0=1 \\\\ x_1 \\\\ x_2 \\\\ x_3 \end{bmatrix}, \ \  z^{(2)} = \begin{bmatrix} z_1^{(2)} \\\\z_2^{(2)}  \\\\z_3^{(2)} \end{bmatrix}$$
+$$z^{(2)} = \theta^{(1)} X$$
+$$ a^{(2)} = g(z^{(2)})$$
+$$a_0^{(2)} = 1 \implies  z^{(3)} = \theta^{(2)} a^{(2)}$$
+$$ \implies z^{(3)} = \theta^{(2)} a^{(2)}$$
+$$ \implies h_\theta(x) = a^{(3)} = g(z^{(3)})$$
+
+The general steps for forward propogation:
+$$ x \longleftrightarrow a^{(1)} \xrightarrow[\theta^{(1)}]{} z^{(2)} \xrightarrow[g(z^{(2)})]{} a^{(2)} \xrightarrow[\theta^{(2)}]{} z^{(3)}\xrightarrow[g(z^{(3)})]{} a^{(3)} \longleftrightarrow h_\theta(x)  $$
+
+* You can cut unimportant features with small weights. Called "dropout"
+* $\theta^{(1)}$: New Feature Generation
+
+* If instead of each $a^{(j)}_i$, we used $z^{(j)}_i$, we would basically just do linear regression since the output node would just be linear terms
+
+### Example: And Gate
+
+### Activation Functions
+* Sigmoid Function (from 0 to 1)
+* Hyperbolic Sin (from -1 to 1)
+* Rectified Linear (relu)
+* Softmax
+	* Can be viewed as a screening function
+	* Picks out the most important/dominant components of a vector and assign larger values to those components
