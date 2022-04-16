@@ -520,3 +520,72 @@ $$ x \longleftrightarrow a^{(1)} \xrightarrow[\theta^{(1)}]{} z^{(2)} \xrightarr
 * Softmax
 	* Can be viewed as a screening function
 	* Picks out the most important/dominant components of a vector and assign larger values to those components
+
+## Bayesian Statistics and Naive Bayes Learning
+* Sometimes we don't have the "big data" needed for the algorithms used above
+* If you don't have a lot of data, you can use **Bayesian Statistics and Naive Bayes Learning**
+	* But if you do have a lot of data, use the above big data techniques
+* Example: Recommender System
+* $P(y|x)$ Disriminative
+	* $P(y|x)$ is "probability of y given x"
+* $P(y|x)$ Generative
+	* $P(y|x)$ is "probability of x given y"
+	* $y$ in our example is either $0$ or $1$
+	* $x$ in our example is the feature in the 2d space ($x_1$ or $x_2$)
+	* $P(x|y=1)$ and $P(x|y=0)$
+	* Asks the Question: What are the features like if $y= \\{0, 1\\}$?
+
+### Conditional Probability
+* $ P(A|B)$: Given that $B$ has occured, what is the probability that event $A$ occurs?
+$$ P(A|B) = \frac{P(A \cap B)}{P(B)}$$
+
+#### Example
+The % of adults who are male and alcoholics is 2.25%. What is the probability of being alcohol, given being a man?
+
+$$ A = \text{being an alcoholic}$$
+$$ B = \text{person is a male}$$
+$$ P(A \cap B) = 2.25\\% $$
+$$ P(A | B) = \text{prob of person being an alcoholic given they are male}$$
+$$ P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{0.0225}{0.5} = 0.045 = 4.51 \\%$$
+
+### Bayes' Theorem
+$$ P(A|B) = \frac{P(A \cap B)}{P(B)}$$
+$$ P(B|A)  =\frac{P(B \cap A)}{P(A)} $$
+$$ \implies P(A|B) \cdot P(B) = P(B | A) \cdot P(A) $$
+$$ \implies P(A|B) = \frac{P(B|A) \cdot P(A) }{P(B)}$$
+
+#### Example
+What is the probability of a family with two girls given that the family has at least one girl?
+* GG, GB, BG, BB
+	* 3/4 of the above cases have at least one girl
+	* 1/4 of the cases above have two girls
+	* P=1/3 for probability that a family has two girls given at least one girl
+* Now using Bayes' Theorem
+$$ P(2G | 1G) = \frac{P(1G|2G) \cdot P(2G)}{P(1G)} = \frac{1 \cdot \frac{1}{4}}{\frac{3}{4}} = \frac{1}{3}$$
+
+### Using Bayesian Statistics for Recommender Systems
+* Suppose we know $P(x|y)$ and $P(y)$
+* Given new $x$
+	$$P(y=1|x)$ = \frac{P(x|y=1) \cdot P(y=1)}{P(x)}$$
+	$$ P(x) = \sum_y P(x, y) = P(x|y=1) \cdot P(y=1) + P(x|y=0) \cdot P(y=0)$$
+	$$ P(y=1) + P(y=0) = 1$$
+
+#### Example
+$$ P(x|y=0) = 0.01$$
+$$ P(x|y=1) = 0.03$$
+$$ P(y=1) = P(y=0) = 0.5$$
+Question: What is the probability that for a new sample $P(y=1| x)$
+
+$$ P(y=1 | x) = \frac{P(x|y=1)\cdot P(y=1)}{P(x|y=1) \cdot P(y=1) + P(x|y=0) \cdot P(y=0)}$$
+$$= \frac{0.03\cdot 0.5}{0.03\cdot 0.5 + 0.01\cdot 0.5} = 0.75$$
+
+### Naive Bayes Example: Text Classification
+* Given: Feature vector $x$, $P(x|y)$, $P(y|x)$
+$$ x = \begin{bmatrix}0 \\\\ 0 \\\\ 0 \\\\ \vdots \\\\ 1 \\\\ \vdots \\\\ 0 \\\\ 0 \\\\ 0 \\\\ 0  \end{bmatrix} $$
+* The feature vector describes the number of occurences of a word or probability of the word appearing (sort of like a hashmap)
+* For this example: 
+$$x_i = \begin{cases} 1 & \text{if word }i \text{ of dictionary appears in the text}\\\\ 0  \end{cases}$$
+
+$$ P(x|y) =\prod_{i=1}^n P(x_i| y) $$
+* Then compare $P(x|y=1)$ vs. $P(x|y=0)$ to get recommendation
+	* e.g. $0.000005 > 0.000003$
