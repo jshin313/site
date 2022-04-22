@@ -847,6 +847,68 @@ where $K$ is the thermal conductivity and $L$ is the **Lorenz number**
 ### Chapter 11 Summary
 ![Chapter 11 Summary](/modernphysics/chap11.png)
 
-## Chapter 12
+## 12: Nuclear Structure and Radioactivity
+### Nuclear Constituents
+### Nuclear Size and Shape
+### Nuclear Mass and Binding Energies
+### The Nuclear Force
+### Quantum States in Nuclei
+### Radioactive Decay
+### Alpha Decay
+### Beta Decay
+### Gamma Decay and Nuclear Excited States
+### Natural Radioactivity
+
 ### Chapter 12 Summary
 ![Chapter 12 Summary](/modernphysics/chap12.png)
+
+## 13: Nuclear Reactions and Applications
+### Experimental Techniques in Nuclear Physics
+* In nuclear physics, the energy range is in MeV or more
+* Simple method
+	* Hold two plates with a potential difference
+		* Cons: Huge potential between the two plates
+* Linear Accelerator (LINAC)
+	* Oscillating polarities for tubes
+	* Longer and longer tubes as you go down
+	* Largest: Stanford Linear Accelerator (SLAC)
+	![Linac Diagram](/modernphysics/Linear_accelerator_animation_16frames_1.6sec.gif)
+* Cyclotron
+	* Two Half shells called **Dees**
+	* Magnetic Field used to make particles accelerate in a circular orbit
+	* As time passes, the particles reach larger and larger energies, so the orbits gets larger and larger
+* Modern Particle Accelerator
+	* Two beams circling around in opposite directions
+	* Larger and larger energies mean uncertainty in energy get larger and larger
+		* Increases probability of more massive particles like the Higgs Boson
+
+### Types of Nuclear Reactions
+Nuclear Reactions can be represented as follows
+$$ x + X \rightarrow y + Y$$
+* If there is no external force, then energy, momentum, and angular momentum are all conserved
+
+### Nuclear Fusion
+![Hydrogen Fusion](/modernphysics/deuterium-tritium.png)
+* Notice that the deuterium-tritium (DT) reaction releases the most energy
+* $n$: Density of plasma
+* $T$: Temperature
+* $\tau$: Confinement time
+* Increasing $n$, $T$, and $\tau$ increases the probability of penetrating the Coloumb barrier and the probability of collisions
+* **Lawsons' Criterion**: Gives criterion for when fusion power exceeds input power
+$$ n\tau \ge 10^{20} \ s \cdot m^{-3}$$
+
+#### Magnetic Confinement
+* $n = 10^{20} \text{ particles/m}^3$ (five times smaller in magnitude than an ordinary gas)
+* $\tau = 0.2 \text{ s}$
+
+#### Inertial Confinement
+* Focuses on increasing $n$, the density instead of the $\tau$
+* $n = 10^{29}\text{ particles/m}^3$
+* In the National Ignition Lab, 192 laser beams bring the DT to high densities in a 2mm diameter pellet in a pulse that is a few nanoseconds
+	* Compresses pellet to a density 100 times more than lead
+
+
+### Chapter 13 Summary
+
+![Chapter 13 Summary](/modernphysics/chap13.png)
+
