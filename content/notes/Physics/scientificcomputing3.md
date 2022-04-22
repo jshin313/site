@@ -589,3 +589,41 @@ $$x_i = \begin{cases} 1 & \text{if word }i \text{ of dictionary appears in the t
 $$ P(x|y) =\prod_{i=1}^n P(x_i| y) $$
 * Then compare $P(x|y=1)$ vs. $P(x|y=0)$ to get recommendation
 	* e.g. $0.000005 > 0.000003$
+
+## Atomic Simulations
+### Why Simulate?
+* "Computers don't solve problems, people do" (Frank Jensen)
+* Simulations rarely simulate reality
+	* Simulations mainly compute quanitites that will either prove or disprove a theory
+
+### Energy Models
+* Empirical Models (parameters fitted to experimental data)
+	* Fastest
+	* Many body potentials
+	* Pair potentials
+* Semi-Empirical 
+	* Tight Binding
+* Quantum Mechanical (start from Schrodinger's equation and make approximations)
+	* Slowest
+	* Quantum chemistry
+		* Based on atomic orbitals
+	* Density Functional Theory (DFT)
+	* Quantum Monte Carlo
+### Born Oppenheimer Approxmation
+* All **atoms** characterized by coordinate vector $\vec{R}_i$
+* **System** characterized by wavefunction $\psi$
+
+**Born Oppenheimer Approximation**
+* The wavefunctions of the nuclei and electrons can be treated separately since the nuceli are a lot heavier than the electrons
+
+### Pairwise Energy Summation: Pair Potential
+$$ E = (E_0) + \frac{1}{2} \sum_{i, j \neq i}^N V(\vec{R}_i - \vec{R}_j)$$
+
+### Formation Energy of Crystals
+* Amount of energy that holds a crystal together
+* Formation energy is always negative
+
+### Density Functional Theory
+* All system properties can be represented as a function of electron density, which in turn can be represented by wavefunctions
+
+### Band Gap
