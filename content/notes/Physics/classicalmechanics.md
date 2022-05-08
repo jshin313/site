@@ -55,7 +55,7 @@ $$ x(t) = e^{-\beta t} \left\[c_1 e^{t\sqrt{\beta^2 - \omega_0^2}} + c_2 e^{-t\s
 
 #### Undamped ($\beta = 0$)
 $$ x(t) = e^{-\beta t} \left\[c_1 e^{t\sqrt{- \omega_0^2}} + c_2 e^{-t\sqrt{ - \omega_0^2}}\right\]$$
-$$ x(t) = c_1 e^{i\omega_0 t} + c_2 e^{-\omega_0 t}$$
+$$ x(t) = c_1 e^{i\omega_0 t} + c_2 e^{-i\omega_0 t}$$
 
 This is the equation is what we got earlier for a SHO without any force damping
 
@@ -219,3 +219,4 @@ We are guaranteed to have $\lambda_1, \lambda_2, \lambda_3$ and $\omega_1, \omeg
 
 
 ### Finding Principle Axes
+Find Eigenvectors

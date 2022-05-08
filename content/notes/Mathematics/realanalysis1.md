@@ -104,6 +104,10 @@ Use this to prove the forward and reverse implications.
 A sequence $(a_n)$ **converges** to $a \in \mathbb{R}$ if 
 $$\forall \epsilon > 0\ \exists N \in \mathbb{N} \ni (n \ge N \implies |a_n - a| < \epsilon) $$
 
+## 3.2: Open and Closed Sets
+## 3.3: Compact Sets
+## 3.4: Perfect Sets and Connected Sets
+
 ## 4.2: Functional Limits
 ### Definition 4.2.1 (Functional Limit)
 Let $f: A \to \mathbb{R}$ and let $c \in A$. Let $x \in A$
@@ -276,3 +280,5 @@ For each $n\in \mathbb{N}$, let $f_n$ be defined on $A$ and let $M_n > 0$ be a r
 $$ |f_n(x)| \le M_n \ \forall x \in A$$
 
 If $\sum_{n=1}^\infty M_n$ converges, then $\sum_{n=1}^\infty f_n$ converges uniformly on $A$
+
+## 6.5: Power Series
