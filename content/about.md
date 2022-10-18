@@ -6,8 +6,4 @@ aliases = ["about-us","contact"]
   name = "Jacob Shin"
 +++
 
-Student. Programmer. Musician.  
-
-I play CTF (Capture the Flag) computer security competitions and write code sometimes.
-
 [GitHub](https://github.com/jshin313)  [Linkedin](https://linkedin.com/in/jacob-shin)
