@@ -11,10 +11,21 @@ tags:
   - circuits
 ---
 
-## Norton Equivalence
-
-## Thevenin Equivalence
-
 ## OpAmps
 
+## Norton Equivalence
+* Short load resistor (set resistance to 0)
+* Norton Current, $I_n$ is the current through the shorted load resistor
+
+## Thevenin Equivalence
+* To find Thevenin resistance $R_{thev}$
+  * Short voltage sources, open current sources
+* To find Thevenin voltage
+  * Open circuit voltage
+
 ## AC Phasors
+$j=\sqrt{-1}$ is used instead of $i$ since $i$ is used for current in electrical engineering
+$$ Z_R = R $$ 
+$$ Z_C = -\frac{j}{ (\omega C)} = \frac{1}{j \omega C}$$
+$$ Z_L = j \omega L$$
+
