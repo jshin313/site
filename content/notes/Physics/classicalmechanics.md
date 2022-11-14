@@ -23,6 +23,26 @@ Textbook: Classical Mechanics by John Taylor
 
 ## 2: Newton's Laws of Motion
 
+### Newton's Laws in 2D Polar Coordinates
+See [Wikipedia](https://en.wikipedia.org/wiki/Polar_coordinate_system#Vector_calculus) for an alternative derivation
+
+We have $\hat{\rho}$ and $\hat{\phi}$ for 2D polar coordinates
+$$ \vec{r} = \rho \hat{\rho}$$
+Note that the position vector, $\vec{r}$, does not depend on $\phi$ explicitly
+
+$$ \vec{v} = \dv{\vec{r}}{t} = \dv{}{t} \left(\rho \hat{\rho}\right)= \rho \dv{\hat{\rho}}{t} + \dot{\rho}\hat{\rho} $$
+
+Now we find $\dv{\hat{r}}{t}$
+$$ \left|\dv{\hat{r}}{t}\right| = \lim_{\Delta t \to 0} \frac{\hat{\rho}(t + \Delta t) - \hat{\rho} (t)}{\Delta t} = \lim_{\Delta \to 0} \frac{\Delta \phi \cdot |\hat{\rho}|}{\Delta t} = \lim_{\Delta t \to 0} \frac{\Delta \phi \cdot 1}{\Delta t} = \frac{d\phi}{dt} $$
+
+We can find that the direction is in the $\hat{\phi}$ by looking at a diagram.
+
+$$\dv{\hat{r}}{t} = \dot{\phi} \hat{\phi} $$
+
+
+
+$$ \vec{v} = \dot{\rho} \hat{\rho} + r \dot{\phi} \hat{\phi}$$
+
 ## 5: Oscillation
 
 ### Damped Oscillations
@@ -220,3 +240,4 @@ We are guaranteed to have $\lambda_1, \lambda_2, \lambda_3$ and $\omega_1, \omeg
 
 ### Finding Principle Axes
 Find Eigenvectors
+
