@@ -23,6 +23,9 @@ tags:
 * To find Thevenin voltage
   * Open circuit voltage
 
+Max Power
+$$ P_{max} = \frac{1}{2} \frac{V_{thev}^2}{4 * R_{thev}}$$
+
 ## AC Phasors
 $j=\sqrt{-1}$ is used instead of $i$ since $i$ is used for current in electrical engineering
 $$ Z_R = R $$ 
