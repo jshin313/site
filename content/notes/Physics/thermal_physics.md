@@ -107,6 +107,8 @@ For $N$ **distinguisable**, non-interacting particles:
 $$ Z_{total} = Z_1Z_2 Z_3...Z_N$$
 where $Z_{tota}$ is the partition function for the entire system, and $Z_i$ is the individual single particle partition function
 
+* Proof: https://web.archive.org/web/20171209201618/https://theory.physics.manchester.ac.uk/~judith/stat_therm/partition-factorise.pdf
+
 For $N$ **indistinguisable**, non-interacting particles:
 $$ Z_{total} = \frac{Z_1^N}{N!}$$
 * where $Z_1$ is the single particle partition function
