@@ -13,3 +13,4 @@ I made the following modifications to the theme
 * Updated footer in `layouts/partials/footer.html`
 * Fixed code colors in `assets/scss/_main.scss`
 * Fixed flickering issue whenever changing to light mode by moving code out of `assets/js/main.js` to `layouts/partials/head.html`
+* Added mathjax code to `layouts/partials/javascript.html`
