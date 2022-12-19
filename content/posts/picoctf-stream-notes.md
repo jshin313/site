@@ -111,7 +111,7 @@ Just use “view page source”
 
 ## Let's Warm Up - General Skills 
 Just use an online ascii table or hex to ascii converter or the following
-```pycon
+```python
 $ python
 >>> chr(0x70)
 'p'
@@ -142,7 +142,7 @@ print(''.join([a[n] for n in k]))
 ```
 
 ## 2Warm - General Skills 
-```pycon
+```python
 $ python
 >>> bin(42)
 '0b101010'
@@ -274,14 +274,14 @@ Convert from Base64
 Base64 is used to encode binary to a printable text
 
 Python2
-```pycon
+```python
 $ python
 >>> "bDNhcm5fdGgzX3IwcDM1".decode("base64")
 'l3arn_th3_r0p35'
 ```
 
 Python3
-```pycon
+```python
 $ python3
 >>> import base64
 base64.b64decode("bDNhcm5fdGgzX3IwcDM1")
@@ -541,7 +541,7 @@ Gynvael then just uses "Follow UDP stream" to find the flag
 
 ## Based - General Skills 
 Just convert binary to ascii, decimal to ascii, and octal to ascii, etc.
-```pycon
+```python
 $ python
 >>> list = "146 141 154 143 157 156"
 >>> base = 8
@@ -552,7 +552,7 @@ $ python
 ```
 
 Converting hex to ascii in python3
-```pycon
+```python
 $ python
 >>> bytes.fromhex("7461626c65")
 b'table'
@@ -681,7 +681,7 @@ In the javascript bash
 Just use a morse code [decoder](http://www.unit-conversion.info/texttools/morse-code/).
 
 All uppercase
-```pycon
+```python
 $ python
 >>> "picoctf{m0rs3c0d31sfun1818224575}".upper()
 PICOCTF{M0RS3C0D31SFUN1818224575}
@@ -737,7 +737,7 @@ n:
 
 It's possible to calculate n since `n = q*p`.  
 Solve for n:
-```pycon
+```python
 $ python
 >>> q = 60413
 >>> p = 76753
@@ -760,7 +760,7 @@ q:
 
 Just use `q = n/p` and some python.
 
-```pycon
+```python
 $ python
 >>> 5051846941/54269
 93089
@@ -792,7 +792,7 @@ totient(n):
 ```
 Use this equation `totient(n) = (q-1)*(p-1)` and python to calculate it
 
-```pycon
+```python
 $ python
 >>> ( 66347-1)*(12611-1)
 836623060
@@ -812,7 +812,7 @@ IS THIS POSSIBLE and FEASIBLE? (Y/N):y
 Encryption: `Ciphertext = plaintext^e mod n`
 
 Use python:
-```pycon
+```python
 $ python
 >>> m = 6357294171489311547190987615544575133581967886499484091352661406414044440475205342882841236357665973431462491355089413710392273380203038793241564304774271529108729717
 >>> e = 3
@@ -837,7 +837,7 @@ You need the private key, d, to get the plaintext. And in order to get d, you ne
 #### Question 7:
 
 Use python
-```pycon
+```python
 $ python
 >>> ​from Crypto.Util.number import inverse
 >>> q = 92092076805892533739724722602668675840671093008520241548191914215399824020372076186460768206814914423802230398410980218741906960527104568970225804374404612617736579286959865287226538692911376507934256844456333236362669879347073756238894784951597211105734179388300051579994253565459304743059533646753003894559
@@ -864,7 +864,7 @@ plaintext:
 ```
 
 Python:
-```pycon
+```python
 $ python
 >>> ​from Crypto.Util.number import inverse
 >>> p = 15314304227252786879841261241720443415693514687428299094
@@ -893,7 +893,7 @@ $ python
 ```
 
 To get the flag, just convert the above message to hex and then to ascii
-```pycon
+```python
 $ python
 >>> hex(14311663942709674867122208214901970650496788151239520971623411712977119642137567031494784893)[2:-1].decode('hex')
 'picoCTF{wA8_th4t$_ill3aGal..o1828d357}'
@@ -1095,7 +1095,7 @@ Opening in a hex editor shows that there are in fact 2 characters (looks like UT
 Replace the characters with visible ones (like # and .). If we make the data into 8 columns, we see that the first column always has the same character, which means it is probably ASCII binary data since all printable characters in ASCII use only 7 bits with the top bit being 0. Convert everything to 0's and 1's, making sure the top bit is 0.
 
 Use python to convert binary to ascii
-```pycon
+```python
 $ python
 >>> p = "00001010000010010000100101110000011010010110001101101111010000110101010001000110000010100000101000001001000010010101001101000101010001010010000001010000010101010100001001001100010010010100001100100000010100100100010101000011010011110101001001000100010100110010000000100110001000000100001001000001010000110100101101000111010100100100111101010101010011100100010000100000010100100100010101010000010011110101001001010100000010100000100100001001001101010011000000110000001100000010000001000110011011110111001001100010011001010111001100100000010000010111011001100101001011000010000001010000011010010111010001110100011100110110001001110101011100100110011101101000001011000010000001010000010000010010000000110001001101010011001000110001001100110000101000001001000010010111000001101001011000110110111101000011010101000100011001111011011011100110111101110100010111110110000101101100011011000101111101110011011100000110000101100011011001010111001101011111011000010111001001100101010111110110001101110010011001010110000101110100011001010110010001011111011001010111000101110101011000010110110001011111011000110011000100110110001101110011000000110100001100000110001100110111001100110011100001100101001110000110001001100011011000010110010100110010001100010011000000111001011001010110011000110100011000100110010100110101001110010011011000110000011000100011000101111101000010100000100100001001"
 >>> int(p, 2) # Convert binary string to integer
