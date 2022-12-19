@@ -1,5 +1,5 @@
 baseurl      = "/"
-title        = "Just a random site"
+title        = "Jacob Shin"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
 paginate     = 10
@@ -20,7 +20,7 @@ buildExpired = false
 canonifyURLs = true
 
 enableRobotsTXT = true
-enableGitInfo   = false
+enableGitInfo   = true
 enableEmoji     = true
 enableMissingTranslationPlaceholders = false
 disableRSS     = false
@@ -33,9 +33,10 @@ dateform        = "Jan 2, 2006"
 dateformShort   = "Jan 2"
 dateformNum     = "2006-01-02"
 dateformNumTime = "2006-01-02 15:04 -0700"
+gitUrl = "https://github.com/jshin313/site/commit/"
 
 # Subtitle for home
-homeSubtitle = "Random projects, posts, and stuff"
+homeSubtitle = "Projects, posts, notes, etc"
 
 # Set disableReadOtherPosts to true in order to hide the links to other posts.
 disableReadOtherPosts = false
@@ -49,12 +50,6 @@ images = [""]
 defaultTheme = "dark"
 
 enableThemeToggle = true
-
-[params.footer]
-trademark = true
-author = true
-bottomText = ["HI", "TEST"]
-
 
 [taxonomies]
 category = "blog"
