@@ -1,107 +1,55 @@
 {{ $main := resources.Get "js/main.js" }}
 {{ $menu := resources.Get "js/menu.js" }}
 {{ $prism := resources.Get "js/prism.js" }}
-{{ $theme := resources.Get "js/theme.js" }}
-{{ $secureJS := slice $main $menu $prism $theme | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
+{{ $secureJS := slice $main $menu $prism | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
 
-{{- if .Site.GoogleAnalytics }}
-{{ template "_internal/google_analytics.html" . }}
-{{- end}}
-
-{{ range $val := $.Site.Params.customJS }}
-{{ if gt (len $val) 0 }}
-<script src="{{ $val }}"></script>
-{{ end }}
-{{ end }}
-
-{{if (and (ne .Title "About") (ne .Title "Projects"))}}
-<script>window.isPost=true;</script>
-{{end}}
-
+<!-- LaTeX -->
 <style>
 code.has-jax {
-        font: inherit;
-        font-size: 1rem;
-        background: inherit;
-        border: inherit;
-        color: $light-color !important;                                                                                               
-                .dark-theme & {                                                                                                                         
-                        color: $dark-color !important;
-                }
-}
-        div.has-jax {
-                overflow-x: auto;
-                .scrollable-element {
-                        scrollbar-color: red yellow;
-                }
+    font: inherit;
+    font-size: 1rem;
+    background: inherit;
+    border: inherit;
+    color: $light-color !important;                                                                                               
+        .dark-theme & {                                                                                                                         
+            color: $dark-color !important;
         }
+}
+                div.has-jax {
+                    overflow-x: auto;
+                        .scrollable-element {
+                            scrollbar-color: red yellow;
+                        }
+                }
 
 
 </style>
 
 <script>
-        function keep_time(id) {
-                // From https://stackoverflow.com/a/29972322/9512643
-                let start = Date.now();
-                let timer = setInterval(function() {
-                        let delta = Date.now() - start; // milliseconds elapsed since start
+    // From https://geoffruddock.com/math-typesetting-in-hugo/
+    MathJax = {
+        loader: {load: ['[tex]/physics', '[tex]/ams', '[tex]/mhchem']},
+        tex: {
+            packages: {'[+]': ['physics', 'ams']},
+            inlineMath: [['$', '$'] ],
+            displayMath: [['$$','$$'] ],
+            processEscapes: false,
+            processEnvironments: true
+        },
+        macros: {
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+        startup: {
+            pageReady() {
 
-                        document.getElementById(id).innerHTML = Math.floor(delta);
-                        // console.log(Math.floor(delta)); 
-                        // alternatively just show wall clock time:
-                        // console.log(new Date().toUTCString());
-                }, 1); // update about every second
-
-                return timer;
+                return MathJax.startup.defaultPageReady().then(function () {
+                });
+            }
         }
-
-        if (window.isPost) {
-                var mj_timer = keep_time("mj-time");
-                var page_timer = keep_time("page-time");
-        }
-
-        // From https://geoffruddock.com/math-typesetting-in-hugo/
-                MathJax = {
-                        loader: {load: ['[tex]/physics', '[tex]/ams', '[tex]/mhchem']},
-                        tex: {
-                                packages: {'[+]': ['physics', 'ams']},
-                                inlineMath: [['$', '$'] ],
-                                displayMath: [['$$','$$'] ],
-                                        processEscapes: false,
-                                        processEnvironments: true
-                                },
-                                macros: {
-                                        },
-                        options: {
-                                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                        },
-                        startup: {
-                                pageReady() {
-
-                                                                return MathJax.startup.defaultPageReady().then(function () {
-                                                                        if (window.isPost) {
-                                                                                clearInterval(mj_timer);
-                                                                        }
-                                                                });
-                                                                }
-                                                        }
-                                                };
-
-        window.addEventListener('load', (event) => {
-                document.querySelectorAll("mjx-container").forEach(function(x){ x.parentElement.classList += 'has-jax'});
-
-                if (window.isPost) {
-                        clearInterval(page_timer);
-                }
-        });
-                   
-
-                // Find and replace $$ with <div>$$ and $$</div>
-                // Based on https://stackoverflow.com/a/47205309/9512643
-                document.getElementsByClassName("post-content")[0].innerHTML = document.getElementsByClassName("post-content")[0].innerHTML.split("$$").reduce((a,b, i) => i %2 == 0 ? a + "$$</div>" + b : a + "<div>$$" + b );
-
-
+    };
 
 
 </script>

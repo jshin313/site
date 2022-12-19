@@ -29,98 +29,106 @@ disable404     = false
 disableHugoGeneratorInject = false
 
 [params]
-  dateform        = "Jan 2, 2006"
-  dateformShort   = "Jan 2"
-  dateformNum     = "2006-01-02"
-  dateformNumTime = "2006-01-02 15:04 -0700"
+dateform        = "Jan 2, 2006"
+dateformShort   = "Jan 2"
+dateformNum     = "2006-01-02"
+dateformNumTime = "2006-01-02 15:04 -0700"
 
-  # Subtitle for home
-  homeSubtitle = "Random projects, posts, and stuff"
+# Subtitle for home
+homeSubtitle = "Random projects, posts, and stuff"
 
-  # Set disableReadOtherPosts to true in order to hide the links to other posts.
-  disableReadOtherPosts = false
+# Set disableReadOtherPosts to true in order to hide the links to other posts.
+disableReadOtherPosts = false
 
-  # Metadata mostly used in document's head
-  description = "My homepage or blog"
-  keywords = "homepage, blog"
-  images = [""]
+# Metadata mostly used in document's head
+description = "My homepage or blog"
+keywords = "homepage, blog"
+images = [""]
 
-  # Default theme "light" or "dark"
-  defaultTheme = "dark"
+# Default theme "light" or "dark"
+defaultTheme = "dark"
+
+enableThemeToggle = true
+
+[params.footer]
+trademark = true
+author = true
+bottomText = ["HI", "TEST"]
+
 
 [taxonomies]
-    category = "blog"
-    tag      = "tags"
-    series   = "series"
+category = "blog"
+tag      = "tags"
+series   = "series"
 
 [[params.social]]
-  name = "email"
-  url  = "mailto:jacobshin313@gmail.com"
+name = "email"
+url  = "mailto:jacobshin313@gmail.com"
 
 [[params.social]]
-  name = "github"
-  url  = "https://github.com/jshin313"
+name = "github"
+url  = "https://github.com/jshin313"
 
 [[params.social]]
-  name = "linkedin"
-  url  = "https://www.linkedin.com/in/jacob-shin"
+name = "linkedin"
+url  = "https://www.linkedin.com/in/jacob-shin"
 
 [languages]
-  [languages.en]
-    title = "Jacob Shin"
-    subtitle = "Random Stuff"
-    keywords = ""
-    copyright = 'Jacob Shin'
-    readOtherPosts = "Read other posts"
+[languages.en]
+title = "Jacob Shin"
+subtitle = "Random Stuff"
+keywords = ""
+copyright = 'Jacob Shin'
+readOtherPosts = "Read other posts"
 
-    [languages.en.params.logo]
-      logoText = " "
-      logoHomeLink = "/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
+[languages.en.params.logo]
+logoText = " "
+logoHomeLink = "/"
+# or
+#
+# path = "/img/your-example-logo.svg"
+# alt = "Your example logo alt text"
 
-  # And you can even create generic menu
+# And you can even create generic menu
 [[menu.main]]
-    identifier = "projects"
-    name       = "Projects"
-    url        = "/projects"
-    weight     = -102
-
-[[menu.main]]
-    identifier = "posts"
-    name       = "Posts"
-    url        = "/posts"
-    weight     = -101
+identifier = "projects"
+name       = "Projects"
+url        = "/projects"
+weight     = -102
 
 [[menu.main]]
-    identifier = "notes"
-    name       = "Notes"
-    url        = "/notes"
-    weight     = -100
+identifier = "posts"
+name       = "Posts"
+url        = "/posts"
+weight     = -101
+
+[[menu.main]]
+identifier = "notes"
+name       = "Notes"
+url        = "/notes"
+weight     = -100
 
 
 [[menu.main]]
-    identifier = "about"
-    name       = "About"
-    url        = "/about"
-    weight     = -99
+identifier = "about"
+name       = "About"
+url        = "/about"
+weight     = -99
 
 
 
 [markup]
-    [markup.highlight]
-          codeFences = true
-          hl_Lines = ""
-          lineNoStart = 1
-          lineNos = false
-          lineNumbersInTable = true
-          noClasses = true
-          style = "monokai"
-          tabWidth = 4
-    [markup.goldmark]
-      [markup.goldmark.renderer]
-        unsafe = true
-	hardWraps = true
+[markup.highlight]
+codeFences = true
+hl_Lines = ""
+lineNoStart = 1
+lineNos = false
+lineNumbersInTable = true
+noClasses = true
+style = "monokai"
+tabWidth = 4
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+hardWraps = true
 

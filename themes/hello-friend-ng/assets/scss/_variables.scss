@@ -1,24 +1,33 @@
 @charset "UTF-8";
 
-/* light theme color */
-$light-background: #fbf1c7;
-$light-background-secondary: #ebdbb2;
-$light-color: #282828;
-$light-color-secondary: #689d6a;
-$light-border-color: #d5c4a1;
+/* Light theme color */
+$light-background: #fbf1c7; // bg0
+$light-background-secondary: #f9f5d7; // bg0_h
+$light-background-header: #ebdbb2; // bg1
+$light-color: #3c3836; // fg1
+$light-color-variant: #282828; // fg0
+$light-color-secondary: #98971a; // green
+$light-border-color: #d65d03; // orange
+$light-table-color: #d65d03; // orange
 
-/* dark theme colors */
-$dark-background: #1d2021;
-$dark-background-secondary: #3c3836;
-$dark-color: #fbf1c7;
-$dark-color-secondary: #7c6f64;
-$dark-border-color: #32302f;
+/* Dark theme colors */
+$dark-background: #1d2021; // bg0_h
+$dark-background-secondary: #3c3836; // bg1
+$dark-background-header: #282828; // bg0
+$dark-color: #ebdbb2; // fg1
+$dark-color-variant: #fbf1c7; // fg0
+$dark-color-secondary: #bdae93; // fg3
+$dark-border-color: #a89984; // fg4
+$dark-table-color: #a89984; // fg4
 
 $media-size-phone: "(max-width: 684px)";
 $media-size-tablet: "(max-width: 900px)";
 
-/* variables for js, must be the same as these in @custom-media queries */
+/* Variables for js, must be the same as these in @custom-media queries */
 :root {
   --phoneWidth: (max-width: 684px);
   --tabletWidth: (max-width: 900px);
 }
+
+/* Content */
+$max-width: 860px;
