@@ -32,7 +32,7 @@ Classes where I didn't use $\LaTeX$: Optics, Mathematical Physics, Electricity &
 
 ## [Computer Science](/computer-science)
 * [Graphs*](/computer-science/graphs)
-* [Algorithm Notes*](/computer-science/algorithmnotes)
+* [Algorithm Notes*](/computer-science/algo-notes)
 * [Data Structures](/computer-science/datastructures)
 * [Computer Systems & Low Level Programming](/computer-science/low-level)
 * [Discrete Mathematics I](/computer-science/discrete-maths-1)
