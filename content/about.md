@@ -6,4 +6,8 @@ aliases = ["about-us","contact"]
   name = "Jacob Shin"
 +++
 
-[GitHub](https://github.com/jshin313)  [Linkedin](https://linkedin.com/in/jacob-shin)
+Physics student.
+
+[GitHub](https://github.com/jshin313)
+
+[Linkedin](https://linkedin.com/in/jacob-shin)
