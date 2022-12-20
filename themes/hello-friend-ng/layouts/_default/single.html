@@ -67,5 +67,8 @@
 
         <hr />
 
+        {{if (and (ne .Title "About") (ne .Title "Projects") (ne .Title "Notes") )}}
+        {{ partial "pagination-single.html" . }}
+        {{end}}
     </main>
 {{ end }}
