@@ -11,13 +11,21 @@
 
             <h1>{{ .Site.Title }}</h1>
 
-            {{ partial "subtitle.html" . }}
+            <!-- {{ partial "subtitle.html" . }} -->
 
-            {{- with .Site.Params.social }}
-                <div>
-                    {{ partial "social-icons.html" . }}
-                </div>
-            {{- end }}
+        </div>
+
+        <div class="homepage-content" style="text-align: left">
+            <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
+            {{.Content}}
+        </div>
+        {{- with .Site.Params.social }}
+        {{ partial "social-icons.html" . }}
+        {{- end }}
+        <div>
+        {{ range first 10 .Site.RegularPages }}
+        {{ .Render "summary"}}
+        {{ end }}
         </div>
     </main>
 {{ end }}

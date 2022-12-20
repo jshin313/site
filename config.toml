@@ -36,7 +36,7 @@ dateformNumTime = "2006-01-02 15:04 -0700"
 gitUrl = "https://github.com/jshin313/site/commit/"
 
 # Subtitle for home
-homeSubtitle = "Projects, posts, notes, etc"
+# homeSubtitle = "Projects, posts, notes, etc"
 
 # Set disableReadOtherPosts to true in order to hide the links to other posts.
 disableReadOtherPosts = false
@@ -71,7 +71,7 @@ url  = "https://www.linkedin.com/in/jacob-shin"
 [languages]
 [languages.en]
 title = "Jacob Shin"
-subtitle = "Random Stuff"
+subtitle = "Notes, Posts, Projects, etc."
 keywords = ""
 copyright = 'Jacob Shin'
 readOtherPosts = "Read other posts"
@@ -86,21 +86,21 @@ logoHomeLink = "/"
 
 # And you can even create generic menu
 [[menu.main]]
-identifier = "projects"
-name       = "Projects"
-url        = "/projects"
+identifier = "CV"
+name       = "CV"
+url        = "https://github.com/jshin313/resume/raw/main/cv_jacob_shin.pdf"
 weight     = -102
-
-[[menu.main]]
-identifier = "posts"
-name       = "Posts"
-url        = "/posts"
-weight     = -101
 
 [[menu.main]]
 identifier = "notes"
 name       = "Notes"
 url        = "/notes"
+weight     = -101
+
+[[menu.main]]
+identifier = "posts"
+name       = "Posts"
+url        = "/posts"
 weight     = -100
 
 

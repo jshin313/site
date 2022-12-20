@@ -17,3 +17,5 @@ I made the following modifications to the theme
 * Moved the `post-info` properties such as "tags" and "gitinfo" to the top of the page for posts and notes
 	* `layouts/posts/single.html`
 	* `layouts/_default/single.html`
+* Update `layouts/index.html` to update home page
+* Create `layouts/projects/` for projects pages
