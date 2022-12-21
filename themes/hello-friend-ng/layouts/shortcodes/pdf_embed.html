@@ -1,0 +1,181 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.1.81/pdf_viewer.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.1.81/pdf.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.1.81/pdf_viewer.js"></script>
+<style>
+html {
+  letter-spacing: normal !important;
+}
+</style>
+
+<div>
+  <button id="prev" style="display: inline">Previous</button> <button id="next" style="display: inline">Next</button>
+  &nbsp; &nbsp;
+  <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+</div>
+<div class="col-md-8" id="outer-container">
+  <div id="pageContainer" class="pdfViewer singlePageView"></div>
+</div>
+
+<script>
+/* 
+* Modified by Jacob Shin 2022
+* to support multiple pages based on the example here
+* https://mozilla.github.io/pdf.js/examples/
+*/
+
+/* Original License:
+ * Copyright 2014 Mozilla Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+if (!pdfjsLib.getDocument || !pdfjsViewer.PDFPageView) {
+  alert("Please build the pdfjs-dist library using\n  `gulp dist-install`");
+}
+
+// The workerSrc property shall be specified.
+//
+pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.1.81/pdf.worker.js";
+
+// Some PDFs need external cmaps.
+//
+const CMAP_URL = "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.1.81/cmaps/";
+const CMAP_PACKED = true;
+
+const DEFAULT_URL = '{{ .Get "url" }}';
+const SCALE = 0.75;
+
+const ENABLE_XFA = true;
+
+const container = document.getElementById("pageContainer");
+
+const eventBus = new pdfjsViewer.EventBus();
+
+// Loading document.
+const loadingTask = pdfjsLib.getDocument({
+  url: DEFAULT_URL,
+  cMapUrl: CMAP_URL,
+  cMapPacked: CMAP_PACKED,
+  enableXfa: ENABLE_XFA,
+});
+
+var pdfDoc = null,
+  pageNum = 1,
+  pageRendering = false,
+  pageNumPending = null,
+  prevWidth = window.width;
+
+/**
+ * Get page info from document, resize canvas accordingly, and render page.
+ * @param num Page number.
+ */
+async function renderPage(num) {
+  pageRendering = true;
+  const page = await pdfDoc.getPage(num);
+
+  container.innerHTML = "";
+
+  var outer_container = document.getElementById('outer-container');
+  var viewport = page.getViewport({scale: 1});
+  var scale = SCALE * outer_container.clientWidth/viewport.width;
+  viewport = page.getViewport({scale: scale});
+  // console.log(outer_container.clientWidth);
+  // console.log(viewport.width);
+
+  // Using promise to fetch the page
+    // Creating the page view with default parameters.
+  const pdfPageView = new pdfjsViewer.PDFPageView({
+      container,
+      scale: scale,
+      defaultViewport: viewport,
+      eventBus,
+      // We can enable text/annotation/xfa/struct-layers, as needed.
+      textLayerFactory: !pdfDoc.isPureXfa
+      ? new pdfjsViewer.DefaultTextLayerFactory()
+      : null,
+      annotationLayerFactory: new pdfjsViewer.DefaultAnnotationLayerFactory(),
+      xfaLayerFactory: pdfDoc.isPureXfa
+      ? new pdfjsViewer.DefaultXfaLayerFactory()
+      : null,
+      structTreeLayerFactory: new pdfjsViewer.DefaultStructTreeLayerFactory(),
+  });
+
+  // Associate the actual page with the view, and draw it.
+  pdfPageView.setPdfPage(page);
+  await pdfPageView.draw();
+
+  // Wait for rendering to finish
+  pageRendering = false;
+  if (pageNumPending !== null) {
+    // New page rendering is pending
+    renderPage(pageNumPending);
+    pageNumPending = null;
+  }
+  // Update page counters
+  document.getElementById('page_num').textContent = num;
+}
+
+/**
+ * If another page rendering in progress, waits until the rendering is
+ * finised. Otherwise, executes rendering immediately.
+ */
+function queueRenderPage(num) {
+  if (pageRendering) {
+    pageNumPending = num;
+  } else {
+    renderPage(num);
+  }
+}
+
+/**
+ * Displays previous page.
+ */
+function onPrevPage() {
+  if (pageNum <= 1) {
+    return;
+  }
+  pageNum--;
+  queueRenderPage(pageNum);
+}
+document.getElementById('prev').addEventListener('click', onPrevPage);
+
+/**
+ * Displays next page.
+ */
+function onNextPage() {
+  if (pageNum >= pdfDoc.numPages) {
+    return;
+  }
+  pageNum++;
+  queueRenderPage(pageNum);
+}
+document.getElementById('next').addEventListener('click', onNextPage);
+
+/**
+ * Asynchronously downloads PDF.
+ */
+(async function(pdfDoc_) {
+  pdfDoc = await loadingTask.promise;
+  document.getElementById('page_count').textContent = pdfDoc.numPages;
+
+  // Initial/first page rendering
+  renderPage(pageNum);
+})();
+
+window.addEventListener('resize', () => {
+  queueRenderPage(pageNum);
+});
+
+</script>
