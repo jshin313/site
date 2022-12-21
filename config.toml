@@ -88,7 +88,7 @@ logoHomeLink = "/"
 [[menu.main]]
 identifier = "CV"
 name       = "CV"
-url        = "https://github.com/jshin313/resume/raw/main/cv_jacob_shin.pdf"
+url        = "/cv"
 weight     = -102
 
 [[menu.main]]
