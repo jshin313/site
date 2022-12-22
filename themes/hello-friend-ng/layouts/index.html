@@ -3,6 +3,12 @@
 {{ end }}
 
 {{ define "main" }}
+    <style>
+    .content {
+        margin: 2em;
+    }
+    </style>
+
     <main aria-role="main">
         <div>
             {{ if .Site.Params.Portrait.Path }}
