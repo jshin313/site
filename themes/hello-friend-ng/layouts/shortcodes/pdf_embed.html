@@ -217,6 +217,7 @@ document.getElementById('next').addEventListener('click', onNextPage);
     li.appendChild(link);
     link.href = "javascript:void(0);";
     link.addEventListener('click', () => {
+      pageNum = heading.pageNumber;
       queueRenderPage(heading.pageNumber)
       container.scrollIntoView();
     });
