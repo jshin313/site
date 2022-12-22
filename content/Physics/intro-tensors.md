@@ -2,7 +2,7 @@
 publishdate: 2022-12-19
 title: "Intro to Tensors"
 toc: true
-draft: false
+draft: true
 tags:
   - notes
   - college
