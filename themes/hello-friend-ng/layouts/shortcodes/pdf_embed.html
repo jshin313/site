@@ -90,6 +90,11 @@ async function renderPage(num) {
   var outer_container = document.getElementById('outer-container');
   var viewport = page.getViewport({scale: 1});
   var scale = SCALE * outer_container.clientWidth/viewport.width;
+  
+  if (Math.abs(1-scale) < 0.05) {
+    return;
+  }
+
   viewport = page.getViewport({scale: scale});
   // console.log(outer_container.clientWidth);
   // console.log(viewport.width);
