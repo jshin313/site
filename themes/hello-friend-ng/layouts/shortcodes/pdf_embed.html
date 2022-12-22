@@ -85,16 +85,16 @@ var pdfDoc = null,
 async function renderPage(num) {
   pageRendering = true;
   const page = await pdfDoc.getPage(num);
-  container.innerHTML = "";
 
   var outer_container = document.getElementById('outer-container');
   var viewport = page.getViewport({scale: 1});
   var scale = SCALE * outer_container.clientWidth/viewport.width;
   
-  if (Math.abs(SCALE-scale) < 0.10) {
+  if (Math.abs(SCALE-scale) < 0.05) {
     pageRendering = false;
     return;
   }
+  container.innerHTML = "";
 
   viewport = page.getViewport({scale: scale});
   // console.log(outer_container.clientWidth);
@@ -178,11 +178,11 @@ document.getElementById('next').addEventListener('click', onNextPage);
   document.getElementById('page_count').textContent = pdfDoc.numPages;
 
   // Initial/first page rendering
-  renderPage(pageNum);
+  await renderPage(pageNum);
 })();
 
-// window.addEventListener('resize', () => {
-//   queueRenderPage(pageNum);
-// });
+window.addEventListener('resize', () => {
+  queueRenderPage(pageNum);
+});
 
 </script>
