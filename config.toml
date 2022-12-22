@@ -42,7 +42,7 @@ gitUrl = "https://github.com/jshin313/site/commit/"
 disableReadOtherPosts = false
 
 # Metadata mostly used in document's head
-description = "My homepage or blog"
+description = "My homepage"
 keywords = "homepage, blog"
 images = [""]
 

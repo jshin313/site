@@ -3,8 +3,9 @@
         {{ if .Site.Params.Logo.path }}
             <img src="{{ .Site.Params.Logo.path }}" alt="{{ .Site.Params.Logo.alt }}" />
         {{ else }}
-        <span style="color:#98971a" class="logo__text">jacob@jacobshin.com:</span>
-        <span style="color:#689d6a" class="logo__text">/home/site</span>
+        <span style="color:#98971a" class="logo__text">jacob</span>
+        <span style="color:#fbf1c7" class="logo__text">@</span>
+        <span style="color:#689d6a" class="logo__text">jacobshin.com&nbsp;</span>
         <span style="color:#fbf1c7" class="logo__text">$ </span>
         <span class="logo__text">{{ with .Site.Params.Logo.logoText }}{{ . }}{{ else }}hello{{ end }}</span>
         <span class="logo__cursor" style=
