@@ -12,6 +12,7 @@ html {
   <button id="prev" style="display: inline">Previous</button> <button id="next" style="display: inline">Next</button>
   &nbsp; &nbsp;
   <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+  <a href="{{ .Get "url" }}" class="button" style="float: right;">Download</a>
 </div>
 <div class="col-md-8" id="outer-container">
   <div id="pageContainer" class="pdfViewer singlePageView"></div>
@@ -84,7 +85,6 @@ var pdfDoc = null,
 async function renderPage(num) {
   pageRendering = true;
   const page = await pdfDoc.getPage(num);
-
   container.innerHTML = "";
 
   var outer_container = document.getElementById('outer-container');
@@ -114,6 +114,7 @@ async function renderPage(num) {
 
   // Associate the actual page with the view, and draw it.
   pdfPageView.setPdfPage(page);
+
   await pdfPageView.draw();
 
   // Wait for rendering to finish
