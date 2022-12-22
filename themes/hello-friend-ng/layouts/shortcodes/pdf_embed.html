@@ -63,6 +63,7 @@ const ENABLE_XFA = true;
 const container = document.getElementById("pageContainer");
 
 const eventBus = new pdfjsViewer.EventBus();
+var prev_window_width = window.outerWidth;
 
 // Loading document.
 const loadingTask = pdfjsLib.getDocument({
@@ -90,10 +91,6 @@ async function renderPage(num) {
   var viewport = page.getViewport({scale: 1});
   var scale = SCALE * outer_container.clientWidth/viewport.width;
   
-  if (Math.abs(SCALE-scale) < 0.05) {
-    pageRendering = false;
-    return;
-  }
   container.innerHTML = "";
 
   viewport = page.getViewport({scale: scale});
@@ -182,7 +179,10 @@ document.getElementById('next').addEventListener('click', onNextPage);
 })();
 
 window.addEventListener('resize', () => {
-  queueRenderPage(pageNum);
+  if (prev_window_width !== window.outerWidth) {
+    prev_window_width = window.outerWidth;
+    queueRenderPage(pageNum);
+  }
 });
 
 </script>
