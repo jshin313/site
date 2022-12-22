@@ -91,7 +91,8 @@ async function renderPage(num) {
   var viewport = page.getViewport({scale: 1});
   var scale = SCALE * outer_container.clientWidth/viewport.width;
   
-  if (Math.abs(1-scale) < 0.05) {
+  if (Math.abs(1-scale) < 0.10) {
+    pageRendering = false;
     return;
   }
 
