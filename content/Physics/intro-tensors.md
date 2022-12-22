@@ -10,4 +10,4 @@ tags:
   - tensors
 ---
 
-{{< pdf_embed url="https://raw.githubusercontent.com/jshin313/wieners-attack/c78fb52b1ca21ea35a1e8b32d1754aa88c6b232b/paper.pdf">}}
+{{< pdf_embed url="https://raw.githubusercontent.com/daa233/learning-notes/master/tools/lshort/lshort.pdf" toc=true >}}

@@ -12,7 +12,7 @@ html {
   <button id="prev" style="display: inline">Previous</button> <button id="next" style="display: inline">Next</button>
   &nbsp; &nbsp;
   <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
-  <a href="{{ .Get "url" }}" class="button" style="float: right;">Download</a>
+  <a href='{{ .Get "url" }}' class="button" style="float: right;">Download</a>
 </div>
 <div class="col-md-8" id="outer-container">
   <div id="pageContainer" class="pdfViewer singlePageView"></div>
@@ -176,13 +176,65 @@ document.getElementById('next').addEventListener('click', onNextPage);
 
   // Initial/first page rendering
   await renderPage(pageNum);
+
+  // Populate Table of Contents (TOC) with values from the pdf
+  {{ if .Get "toc" }}
+  // div class="toc-title"
+  const headings = [];
+
+  var outline = await pdfDoc.getOutline();
+  if (outline) {
+    // Find page numbers in parallel
+    await Promise.all(outline.map(async (heading) => {
+      var pageNumber = await getPageNumber(heading.dest);
+      headings.push({ title: heading.title, pageNumber: pageNumber });
+    }));
+  }
+
+  console.log(headings);
+
+  // Converts between dest and page numbers
+  async function getPageNumber(dest) {
+    var dest = await pdfDoc.getDestination(dest)
+    var id = await pdfDoc.getPageIndex(dest[0]);
+    return id+1;
+  }
+
+
+  // Append heading to TOC
+  // Based on https://stackoverflow.com/a/31873736
+  const toc = document.getElementById("TableOfContents");
+
+  var ul = document.createElement('ul');
+
+  toc.appendChild(ul);
+  headings.forEach(createHeadingUL);
+
+  function createHeadingUL(heading, index, arr) {
+    let li = document.createElement('li');
+    let link = document.createElement('a');
+    ul.appendChild(li);
+    li.appendChild(link);
+    link.href = "javascript:void(0);";
+    link.addEventListener('click', () => {
+      queueRenderPage(heading.pageNumber)
+      container.scrollIntoView();
+    });
+    link.innerHTML += heading.title;
+  }
+
+  {{ end }}
+
 })();
 
+// Allows responsiveness for mobile
 window.addEventListener('resize', () => {
+  // Mobile detects scrolling as resize, so ignore scrolling
   if (prev_window_width !== window.outerWidth) {
     prev_window_width = window.outerWidth;
     queueRenderPage(pageNum);
   }
 });
+
 
 </script>
