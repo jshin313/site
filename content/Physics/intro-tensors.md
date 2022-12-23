@@ -2,7 +2,7 @@
 publishdate: 2022-12-19
 title: "Intro to Tensors"
 toc: true
-draft: true
+draft: false
 tags:
   - notes
   - college
@@ -10,4 +10,4 @@ tags:
   - tensors
 ---
 
-{{< pdf_embed url="https://raw.githubusercontent.com/daa233/learning-notes/master/tools/lshort/lshort.pdf" toc=true >}}
+{{< pdf_embed url="https://raw.githubusercontent.com/jshin313/latex-notes/main/tensor_intro_notes/tensor_intro_notes.pdf" toc=true >}}
