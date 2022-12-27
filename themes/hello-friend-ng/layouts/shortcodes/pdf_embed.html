@@ -93,13 +93,20 @@ html {
 
 			container.innerHTML = "";
 
+			const themeStyle = getComputedStyle(document.body);
+
 			viewport = page.getViewport({scale: scale});
 			// console.log(outer_container.clientWidth);
 			// console.log(viewport.width);
+			let pageColors = {
+				background: themeStyle.backgroundColor,
+				foreground: themeStyle.color
+			};
 
 			// Using promise to fetch the page
 			// Creating the page view with default parameters.
 				const pdfPageView = new pdfjsViewer.PDFPageView({
+					pageColors: pageColors,
 					container,
 					scale: scale,
 					defaultViewport: viewport,
