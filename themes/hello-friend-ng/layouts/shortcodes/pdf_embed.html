@@ -6,6 +6,7 @@
 html {
 	letter-spacing: normal !important;
 }
+
 </style>
 
 <div>
@@ -56,6 +57,8 @@ html {
 	const CMAP_PACKED = true;
 
 	const DEFAULT_URL = '{{ .Get "url" }}';
+
+	// For some reason the viewport.width is always 0.75 times the actual size of the pdf page
 	const SCALE = 0.75;
 
 	const ENABLE_XFA = true;
@@ -89,15 +92,19 @@ html {
 
 			var outer_container = document.getElementById('outer-container');
 			var viewport = page.getViewport({scale: 1});
+
+			{{ if .Get "scale" }}
+			var scale = SCALE * outer_container.clientWidth/viewport.width * {{ .Get "scale" }} ;
+			{{ else }}
 			var scale = SCALE * outer_container.clientWidth/viewport.width;
+			{{ end }}
 
 			container.innerHTML = "";
 
 			const themeStyle = getComputedStyle(document.body);
 
 			viewport = page.getViewport({scale: scale});
-			// console.log(outer_container.clientWidth);
-			// console.log(viewport.width);
+
 			let pageColors = {
 				background: themeStyle.backgroundColor,
 				foreground: themeStyle.color
