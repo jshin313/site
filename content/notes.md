@@ -24,7 +24,7 @@ Courses denoted with an asterisk, *, are courses that I didn't take through my u
 Classes where I didn't use $\LaTeX$: Optics, Mathematical Physics, Electricity & Magnetism
 
 ## [Mathematics](/mathematics)
-* [Intro to Tensor Notes*](/mathematics/intro-tensors/)
+* [Tensor Algebra Notes*](/mathematics/tensor-algebra/)
 * [Real & Complex Analysis I](/mathematics/realanalysis1/)
 * [Differential Equations with Linear Algebra](/mathematics/diffeqlinear/)
 * [Basic Concepts of Math (Intro to Proofs)](/mathematics/basicconcepts/)
