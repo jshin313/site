@@ -1,5 +1,5 @@
 +++
-title = "CV"
+title = "Resume"
 date = "2023-09-21"
 aliases = ["resume"]
 [ author ]
