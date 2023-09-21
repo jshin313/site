@@ -1,6 +1,6 @@
 ## Education
 * **Temple University**, Bachelor of Science in Physics
-* GPA: 3.93 out of 4.00
+* GPA: 3.94 out of 4.00
 
 ## Research Experience
 * **Water Research Group** under [Dr. Xifan Wu](https://sites.temple.edu/xifanwu/) (2022-Current)
