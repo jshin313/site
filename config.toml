@@ -85,11 +85,11 @@ logoHomeLink = "/"
 # alt = "Your example logo alt text"
 
 # And you can even create generic menu
-[[menu.main]]
-identifier = "CV"
-name       = "CV"
-url        = "/cv"
-weight     = -102
+# [[menu.main]]
+# identifier = "CV"
+# name       = "CV"
+# url        = "/cv"
+# weight     = -102
 
 [[menu.main]]
 identifier = "notes"
